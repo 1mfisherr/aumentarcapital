@@ -17,7 +17,7 @@ export default async function ArtigosPage() {
   const posts = await getSortedPostsData();
 
   return (
-    <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+    <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
       <div className="mb-10 lg:mb-14">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900 tracking-tight">
           Artigos

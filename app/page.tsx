@@ -44,7 +44,7 @@ export default async function HomePage() {
   const latestPosts = allPosts.slice(1, 6); // Next 5 posts
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
       {/* Hero Section with Featured Article and Latest Sidebar */}
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 mb-16 lg:mb-20">
         {/* Featured Article */}
@@ -146,9 +146,9 @@ export default async function HomePage() {
       </div>
 
       {/* Categories Section */}
-      <section className="mb-12 border-t-2 border-neutral-200 pt-12 lg:pt-16">
+      <section className="mb-12 border-t-2 border-neutral-200 pt-12 lg:pt-16 w-full">
         <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-8 lg:mb-10">Explora por Categoria</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
           <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary-500 hover:shadow-strong transition-all duration-300 bg-white overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative">

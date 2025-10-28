@@ -9,18 +9,18 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 group">
+          <Link href="/" className="flex-shrink-0 inline-block">
             <Image
               src="/images/aumentarcapital_logo.svg"
               alt={siteConfig.name}
               width={180}
               height={45}
               priority
-              className="h-9 sm:h-10 md:h-11 w-auto transition-transform duration-300 ease-out group-hover:scale-105"
+              className="h-7 sm:h-8 md:h-9 w-auto block"
             />
           </Link>
 

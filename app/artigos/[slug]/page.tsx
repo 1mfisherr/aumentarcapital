@@ -120,7 +120,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }}
       />
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+      <article className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
         <header className="mb-10 lg:mb-14">
           {post.category && (
             <div className="mb-5">
@@ -149,13 +149,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {post.image && (
-            <div className="relative rounded-2xl overflow-hidden shadow-strong">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-strong">
               <img
                 src={post.image}
                 alt={(post as any).imageAlt || post.title}
                 width={(post as any).imageWidth || 1200}
                 height={(post as any).imageHeight || 628}
-                className="w-full h-auto"
+                className="w-full h-auto max-w-full object-cover"
               />
             </div>
           )}

@@ -3,8 +3,8 @@ import { siteConfig } from "@/lib/site.config";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-50 border-t-2 border-neutral-200 mt-16 lg:mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="w-full bg-neutral-50 border-t-2 border-neutral-200 mt-16 lg:mt-20 overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
           {/* About */}
           <div>
