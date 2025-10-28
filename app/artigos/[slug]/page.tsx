@@ -1,5 +1,7 @@
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
+import Layout from "@/components/Layout";
+
 
 export const revalidate = 60; // ISR for individual articles
 
