@@ -42,7 +42,7 @@ export default function CookieConsent() {
             e personalizar conteúdo. Ao continuar a navegar, aceitas a nossa utilização de cookies.{" "}
             <a
               href="/politica-privacidade"
-              className="text-green-600 hover:underline font-medium"
+              className="text-green-600 hover:text-green-800 transition-colors duration-200 font-medium"
             >
               Sabe mais
             </a>

@@ -71,12 +71,9 @@ export default function ContactoPage() {
               <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-2">Email</p>
               <a
                 href={`mailto:${siteConfig.author.email}`}
-                className="text-lg font-medium text-primary-600 hover:text-primary-700 transition-colors inline-flex items-center gap-2 group"
+                className="text-lg font-medium text-primary-600 hover:text-green-800 transition-colors duration-200"
               >
-                <span>{siteConfig.author.email}</span>
-                <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
+                {siteConfig.author.email}
               </a>
             </div>
             <div>
@@ -88,7 +85,7 @@ export default function ContactoPage() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-primary-50 hover:border-primary-500 hover:text-primary-700 transition-all duration-200 rounded-lg font-medium text-sm capitalize"
+                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-neutral-100 hover:border-green-800 hover:text-green-800 transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
                   >
                     {platform}
                   </a>
@@ -174,7 +171,7 @@ export default function ContactoPage() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-primary-700 hover:shadow-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
+          className="w-full px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-green-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "A enviar..." : "Enviar Mensagem"}
         </button>

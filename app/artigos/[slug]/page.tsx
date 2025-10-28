@@ -173,7 +173,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-primary-50 hover:text-primary-700 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer"
+                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-green-800 hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
                 >
                   {tag}
                 </span>

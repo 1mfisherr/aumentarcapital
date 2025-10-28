@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { siteConfig } from "@/lib/site.config";
@@ -13,15 +12,13 @@ export default function Header() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 inline-block">
-            <Image
-              src="/images/aumentarcapital_logo.svg"
-              alt={siteConfig.name}
-              width={180}
-              height={45}
-              priority
-              className="h-7 sm:h-8 md:h-9 w-auto block"
-            />
+          <Link href="/" className="flex-shrink-0 inline-flex items-center gap-1">
+            <span className="text-green-600 text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter">
+              ↑↑
+            </span>
+            <span className="text-gray-900 text-base sm:text-lg md:text-xl font-bold tracking-tight">
+              aumentarcapital<span className="text-green-600">.com</span>
+            </span>
           </Link>
 
           {/* Navigation */}
@@ -30,7 +27,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm lg:text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 after:ease-out hover:after:w-full"
+                className="text-sm lg:text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -41,28 +38,15 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/contacto"
-              className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-green-600 text-white text-sm lg:text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out group"
+              className="hidden sm:inline-flex items-center px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-green-600 text-white text-sm lg:text-base font-semibold rounded-full hover:bg-green-700 transition-colors duration-200"
             >
               <span>Subscrever</span>
-              <svg 
-                className="w-4 h-4 transition-transform duration-500 ease-out group-hover:translate-x-1.5" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2.5} 
-                  d="M13 7l5 5m0 0l-5 5m5-5H6" 
-                />
-              </svg>
             </Link>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 active:scale-95"
+              className="md:hidden p-2.5 rounded-xl text-gray-700 hover:text-green-600 transition-colors duration-200"
               aria-label="Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -100,7 +84,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-xl transition-all duration-200"
+                className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-green-600 rounded-xl transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -109,22 +93,9 @@ export default function Header() {
               <Link
                 href="/contacto"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-5 py-3.5 bg-green-600 text-white text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-xl transition-all duration-300 ease-out justify-center group active:scale-95"
+                className="flex items-center px-5 py-3.5 bg-green-600 text-white text-base font-semibold rounded-full hover:bg-green-700 transition-colors duration-200 justify-center"
               >
                 <span>Subscrever</span>
-                <svg 
-                  className="w-4 h-4 transition-transform duration-500 ease-out group-hover:translate-x-1.5" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2.5} 
-                    d="M13 7l5 5m0 0l-5 5m5-5H6" 
-                  />
-                </svg>
               </Link>
             </div>
           </nav>

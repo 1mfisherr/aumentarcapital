@@ -86,12 +86,9 @@ export default function SobrePage() {
           </p>
           <a
             href="/contacto"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-primary-700 hover:shadow-medium transition-all duration-300 group"
+            className="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-green-800 transition-colors duration-200"
           >
             <span>Contacta-nos</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-            </svg>
           </a>
         </div>
       </div>

@@ -97,7 +97,7 @@ export default function PoliticaPrivacidadePage() {
           contacto connosco através de:{" "}
           <a
             href={`mailto:${siteConfig.author.email}`}
-            className="text-green-600 hover:underline"
+            className="text-green-600 hover:text-green-800 transition-colors duration-200"
           >
             {siteConfig.author.email}
           </a>

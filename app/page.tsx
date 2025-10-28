@@ -88,11 +88,6 @@ export default async function HomePage() {
                   <div className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
                     {featuredPost.author}
                   </div>
-                  <div className="text-primary-600 group-hover:translate-x-1 transition-transform duration-200">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
                 </div>
               </div>
             </article>
@@ -106,12 +101,9 @@ export default async function HomePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">Mais Recentes</h2>
             <Link 
               href="/artigos" 
-              className="group text-sm font-bold text-primary-600 hover:text-primary-700 transition-all uppercase tracking-wide flex items-center gap-1"
+              className="text-sm font-bold text-primary-600 hover:text-green-800 transition-colors duration-200 uppercase tracking-wide"
             >
-              <span>Ver Todos</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
+              Ver Todos
             </Link>
           </div>
           
@@ -151,59 +143,47 @@ export default async function HomePage() {
       <section className="mb-12 border-t-2 border-neutral-200 pt-12 lg:pt-16 w-full">
         <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-8 lg:mb-10">Explora por Categoria</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary-500 hover:shadow-strong transition-all duration-300 bg-white overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
-              <div className="text-4xl lg:text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💰</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+              <div className="text-4xl lg:text-5xl mb-4">💰</div>
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
               </p>
-              <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:gap-2 gap-1 transition-all">
+              <div className="text-primary-600 font-semibold text-sm">
                 <span>Explorar</span>
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
               </div>
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary-500 hover:shadow-strong transition-all duration-300 bg-white overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
-              <div className="text-4xl lg:text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📈</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+              <div className="text-4xl lg:text-5xl mb-4">📈</div>
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
                 Investimentos
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Descobre como fazer o teu dinheiro crescer através de investimentos inteligentes
               </p>
-              <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:gap-2 gap-1 transition-all">
+              <div className="text-primary-600 font-semibold text-sm">
                 <span>Explorar</span>
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
               </div>
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary-500 hover:shadow-strong transition-all duration-300 bg-white sm:col-span-2 lg:col-span-1 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white sm:col-span-2 lg:col-span-1 overflow-hidden">
             <div className="relative">
-              <div className="text-4xl lg:text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🚀</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+              <div className="text-4xl lg:text-5xl mb-4">🚀</div>
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
                 Empreendedorismo
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Transforma as tuas ideias em negócios lucrativos e sustentáveis
               </p>
-              <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:gap-2 gap-1 transition-all">
+              <div className="text-primary-600 font-semibold text-sm">
                 <span>Explorar</span>
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
               </div>
             </div>
           </Link>

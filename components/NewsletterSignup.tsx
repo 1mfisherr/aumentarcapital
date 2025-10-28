@@ -80,7 +80,7 @@ export default function NewsletterSignup() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-3.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 hover:shadow-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap active:scale-98"
+          className="w-full sm:w-auto px-8 py-3.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-green-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {status === "loading" ? "A enviar..." : "Subscrever"}
         </button>
