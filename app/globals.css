@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
+/* Custom CSS Variables for easy theme editing */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #1E88E5;
+  --color-primary-dark: #1565C0;
+  --color-accent: #34D399;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-muted: #6B7280;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
+}
+
+/* Prose (article content) styling improvements */
+.prose {
+  max-width: 65ch;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 136, 229, 0.3);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-primary);
 }

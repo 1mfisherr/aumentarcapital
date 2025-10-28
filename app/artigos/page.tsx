@@ -1,42 +1,43 @@
-import Link from "next/link";
 import { getSortedPostsData } from "@/lib/posts";
+import ArticleCard from "@/components/ArticleCard";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const revalidate = 60; // ISR: rebuild this page every 60s if content changes
+
+export const metadata = {
+  title: "Artigos - Aumentar Capital",
+  description: "Descobre os nossos artigos sobre finanças pessoais, investimentos e empreendedorismo.",
+};
 
 export default async function ArtigosPage() {
   const posts = await getSortedPostsData();
 
   return (
-    <main className="max-w-3xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-8 text-primary">Artigos</h1>
+    <main className="max-w-4xl mx-auto px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-4xl font-heading font-bold mb-3 text-primary">
+          Artigos
+        </h1>
+        <p className="text-lg text-muted">
+          Descobre as melhores dicas sobre finanças pessoais, investimentos e empreendedorismo.
+        </p>
+      </div>
+
+      <div className="mb-12">
+        <NewsletterSignup />
+      </div>
 
       {posts.length === 0 ? (
-        <p className="text-gray-600">Ainda não há artigos disponíveis.</p>
+        <div className="text-center py-12">
+          <p className="text-gray-600 text-lg">Ainda não há artigos disponíveis.</p>
+          <p className="text-gray-500 text-sm mt-2">
+            Volta em breve para novos conteúdos!
+          </p>
+        </div>
       ) : (
-        <div className="space-y-6">
+        <div className="grid gap-6">
           {posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border-b border-gray-200 pb-4 last:border-none"
-            >
-              <Link
-                href={`/artigos/${post.slug}`}
-                className="text-2xl font-semibold text-primary hover:underline"
-              >
-                {post.title}
-              </Link>
-
-              <p className="text-gray-600 text-sm mt-1">
-                {new Date(post.date).toLocaleDateString("pt-PT", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}{" "}
-                · {post.readingTime} min de leitura
-              </p>
-
-              <p className="mt-2 text-gray-700">{post.description}</p>
-            </article>
+            <ArticleCard key={post.slug} post={post} />
           ))}
         </div>
       )}

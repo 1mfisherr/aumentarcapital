@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Aumentar Capital - Blog de Finanças Pessoais
 
-## Getting Started
+Um blog moderno sobre finanças pessoais, investimentos e empreendedorismo, construído com Next.js 16 e Tailwind CSS.
 
-First, run the development server:
+## 📖 Documentação para Utilizadores
+
+Se não és programador e queres **adicionar/editar artigos ou configurar o website**, consulta o guia completo:
+
+👉 **[COMO_USAR.md](./COMO_USAR.md)** - Guia completo para não-programadores
+
+## 🚀 Quick Start (Para Programadores)
+
+### Instalação
+
+```bash
+npm install
+```
+
+### Desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) no teu browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build de Produção
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📁 Estrutura do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+```
+aumentarcapital/
+├── app/                    # Next.js App Router
+│   ├── artigos/           # Páginas de artigos
+│   ├── sobre/             # Página sobre
+│   ├── contacto/          # Página de contacto
+│   └── ...
+├── components/            # Componentes React reutilizáveis
+├── lib/                   # Bibliotecas e utilitários
+│   ├── site.config.ts    # ⚙️ Configuração principal do site
+│   ├── posts.ts          # Funções para ler artigos
+│   └── types.ts          # Tipos TypeScript
+├── posts/                 # 📝 Artigos em Markdown
+└── public/               # Ficheiros estáticos
+    └── images/           # Imagens
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ Blog baseado em Markdown (fácil de editar)
+- ✅ Sistema de categorias e tags
+- ✅ Tempo de leitura automático
+- ✅ SEO otimizado (sitemap, robots.txt, RSS feed, JSON-LD)
+- ✅ Newsletter signup component
+- ✅ Cookie consent (GDPR compliant)
+- ✅ Google Analytics / Plausible integration
+- ✅ Google AdSense ready
+- ✅ Responsive design
+- ✅ ISR (Incremental Static Regeneration)
+- ✅ Configuração centralizada para fácil manutenção
 
-## Deploy on Vercel
+## 📝 Como Adicionar um Artigo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Cria um ficheiro `.md` na pasta `posts/`
+2. Usa o template em `TEMPLATE_ARTIGO.md`
+3. Adiciona o frontmatter e conteúdo
+4. Guarda e o artigo aparece automaticamente!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ver [COMO_USAR.md](./COMO_USAR.md) para guia detalhado.
+
+## ⚙️ Configuração
+
+Toda a configuração principal está em `lib/site.config.ts`:
+
+- Nome e descrição do site
+- Cores e tema
+- Menu de navegação
+- Redes sociais
+- Newsletter
+- Anúncios
+- Analytics
+
+## 🎨 Tecnologias
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS v4
+- **Language**: TypeScript
+- **Content**: Markdown (gray-matter + remark)
+- **Fonts**: Google Fonts (Inter + Poppins)
+- **Analytics**: Google Analytics / Plausible
+- **Ads**: Google AdSense
+
+## 📦 Principais Dependências
+
+- `next` - Framework React
+- `react` & `react-dom` - Library React
+- `tailwindcss` - CSS utility framework
+- `gray-matter` - Parse frontmatter
+- `remark` & `remark-html` - Markdown processing
+- `reading-time` - Calculate reading time
+- `@tailwindcss/typography` - Prose styling
+
+## 🚢 Deploy
+
+### Vercel (Recomendado)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+### Outras Plataformas
+
+O projeto pode ser deployado em qualquer plataforma que suporte Next.js:
+- Netlify
+- Railway
+- Render
+- AWS Amplify
+
+## 📊 SEO Features
+
+- ✅ Sitemap automático (`/sitemap.xml`)
+- ✅ Robots.txt (`/robots.txt`)
+- ✅ RSS Feed (`/feed.xml`)
+- ✅ Open Graph tags
+- ✅ Twitter Card tags
+- ✅ JSON-LD structured data
+- ✅ Semantic HTML
+
+## 🔒 Privacidade & GDPR
+
+- Cookie consent banner incluído
+- Política de privacidade template
+- Analytics condicionais (só após consentimento)
+
+## 📄 Licença
+
+Este projeto é privado. Todos os direitos reservados.
+
+## 🤝 Contribuir
+
+Para contribuir, por favor:
+1. Cria um fork do projeto
+2. Cria uma branch para a tua feature
+3. Faz commit das alterações
+4. Faz push para a branch
+5. Abre um Pull Request
+
+## 📞 Suporte
+
+Para questões ou suporte:
+- Email: contacto@aumentarcapital.com
+- Consulta: [COMO_USAR.md](./COMO_USAR.md)
+
+---
+
+**Desenvolvido com ❤️ para ajudar pessoas a melhorar as suas finanças pessoais**
