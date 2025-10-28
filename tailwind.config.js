@@ -71,6 +71,16 @@ module.exports = {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
         'medium': '0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 30px -4px rgba(0, 0, 0, 0.06)',
         'strong': '0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10)',
+        'lifted': '0 10px 40px rgba(0, 0, 0, 0.1)',
+      },
+      scale: {
+        '95': '0.95',
+        '97': '0.97',
+        '98': '0.98',
+        '99': '0.99',
+      },
+      transitionTimingFunction: {
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

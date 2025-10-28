@@ -24,10 +24,13 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-base text-neutral-600 hover:text-primary-600 transition-all duration-200 inline-flex items-center gap-1 group"
+                    className="text-base text-neutral-600 hover:text-green-600 transition-all duration-300 ease-out inline-flex items-center gap-2 group"
                   >
-                    <span className="group-hover:translate-x-1 transition-transform duration-200">{item.label}</span>
-                    <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
+                    </span>
+                    <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
@@ -36,10 +39,13 @@ export default function Footer() {
               <li>
                 <Link
                   href="/politica-privacidade"
-                  className="text-base text-neutral-600 hover:text-primary-600 transition-all duration-200 inline-flex items-center gap-1 group"
+                  className="text-base text-neutral-600 hover:text-green-600 transition-all duration-300 ease-out inline-flex items-center gap-2 group"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">Política de Privacidade</span>
-                  <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="relative">
+                    Política de Privacidade
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                  <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
@@ -57,7 +63,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-white border-2 border-neutral-200 text-neutral-700 hover:border-primary-500 hover:text-primary-600 hover:shadow-soft transition-all duration-200 rounded-lg font-medium text-sm capitalize"
+                  className="px-4 py-2 bg-white border-2 border-neutral-200 text-neutral-700 hover:border-green-500 hover:text-green-600 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 ease-out rounded-lg font-medium text-sm capitalize"
                 >
                   {platform}
                 </a>

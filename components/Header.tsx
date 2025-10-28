@@ -13,14 +13,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 hover:opacity-80 transition-opacity duration-200">
+          <Link href="/" className="flex-shrink-0 group">
             <Image
               src="/images/aumentarcapital_logo.svg"
               alt={siteConfig.name}
               width={180}
               height={45}
               priority
-              className="h-9 sm:h-10 md:h-11 w-auto"
+              className="h-9 sm:h-10 md:h-11 w-auto transition-transform duration-300 ease-out group-hover:scale-105"
             />
           </Link>
 
@@ -30,7 +30,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm lg:text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200"
+                className="relative text-sm lg:text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 after:ease-out hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -41,11 +41,11 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/contacto"
-              className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-green-600 text-white text-sm lg:text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-lg transition-all duration-300 group"
+              className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-green-600 text-white text-sm lg:text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out group"
             >
               <span>Subscrever</span>
               <svg 
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                className="w-4 h-4 transition-transform duration-500 ease-out group-hover:translate-x-1.5" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -109,11 +109,11 @@ export default function Header() {
               <Link
                 href="/contacto"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-5 py-3.5 bg-green-600 text-white text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-lg transition-all duration-300 justify-center group active:scale-98"
+                className="flex items-center gap-2 px-5 py-3.5 bg-green-600 text-white text-base font-semibold rounded-full hover:bg-green-700 hover:shadow-xl transition-all duration-300 ease-out justify-center group active:scale-95"
               >
                 <span>Subscrever</span>
                 <svg 
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                  className="w-4 h-4 transition-transform duration-500 ease-out group-hover:translate-x-1.5" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
