@@ -46,7 +46,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-dm-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['var(--font-poppins)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.02em' }],

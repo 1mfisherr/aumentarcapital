@@ -1,15 +1,24 @@
 import "./globals.css";
-import { DM_Sans } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site.config";
 
-const dmSans = DM_Sans({ 
+const poppins = Poppins({ 
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+});
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: 'swap',
   preload: true,
   fallback: ['system-ui', 'arial'],
@@ -82,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="pt" className={dmSans.variable}>
+    <html lang="pt" className={`${poppins.variable} ${inter.variable}`}>
       <head>
         {/* Performance optimization: Resource hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

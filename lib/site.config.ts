@@ -23,10 +23,9 @@ export const siteConfig = {
 
   // Navigation menu items (add or remove items here)
   nav: [
-    { href: "/", label: "Home" },
     { href: "/artigos", label: "Artigos" },
+    { href: "/recursos", label: "Recursos" },
     { href: "/sobre", label: "Sobre" },
-    { href: "/contacto", label: "Contacto" },
   ],
 
   // Newsletter settings
