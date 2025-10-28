@@ -68,7 +68,7 @@ export default async function HomePage() {
                 <div className="p-6 sm:p-7 bg-white">
                   {/* Category */}
                   <div className="mb-3">
-                    <span className="inline-block px-3 py-1 text-xs font-bold text-primary-700 bg-primary-50 rounded-full uppercase tracking-wider">
+                    <span className="inline-block px-3 py-1 text-xs font-bold text-blue-700 bg-blue-50 rounded-full uppercase tracking-wider">
                       {featuredPost.category}
                     </span>
                   </div>
@@ -101,7 +101,7 @@ export default async function HomePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">Mais Recentes</h2>
             <Link 
               href="/artigos" 
-              className="text-sm font-bold text-primary-600 hover:text-green-800 transition-colors duration-200 uppercase tracking-wide"
+              className="text-sm font-bold text-blue-600 hover:text-blue-900 transition-colors duration-200 uppercase tracking-wide"
             >
               Ver Todos
             </Link>
@@ -115,7 +115,7 @@ export default async function HomePage() {
                     style={{ animationDelay: `${index * 50}ms` }}>
                     {/* Category */}
                     <div className="mb-2">
-                      <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-primary-700 bg-primary-100 rounded-md uppercase tracking-wide">
+                      <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-blue-700 bg-blue-100 rounded-md uppercase tracking-wide">
                         {post.category}
                       </span>
                     </div>
@@ -143,46 +143,46 @@ export default async function HomePage() {
       <section className="mb-12 border-t-2 border-neutral-200 pt-12 lg:pt-16 w-full">
         <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-8 lg:mb-10">Explora por Categoria</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white overflow-hidden">
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-blue-900 transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">💰</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-blue-900 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
               </p>
-              <div className="text-primary-600 font-semibold text-sm">
+              <div className="text-blue-600 font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white overflow-hidden">
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-blue-900 transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">📈</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-blue-900 transition-colors duration-200">
                 Investimentos
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Descobre como fazer o teu dinheiro crescer através de investimentos inteligentes
               </p>
-              <div className="text-primary-600 font-semibold text-sm">
+              <div className="text-blue-600 font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-green-800 transition-colors duration-200 bg-white sm:col-span-2 lg:col-span-1 overflow-hidden">
+          <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-blue-900 transition-colors duration-200 bg-white sm:col-span-2 lg:col-span-1 overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">🚀</div>
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-green-800 transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-blue-900 transition-colors duration-200">
                 Empreendedorismo
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Transforma as tuas ideias em negócios lucrativos e sustentáveis
               </p>
-              <div className="text-primary-600 font-semibold text-sm">
+              <div className="text-blue-600 font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>

@@ -2,9 +2,9 @@
 
 /* Custom CSS Variables for easy theme editing */
 :root {
-  --color-primary: #16a34a;
-  --color-primary-light: #22c55e;
-  --color-primary-dark: #15803d;
+  --color-primary: #1D4ED8;
+  --color-primary-light: #2563EB;
+  --color-primary-dark: #1E3A8A;
   --color-accent: #9333ea;
   --color-background: #FFFFFF;
   --color-background-subtle: #fafafa;
@@ -20,7 +20,7 @@
 
 .group:hover .hover-title,
 .hover-title:hover {
-  color: #15803d !important; /* primary-dark green */
+  color: #1E3A8A !important; /* primary-dark blue */
 }
 
 /* Base styles */
@@ -156,7 +156,7 @@ p {
   margin-bottom: 2.5em;
   padding: 1.5em 1.5em 1.5em 2em;
   border-left: 4px solid var(--color-primary);
-  background: #f0fdf4;
+  background: #EFF6FF;
   border-radius: 0.5rem;
   font-style: italic;
   color: var(--color-text-muted);
@@ -189,7 +189,7 @@ p {
 .prose a {
   color: var(--color-primary);
   text-decoration: underline;
-  text-decoration-color: rgba(22, 163, 74, 0.3);
+  text-decoration-color: rgba(29, 78, 216, 0.3);
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
   transition: all 0.2s ease;
@@ -259,7 +259,7 @@ html {
 
 /* Selection styling */
 ::selection {
-  background: rgba(22, 163, 74, 0.2);
+  background: rgba(29, 78, 216, 0.2);
   color: var(--color-text);
 }
 

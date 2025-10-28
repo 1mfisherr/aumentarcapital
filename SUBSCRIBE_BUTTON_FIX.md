@@ -24,10 +24,10 @@ className="... bg-primary-600 text-white ... hover:bg-primary-700 ..."
 
 **After:**
 ```jsx
-className="... bg-green-600 text-white ... hover:bg-green-700 ..."
+className="... bg-blue-700 text-white ... hover:bg-blue-900 ..."
 ```
 
-**Result:** Now uses Tailwind's default `green-600` color which is guaranteed to work.
+**Result:** Now uses blue-700 (#1D4ED8 primary) with blue-900 (#1E3A8A headerBlue) hover state.
 
 ---
 
@@ -54,10 +54,10 @@ className="... text-neutral-700 hover:text-primary-600 ..."
 
 **After:**
 ```jsx
-className="... text-gray-700 hover:text-green-600 ..."
+className="... text-gray-700 hover:text-blue-600 ..."
 ```
 
-**Result:** Uses standard Tailwind gray and green colors.
+**Result:** Uses standard Tailwind gray with blue-600 (#2563EB secondary) for hover.
 
 ---
 
@@ -69,10 +69,10 @@ className="... hover:bg-primary-50 hover:text-primary-600 ..."
 
 **After:**
 ```jsx
-className="... hover:bg-green-50 hover:text-green-600 ..."
+className="... hover:bg-blue-50 hover:text-blue-600 ..."
 ```
 
-**Result:** All hover states now use standard Tailwind colors.
+**Result:** All hover states now use blue colors (bg-blue-50 for #EFF6FF accent, text-blue-600 for #2563EB secondary).
 
 ---
 
@@ -84,10 +84,10 @@ className="bg-white border-b border-neutral-200 ..."
 
 **After:**
 ```jsx
-className="bg-white border-b border-gray-200 ..."
+className="bg-white border-b border-slate-300 ..."
 ```
 
-**Result:** Uses standard Tailwind gray instead of custom neutral.
+**Result:** Uses slate-300 (similar to #CBD5E1 slateBlueGray) for a subtle blue-gray border.
 
 ---
 
@@ -95,21 +95,22 @@ className="bg-white border-b border-gray-200 ..."
 
 | Element | Color Change | Visibility Change |
 |---------|--------------|-------------------|
-| Subscribe Button (Desktop) | `primary-600` → `green-600` | `md:` → `sm:` (now visible on tablets) |
-| Subscribe Button (Mobile) | `primary-600` → `green-600` | - |
-| Nav Links | `neutral-700/primary-600` → `gray-700/green-600` | - |
-| Mobile Menu | `neutral-700/primary-50/primary-600` → `gray-700/green-50/green-600` | - |
-| Header Border | `neutral-200` → `gray-200` | - |
+| Subscribe Button (Desktop) | `primary-600` → `blue-700` (#1D4ED8) | `md:` → `sm:` (now visible on tablets) |
+| Subscribe Button (Mobile) | `primary-600` → `blue-700` (#1D4ED8) | - |
+| Nav Links | `neutral-700/primary-600` → `gray-700/blue-600` (#2563EB) | - |
+| Mobile Menu | `neutral-700/primary-50/primary-600` → `gray-700/blue-50/blue-600` | - |
+| Header Border | `neutral-200` → `slate-300` (#CBD5E1) | - |
 
 ---
 
 ## Why This Works
 
-**Standard Tailwind Colors** like `green-600` and `gray-700` are:
+**Standard Tailwind Colors** like `blue-700`, `blue-600` and `slate-300` are:
 - ✅ Built into Tailwind CSS by default
 - ✅ Don't require custom configuration
 - ✅ Always available and render correctly
 - ✅ Browser-compatible
+- ✅ Match the blue color scheme (#1D4ED8, #2563EB, #EFF6FF, #1E3A8A, #CBD5E1)
 
 **Custom Colors** like `primary-600` and `neutral-700`:
 - ❌ Require proper Tailwind config compilation
@@ -137,9 +138,9 @@ className="bg-white border-b border-gray-200 ..."
 ## Subscribe Button Appearance
 
 The button now has:
-- ✅ **Bright green background** (`bg-green-600`) - highly visible
+- ✅ **Professional blue background** (`bg-blue-700` #1D4ED8) - highly visible
 - ✅ **White text** (`text-white`) - perfect contrast
-- ✅ **Darker green hover** (`hover:bg-green-700`) - clear interaction
+- ✅ **Darker blue hover** (`hover:bg-blue-900` #1E3A8A) - clear interaction
 - ✅ **Shadow on hover** (`hover:shadow-lg`) - depth effect
 - ✅ **Smooth transitions** (`transition-all duration-300`)
 - ✅ **Arrow icon animation** (slides right on hover)
@@ -151,9 +152,9 @@ The button now has:
 - [x] Button visible on desktop (≥1024px)
 - [x] Button visible on tablet (640-1023px)
 - [x] Button accessible on mobile via menu
-- [x] Green color renders correctly
+- [x] Blue color scheme renders correctly (#1D4ED8, #2563EB, #EFF6FF, #1E3A8A, #CBD5E1)
 - [x] White text is readable
-- [x] Hover effects work
+- [x] Hover effects work (blue-900 hover state)
 - [x] No linting errors
 - [x] All navigation links work
 - [x] Mobile menu displays correctly
@@ -172,9 +173,10 @@ By switching to standard Tailwind colors, we also get:
 
 ## Status: ✅ FIXED
 
-The subscribe button is now **clearly visible** with a bright green background and white text on all devices from 640px and up.
+The subscribe button is now **clearly visible** with a professional blue background (#1D4ED8) and white text on all devices from 640px and up.
 
 **File Updated:** `components/Header.tsx`
 **Lines Changed:** 6 locations
+**Color Scheme:** Blue theme (#1D4ED8, #2563EB, #EFF6FF, #1E3A8A, #CBD5E1)
 **Result:** Button is now prominent and impossible to miss! 🎉
 

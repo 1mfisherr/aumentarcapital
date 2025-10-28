@@ -71,7 +71,7 @@ export default function ContactoPage() {
               <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-2">Email</p>
               <a
                 href={`mailto:${siteConfig.author.email}`}
-                className="text-lg font-medium text-primary-600 hover:text-green-800 transition-colors duration-200"
+                className="text-lg font-medium text-blue-600 hover:text-blue-900 transition-colors duration-200"
               >
                 {siteConfig.author.email}
               </a>
@@ -85,7 +85,7 @@ export default function ContactoPage() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-neutral-100 hover:border-green-800 hover:text-green-800 transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
+                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-neutral-100 hover:border-blue-900 hover:text-blue-900 transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
                   >
                     {platform}
                   </a>
@@ -95,7 +95,7 @@ export default function ContactoPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 lg:p-8">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-2 border-blue-200 rounded-2xl p-6 lg:p-8">
           <div className="text-4xl mb-4">⏱️</div>
           <h3 className="text-2xl font-bold mb-3 text-neutral-900">
             Tempo de Resposta
@@ -119,7 +119,7 @@ export default function ContactoPage() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-base"
           />
         </div>
 
@@ -134,7 +134,7 @@ export default function ContactoPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-base"
           />
         </div>
 
@@ -149,7 +149,7 @@ export default function ContactoPage() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-base"
           />
         </div>
 
@@ -164,20 +164,20 @@ export default function ContactoPage() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base resize-none"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-base resize-none"
           />
         </div>
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-green-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-8 py-4 bg-blue-700 text-white font-bold text-lg rounded-xl hover:bg-blue-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "A enviar..." : "Enviar Mensagem"}
         </button>
 
         {status === "success" && (
-          <div className="p-5 bg-primary-50 border-2 border-primary-200 text-primary-800 rounded-xl font-medium">
+          <div className="p-5 bg-blue-50 border-2 border-blue-200 text-blue-800 rounded-xl font-medium">
             ✅ Mensagem enviada com sucesso! Entraremos em contacto em breve.
           </div>
         )}

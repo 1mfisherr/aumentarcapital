@@ -42,23 +42,23 @@ export default function SobrePage() {
           </p>
           <ul className="space-y-3 text-neutral-700 mb-0 text-lg">
             <li className="flex items-start gap-3">
-              <span className="text-primary-600 text-xl">💰</span>
+              <span className="text-blue-600 text-xl">💰</span>
               <span>Finanças pessoais e gestão de orçamento</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-primary-600 text-xl">💵</span>
+              <span className="text-blue-600 text-xl">💵</span>
               <span>Poupança e fundos de emergência</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-primary-600 text-xl">📈</span>
+              <span className="text-blue-600 text-xl">📈</span>
               <span>Investimentos em Portugal e no estrangeiro</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-primary-600 text-xl">🚀</span>
+              <span className="text-blue-600 text-xl">🚀</span>
               <span>Empreendedorismo e criação de negócios</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-primary-600 text-xl">📊</span>
+              <span className="text-blue-600 text-xl">📊</span>
               <span>Gestão de dívidas e crédito</span>
             </li>
           </ul>
@@ -75,7 +75,7 @@ export default function SobrePage() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-8 lg:p-10 mt-10">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-2 border-blue-200 rounded-2xl p-8 lg:p-10 mt-10">
           <div className="text-5xl mb-4">💬</div>
           <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">
             Tens perguntas ou sugestões?
@@ -86,7 +86,7 @@ export default function SobrePage() {
           </p>
           <a
             href="/contacto"
-            className="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-green-800 transition-colors duration-200"
+            className="inline-flex items-center px-8 py-4 bg-blue-700 text-white font-bold text-lg rounded-xl hover:bg-blue-900 transition-colors duration-200"
           >
             <span>Contacta-nos</span>
           </a>

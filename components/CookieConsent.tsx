@@ -42,7 +42,7 @@ export default function CookieConsent() {
             e personalizar conteúdo. Ao continuar a navegar, aceitas a nossa utilização de cookies.{" "}
             <a
               href="/politica-privacidade"
-              className="text-green-600 hover:text-green-800 transition-colors duration-200 font-medium"
+              className="text-blue-600 hover:text-blue-900 transition-colors duration-200 font-medium"
             >
               Sabe mais
             </a>
@@ -57,7 +57,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={acceptCookies}
-            className="flex-1 md:flex-none px-6 py-2.5 text-sm font-medium text-white bg-green-600 border-2 border-green-600 rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
+            className="flex-1 md:flex-none px-6 py-2.5 text-sm font-medium text-white bg-blue-700 border-2 border-blue-700 rounded-lg hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
           >
             Aceitar
           </button>

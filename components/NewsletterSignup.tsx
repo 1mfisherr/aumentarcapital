@@ -59,7 +59,7 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
+    <div className="w-full bg-gradient-to-br from-blue-50 to-blue-100/50 border-2 border-blue-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
       <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">
         {siteConfig.newsletter.title}
       </h3>
@@ -75,19 +75,19 @@ export default function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50 bg-white text-base transition-all duration-200"
+          className="flex-1 w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 disabled:opacity-50 bg-white text-base transition-all duration-200"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-3.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-green-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="w-full sm:w-auto px-8 py-3.5 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {status === "loading" ? "A enviar..." : "Subscrever"}
         </button>
       </form>
 
       {status === "success" && (
-        <p className="mt-4 text-sm font-medium text-primary-700 bg-white px-4 py-2 rounded-lg">{message}</p>
+        <p className="mt-4 text-sm font-medium text-blue-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
       {status === "error" && (
         <p className="mt-4 text-sm font-medium text-red-700 bg-white px-4 py-2 rounded-lg">{message}</p>

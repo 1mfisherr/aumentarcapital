@@ -124,7 +124,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <header className="mb-10 lg:mb-14">
           {post.category && (
             <div className="mb-5">
-              <span className="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-bold uppercase tracking-wider">
+              <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-bold uppercase tracking-wider">
                 {post.category}
               </span>
             </div>
@@ -162,7 +162,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </header>
 
         <div
-          className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-primary-600 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
+          className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-blue-600 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
@@ -173,7 +173,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-green-800 hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
+                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-blue-900 hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
                 >
                   {tag}
                 </span>
