@@ -8,7 +8,7 @@ export const metadata = {
 export default function SobrePage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-heading font-bold mb-6 text-primary">
+      <h1 className="text-4xl font-heading font-bold mb-6 text-blue-600">
         Sobre o {siteConfig.name}
       </h1>
 
@@ -51,7 +51,7 @@ export default function SobrePage() {
           com experiência em finanças, investimentos e educação financeira.
         </p>
 
-        <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 mt-8">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
           <h3 className="text-xl font-heading font-semibold mb-2">
             Tens perguntas ou sugestões?
           </h3>
@@ -61,7 +61,7 @@ export default function SobrePage() {
           </p>
           <a
             href="/contacto"
-            className="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors"
+            className="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
           >
             Contacta-nos
           </a>

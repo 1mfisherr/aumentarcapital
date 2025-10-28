@@ -46,11 +46,11 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 md:p-8">
+    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 md:p-8">
       <h3 className="text-2xl font-heading font-semibold mb-2">
         {siteConfig.newsletter.title}
       </h3>
-      <p className="text-muted mb-4">
+      <p className="text-gray-600 mb-4">
         {siteConfig.newsletter.description}
       </p>
 
@@ -62,12 +62,12 @@ export default function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50"
+          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "A enviar..." : "Subscrever"}
         </button>
@@ -80,7 +80,7 @@ export default function NewsletterSignup() {
         <p className="mt-3 text-sm text-red-600">{message}</p>
       )}
 
-      <p className="mt-3 text-xs text-muted">
+      <p className="mt-3 text-xs text-gray-600">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
     </div>

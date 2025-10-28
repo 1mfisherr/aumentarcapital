@@ -15,10 +15,10 @@ export default async function ArtigosPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-heading font-bold mb-3 text-primary">
+        <h1 className="text-4xl font-heading font-bold mb-3 text-blue-600">
           Artigos
         </h1>
-        <p className="text-lg text-muted">
+        <p className="text-lg text-gray-600">
           Descobre as melhores dicas sobre finanças pessoais, investimentos e empreendedorismo.
         </p>
       </div>

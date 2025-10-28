@@ -11,7 +11,7 @@ export default function Footer() {
             <h3 className="font-heading font-semibold text-lg mb-3">
               {siteConfig.name}
             </h3>
-            <p className="text-sm text-muted">
+            <p className="text-sm text-gray-600">
               {siteConfig.description}
             </p>
           </div>
@@ -24,7 +24,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-muted hover:text-primary transition-colors"
+                    className="text-gray-600 hover:text-blue-600 transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -33,7 +33,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/politica-privacidade"
-                  className="text-muted hover:text-primary transition-colors"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   Política de Privacidade
                 </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-primary transition-colors capitalize"
+                  className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
                 >
                   {platform}
                 </a>
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 pt-6 text-center text-sm text-muted">
+        <div className="border-t border-gray-200 pt-6 text-center text-sm text-gray-600">
           © {new Date().getFullYear()} {siteConfig.name}. Todos os direitos reservados.
         </div>
       </div>

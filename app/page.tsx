@@ -13,7 +13,7 @@ export default async function HomePage() {
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <section className="text-center mb-16">
-        <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-primary">
+        <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-blue-600">
           Bem-vindo ao {siteConfig.name}
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
@@ -22,13 +22,13 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/artigos"
-            className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors text-lg"
+            className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-lg shadow-sm"
           >
             Ver Artigos
           </Link>
           <Link
             href="/sobre"
-            className="px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors text-lg"
+            className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors text-lg"
           >
             Sobre Nós
           </Link>
@@ -41,7 +41,7 @@ export default async function HomePage() {
           O Que Abordamos
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-primary transition-colors">
+          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-600 transition-colors">
             <div className="text-4xl mb-4">💰</div>
             <h3 className="text-xl font-heading font-semibold mb-2">
               Finanças Pessoais
@@ -50,7 +50,7 @@ export default async function HomePage() {
               Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-primary transition-colors">
+          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-600 transition-colors">
             <div className="text-4xl mb-4">📈</div>
             <h3 className="text-xl font-heading font-semibold mb-2">
               Investimentos
@@ -59,7 +59,7 @@ export default async function HomePage() {
               Descobre como fazer o teu dinheiro crescer através de investimentos inteligentes
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-primary transition-colors">
+          <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-600 transition-colors">
             <div className="text-4xl mb-4">🚀</div>
             <h3 className="text-xl font-heading font-semibold mb-2">
               Empreendedorismo
@@ -78,7 +78,7 @@ export default async function HomePage() {
             <h2 className="text-3xl font-heading font-bold">Artigos Recentes</h2>
             <Link
               href="/artigos"
-              className="text-primary hover:text-primary-dark font-medium"
+              className="text-blue-600 hover:text-blue-700 font-medium"
             >
               Ver todos →
             </Link>

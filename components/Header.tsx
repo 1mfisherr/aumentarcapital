@@ -16,12 +16,12 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="flex gap-6 font-medium text-text">
+        <nav className="flex gap-6 font-medium text-gray-900">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-primary transition-colors"
+              className="hover:text-blue-600 transition-colors"
             >
               {item.label}
             </Link>
