@@ -59,11 +59,11 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6 md:p-8">
-      <h3 className="text-xl sm:text-2xl font-heading font-semibold mb-2">
+    <div className="bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
+      <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">
         {siteConfig.newsletter.title}
       </h3>
-      <p className="text-sm sm:text-base text-gray-600 mb-4">
+      <p className="text-base sm:text-lg text-neutral-600 mb-6 leading-relaxed">
         {siteConfig.newsletter.description}
       </p>
 
@@ -75,25 +75,25 @@ export default function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:opacity-50"
+          className="flex-1 px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50 bg-white text-base transition-all duration-200"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="px-8 py-3.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 hover:shadow-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap active:scale-98"
         >
           {status === "loading" ? "A enviar..." : "Subscrever"}
         </button>
       </form>
 
       {status === "success" && (
-        <p className="mt-3 text-sm text-green-600">{message}</p>
+        <p className="mt-4 text-sm font-medium text-primary-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
       {status === "error" && (
-        <p className="mt-3 text-sm text-red-600">{message}</p>
+        <p className="mt-4 text-sm font-medium text-red-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
 
-      <p className="mt-3 text-xs text-gray-600">
+      <p className="mt-4 text-sm text-neutral-600">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
     </div>

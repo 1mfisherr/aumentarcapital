@@ -120,56 +120,60 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }}
       />
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <header className="mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6 text-green-600">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+        <header className="mb-10 lg:mb-14">
+          {post.category && (
+            <div className="mb-5">
+              <span className="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-bold uppercase tracking-wider">
+                {post.category}
+              </span>
+            </div>
+          )}
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 text-neutral-900 tracking-tight leading-tight">
             {post.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
-            <time dateTime={post.date}>
+          <div className="flex flex-wrap items-center gap-3 text-sm sm:text-base text-neutral-500 mb-8 lg:mb-10">
+            <time dateTime={post.date} className="font-medium text-neutral-700">
               {new Date(post.date).toLocaleDateString("pt-PT", {
                 day: "2-digit",
                 month: "long",
                 year: "numeric",
               })}
             </time>
-            <span>·</span>
-            <span>{post.readingTime} min de leitura</span>
-            <span>·</span>
-            <span>Por {post.author}</span>
+            <span className="text-neutral-300">•</span>
+            <span className="font-medium">{post.readingTime} min de leitura</span>
+            <span className="text-neutral-300">•</span>
+            <span className="font-medium">Por {post.author}</span>
           </div>
 
-          {post.category && (
-            <div className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-8">
-              {post.category}
-            </div>
-          )}
-
           {post.image && (
-            <img
-              src={post.image}
-              alt={(post as any).imageAlt || post.title}
-              width={(post as any).imageWidth || 1200}
-              height={(post as any).imageHeight || 628}
-              className="w-full sm:w-4/5 h-auto rounded-lg shadow-lg mt-6 sm:mt-8 mx-auto"
-            />
+            <div className="relative rounded-2xl overflow-hidden shadow-strong">
+              <img
+                src={post.image}
+                alt={(post as any).imageAlt || post.title}
+                width={(post as any).imageWidth || 1200}
+                height={(post as any).imageHeight || 628}
+                className="w-full h-auto"
+              />
+            </div>
           )}
         </header>
 
         <div
-          className="prose prose-lg prose-headings:font-heading prose-a:text-green-600 prose-img:rounded-lg mx-auto"
+          className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-primary-600 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
         {post.tags && post.tags.length > 0 && (
-          <footer className="mt-12 pt-6 border-t border-gray-200">
-            <h3 className="text-sm font-semibold text-gray-600 mb-3">Tags:</h3>
+          <footer className="mt-14 lg:mt-16 pt-8 border-t-2 border-neutral-200">
+            <h3 className="text-lg font-bold text-neutral-900 mb-4">Tags Relacionadas</h3>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
+                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-primary-50 hover:text-primary-700 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer"
                 >
                   {tag}
                 </span>

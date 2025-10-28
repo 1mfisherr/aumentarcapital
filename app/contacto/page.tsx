@@ -51,41 +51,44 @@ export default function ContactoPage() {
   };
 
   return (
-    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-green-600">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-neutral-900 tracking-tight">
         Contacta-nos
       </h1>
 
-      <p className="text-base sm:text-lg text-gray-700 mb-8">
+      <p className="text-lg sm:text-xl text-neutral-600 mb-12 leading-relaxed max-w-3xl">
         Tens alguma pergunta, sugestão ou feedback? Adoraríamos ouvir-te!
         Preenche o formulário abaixo e entraremos em contacto contigo brevemente.
       </p>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-8">
-        <div>
-          <h2 className="text-xl font-heading font-semibold mb-4">
+      <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-10">
+        <div className="bg-white border-2 border-neutral-200 rounded-2xl p-6 lg:p-8">
+          <h2 className="text-2xl font-bold mb-6 text-neutral-900">
             Informação de Contacto
           </h2>
-          <div className="space-y-3 text-gray-700 text-sm sm:text-base">
-            <p>
-              <strong>Email:</strong>{" "}
+          <div className="space-y-5 text-neutral-700">
+            <div>
+              <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-2">Email</p>
               <a
                 href={`mailto:${siteConfig.author.email}`}
-                className="text-green-600 hover:underline"
+                className="text-lg font-medium text-primary-600 hover:text-primary-700 transition-colors inline-flex items-center gap-2 group"
               >
-                {siteConfig.author.email}
+                <span>{siteConfig.author.email}</span>
+                <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
-            </p>
+            </div>
             <div>
-              <strong>Redes Sociais:</strong>
-              <div className="flex gap-3 mt-2">
+              <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-3">Redes Sociais</p>
+              <div className="flex flex-wrap gap-2">
                 {Object.entries(siteConfig.social).map(([platform, url]) => (
                   <a
                     key={platform}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-600 hover:text-green-700 transition-colors capitalize"
+                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-primary-50 hover:border-primary-500 hover:text-primary-700 transition-all duration-200 rounded-lg font-medium text-sm capitalize"
                   >
                     {platform}
                   </a>
@@ -95,20 +98,21 @@ export default function ContactoPage() {
           </div>
         </div>
 
-        <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6">
-          <h3 className="text-lg font-heading font-semibold mb-2">
+        <div className="bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 lg:p-8">
+          <div className="text-4xl mb-4">⏱️</div>
+          <h3 className="text-2xl font-bold mb-3 text-neutral-900">
             Tempo de Resposta
           </h3>
-          <p className="text-gray-700 text-sm">
-            Respondemos a todas as mensagens dentro de 24-48 horas (dias úteis).
+          <p className="text-neutral-700 leading-relaxed">
+            Respondemos a todas as mensagens dentro de <strong>24-48 horas</strong> (dias úteis).
             Obrigado pela tua paciência!
           </p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white border-2 border-neutral-200 rounded-2xl p-6 lg:p-8 space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">
+          <label htmlFor="name" className="block text-base font-bold text-neutral-900 mb-2">
             Nome <span className="text-red-500">*</span>
           </label>
           <input
@@ -118,12 +122,12 @@ export default function ContactoPage() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
+          <label htmlFor="email" className="block text-base font-bold text-neutral-900 mb-2">
             Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -133,12 +137,12 @@ export default function ContactoPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
           />
         </div>
 
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium mb-2">
+          <label htmlFor="subject" className="block text-base font-bold text-neutral-900 mb-2">
             Assunto <span className="text-red-500">*</span>
           </label>
           <input
@@ -148,12 +152,12 @@ export default function ContactoPage() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium mb-2">
+          <label htmlFor="message" className="block text-base font-bold text-neutral-900 mb-2">
             Mensagem <span className="text-red-500">*</span>
           </label>
           <textarea
@@ -163,27 +167,27 @@ export default function ContactoPage() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base resize-none"
           />
         </div>
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-8 py-4 bg-primary-600 text-white font-bold text-lg rounded-xl hover:bg-primary-700 hover:shadow-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
         >
           {status === "loading" ? "A enviar..." : "Enviar Mensagem"}
         </button>
 
         {status === "success" && (
-          <div className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
-            Mensagem enviada com sucesso! Entraremos em contacto em breve.
+          <div className="p-5 bg-primary-50 border-2 border-primary-200 text-primary-800 rounded-xl font-medium">
+            ✅ Mensagem enviada com sucesso! Entraremos em contacto em breve.
           </div>
         )}
 
         {status === "error" && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
-            Algo correu mal. Por favor, tenta novamente ou envia-nos um email diretamente.
+          <div className="p-5 bg-red-50 border-2 border-red-200 text-red-800 rounded-xl font-medium">
+            ❌ Algo correu mal. Por favor, tenta novamente ou envia-nos um email diretamente.
           </div>
         )}
       </form>

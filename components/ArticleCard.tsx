@@ -7,41 +7,41 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ post }: ArticleCardProps) {
   return (
-    <article className="border border-gray-200 rounded-lg p-5 sm:p-6 hover:shadow-lg transition-all bg-white hover:border-green-300">
-      <Link href={`/artigos/${post.slug}`} className="group">
-        <h2 className="text-xl sm:text-2xl font-heading font-semibold text-green-600 group-hover:text-green-700 transition-colors mb-2">
+    <article className="group border-2 border-neutral-200 rounded-2xl p-6 lg:p-7 hover:shadow-strong transition-all duration-300 bg-white hover:border-primary-400">
+      <Link href={`/artigos/${post.slug}`}>
+        {post.category && (
+          <div className="mb-3">
+            <span className="inline-block px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-bold uppercase tracking-wider">
+              {post.category}
+            </span>
+          </div>
+        )}
+        
+        <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 group-hover:text-primary-600 transition-colors duration-200 mb-3 leading-tight">
           {post.title}
         </h2>
       </Link>
 
-      <div className="flex items-center gap-3 text-sm text-gray-600 mb-3">
-        <time dateTime={post.date}>
+      <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-500 mb-4">
+        <time dateTime={post.date} className="font-medium">
           {new Date(post.date).toLocaleDateString("pt-PT", {
             day: "2-digit",
             month: "long",
             year: "numeric",
           })}
         </time>
-        <span>·</span>
-        <span>{post.readingTime} min de leitura</span>
-        {post.category && (
-          <>
-            <span>·</span>
-            <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
-              {post.category}
-            </span>
-          </>
-        )}
+        <span className="text-neutral-300">•</span>
+        <span className="font-medium">{post.readingTime} min de leitura</span>
       </div>
 
-      <p className="text-gray-700 mb-4">{post.description}</p>
+      <p className="text-base text-neutral-600 mb-5 leading-relaxed">{post.description}</p>
 
       {post.tags && post.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-neutral-100">
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded"
+              className="text-xs px-3 py-1.5 bg-neutral-100 text-neutral-600 hover:bg-primary-50 hover:text-primary-700 rounded-lg font-medium transition-colors duration-200"
             >
               {tag}
             </span>
