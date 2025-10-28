@@ -4,6 +4,7 @@ slug: "5-metodos-de-orcamento"
 date: "2025-10-28"
 author: "Delfim Almeida"
 category: "Finanças Pessoais"
+categories: ["Finanças Pessoais", "Poupança"]
 tags: ["orçamento", "poupança", "finanças pessoais"]
 description: "Descobre cinco métodos de orçamento que podem transformar a tua relação com o dinheiro e ajudar-te a poupar, investir e atingir os teus objetivos financeiros."
 image: "/images/metodos-orcamento.png"

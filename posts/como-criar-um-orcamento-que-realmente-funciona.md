@@ -4,6 +4,7 @@ slug: "como-criar-fundo-de-emergencia"
 date: "2025-10-26"
 author: "Delfim Almeida"
 category: "Poupança"
+categories: ["Poupança", "Empreendedorismo"]
 tags: ["finanças pessoais", "poupança"]
 description: "Descobre como montar o teu fundo de emergência passo a passo."
 image: "/images/como-criar-um-orcamento-que-funciona.png"

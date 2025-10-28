@@ -4,6 +4,7 @@ slug: "fundo-de-emergencia"
 date: "2025-10-28"
 author: "Delfim Almeida"
 category: "Poupança"
+categories: ["Poupança", "Finanças Pessoais"]
 tags: ["finanças pessoais", "poupança", "segurança financeira"]
 description: "Aprende a criar um fundo de emergência sólido e porquê ele é crucial para a tua estabilidade financeira."
 image: "/images/fundo-de-emergencia.png"
