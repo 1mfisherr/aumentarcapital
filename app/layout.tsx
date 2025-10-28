@@ -40,10 +40,35 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Organization structured data for SEO
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+    description: siteConfig.description,
+    sameAs: [
+      siteConfig.social.twitter,
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+      siteConfig.social.linkedin,
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: siteConfig.author.email,
+      contactType: "customer service",
+    },
+  };
+
   return (
     <html lang="pt" className={dmSans.variable}>
       <head>
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-text">
         <Header />

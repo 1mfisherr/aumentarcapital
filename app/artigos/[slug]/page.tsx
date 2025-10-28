@@ -1,6 +1,7 @@
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site.config";
+import ArticleTracker from "@/components/ArticleTracker";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -54,7 +55,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const post = await getPostData(slug);
 
-  // JSON-LD structured data for SEO
+  // Calculate word count from content
+  const wordCount = post.contentHtml
+    ? post.contentHtml.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length
+    : 0;
+
+  // JSON-LD structured data for SEO (Enhanced Article Schema)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -65,6 +71,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       url: post.image,
       width: 1200,
       height: 628,
+      ...(post.imageAlt && { caption: post.imageAlt }),
     },
     datePublished: post.date,
     dateModified: post.date,
@@ -88,6 +95,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     },
     ...(post.category && { articleSection: post.category }),
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
+    wordCount: wordCount,
+    timeRequired: `PT${post.readingTime}M`, // ISO 8601 duration format
+    inLanguage: "pt-PT",
+    isAccessibleForFree: true,
   };
 
   return (
@@ -96,6 +107,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* Track article views and engagement */}
+      <ArticleTracker
+        articleData={{
+          slug: post.slug,
+          title: post.title,
+          category: post.category,
+          author: post.author,
+          readingTime: post.readingTime || 5,
+        }}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">

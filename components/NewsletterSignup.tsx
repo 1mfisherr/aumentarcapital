@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/lib/site.config";
 import { useState } from "react";
+import { trackNewsletterSignup } from "./Analytics";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -16,12 +17,24 @@ export default function NewsletterSignup() {
     e.preventDefault();
     setStatus("loading");
 
+    // Determine the source based on the page location
+    const source = typeof window !== 'undefined' 
+      ? window.location.pathname.includes('/artigos/') 
+        ? 'article_page' 
+        : window.location.pathname === '/' 
+        ? 'homepage' 
+        : 'other'
+      : 'unknown';
+
     // TODO: Integrate with your newsletter provider
     // For now, this is a placeholder that simulates success
     setTimeout(() => {
       setStatus("success");
       setMessage("Obrigado por te subscreveres!");
       setEmail("");
+      
+      // Track newsletter signup
+      trackNewsletterSignup(source);
     }, 1000);
 
     // Example integration with MailerLite or similar:
