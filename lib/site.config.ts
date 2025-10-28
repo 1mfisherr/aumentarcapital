@@ -46,9 +46,9 @@ export const siteConfig = {
 
   // Analytics
   analytics: {
-    enabled: false, // Set to true when you add analytics
+    enabled: true, // Set to true when you add analytics
     plausibleDomain: "", // If using Plausible, add your domain here
-    googleAnalyticsId: "", // If using GA4, add your ID here (e.g., "G-XXXXXXXXXX")
+    googleAnalyticsId: "G-JRHYS36J4N", // If using GA4, add your ID here (e.g., "G-XXXXXXXXXX")
   },
 
   // Social media links (add your profiles here)
