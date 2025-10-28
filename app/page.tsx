@@ -49,35 +49,34 @@ export default async function HomePage() {
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 mb-16 lg:mb-20">
         {/* Featured Article */}
         {featuredPost && (
-          <Link href={`/artigos/${featuredPost.slug}`} className="group block">
-            <article className="border-2 border-neutral-200 rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-primary-500 hover:shadow-xl bg-white">
-              {/* Featured Image */}
-              <div className="relative w-full h-[260px] sm:h-[320px] bg-neutral-100 overflow-hidden">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.imageAlt || featuredPost.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Gradient overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              
-              {/* Featured Content */}
-              <div className="p-6 sm:p-7 bg-white">
-                {/* Category */}
-                <div className="mb-3">
-                  <span className="inline-block px-3 py-1 text-xs font-bold text-primary-700 bg-primary-50 rounded-full uppercase tracking-wider">
-                    {featuredPost.category}
-                  </span>
+          <div className="group block">
+            <Link href={`/artigos/${featuredPost.slug}`}>
+              <article className="border border-neutral-200 rounded-lg overflow-hidden h-full bg-white">
+                {/* Featured Image */}
+                <div className="relative w-full h-[260px] sm:h-[320px] bg-neutral-100 overflow-hidden">
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.imageAlt || featuredPost.title}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 
-                {/* Title */}
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 mb-3 leading-tight group-hover:text-primary-600 transition-colors duration-200">
-                  {featuredPost.title}
-                </h1>
+                {/* Featured Content */}
+                <div className="p-6 sm:p-7 bg-white">
+                  {/* Category */}
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 text-xs font-bold text-primary-700 bg-primary-50 rounded-full uppercase tracking-wider">
+                      {featuredPost.category}
+                    </span>
+                  </div>
+                  
+                  {/* Title */}
+                  <h1 className="hover-title text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 mb-3 leading-tight">
+                    {featuredPost.title}
+                  </h1>
                 
                 {/* Description */}
                 <p className="text-base text-neutral-600 mb-4 line-clamp-2 leading-relaxed">
@@ -97,7 +96,8 @@ export default async function HomePage() {
                 </div>
               </div>
             </article>
-          </Link>
+            </Link>
+          </div>
         )}
 
         {/* The Latest Sidebar */}
@@ -117,29 +117,31 @@ export default async function HomePage() {
           
           <div className="space-y-5">
             {latestPosts.map((post, index) => (
-              <Link key={post.slug} href={`/artigos/${post.slug}`} className="group block">
-                <article className="border-b border-neutral-100 pb-5 last:border-b-0 last:pb-0 cursor-pointer -mx-4 px-4 py-3 rounded-xl transition-all hover:bg-primary-50/50 hover:shadow-soft animate-fade-in" 
-                  style={{ animationDelay: `${index * 50}ms` }}>
-                  {/* Category */}
-                  <div className="mb-2">
-                    <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-primary-700 bg-primary-100 rounded-md uppercase tracking-wide group-hover:bg-primary-200 transition-colors">
-                      {post.category}
-                    </span>
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-neutral-900 group-hover:text-primary-600 transition-colors leading-snug mb-2 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  
-                  {/* Meta */}
-                  <div className="flex items-center text-xs text-neutral-500 uppercase tracking-wide">
-                    <span className="font-semibold text-neutral-700">{post.author}</span>
-                    <span className="mx-2 text-neutral-300">•</span>
-                    <span>{formatTimeAgo(post.date)}</span>
-                  </div>
-                </article>
-              </Link>
+              <div key={post.slug} className="group block">
+                <Link href={`/artigos/${post.slug}`}>
+                  <article className="border-b border-neutral-100 pb-5 last:border-b-0 last:pb-0 cursor-pointer animate-fade-in" 
+                    style={{ animationDelay: `${index * 50}ms` }}>
+                    {/* Category */}
+                    <div className="mb-2">
+                      <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-primary-700 bg-primary-100 rounded-md uppercase tracking-wide">
+                        {post.category}
+                      </span>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="hover-title text-base sm:text-lg font-bold text-neutral-900 leading-snug mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    
+                    {/* Meta */}
+                    <div className="flex items-center text-xs text-neutral-500 uppercase tracking-wide">
+                      <span className="font-semibold text-neutral-700">{post.author}</span>
+                      <span className="mx-2 text-neutral-300">•</span>
+                      <span>{formatTimeAgo(post.date)}</span>
+                    </div>
+                  </article>
+                </Link>
+              </div>
             ))}
           </div>
         </aside>
