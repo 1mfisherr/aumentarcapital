@@ -58,13 +58,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="max-w-3xl mx-auto px-4 py-8">
-        <header className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-blue-600">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <header className="mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6 text-green-600">
             {post.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 mb-4">
+          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("pt-PT", {
                 day: "2-digit",
@@ -79,14 +79,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {post.category && (
-            <div className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+            <div className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-8">
               {post.category}
             </div>
+          )}
+
+          {post.image && (
+            <img
+              src={post.image}
+              alt={(post as any).imageAlt || post.title}
+              width={(post as any).imageWidth || 1200}
+              height={(post as any).imageHeight || 628}
+              className="w-full sm:w-4/5 h-auto rounded-lg shadow-lg mt-6 sm:mt-8 mx-auto"
+            />
           )}
         </header>
 
         <div
-          className="prose prose-lg max-w-none prose-headings:font-heading prose-a:text-blue-600 prose-img:rounded-lg"
+          className="prose prose-lg prose-headings:font-heading prose-a:text-green-600 prose-img:rounded-lg mx-auto"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 

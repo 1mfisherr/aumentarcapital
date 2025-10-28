@@ -28,7 +28,7 @@ export function getSortedPostsData() {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getPostData(slug: string) {
+export async function getPostData(slug: string): Promise<ArticleMeta & { contentHtml: string }> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 

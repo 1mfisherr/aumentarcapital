@@ -7,6 +7,9 @@ export interface ArticleMeta {
   tags: string[];
   description: string;
   image: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   lang: "pt-PT";
   readingTime?: number;
 }

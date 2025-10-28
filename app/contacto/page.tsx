@@ -51,12 +51,12 @@ export default function ContactoPage() {
   };
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-heading font-bold mb-6 text-blue-600">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-green-600">
         Contacta-nos
       </h1>
 
-      <p className="text-lg text-gray-700 mb-8">
+      <p className="text-base sm:text-lg text-gray-700 mb-8">
         Tens alguma pergunta, sugestão ou feedback? Adoraríamos ouvir-te!
         Preenche o formulário abaixo e entraremos em contacto contigo brevemente.
       </p>
@@ -66,12 +66,12 @@ export default function ContactoPage() {
           <h2 className="text-xl font-heading font-semibold mb-4">
             Informação de Contacto
           </h2>
-          <div className="space-y-3 text-gray-700">
+          <div className="space-y-3 text-gray-700 text-sm sm:text-base">
             <p>
               <strong>Email:</strong>{" "}
               <a
                 href={`mailto:${siteConfig.author.email}`}
-                className="text-blue-600 hover:underline"
+                className="text-green-600 hover:underline"
               >
                 {siteConfig.author.email}
               </a>
@@ -85,7 +85,7 @@ export default function ContactoPage() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 transition-colors capitalize"
+                    className="text-green-600 hover:text-green-700 transition-colors capitalize"
                   >
                     {platform}
                   </a>
@@ -95,7 +95,7 @@ export default function ContactoPage() {
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6">
           <h3 className="text-lg font-heading font-semibold mb-2">
             Tempo de Resposta
           </h3>
@@ -118,7 +118,7 @@ export default function ContactoPage() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -133,7 +133,7 @@ export default function ContactoPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -148,7 +148,7 @@ export default function ContactoPage() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -163,14 +163,14 @@ export default function ContactoPage() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "A enviar..." : "Enviar Mensagem"}
         </button>

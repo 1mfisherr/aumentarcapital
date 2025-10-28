@@ -1,13 +1,16 @@
 import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site.config";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-poppins" });
+const dmSans = DM_Sans({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-dm-sans",
+});
 
 export const metadata = {
   title: {
@@ -38,11 +41,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="pt" className={dmSans.variable}>
       <head>
         <Analytics />
       </head>
-      <body className="min-h-screen flex flex-col bg-background text-text font-body">
+      <body className="min-h-screen flex flex-col bg-background text-text">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

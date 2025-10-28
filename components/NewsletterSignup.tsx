@@ -46,11 +46,11 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 md:p-8">
-      <h3 className="text-2xl font-heading font-semibold mb-2">
+    <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6 md:p-8">
+      <h3 className="text-xl sm:text-2xl font-heading font-semibold mb-2">
         {siteConfig.newsletter.title}
       </h3>
-      <p className="text-gray-600 mb-4">
+      <p className="text-sm sm:text-base text-gray-600 mb-4">
         {siteConfig.newsletter.description}
       </p>
 
@@ -62,12 +62,12 @@ export default function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
+          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {status === "loading" ? "A enviar..." : "Subscrever"}
         </button>

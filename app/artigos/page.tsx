@@ -13,12 +13,12 @@ export default async function ArtigosPage() {
   const posts = await getSortedPostsData();
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-heading font-bold mb-3 text-blue-600">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-3 text-green-600">
           Artigos
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-base sm:text-lg text-gray-600">
           Descobre as melhores dicas sobre finanças pessoais, investimentos e empreendedorismo.
         </p>
       </div>
@@ -29,13 +29,13 @@ export default async function ArtigosPage() {
 
       {posts.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-600 text-lg">Ainda não há artigos disponíveis.</p>
+          <p className="text-gray-600 text-base sm:text-lg">Ainda não há artigos disponíveis.</p>
           <p className="text-gray-500 text-sm mt-2">
             Volta em breve para novos conteúdos!
           </p>
         </div>
       ) : (
-        <div className="grid gap-6">
+        <div className="grid gap-6 sm:gap-8">
           {posts.map((post) => (
             <ArticleCard key={post.slug} post={post} />
           ))}

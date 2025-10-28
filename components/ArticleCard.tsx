@@ -7,9 +7,9 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ post }: ArticleCardProps) {
   return (
-    <article className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow bg-white">
+    <article className="border border-gray-200 rounded-lg p-5 sm:p-6 hover:shadow-lg transition-all bg-white hover:border-green-300">
       <Link href={`/artigos/${post.slug}`} className="group">
-        <h2 className="text-2xl font-heading font-semibold text-blue-600 group-hover:text-blue-700 transition-colors mb-2">
+        <h2 className="text-xl sm:text-2xl font-heading font-semibold text-green-600 group-hover:text-green-700 transition-colors mb-2">
           {post.title}
         </h2>
       </Link>

@@ -4,8 +4,8 @@ import { siteConfig } from "@/lib/site.config";
 export default function Footer() {
   return (
     <footer className="bg-gray-100 border-t border-gray-200 mt-12">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6">
           {/* About */}
           <div>
             <h3 className="font-heading font-semibold text-lg mb-3">
@@ -24,7 +24,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                    className="text-gray-600 hover:text-green-600 transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -33,7 +33,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/politica-privacidade"
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                  className="text-gray-600 hover:text-green-600 transition-colors"
                 >
                   Política de Privacidade
                 </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
+                  className="text-gray-600 hover:text-green-600 transition-colors capitalize"
                 >
                   {platform}
                 </a>

@@ -7,8 +7,8 @@ export const metadata = {
 
 export default function PoliticaPrivacidadePage() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-heading font-bold mb-6 text-blue-600">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-green-600">
         Política de Privacidade
       </h1>
 
@@ -94,13 +94,13 @@ export default function PoliticaPrivacidadePage() {
           contacto connosco através de:{" "}
           <a
             href={`mailto:${siteConfig.author.email}`}
-            className="text-blue-600 hover:underline"
+            className="text-green-600 hover:underline"
           >
             {siteConfig.author.email}
           </a>
         </p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6 mt-8">
           <p className="text-sm">
             <strong>Nota:</strong> Esta é uma política de privacidade básica. Dependendo
             dos serviços que uses (analytics, ads, etc.), poderás precisar de adicionar

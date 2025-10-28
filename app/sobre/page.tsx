@@ -7,13 +7,13 @@ export const metadata = {
 
 export default function SobrePage() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-heading font-bold mb-6 text-blue-600">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-green-600">
         Sobre o {siteConfig.name}
       </h1>
 
       <div className="prose prose-lg max-w-none">
-        <p className="text-lg text-gray-700 mb-6">
+        <p className="text-base sm:text-lg text-gray-700 mb-6">
           Bem-vindo ao {siteConfig.name}, o teu guia completo para finanças pessoais,
           investimentos e empreendedorismo em Portugal.
         </p>
@@ -51,17 +51,17 @@ export default function SobrePage() {
           com experiência em finanças, investimentos e educação financeira.
         </p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-          <h3 className="text-xl font-heading font-semibold mb-2">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-5 sm:p-6 mt-8">
+          <h3 className="text-lg sm:text-xl font-heading font-semibold mb-2">
             Tens perguntas ou sugestões?
           </h3>
-          <p className="text-gray-700 mb-4">
+          <p className="text-sm sm:text-base text-gray-700 mb-4">
             Adoraríamos ouvir-te! Entra em contacto connosco através da nossa
             página de contacto.
           </p>
           <a
             href="/contacto"
-            className="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-block px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
           >
             Contacta-nos
           </a>
