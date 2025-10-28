@@ -4,7 +4,9 @@ import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getSortedPostsData();
+  const currentDate = new Date();
 
+  // Dynamic article entries with smart priority calculation
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => {
     // Calculate priority based on recency (newer articles get higher priority)
     const daysSincePublication = (Date.now() - new Date(post.date).getTime()) / (1000 * 60 * 60 * 24);
@@ -18,30 +20,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
+  // Static pages with appropriate priorities and change frequencies
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: siteConfig.url,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: "weekly",
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${siteConfig.url}/artigos`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${siteConfig.url}/sobre`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     {
       url: `${siteConfig.url}/contacto`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
+    },
+    {
+      url: `${siteConfig.url}/politica-privacidade`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 

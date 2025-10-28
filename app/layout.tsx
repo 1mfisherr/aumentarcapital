@@ -22,6 +22,23 @@ export const metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  verification: {
+    google: siteConfig.seo?.googleSiteVerification || undefined,
+    other: {
+      'msvalidate.01': siteConfig.seo?.bingSiteVerification || undefined,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,

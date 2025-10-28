@@ -51,6 +51,12 @@ export const siteConfig = {
     googleAnalyticsId: "G-JRHYS36J4N", // If using GA4, add your ID here (e.g., "G-XXXXXXXXXX")
   },
 
+  // SEO & Search Console
+  seo: {
+    googleSiteVerification: "", // Add your Google Search Console verification code here
+    bingSiteVerification: "", // Add your Bing Webmaster verification code here
+  },
+
   // Social media links (add your profiles here)
   social: {
     twitter: "https://twitter.com/aumentarcapital", // Change to your Twitter/X
