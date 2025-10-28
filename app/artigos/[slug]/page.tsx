@@ -1,5 +1,6 @@
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site.config";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -14,15 +15,37 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostData(slug);
+  const canonicalUrl = `${siteConfig.url}/artigos/${slug}`;
+  
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
-      images: [post.image],
+      url: canonicalUrl,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 628,
+          alt: post.imageAlt || post.title,
+        },
+      ],
       type: "article",
       locale: "pt_PT",
+      publishedTime: post.date,
+      authors: [post.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [post.image],
     },
   };
 }
@@ -37,17 +60,34 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    image: post.image,
+    image: {
+      "@type": "ImageObject",
+      url: post.image,
+      width: 1200,
+      height: 628,
+    },
     datePublished: post.date,
     dateModified: post.date,
     author: {
       "@type": "Person",
       name: post.author,
+      url: siteConfig.url,
     },
     publisher: {
       "@type": "Organization",
-      name: "Aumentar Capital",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+      },
     },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteConfig.url}/artigos/${slug}`,
+    },
+    ...(post.category && { articleSection: post.category }),
+    ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
   };
 
   return (

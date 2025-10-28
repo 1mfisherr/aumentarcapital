@@ -1,12 +1,16 @@
 import { getSortedPostsData } from "@/lib/posts";
 import ArticleCard from "@/components/ArticleCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import { siteConfig } from "@/lib/site.config";
 
 export const revalidate = 60; // ISR: rebuild this page every 60s if content changes
 
 export const metadata = {
-  title: "Artigos - Aumentar Capital",
+  title: "Artigos",
   description: "Descobre os nossos artigos sobre finanças pessoais, investimentos e empreendedorismo.",
+  alternates: {
+    canonical: `${siteConfig.url}/artigos`,
+  },
 };
 
 export default async function ArtigosPage() {

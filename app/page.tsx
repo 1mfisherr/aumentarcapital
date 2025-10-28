@@ -1,6 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSortedPostsData } from "@/lib/posts";
+import { siteConfig } from "@/lib/site.config";
+
+export const metadata = {
+  title: "Início - " + siteConfig.name,
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    type: "website",
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+};
 
 function formatTimeAgo(date: string): string {
   const now = new Date();

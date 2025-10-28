@@ -1,8 +1,11 @@
 import { siteConfig } from "@/lib/site.config";
 
 export const metadata = {
-  title: "Política de Privacidade - Aumentar Capital",
+  title: "Política de Privacidade",
   description: "Política de privacidade e proteção de dados do Aumentar Capital.",
+  alternates: {
+    canonical: `${siteConfig.url}/politica-privacidade`,
+  },
 };
 
 export default function PoliticaPrivacidadePage() {

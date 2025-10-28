@@ -1,8 +1,11 @@
 import { siteConfig } from "@/lib/site.config";
 
 export const metadata = {
-  title: "Sobre - Aumentar Capital",
+  title: "Sobre",
   description: "Conhece a missão e a equipa por trás do Aumentar Capital.",
+  alternates: {
+    canonical: `${siteConfig.url}/sobre`,
+  },
 };
 
 export default function SobrePage() {
