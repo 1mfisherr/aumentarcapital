@@ -1,9 +1,12 @@
+type CategoryType = "Finanças Pessoais" | "Investimentos" | "Empreendedorismo" | "Poupança" | "Fazer Dinheiro Online";
+
 export interface ArticleMeta {
   title: string;
   slug: string;
   date: string;
   author: string;
-  category: "Finanças pessoais" | "Investimentos" | "Empreendedorismo" | "Poupança" | "Dívidas";
+  category: CategoryType | CategoryType[];
+  categories?: CategoryType[];
   tags: string[];
   description: string;
   image: string;

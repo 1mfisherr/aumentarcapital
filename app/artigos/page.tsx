@@ -13,17 +13,69 @@ export const metadata = {
   },
 };
 
-export default async function ArtigosPage() {
-  const posts = await getSortedPostsData();
+// Map of URL slugs to display names
+const categoryDisplayNames: Record<string, string> = {
+  "financas-pessoais": "Finanças Pessoais",
+  "investimentos": "Investimentos",
+  "poupanca": "Poupança",
+  "empreendedorismo": "Empreendedorismo",
+  "fazer-dinheiro-online": "Fazer Dinheiro Online",
+};
+
+export default async function ArtigosPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ categoria?: string }> | { categoria?: string };
+}) {
+  const allPosts = await getSortedPostsData();
+  
+  // Await searchParams if it's a Promise (Next.js 15+)
+  const params = await Promise.resolve(searchParams);
+  
+  // Filter posts by category if a category is specified
+  let posts = allPosts;
+  let selectedCategory: string | null = null;
+  
+  if (params.categoria) {
+    selectedCategory = categoryDisplayNames[params.categoria] || null;
+    
+    if (selectedCategory) {
+      posts = allPosts.filter((post) => {
+        // Handle category as either a string or an array
+        const postCategory = post.category;
+        
+        // If category is an array, check if it includes the selected category
+        if (Array.isArray(postCategory)) {
+          if (postCategory.includes(selectedCategory as any)) {
+            return true;
+          }
+        } else {
+          // If category is a string, check for exact match
+          if (postCategory === selectedCategory) {
+            return true;
+          }
+        }
+        
+        // Also check the optional categories array
+        if (post.categories && post.categories.includes(selectedCategory as any)) {
+          return true;
+        }
+        
+        return false;
+      });
+    }
+  }
 
   return (
     <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
       <div className="mb-10 lg:mb-14">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900 tracking-tight">
-          Artigos
+          {selectedCategory ? selectedCategory : "Artigos"}
         </h1>
         <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-3xl">
-          Descobre as melhores dicas sobre finanças pessoais, investimentos e empreendedorismo.
+          {selectedCategory
+            ? `Artigos sobre ${selectedCategory.toLowerCase()}`
+            : "Descobre as melhores dicas sobre finanças pessoais, investimentos e empreendedorismo."}
         </p>
       </div>
 
