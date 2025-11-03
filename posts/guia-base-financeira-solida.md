@@ -7,7 +7,7 @@ category: "Finanças Pessoais"
 categories: ["Finanças Pessoais", "Poupança", "Investimentos"]
 tags: ["poupança", "investimento", "fundo de emergência", "dívidas"]
 description: "Aprende passo a passo como gerir o teu dinheiro, criar um fundo de emergência, pagar dívidas e poupar para objetivos de curto e longo prazo."
-image: "/images/base-financeira-solida.png"
+image: "/images/base-financeira-solida.jpg"
 imageAlt: "Ilustração de cofre, gráficos e moedas representando finanças pessoais"
 imageWidth: 1200
 imageHeight: 628

@@ -83,7 +83,7 @@ export default async function HomePage() {
                   )}
                   
                   {/* Title */}
-                  <h1 className="hover-title text-xl sm:text-2xl lg:text-3xl font-bold text-[#1E3A8A] mb-3 leading-tight">
+                  <h1 className="hover-title text-lg sm:text-xl lg:text-2xl font-bold text-[#1E3A8A] mb-3 leading-tight">
                     {featuredPost.title}
                   </h1>
                 
@@ -125,14 +125,14 @@ export default async function HomePage() {
                     {/* Category */}
                     {getCategoryDisplay(post.category) && (
                       <div className="mb-2">
-                        <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-primary-700 bg-primary-100 rounded-md uppercase tracking-wide">
+                        <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-[#1E3A8A] bg-primary-100 rounded-md uppercase tracking-wide">
                           {getCategoryDisplay(post.category)}
                         </span>
                       </div>
                     )}
                     
                     {/* Title */}
-                    <h3 className="hover-title text-base sm:text-lg font-bold text-[#1E3A8A] leading-snug mb-2 line-clamp-2">
+                    <h3 className="hover-title text-sm sm:text-base font-bold text-[#1E3A8A] leading-snug mb-2 line-clamp-2">
                       {post.title}
                     </h3>
                     

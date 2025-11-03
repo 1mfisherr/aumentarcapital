@@ -134,7 +134,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </div>
           )}
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 text-neutral-900 tracking-tight leading-tight">
+          <h1 
+            className="font-bold mb-6 lg:mb-8 text-neutral-900 tracking-tight leading-tight"
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)' }}
+          >
             {post.title}
           </h1>
           
@@ -153,13 +156,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {post.image && (
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-strong">
+            <div className="relative max-w-[70%] mx-auto rounded-2xl overflow-hidden shadow-strong">
               <img
                 src={post.image}
                 alt={(post as any).imageAlt || post.title}
                 width={(post as any).imageWidth || 1200}
                 height={(post as any).imageHeight || 628}
-                className="w-full h-auto max-w-full object-cover"
+                className="w-full h-auto object-cover"
               />
             </div>
           )}
