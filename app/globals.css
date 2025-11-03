@@ -37,6 +37,56 @@
   color: var(--color-primary) !important; /* primary brand blue */
 }
 
+/* Logo Styles */
+.logo-link {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent !important;
+  display: inline-flex;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.logo-link::before,
+.logo-link::after {
+  display: none !important;
+  content: none !important;
+}
+
+.logo-link:hover {
+  transform: translateY(-1px);
+}
+
+.logo-icon {
+  position: relative;
+  background-clip: padding-box;
+  border: none !important;
+}
+
+.logo-icon::before,
+.logo-icon::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+.logo-accent {
+  background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.logo-text {
+  transition: color 0.3s ease;
+}
+
+.logo-link:hover .logo-text {
+  color: #3B82F6;
+}
+
 /* Subscribe button hover effect */
 .subscribe-btn {
   border-color: #3B82F6 !important; /* primary-500 - baby blue border */

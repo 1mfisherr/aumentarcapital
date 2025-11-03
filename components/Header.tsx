@@ -34,13 +34,42 @@ export default function Header() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 inline-flex items-center gap-1">
-              <span className="text-primary-900 text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter" style={{ color: '#1E3A8A' }}>
-              ↑↑
-            </span>
-            <span className="text-base sm:text-lg md:text-xl font-bold tracking-tight" style={{ color: '#1E3A8A' }}>
-              aumentarcapital<span style={{ color: '#1E3A8A' }}>.com</span>
-            </span>
+          <Link href="/" className="logo-link flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group">
+            {/* Modern Logo Icon */}
+            <div className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:rotate-1" style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #1E3A8A 100%)', backgroundColor: '#2563EB' }}>
+              <svg 
+                className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0" 
+                viewBox="0 0 24 24" 
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ background: 'transparent' }}
+              >
+                {/* Modern upward trend with double arrow */}
+                <path d="M5 17l5-5 5 5" />
+                <path d="M12 12l5-5" opacity="0.6" />
+                <path d="M5 12l3-3" opacity="0.4" />
+                {/* Premium checkmark accent */}
+                <path 
+                  d="M19 7l-5 5-2-2" 
+                  strokeWidth={2}
+                  opacity="0.8"
+                  className="group-hover:opacity-100 transition-opacity"
+                />
+              </svg>
+            </div>
+            
+            {/* Logo Text */}
+            <div className="flex flex-col">
+              <span className="logo-text text-base sm:text-lg md:text-xl font-bold tracking-tight leading-none" style={{ color: '#1E3A8A' }}>
+                aumentar<span className="logo-accent">capital</span>
+              </span>
+              <span className="logo-domain text-[10px] sm:text-xs md:text-sm font-medium tracking-wide leading-none mt-0.5 opacity-70" style={{ color: '#1E3A8A' }}>
+                .com
+              </span>
+            </div>
           </Link>
 
           {/* Desktop & Tablet Navigation */}
