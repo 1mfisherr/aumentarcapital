@@ -30,16 +30,16 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-50 shadow-sm">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 inline-flex items-center gap-1">
-            <span className="text-blue-700 text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter">
+            <span className="text-[#1E3A8A] text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter">
               ↑↑
             </span>
-            <span className="text-gray-900 text-base sm:text-lg md:text-xl font-bold tracking-tight">
-              aumentarcapital<span className="text-blue-700">.com</span>
+            <span className="text-[#1E3A8A] text-base sm:text-lg md:text-xl font-bold tracking-tight">
+              aumentarcapital<span className="text-[#1E3A8A]">.com</span>
             </span>
           </Link>
 
@@ -52,7 +52,7 @@ export default function Header() {
                   <div key={item.href} className="relative" ref={dropdownRef}>
                     <button
                       onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                      className="inline-flex items-center gap-1 text-sm lg:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                      className="inline-flex items-center gap-1 text-sm lg:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200"
                     >
                       {item.label}
                       <svg
@@ -74,11 +74,11 @@ export default function Header() {
 
                     {/* Dropdown Menu */}
                     {artigosDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-slate-200 py-2 animate-slide-up">
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-neutral-200 py-2 animate-slide-up">
                         <Link
                           href="/artigos"
                           onClick={() => setArtigosDropdownOpen(false)}
-                          className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+                          className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
                         >
                           Todos os Artigos
                         </Link>
@@ -88,7 +88,7 @@ export default function Header() {
                             key={categoria.href}
                             href={categoria.href}
                             onClick={() => setArtigosDropdownOpen(false)}
-                            className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
                           >
                             {categoria.label}
                           </Link>
@@ -104,7 +104,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm lg:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                  className="text-sm lg:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -116,15 +116,23 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/contacto"
-              className="hidden sm:inline-flex items-center px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-blue-700 text-white text-sm lg:text-base font-semibold rounded-full hover:bg-blue-900 transition-colors duration-200"
+              className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-white border border-[#1E3A8A] text-black text-sm lg:text-base font-semibold rounded-sm hover:bg-[#DBEAFE] hover:text-[#1E3A8A] transition-colors duration-200"
             >
+              <svg
+                className="w-4 h-4"
+                fill="#1E3A8A"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
               <span>Subscrever</span>
             </Link>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-colors duration-200"
               aria-label="Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -156,7 +164,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden border-t border-slate-300 py-4 space-y-1 animate-slide-up">
+          <nav className="md:hidden border-t border-neutral-200 py-4 space-y-1 animate-slide-up">
             {siteConfig.nav.map((item) => {
               // Special handling for Artigos with dropdown in mobile
               if (item.href === "/artigos") {
@@ -164,7 +172,7 @@ export default function Header() {
                   <div key={item.href}>
                     <button
                       onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 rounded-xl transition-colors duration-200"
+                      className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-secondary hover:text-primary-500 rounded-xl transition-colors duration-200"
                     >
                       <span>{item.label}</span>
                       <svg
@@ -191,7 +199,7 @@ export default function Header() {
                             setMobileMenuOpen(false);
                             setArtigosDropdownOpen(false);
                           }}
-                          className="block px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-xl transition-colors duration-200"
+                          className="block px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-500 rounded-xl transition-colors duration-200"
                         >
                           Todos os Artigos
                         </Link>
@@ -203,7 +211,7 @@ export default function Header() {
                               setMobileMenuOpen(false);
                               setArtigosDropdownOpen(false);
                             }}
-                            className="block px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-xl transition-colors duration-200"
+                            className="block px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-500 rounded-xl transition-colors duration-200"
                           >
                             {categoria.label}
                           </Link>
@@ -220,7 +228,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 rounded-xl transition-colors duration-200"
+                  className="block px-4 py-3 text-base font-medium text-secondary hover:text-primary-500 rounded-xl transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -230,8 +238,21 @@ export default function Header() {
               <Link
                 href="/contacto"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center px-5 py-3.5 bg-blue-700 text-white text-base font-semibold rounded-full hover:bg-blue-900 transition-colors duration-200 justify-center"
+                className="flex items-center justify-center gap-2 px-5 py-3.5 bg-white border border-[#1E3A8A] text-black text-base font-semibold rounded-sm hover:bg-[#DBEAFE] hover:text-[#1E3A8A] transition-colors duration-200"
               >
+                <svg
+                  className="w-4 h-4"
+                  fill="#DBEAFE"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
                 <span>Subscrever</span>
               </Link>
             </div>

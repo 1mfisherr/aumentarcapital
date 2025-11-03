@@ -66,12 +66,16 @@ export const siteConfig = {
 
   // Theme colors (change these to customize your site's look)
   colors: {
-    primary: "#1E88E5",
-    primaryDark: "#1565C0",
-    accent: "#34D399",
-    background: "#FFFFFF",
-    text: "#1A1A1A",
-    muted: "#6B7280",
+    primary: "#1E3A8A", // Deep Sapphire - Brand Blue
+    primaryLight: "#3B82F6", // Sky Blue - Primary Light/Accent
+    primaryDark: "#162E6B", // Darker blue for hover states
+    secondary: "#64748B", // Slate Gray - Neutral Contrast
+    accent: "#10B981", // Emerald - Highlight/Success
+    background: "#F9FAFB", // Off White - Background
+    surface: "#FFFFFF", // White - Surface/Cards
+    text: "#111827", // Charcoal - Primary Text
+    muted: "#6B7280", // Cool Gray - Muted Text
+    error: "#EF4444", // Soft Red - Error/Warning
   },
 } as const;
 

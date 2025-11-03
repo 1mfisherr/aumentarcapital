@@ -7,31 +7,47 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Modern finance palette - professional blue theme
+        // Brand palette
+        // Primary (Brand Blue) - Deep Sapphire #1E3A8A: Use for headings, buttons, and accents
+        // Primary Light (Accent) - Sky Blue #3B82F6: Use for hover effects, links, highlights
         primary: {
+          DEFAULT: '#1E3A8A', // Deep Sapphire - Brand Blue
           50: '#EFF6FF',
           100: '#DBEAFE',
           200: '#BFDBFE',
           300: '#93C5FD',
           400: '#60A5FA',
-          500: '#3B82F6',
+          500: '#3B82F6', // Sky Blue - Primary Light/Accent
           600: '#2563EB',
           700: '#1D4ED8',
           800: '#1E40AF',
-          900: '#1E3A8A',
+          900: '#1E3A8A', // Deep Sapphire - Brand Blue
         },
+        // Secondary (Neutral Contrast) - Slate Gray #64748B: For subheadings, icons, or UI elements
+        secondary: {
+          DEFAULT: '#64748B', // Slate Gray - Neutral Contrast
+        },
+        // Background (Light Mode) - Off White #F9FAFB: Softer than pure white, reduces eye strain
+        background: {
+          DEFAULT: '#F9FAFB', // Off White - Background
+          subtle: '#F3F4F6',
+        },
+        surface: '#FFFFFF', // White - Surface/Cards
+        // Text (Primary) - Charcoal #111827: Almost-black for perfect readability
+        // Muted Text - Cool Gray #6B7280: For meta info (dates, tags, category text)
+        foreground: {
+          DEFAULT: '#111827', // Charcoal - Primary Text
+          muted: '#6B7280', // Cool Gray - Muted Text
+        },
+        muted: '#6B7280', // Cool Gray - Muted Text
+        // Accent (Highlight) - Emerald #10B981: For positive numbers, success buttons, key callouts
         accent: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
+          DEFAULT: '#10B981', // Emerald - Highlight/Success
+          soft: '#D1FAE5',
         },
+        success: '#10B981', // Emerald - Success
+        // Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
+        error: '#EF4444', // Soft Red - Error/Warning
         neutral: {
           50: '#fafafa',
           100: '#f5f5f5',

@@ -1,16 +1,30 @@
 @import "tailwindcss";
 
 /* Custom CSS Variables for easy theme editing */
+/* Color Palette Documentation:
+   Primary (Brand Blue) - Deep Sapphire #1E3A8A: Use for headings, buttons, and accents
+   Primary Light (Accent) - Sky Blue #3B82F6: Use for hover effects, links, highlights
+   Secondary (Neutral Contrast) - Slate Gray #64748B: For subheadings, icons, or UI elements
+   Background (Light Mode) - Off White #F9FAFB: Softer than pure white, reduces eye strain
+   Text (Primary) - Charcoal #111827: Almost-black for perfect readability
+   Muted Text - Cool Gray #6B7280: For meta info (dates, tags, category text)
+   Accent (Highlight) - Emerald #10B981: For positive numbers, success buttons, key callouts
+   Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
+*/
 :root {
-  --color-primary: #1D4ED8;
-  --color-primary-light: #2563EB;
-  --color-primary-dark: #1E3A8A;
-  --color-accent: #9333ea;
-  --color-background: #FFFFFF;
-  --color-background-subtle: #fafafa;
-  --color-text: #171717;
-  --color-text-muted: #525252;
-  --color-border: #e5e5e5;
+  --color-primary: #1E3A8A; /* Deep Sapphire - Brand Blue */
+  --color-primary-light: #3B82F6; /* Sky Blue - Primary Light/Accent */
+  --color-primary-dark: #162E6B; /* Darker blue for hover states */
+  --color-secondary: #64748B; /* Slate Gray - Neutral Contrast */
+  --color-accent: #10B981; /* Emerald - Highlight/Success */
+  --color-success: #10B981; /* Emerald - Success */
+  --color-error: #EF4444; /* Soft Red - Error/Warning */
+  --color-background: #F9FAFB; /* Off White - Background */
+  --color-surface: #FFFFFF; /* White - Surface/Cards */
+  --color-background-subtle: #F3F4F6; /* Subtle background */
+  --color-text: #111827; /* Charcoal - Primary Text */
+  --color-text-muted: #6B7280; /* Cool Gray - Muted Text */
+  --color-border: #E2E8F0; /* Border color */
 }
 
 /* Force title color change on hover (works even if Tailwind variants are purged) */
@@ -20,7 +34,7 @@
 
 .group:hover .hover-title,
 .hover-title:hover {
-  color: #1E3A8A !important; /* primary-dark blue */
+  color: var(--color-primary) !important; /* primary brand blue */
 }
 
 /* Base styles */
@@ -32,6 +46,7 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -156,7 +171,7 @@ p {
   margin-bottom: 2.5em;
   padding: 1.5em 1.5em 1.5em 2em;
   border-left: 4px solid var(--color-primary);
-  background: #EFF6FF;
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
   border-radius: 0.5rem;
   font-style: italic;
   color: var(--color-text-muted);
@@ -189,7 +204,8 @@ p {
 .prose a {
   color: var(--color-primary);
   text-decoration: underline;
-  text-decoration-color: rgba(29, 78, 216, 0.3);
+  text-decoration-color: rgba(30, 58, 138, 0.3);
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
   transition: all 0.2s ease;
@@ -197,8 +213,8 @@ p {
 }
 
 .prose a:hover {
-  text-decoration-color: var(--color-primary);
-  color: var(--color-primary-dark);
+  text-decoration-color: var(--color-primary-light);
+  color: var(--color-primary-light);
 }
 
 .prose strong {
@@ -211,7 +227,7 @@ p {
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   font-size: 0.9em;
-  color: var(--color-accent);
+  color: var(--color-secondary);
   font-weight: 500;
 }
 
@@ -259,13 +275,14 @@ html {
 
 /* Selection styling */
 ::selection {
-  background: rgba(29, 78, 216, 0.2);
+  background: rgba(59, 130, 246, 0.25);
+  background: color-mix(in srgb, var(--color-primary-light) 25%, transparent);
   color: var(--color-text);
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-primary-light);
   outline-offset: 2px;
   border-radius: 0.25rem;
 }

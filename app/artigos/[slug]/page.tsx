@@ -55,6 +55,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const post = await getPostData(slug);
 
+  // Handle category as either string or array
+  const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
+  const categoryForSchema = categoryDisplay || (Array.isArray(post.category) && post.category.length > 0 ? post.category[0] : undefined);
+
   // Calculate word count from content
   const wordCount = post.contentHtml
     ? post.contentHtml.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length
@@ -93,7 +97,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       "@type": "WebPage",
       "@id": `${siteConfig.url}/artigos/${slug}`,
     },
-    ...(post.category && { articleSection: post.category }),
+    ...(categoryForSchema && { articleSection: categoryForSchema }),
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
     wordCount: wordCount,
     timeRequired: `PT${post.readingTime}M`, // ISO 8601 duration format
@@ -114,7 +118,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         articleData={{
           slug: post.slug,
           title: post.title,
-          category: post.category,
+          category: categoryDisplay || undefined,
           author: post.author,
           readingTime: post.readingTime || 5,
         }}
@@ -122,10 +126,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
         <header className="mb-10 lg:mb-14">
-          {post.category && (
+          {categoryDisplay && (
             <div className="mb-5">
-              <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-bold uppercase tracking-wider">
-                {post.category}
+              <span className="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-bold uppercase tracking-wider">
+                {categoryDisplay}
               </span>
             </div>
           )}
@@ -162,7 +166,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </header>
 
         <div
-          className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-blue-600 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
+          className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-primary-500 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
@@ -173,7 +177,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-blue-900 hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
+                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-primary hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
                 >
                   {tag}
                 </span>

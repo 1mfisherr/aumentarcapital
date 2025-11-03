@@ -59,11 +59,11 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-blue-50 to-blue-100/50 border-2 border-blue-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
-      <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">
+    <div className="w-full bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
+      <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-[#1E3A8A]">
         {siteConfig.newsletter.title}
       </h3>
-      <p className="text-base sm:text-lg text-neutral-600 mb-6 leading-relaxed">
+      <p className="text-base sm:text-lg text-[#1E3A8A] mb-6 leading-relaxed">
         {siteConfig.newsletter.description}
       </p>
 
@@ -75,25 +75,39 @@ export default function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 disabled:opacity-50 bg-white text-base transition-all duration-200"
+          className="flex-1 w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50 bg-white text-base transition-all duration-200"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-3.5 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-900 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#1E3A8A] text-black font-bold rounded-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-[#DBEAFE] hover:text-[#1E3A8A]"
         >
-          {status === "loading" ? "A enviar..." : "Subscrever"}
+          {status === "loading" ? (
+            "A enviar..."
+          ) : (
+            <>
+              <svg
+                className="w-5 h-5"
+                fill="#1E3A8A"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              Subscrever
+            </>
+          )}
         </button>
       </form>
 
       {status === "success" && (
-        <p className="mt-4 text-sm font-medium text-blue-700 bg-white px-4 py-2 rounded-lg">{message}</p>
+        <p className="mt-4 text-sm font-medium text-primary-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
       {status === "error" && (
         <p className="mt-4 text-sm font-medium text-red-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
 
-      <p className="mt-4 text-sm text-neutral-600">
+      <p className="mt-4 text-sm text-[#1E3A8A]">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
     </div>

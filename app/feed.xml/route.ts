@@ -6,16 +6,20 @@ export async function GET() {
 
   const rssItems = posts
     .map(
-      (post) => `
+      (post) => {
+        // Handle category as either string or array
+        const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
+        return `
     <item>
       <title>${escapeXml(post.title)}</title>
       <link>${siteConfig.url}/artigos/${post.slug}</link>
       <description>${escapeXml(post.description)}</description>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <guid>${siteConfig.url}/artigos/${post.slug}</guid>
-      <category>${escapeXml(post.category)}</category>
+      ${categoryDisplay ? `<category>${escapeXml(categoryDisplay)}</category>` : ''}
     </item>
-  `
+  `;
+      }
     )
     .join("");
 

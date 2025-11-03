@@ -2,14 +2,32 @@
 
 ## 🎨 Color Palette
 
-### Primary (Green) - Main Brand Color
+### Primary (Brand Blue) - Deep Sapphire #1E3A8A
+Main brand color — use for headings, buttons, and accents.
 ```css
-bg-primary-50    /* #f0fdf4 - Lightest */
-bg-primary-100   /* #dcfce7 */
-bg-primary-200   /* #bbf7d0 */
-bg-primary-600   /* #16a34a - Main brand color */
-bg-primary-700   /* #15803d - Hover states */
-bg-primary-900   /* #14532d - Darkest */
+bg-primary-50    /* #EFF6FF - Lightest */
+bg-primary-100   /* #DBEAFE */
+bg-primary-200   /* #BFDBFE */
+bg-primary-500   /* #3B82F6 - Sky Blue, Primary Light/Accent */
+bg-primary       /* #1E3A8A - Deep Sapphire, Main brand color */
+bg-primary-900   /* #1E3A8A - Deep Sapphire, Darkest */
+text-primary     /* Use for headings, buttons, links */
+hover:text-primary-500 /* Hover effects, links, highlights */
+```
+
+### Primary Light (Accent) - Sky Blue #3B82F6
+Lighter variation — ideal for hover effects, links, highlights.
+```css
+bg-primary-500   /* #3B82F6 - Sky Blue */
+text-primary-500 /* Use for hover effects, links */
+border-primary-500 /* Hover states */
+```
+
+### Secondary (Neutral Contrast) - Slate Gray #64748B
+For subheadings, icons, or UI elements. Softens contrast and adds depth.
+```css
+bg-secondary     /* #64748B - Slate Gray */
+text-secondary   /* For subheadings, icons, UI elements */
 ```
 
 ### Neutral (Gray) - Text and Backgrounds
@@ -20,12 +38,31 @@ bg-neutral-200   /* #e5e5e5 - Borders */
 bg-neutral-600   /* #525252 - Muted text */
 bg-neutral-700   /* #404040 */
 bg-neutral-900   /* #171717 - Primary text */
+text-neutral-600 /* #64748B - Muted text */
+text-foreground  /* #111827 - Charcoal, Primary text */
+text-foreground-muted /* #6B7280 - Cool Gray, Muted text */
 ```
 
-### Accent (Purple) - Highlights (use sparingly)
+### Accent (Highlight) - Emerald #10B981
+For positive numbers, success buttons, or key callouts.
 ```css
-bg-accent-600    /* #9333ea */
-text-accent-600  /* For code snippets, special highlights */
+bg-accent        /* #10B981 - Emerald */
+text-accent      /* For positive numbers, success states */
+bg-success       /* #10B981 - Success states */
+```
+
+### Background Colors
+```css
+bg-background    /* #F9FAFB - Off White, Light Mode Background */
+bg-surface       /* #FFFFFF - White, Surface/Cards */
+bg-background-subtle /* #F3F4F6 - Subtle background */
+```
+
+### Error / Warning - Soft Red #EF4444
+For alerts, warnings, or error messages.
+```css
+bg-error         /* #EF4444 - Soft Red */
+text-error       /* Error messages */
 ```
 
 ---

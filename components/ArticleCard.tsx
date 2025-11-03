@@ -6,18 +6,21 @@ interface ArticleCardProps {
 }
 
 export default function ArticleCard({ post }: ArticleCardProps) {
+  // Handle category as either string or array
+  const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
+  
   return (
-    <article className="group relative border-2 border-neutral-200 rounded-2xl p-6 lg:p-7 bg-white transition-colors duration-200 hover:border-blue-900">
+    <article className="group relative border-2 border-neutral-200 rounded-2xl p-6 lg:p-7 bg-white transition-colors duration-200 hover:border-primary">
       <Link href={`/artigos/${post.slug}`}>
-        {post.category && (
+        {categoryDisplay && (
           <div className="mb-3">
-            <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-200 group-hover:bg-blue-900 group-hover:text-white">
-              {post.category}
+            <span className="inline-block px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+              {categoryDisplay}
             </span>
           </div>
         )}
         
-        <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3 leading-tight transition-colors duration-200 group-hover:text-blue-900">
+        <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3 leading-tight transition-colors duration-200 group-hover:text-primary">
           {post.title}
         </h2>
       </Link>
@@ -41,7 +44,7 @@ export default function ArticleCard({ post }: ArticleCardProps) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-3 py-1.5 bg-neutral-100 text-neutral-600 hover:bg-blue-900 hover:text-white rounded-lg font-medium transition-colors duration-200 cursor-pointer"
+              className="text-xs px-3 py-1.5 bg-neutral-100 text-neutral-600 hover:bg-primary hover:text-white rounded-lg font-medium transition-colors duration-200 cursor-pointer"
             >
               {tag}
             </span>

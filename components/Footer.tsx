@@ -24,7 +24,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-base text-neutral-600 hover:text-blue-900 transition-colors duration-200"
+                    className="text-base text-neutral-600 hover:text-primary transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -33,7 +33,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/politica-privacidade"
-                  className="text-base text-neutral-600 hover:text-blue-900 transition-colors duration-200"
+                  className="text-base text-neutral-600 hover:text-primary transition-colors duration-200"
                 >
                   Política de Privacidade
                 </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-white border-2 border-neutral-200 text-neutral-700 hover:border-blue-900 hover:text-blue-900 transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
+                  className="px-4 py-2 bg-white border-2 border-neutral-200 text-neutral-700 hover:border-primary hover:text-primary transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
                 >
                   {platform}
                 </a>
