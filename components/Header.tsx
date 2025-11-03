@@ -35,244 +35,282 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 inline-flex items-center gap-1">
-              <span className="text-primary text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter">
+              <span className="text-primary-900 text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tighter" style={{ color: '#1E3A8A' }}>
               ↑↑
             </span>
-            <span className="text-primary text-base sm:text-lg md:text-xl font-bold tracking-tight">
-              aumentarcapital<span className="text-primary">.com</span>
+            <span className="text-base sm:text-lg md:text-xl font-bold tracking-tight" style={{ color: '#1E3A8A' }}>
+              aumentarcapital<span style={{ color: '#1E3A8A' }}>.com</span>
             </span>
           </Link>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            {siteConfig.nav.map((item) => {
-              // Special handling for Artigos with dropdown
-              if (item.href === "/artigos") {
-                return (
-                  <div key={item.href} className="relative" ref={dropdownRef}>
-                    <button
-                      onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                      className="inline-flex items-center gap-1 text-sm lg:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200"
-                      aria-expanded={artigosDropdownOpen}
-                      aria-haspopup="true"
-                      aria-label={`${item.label} menu`}
-                    >
-                      {item.label}
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          artigosDropdownOpen ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+          {/* Desktop & Tablet Navigation */}
+          <div className="hidden md:flex items-center justify-end flex-1 gap-3 md:gap-4 lg:gap-6 min-w-0 ml-4">
+            {/* Navigation - fixed alignment */}
+            <nav className="flex items-center flex-nowrap gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+              {siteConfig.nav.map((item) => {
+                // Special handling for Artigos with dropdown
+                if (item.href === "/artigos") {
+                  return (
+                    <div key={item.href} className="relative flex items-center" ref={dropdownRef}>
+                      <button
+                        onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
+                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200 whitespace-nowrap"
+                        aria-expanded={artigosDropdownOpen}
+                        aria-haspopup="true"
+                        aria-label={`${item.label} menu`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {artigosDropdownOpen && (
-                      <div 
-                        className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-neutral-200 py-2 animate-slide-up"
-                        role="menu"
-                        aria-label={`${item.label} submenu`}
-                      >
-                        <Link
-                          href="/artigos"
-                          onClick={() => setArtigosDropdownOpen(false)}
-                          className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
-                          role="menuitem"
+                        {item.label}
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${
+                            artigosDropdownOpen ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          Todos os Artigos
-                        </Link>
-                        <div className="border-t border-slate-200 my-2"></div>
-                        {artigosCategorias.map((categoria) => (
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {artigosDropdownOpen && (
+                        <div 
+                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-neutral-200 py-2 animate-slide-up z-50"
+                          role="menu"
+                          aria-label={`${item.label} submenu`}
+                        >
                           <Link
-                            key={categoria.href}
-                            href={categoria.href}
+                            href="/artigos"
                             onClick={() => setArtigosDropdownOpen(false)}
                             className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
                             role="menuitem"
                           >
-                            {categoria.label}
+                            Todos os Artigos
                           </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
+                          <div className="border-t border-slate-200 my-2"></div>
+                          {artigosCategorias.map((categoria) => (
+                            <Link
+                              key={categoria.href}
+                              href={categoria.href}
+                              onClick={() => setArtigosDropdownOpen(false)}
+                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
+                              role="menuitem"
+                            >
+                              {categoria.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
 
-              // Regular nav items
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm lg:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* CTA Button */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/contacto"
-              className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-white border border-primary text-black text-sm lg:text-base font-semibold rounded-sm hover:bg-primary-100 hover:text-primary transition-colors duration-200"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
-              <span>Subscrever</span>
-            </Link>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-colors duration-200"
-              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              <svg
-                className="w-6 h-6 transition-transform duration-200"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {mobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav 
-            id="mobile-navigation"
-            className="md:hidden border-t border-neutral-200 py-4 space-y-1 animate-slide-up"
-            aria-label="Navegação principal"
-          >
-            {siteConfig.nav.map((item) => {
-              // Special handling for Artigos with dropdown in mobile
-              if (item.href === "/artigos") {
+                // Regular nav items
                 return (
-                  <div key={item.href}>
-                    <button
-                      onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-secondary hover:text-primary-500 rounded-xl transition-colors duration-200"
-                    >
-                      <span>{item.label}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          artigosDropdownOpen ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    {artigosDropdownOpen && (
-                      <div className="pl-4 space-y-1 mt-1">
-                        <Link
-                          href="/artigos"
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            setArtigosDropdownOpen(false);
-                          }}
-                          className="block px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-500 rounded-xl transition-colors duration-200"
-                        >
-                          Todos os Artigos
-                        </Link>
-                        {artigosCategorias.map((categoria) => (
-                          <Link
-                            key={categoria.href}
-                            href={categoria.href}
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setArtigosDropdownOpen(false);
-                            }}
-                            className="block px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-500 rounded-xl transition-colors duration-200"
-                          >
-                            {categoria.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="inline-flex items-center text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.label}
+                  </Link>
                 );
-              }
+              })}
+            </nav>
 
-              // Regular nav items
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-secondary hover:text-primary-500 rounded-xl transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-            <div className="pt-2 px-4">
+            {/* CTA Button - Desktop/Tablet */}
+            <div className="flex items-center flex-shrink-0">
               <Link
                 href="/contacto"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 px-5 py-3.5 bg-white border border-primary text-black text-base font-semibold rounded-sm hover:bg-primary-100 hover:text-primary transition-colors duration-200"
+                className="subscribe-btn inline-flex items-center gap-1.5 px-3 md:px-4 lg:px-5 py-2 bg-white border border-primary-500 text-sm md:text-base font-semibold rounded-sm transition-all duration-500 whitespace-nowrap"
               >
                 <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
+                  className="w-4 h-4 text-primary-500 flex-shrink-0"
+                  fill="#3B82F6"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span className="subscribe-text text-black transition-colors duration-500">Subscrever</span>
+                <svg
+                  className="subscribe-arrow w-4 h-4 text-black transition-colors duration-500 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    d="M9 5l7 7-7 7"
                   />
                 </svg>
-                <span>Subscrever</span>
               </Link>
             </div>
-          </nav>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-colors duration-200 flex-shrink-0"
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            <svg
+              className="w-6 h-6 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {mobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Navigation - Full Screen Overlay */}
+        {mobileMenuOpen && (
+          <div 
+            className="md:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto"
+            onClick={(e) => {
+              // Close menu when clicking outside the nav content
+              if (e.target === e.currentTarget) {
+                setMobileMenuOpen(false);
+              }
+            }}
+          >
+            <nav 
+              id="mobile-navigation"
+              className="border-t border-neutral-200 py-6 px-4 space-y-2 animate-slide-up"
+              aria-label="Navegação principal"
+            >
+              {siteConfig.nav.map((item) => {
+                // Special handling for Artigos with dropdown in mobile
+                if (item.href === "/artigos") {
+                  return (
+                    <div key={item.href} className="mb-2">
+                      <button
+                        onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
+                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                      >
+                        <span>{item.label}</span>
+                        <svg
+                          className={`w-5 h-5 transition-transform duration-200 ${
+                            artigosDropdownOpen ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      {artigosDropdownOpen && (
+                        <div className="pl-4 space-y-1 mt-2">
+                          <Link
+                            href="/artigos"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setArtigosDropdownOpen(false);
+                            }}
+                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                          >
+                            Todos os Artigos
+                          </Link>
+                          {artigosCategorias.map((categoria) => (
+                            <Link
+                              key={categoria.href}
+                              href={categoria.href}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                                setArtigosDropdownOpen(false);
+                              }}
+                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                            >
+                              {categoria.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                // Regular nav items
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              
+              {/* Subscribe Button - Prominent in Mobile Menu */}
+              <div className="pt-4 mt-4 border-t border-neutral-200">
+                <Link
+                  href="/contacto"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="subscribe-btn flex items-center justify-center gap-2 px-5 py-3.5 bg-white border-2 border-primary-500 text-base font-semibold rounded-xl transition-all duration-500 w-full shadow-sm hover:shadow-md"
+                >
+                  <svg
+                    className="w-5 h-5 text-primary-500 flex-shrink-0"
+                    fill="#3B82F6"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                  <span className="subscribe-text text-black transition-colors duration-500">Subscrever Newsletter</span>
+                  <svg
+                    className="subscribe-arrow w-5 h-5 text-black transition-colors duration-500 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </nav>
+          </div>
         )}
       </div>
     </header>

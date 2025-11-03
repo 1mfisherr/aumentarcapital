@@ -37,6 +37,33 @@
   color: var(--color-primary) !important; /* primary brand blue */
 }
 
+/* Subscribe button hover effect */
+.subscribe-btn {
+  border-color: #3B82F6 !important; /* primary-500 - baby blue border */
+  transition: background-color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.subscribe-btn:hover {
+  background-color: #EFF6FF !important; /* primary-50 - light blue background */
+  border-color: #3B82F6 !important; /* primary-500 - baby blue border */
+}
+
+.subscribe-text {
+  transition: color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.subscribe-btn:hover .subscribe-text {
+  color: #3B82F6 !important; /* primary-500 - baby blue text */
+}
+
+.subscribe-arrow {
+  transition: color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.subscribe-btn:hover .subscribe-arrow {
+  color: #3B82F6 !important; /* primary-500 - baby blue arrow */
+}
+
 /* Base styles */
 body {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;

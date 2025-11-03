@@ -7,7 +7,7 @@ category: "Finanças Pessoais"
 categories: ["Finanças Pessoais", "Poupança"]
 tags: ["orçamento", "poupança", "finanças pessoais"]
 description: "Descobre cinco métodos de orçamento que podem transformar a tua relação com o dinheiro e ajudar-te a poupar, investir e atingir os teus objetivos financeiros."
-image: "/images/metodos-orcamento.png"
+image: "/images/metodos-orcamento.webp"
 imageAlt: "Ilustração de várias categorias de orçamento e envelopes com dinheiro"
 imageWidth: 1200
 imageHeight: 628
