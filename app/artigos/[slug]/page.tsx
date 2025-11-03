@@ -2,6 +2,7 @@ import { getPostData, getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site.config";
 import ArticleTracker from "@/components/ArticleTracker";
+import Image from "next/image";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -31,9 +32,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: siteConfig.name,
       images: [
         {
-          url: post.image,
-          width: 1200,
-          height: 628,
+          url: post.image.startsWith('http') ? post.image : `${siteConfig.url}${post.image}`,
+          width: post.imageWidth || 1200,
+          height: post.imageHeight || 628,
           alt: post.imageAlt || post.title,
         },
       ],
@@ -41,12 +42,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       locale: "pt_PT",
       publishedTime: post.date,
       authors: [post.author],
+      tags: post.tags || [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [post.image],
+      images: [post.image.startsWith('http') ? post.image : `${siteConfig.url}${post.image}`],
+      creator: siteConfig.social.twitter ? `@${siteConfig.social.twitter.split('/').pop()}` : undefined,
     },
   };
 }
@@ -72,9 +75,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     description: post.description,
     image: {
       "@type": "ImageObject",
-      url: post.image,
-      width: 1200,
-      height: 628,
+      url: post.image.startsWith('http') ? post.image : `${siteConfig.url}${post.image}`,
+      width: post.imageWidth || 1200,
+      height: post.imageHeight || 628,
       ...(post.imageAlt && { caption: post.imageAlt }),
     },
     datePublished: post.date,
@@ -157,12 +160,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           {post.image && (
             <div className="relative max-w-[70%] mx-auto rounded-2xl overflow-hidden shadow-strong">
-              <img
+              <Image
                 src={post.image}
-                alt={(post as any).imageAlt || post.title}
-                width={(post as any).imageWidth || 1200}
-                height={(post as any).imageHeight || 628}
+                alt={post.imageAlt || post.title}
+                width={post.imageWidth || 1200}
+                height={post.imageHeight || 628}
                 className="w-full h-auto object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 840px"
               />
             </div>
           )}

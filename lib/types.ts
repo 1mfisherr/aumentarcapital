@@ -16,3 +16,7 @@ export interface ArticleMeta {
   lang: "pt-PT";
   readingTime?: number;
 }
+
+export interface ArticleData extends ArticleMeta {
+  contentHtml: string;
+}

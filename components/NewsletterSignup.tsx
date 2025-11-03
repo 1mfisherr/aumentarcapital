@@ -1,10 +1,10 @@
 "use client";
 
 import { siteConfig } from "@/lib/site.config";
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 import { trackNewsletterSignup } from "./Analytics";
 
-export default function NewsletterSignup() {
+function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -13,9 +13,19 @@ export default function NewsletterSignup() {
     return null;
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus("error");
+      setMessage("Por favor, insere um email válido.");
+      return;
+    }
+
     setStatus("loading");
+    setMessage("");
 
     // Determine the source based on the page location
     const source = typeof window !== 'undefined' 
@@ -26,44 +36,52 @@ export default function NewsletterSignup() {
         : 'other'
       : 'unknown';
 
-    // TODO: Integrate with your newsletter provider
-    // For now, this is a placeholder that simulates success
-    setTimeout(() => {
+    try {
+      // TODO: Integrate with your newsletter provider
+      // For now, this is a placeholder that simulates success
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
       setStatus("success");
       setMessage("Obrigado por te subscreveres!");
       setEmail("");
       
       // Track newsletter signup
       trackNewsletterSignup(source);
-    }, 1000);
+    } catch (error) {
+      setStatus("error");
+      setMessage("Algo correu mal. Tenta novamente.");
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Newsletter signup error:", error);
+      }
+    }
+  }, [email]);
 
-    // Example integration with MailerLite or similar:
-    // try {
-    //   const response = await fetch(siteConfig.newsletter.formAction, {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email }),
-    //   });
-    //   if (response.ok) {
-    //     setStatus("success");
-    //     setMessage("Obrigado por te subscreveres!");
-    //     setEmail("");
-    //   } else {
-    //     setStatus("error");
-    //     setMessage("Algo correu mal. Tenta novamente.");
-    //   }
-    // } catch (error) {
-    //   setStatus("error");
-    //   setMessage("Algo correu mal. Tenta novamente.");
-    // }
-  };
+  // Example integration with MailerLite or similar:
+  // try {
+  //   const response = await fetch(siteConfig.newsletter.formAction, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ email }),
+  //   });
+  //   if (response.ok) {
+  //     setStatus("success");
+  //     setMessage("Obrigado por te subscreveres!");
+  //     setEmail("");
+  //   } else {
+  //     setStatus("error");
+  //     setMessage("Algo correu mal. Tenta novamente.");
+  //   }
+  // } catch (error) {
+  //   setStatus("error");
+  //   setMessage("Algo correu mal. Tenta novamente.");
+  // }
 
   return (
     <div className="w-full bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-soft">
-      <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-[#1E3A8A]">
+      <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-primary">
         {siteConfig.newsletter.title}
       </h3>
-      <p className="text-base sm:text-lg text-[#1E3A8A] mb-6 leading-relaxed">
+      <p className="text-base sm:text-lg text-primary mb-6 leading-relaxed">
         {siteConfig.newsletter.description}
       </p>
 
@@ -80,7 +98,7 @@ export default function NewsletterSignup() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#1E3A8A] text-black font-bold rounded-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-[#DBEAFE] hover:text-[#1E3A8A]"
+          className="w-full sm:w-auto px-8 py-3.5 bg-white border border-primary text-black font-bold rounded-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-primary-100 hover:text-primary"
         >
           {status === "loading" ? (
             "A enviar..."
@@ -88,7 +106,7 @@ export default function NewsletterSignup() {
             <>
               <svg
                 className="w-5 h-5"
-                fill="#1E3A8A"
+                fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -107,10 +125,12 @@ export default function NewsletterSignup() {
         <p className="mt-4 text-sm font-medium text-red-700 bg-white px-4 py-2 rounded-lg">{message}</p>
       )}
 
-      <p className="mt-4 text-sm text-[#1E3A8A]">
+      <p className="mt-4 text-sm text-primary">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
     </div>
   );
 }
+
+export default memo(NewsletterSignup);
 

@@ -4,21 +4,41 @@ import { getSortedPostsData } from "@/lib/posts";
 import { siteConfig } from "@/lib/site.config";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
-export const metadata = {
-  title: "Início - " + siteConfig.name,
-  description: siteConfig.description,
-  openGraph: {
-    title: siteConfig.name,
+export async function generateMetadata() {
+  const allPosts = await getSortedPostsData();
+  const featuredPost = allPosts[0];
+
+  return {
+    title: "Início - " + siteConfig.name,
     description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    locale: siteConfig.locale,
-    type: "website",
-  },
-  alternates: {
-    canonical: siteConfig.url,
-  },
-};
+    openGraph: {
+      title: siteConfig.name,
+      description: siteConfig.description,
+      url: siteConfig.url,
+      siteName: siteConfig.name,
+      locale: siteConfig.locale,
+      type: "website",
+      images: featuredPost ? [
+        {
+          url: featuredPost.image.startsWith('http') ? featuredPost.image : `${siteConfig.url}${featuredPost.image}`,
+          width: featuredPost.imageWidth || 1200,
+          height: featuredPost.imageHeight || 628,
+          alt: featuredPost.imageAlt || featuredPost.title,
+        },
+      ] : [
+        {
+          url: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+          width: 1200,
+          height: 628,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    alternates: {
+      canonical: siteConfig.url,
+    },
+  };
+}
 
 function formatTimeAgo(date: string): string {
   const now = new Date();
@@ -83,7 +103,7 @@ export default async function HomePage() {
                   )}
                   
                   {/* Title */}
-                  <h1 className="hover-title text-lg sm:text-xl lg:text-2xl font-bold text-[#1E3A8A] mb-3 leading-tight">
+                  <h1 className="hover-title text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-3 leading-tight">
                     {featuredPost.title}
                   </h1>
                 
@@ -152,18 +172,18 @@ export default async function HomePage() {
 
       {/* Categories Section */}
       <section className="mb-12 border-t-2 border-neutral-200 pt-12 lg:pt-16 w-full">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1E3A8A] mb-8 lg:mb-10">Explora por Categoria</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-8 lg:mb-10">Explora por Categoria</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
           <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">💰</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-[#1E3A8A] mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-primary mb-3 group-hover:text-primary-500 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
               </p>
-              <div className="text-[#1E3A8A] font-semibold text-sm">
+              <div className="text-primary font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>
@@ -172,13 +192,13 @@ export default async function HomePage() {
           <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary transition-colors duration-200 bg-white overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">📈</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-[#1E3A8A] mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-primary mb-3 group-hover:text-primary-500 transition-colors duration-200">
                 Investimentos
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Descobre como fazer o teu dinheiro crescer através de investimentos inteligentes
               </p>
-              <div className="text-[#1E3A8A] font-semibold text-sm">
+              <div className="text-primary font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>
@@ -187,13 +207,13 @@ export default async function HomePage() {
           <Link href="/artigos" className="group relative p-6 lg:p-8 border-2 border-neutral-200 rounded-2xl hover:border-primary transition-colors duration-200 bg-white sm:col-span-2 lg:col-span-1 overflow-hidden">
             <div className="relative">
               <div className="text-4xl lg:text-5xl mb-4">🚀</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-[#1E3A8A] mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-primary mb-3 group-hover:text-primary-500 transition-colors duration-200">
                 Empreendedorismo
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-4">
                 Transforma as tuas ideias em negócios lucrativos e sustentáveis
               </p>
-              <div className="text-[#1E3A8A] font-semibold text-sm">
+              <div className="text-primary font-semibold text-sm">
                 <span>Explorar</span>
               </div>
             </div>

@@ -16,7 +16,10 @@ export default function AdSlot({ slot, format = "auto", responsive = true }: AdS
         // @ts-ignore
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
-        console.error("AdSense error:", e);
+        // Silently fail in production, only log in development
+        if (process.env.NODE_ENV === 'development') {
+          console.error("AdSense error:", e);
+        }
       }
     }
   }, []);

@@ -55,11 +55,21 @@ export const metadata = {
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [
+      {
+        url: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+        width: 1200,
+        height: 628,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [`${siteConfig.url}/images/aumentarcapital_logo.svg`],
+    creator: siteConfig.social.twitter ? `@${siteConfig.social.twitter.split('/').pop()}` : undefined,
   },
   alternates: {
     types: {

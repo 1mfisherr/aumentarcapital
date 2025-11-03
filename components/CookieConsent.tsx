@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { siteConfig } from "@/lib/site.config";
 
 export default function CookieConsent() {
@@ -14,19 +14,34 @@ export default function CookieConsent() {
     }
   }, []);
 
-  const acceptCookies = () => {
-    localStorage.setItem("cookie-consent", "accepted");
-    setShowBanner(false);
-    // Reload to enable analytics if they're configured
-    if (siteConfig.analytics.enabled) {
-      window.location.reload();
+  const acceptCookies = useCallback(() => {
+    try {
+      localStorage.setItem("cookie-consent", "accepted");
+      setShowBanner(false);
+      // Reload to enable analytics if they're configured
+      if (siteConfig.analytics.enabled) {
+        window.location.reload();
+      }
+    } catch (error) {
+      // Handle localStorage errors (e.g., in private browsing)
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Cookie consent error:", error);
+      }
     }
-  };
+  }, []);
 
-  const declineCookies = () => {
-    localStorage.setItem("cookie-consent", "declined");
-    setShowBanner(false);
-  };
+  const declineCookies = useCallback(() => {
+    try {
+      localStorage.setItem("cookie-consent", "declined");
+      setShowBanner(false);
+    } catch (error) {
+      // Handle localStorage errors (e.g., in private browsing)
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Cookie consent error:", error);
+      }
+      setShowBanner(false);
+    }
+  }, []);
 
   if (!showBanner) {
     return null;
