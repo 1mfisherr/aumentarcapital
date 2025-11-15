@@ -55,7 +55,7 @@
 }
 
 .logo-link:hover {
-  transform: translateY(-1px);
+  /* No transform - logo should not move or zoom on hover */
 }
 
 .logo-icon {

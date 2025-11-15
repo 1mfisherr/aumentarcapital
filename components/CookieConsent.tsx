@@ -72,7 +72,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={acceptCookies}
-            className="flex-1 md:flex-none px-6 py-2.5 text-sm font-medium text-white bg-primary border-2 border-primary rounded-lg hover:bg-primary-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm"
+            className="flex-1 md:flex-none px-6 py-2.5 text-sm font-medium text-white bg-slate-900 border-2 border-slate-900 rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 shadow-sm"
           >
             Aceitar
           </button>

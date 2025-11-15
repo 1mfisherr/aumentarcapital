@@ -36,7 +36,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="logo-link flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group">
             {/* Modern Logo Icon */}
-            <div className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:rotate-1" style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #1E3A8A 100%)', backgroundColor: '#2563EB' }}>
+            <div className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300" style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #1E3A8A 100%)', backgroundColor: '#2563EB' }}>
               <svg 
                 className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0" 
                 viewBox="0 0 24 24" 
@@ -47,17 +47,9 @@ export default function Header() {
                 strokeLinejoin="round"
                 style={{ background: 'transparent' }}
               >
-                {/* Modern upward trend with double arrow */}
-                <path d="M5 17l5-5 5 5" />
-                <path d="M12 12l5-5" opacity="0.6" />
-                <path d="M5 12l3-3" opacity="0.4" />
-                {/* Premium checkmark accent */}
-                <path 
-                  d="M19 7l-5 5-2-2" 
-                  strokeWidth={2}
-                  opacity="0.8"
-                  className="group-hover:opacity-100 transition-opacity"
-                />
+                {/* Two arrows pointing up */}
+                <path d="M7 13l5-5 5 5" />
+                <path d="M7 18l5-5 5 5" />
               </svg>
             </div>
             
@@ -76,6 +68,15 @@ export default function Header() {
           <div className="hidden md:flex items-center justify-end flex-1 gap-3 md:gap-4 lg:gap-6 min-w-0 ml-4">
             {/* Navigation - fixed alignment */}
             <nav className="flex items-center flex-nowrap gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+              {/* Começa Aqui - Standout Link */}
+              <Link
+                href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
+                className="inline-flex items-center text-sm md:text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors duration-200 whitespace-nowrap border-b border-primary-500"
+                style={{ textShadow: '0 2px 4px rgba(59, 130, 246, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1)', borderBottomWidth: '1px' }}
+              >
+                Começa Aqui
+              </Link>
+              
               {siteConfig.nav.map((item) => {
                 // Special handling for Artigos with dropdown
                 if (item.href === "/artigos") {
@@ -235,6 +236,16 @@ export default function Header() {
               className="border-t border-neutral-200 py-6 px-4 space-y-2 animate-slide-up"
               aria-label="Navegação principal"
             >
+              {/* Começa Aqui - Standout Link in Mobile */}
+              <Link
+                href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-3.5 text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors duration-200 mb-4 border-b border-primary-500 inline-block w-auto"
+                style={{ textShadow: '0 2px 4px rgba(59, 130, 246, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1)', borderBottomWidth: '1px' }}
+              >
+                Começa Aqui
+              </Link>
+              
               {siteConfig.nav.map((item) => {
                 // Special handling for Artigos with dropdown in mobile
                 if (item.href === "/artigos") {
