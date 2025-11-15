@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site.config";
 import ArticleTracker from "@/components/ArticleTracker";
 import Image from "next/image";
+import { getNextArticles } from "@/lib/next-articles";
+import NextArticles from "@/components/NextArticles";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -57,6 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPostData(slug);
+  const nextArticles = getNextArticles(post);
 
   // Handle category as either string or array
   const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
@@ -177,6 +180,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           className="prose prose-lg prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-a:text-primary-500 prose-strong:text-neutral-900 prose-img:rounded-2xl mx-auto"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
+
+        {nextArticles.length > 0 && <NextArticles articles={nextArticles} />}
 
         {post.tags && post.tags.length > 0 && (
           <footer className="mt-14 lg:mt-16 pt-8 border-t-2 border-neutral-200">

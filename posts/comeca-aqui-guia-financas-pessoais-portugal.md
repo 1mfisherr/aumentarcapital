@@ -5,6 +5,8 @@ date: "2025-11-15"
 author: "Delfim Almeida"
 category: "Finanças pessoais"
 tags: ["finanças pessoais", "literacia financeira", "como poupar", "orçamento", "investimentos"]
+type: "foundation"
+trail: "foundation-literacia-financeira"
 description: "O ponto de partida para melhorares as tuas finanças pessoais em Portugal. Entende o dinheiro, cria estabilidade e constrói um futuro melhor."
 image: "/images/comeca-aqui.png"
 lang: "pt-PT"
@@ -147,6 +149,6 @@ Explora o próximo artigo recomendado e começa esta jornada com calma, consist�
 ---
 
 **Próximo artigo recomendado →**  
-🔗 *Fundamentos da Literacia Financeira: O Guia Completo Para Entender o Dinheiro*
+[Fundamento da Literacia Financeira: Como Entender o Dinheiro](/artigos/fundacao-literacia-financeira-como-entender-o-dinheiro)
 
 ---

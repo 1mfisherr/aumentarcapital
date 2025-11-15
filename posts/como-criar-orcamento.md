@@ -6,6 +6,8 @@ author: "Delfim Almeida"
 category: "Finanças Pessoais"
 categories: ["Finanças Pessoais", "Poupança"]
 tags: ["orçamento", "poupança", "finanças pessoais"]
+type: "foundation"
+trail: "foundation-literacia-financeira"
 description: "Descobre cinco métodos de orçamento que podem transformar a tua relação com o dinheiro e ajudar-te a poupar, investir e atingir os teus objetivos financeiros."
 image: "/images/metodos-orcamento.webp"
 imageAlt: "Ilustração de várias categorias de orçamento e envelopes com dinheiro"
