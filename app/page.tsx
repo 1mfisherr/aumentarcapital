@@ -7,6 +7,7 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 export async function generateMetadata() {
   const allPosts = await getSortedPostsData();
   const featuredPost = allPosts[0];
+  const featuredImage = featuredPost?.image && featuredPost.image.trim() !== "" ? featuredPost.image : null;
 
   return {
     title: "Início - " + siteConfig.name,
@@ -18,12 +19,12 @@ export async function generateMetadata() {
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
-      images: featuredPost ? [
+      images: featuredImage ? [
         {
-          url: featuredPost.image.startsWith('http') ? featuredPost.image : `${siteConfig.url}${featuredPost.image}`,
-          width: featuredPost.imageWidth || 1200,
-          height: featuredPost.imageHeight || 628,
-          alt: featuredPost.imageAlt || featuredPost.title,
+          url: featuredImage.startsWith("http") ? featuredImage : `${siteConfig.url}${featuredImage}`,
+          width: featuredPost?.imageWidth || 1200,
+          height: featuredPost?.imageHeight || 628,
+          alt: featuredPost?.imageAlt || featuredPost?.title || siteConfig.name,
         },
       ] : [
         {
@@ -81,14 +82,18 @@ export default async function HomePage() {
               <article className="border border-neutral-200 rounded-lg overflow-hidden h-full bg-white">
                 {/* Featured Image */}
                 <div className="relative w-full h-[260px] sm:h-[320px] bg-neutral-100 overflow-hidden">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.imageAlt || featuredPost.title}
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  {featuredPost.image ? (
+                    <Image
+                      src={featuredPost.image}
+                      alt={featuredPost.imageAlt || featuredPost.title}
+                      fill
+                      className="object-cover"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-neutral-100" aria-hidden="true" />
+                  )}
                 </div>
                 
                 {/* Featured Content */}
@@ -103,7 +108,7 @@ export default async function HomePage() {
                   )}
                   
                   {/* Title */}
-                  <h1 className="hover-title text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-3 leading-tight">
+                  <h1 className="hover-title text-base sm:text-lg lg:text-xl font-bold text-primary mb-3 leading-tight">
                     {featuredPost.title}
                   </h1>
                 
@@ -152,7 +157,7 @@ export default async function HomePage() {
                     )}
                     
                     {/* Title */}
-                    <h3 className="hover-title text-sm sm:text-base font-bold text-[#1E3A8A] leading-snug mb-2 line-clamp-2">
+                    <h3 className="hover-title text-xs sm:text-sm font-bold text-[#1E3A8A] leading-snug mb-2 line-clamp-2">
                       {post.title}
                     </h3>
                     

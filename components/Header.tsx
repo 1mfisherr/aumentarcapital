@@ -71,10 +71,12 @@ export default function Header() {
               {/* Começa Aqui - Standout Link */}
               <Link
                 href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
-                className="inline-flex items-center text-sm md:text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors duration-200 whitespace-nowrap border-b border-primary-500"
-                style={{ textShadow: '0 2px 4px rgba(59, 130, 246, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1)', borderBottomWidth: '1px' }}
+                className="group relative inline-flex items-center text-sm md:text-base font-semibold text-primary-600 hover:text-primary-700 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
               >
-                Começa Aqui
+                <span className="relative inline-block">
+                  Começa Aqui
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-600 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
+                </span>
               </Link>
               
               {siteConfig.nav.map((item) => {
@@ -84,14 +86,17 @@ export default function Header() {
                     <div key={item.href} className="relative flex items-center" ref={dropdownRef}>
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200 whitespace-nowrap"
+                        className="group relative inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
                         aria-expanded={artigosDropdownOpen}
                         aria-haspopup="true"
                         aria-label={`${item.label} menu`}
                       >
-                        {item.label}
+                        <span className="relative inline-block">
+                          {item.label}
+                          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-500 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
+                        </span>
                         <svg
-                          className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${
+                          className={`w-4 h-4 transition-transform duration-300 ease-in-out flex-shrink-0 ${
                             artigosDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
@@ -117,7 +122,7 @@ export default function Header() {
                           <Link
                             href="/artigos"
                             onClick={() => setArtigosDropdownOpen(false)}
-                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
+                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
                             role="menuitem"
                           >
                             Todos os Artigos
@@ -128,7 +133,7 @@ export default function Header() {
                               key={categoria.href}
                               href={categoria.href}
                               onClick={() => setArtigosDropdownOpen(false)}
-                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-colors duration-200"
+                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
                               role="menuitem"
                             >
                               {categoria.label}
@@ -145,9 +150,12 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="inline-flex items-center text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-200 whitespace-nowrap"
+                    className="group relative inline-flex items-center text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
                   >
-                    {item.label}
+                    <span className="relative inline-block">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-500 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
+                    </span>
                   </Link>
                 );
               })}
@@ -190,7 +198,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-colors duration-200 flex-shrink-0"
+            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out flex-shrink-0"
             aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -240,10 +248,12 @@ export default function Header() {
               <Link
                 href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3.5 text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors duration-200 mb-4 border-b border-primary-500 inline-block w-auto"
-                style={{ textShadow: '0 2px 4px rgba(59, 130, 246, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1)', borderBottomWidth: '1px' }}
+                className="group relative block px-4 py-3.5 text-base font-semibold text-primary-600 hover:text-primary-700 transition-all duration-300 ease-in-out mb-4 inline-block w-auto"
               >
-                Começa Aqui
+                <span className="relative">
+                  Começa Aqui
+                  <span className="absolute bottom-2 left-4 right-4 h-0.5 bg-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></span>
+                </span>
               </Link>
               
               {siteConfig.nav.map((item) => {
@@ -253,11 +263,11 @@ export default function Header() {
                     <div key={item.href} className="mb-2">
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                       >
                         <span>{item.label}</span>
                         <svg
-                          className={`w-5 h-5 transition-transform duration-200 ${
+                          className={`w-5 h-5 transition-transform duration-300 ease-in-out ${
                             artigosDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
@@ -280,7 +290,7 @@ export default function Header() {
                               setMobileMenuOpen(false);
                               setArtigosDropdownOpen(false);
                             }}
-                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                           >
                             Todos os Artigos
                           </Link>
@@ -292,7 +302,7 @@ export default function Header() {
                                 setMobileMenuOpen(false);
                                 setArtigosDropdownOpen(false);
                               }}
-                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                             >
                               {categoria.label}
                             </Link>
@@ -309,7 +319,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-colors duration-200"
+                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                   >
                     {item.label}
                   </Link>
