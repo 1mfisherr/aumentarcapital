@@ -36,6 +36,9 @@ function ArticleTracker({ articleData }: ArticleTrackerProps) {
   }, [articleData.slug]);
 
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+
     // Track article view on mount
     trackArticleView(articleData);
 

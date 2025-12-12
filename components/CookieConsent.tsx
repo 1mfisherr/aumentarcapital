@@ -5,8 +5,12 @@ import { siteConfig } from "@/lib/site.config";
 
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Mark component as mounted to prevent hydration mismatch
+    setMounted(true);
+    
     // Check if user has already accepted cookies
     const consent = localStorage.getItem("cookie-consent");
     if (!consent) {
@@ -43,7 +47,8 @@ export default function CookieConsent() {
     }
   }, []);
 
-  if (!showBanner) {
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted || !showBanner) {
     return null;
   }
 

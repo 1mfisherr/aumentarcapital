@@ -11,6 +11,9 @@ interface AdSlotProps {
 
 export default function AdSlot({ slot, format = "auto", responsive = true }: AdSlotProps) {
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+    
     if (siteConfig.ads.enabled && siteConfig.ads.adsenseClientId) {
       try {
         // @ts-ignore

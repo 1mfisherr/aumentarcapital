@@ -15,10 +15,19 @@ const artigosCategorias = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [artigosDropdownOpen, setArtigosDropdownOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Mark component as mounted to prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
+    // Only run on client side after mount
+    if (!mounted || typeof window === 'undefined' || typeof document === 'undefined') return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setArtigosDropdownOpen(false);
@@ -27,7 +36,7 @@ export default function Header() {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [mounted]);
 
   return (
     <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-50 shadow-sm">
@@ -84,14 +93,14 @@ export default function Header() {
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
                         className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
-                        aria-expanded={artigosDropdownOpen}
+                        aria-expanded={mounted ? artigosDropdownOpen : false}
                         aria-haspopup="true"
                         aria-label={`${item.label} menu`}
                       >
                         {item.label}
                         <svg
                           className={`w-4 h-4 transition-transform duration-300 ease-in-out flex-shrink-0 ${
-                            artigosDropdownOpen ? "rotate-180" : ""
+                            mounted && artigosDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
                           stroke="currentColor"
@@ -190,8 +199,8 @@ export default function Header() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out flex-shrink-0"
-            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={mobileMenuOpen}
+            aria-label={mounted && mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mounted ? mobileMenuOpen : false}
             aria-controls="mobile-navigation"
           >
             <svg
@@ -259,7 +268,7 @@ export default function Header() {
                         <span>{item.label}</span>
                         <svg
                           className={`w-5 h-5 transition-transform duration-300 ease-in-out ${
-                            artigosDropdownOpen ? "rotate-180" : ""
+                            mounted && artigosDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
                           stroke="currentColor"
