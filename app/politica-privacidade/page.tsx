@@ -1,17 +1,21 @@
 import { siteConfig } from "@/lib/site.config";
 
 export const metadata = {
-  title: "Política de Privacidade",
-  description: "Política de privacidade e proteção de dados do Aumentar Capital.",
+  title: "Política de Privacidade - Aumentar Capital",
+  description: "Política de privacidade e proteção de dados do Aumentar Capital. Conhece como protegemos e utilizamos as tuas informações pessoais. Conformidade com RGPD.",
   alternates: {
     canonical: `${siteConfig.url}/politica-privacidade`,
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 
 export default function PoliticaPrivacidadePage() {
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-blue-700">
+      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-primary">
         Política de Privacidade
       </h1>
 
@@ -97,13 +101,13 @@ export default function PoliticaPrivacidadePage() {
           contacto connosco através de:{" "}
           <a
             href={`mailto:${siteConfig.author.email}`}
-            className="text-blue-600 hover:text-blue-900 transition-colors duration-200"
+            className="text-primary-600 hover:text-primary-700 transition-colors duration-200"
           >
             {siteConfig.author.email}
           </a>
         </p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 sm:p-6 mt-8">
+        <div className="bg-primary-50 border border-primary-200 rounded-lg p-5 sm:p-6 mt-8">
           <p className="text-sm">
             <strong>Nota:</strong> Esta é uma política de privacidade básica. Dependendo
             dos serviços que uses (analytics, ads, etc.), poderás precisar de adicionar

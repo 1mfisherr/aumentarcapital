@@ -71,12 +71,9 @@ export default function Header() {
               {/* Começa Aqui - Standout Link */}
               <Link
                 href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
-                className="group relative inline-flex items-center text-sm md:text-base font-semibold text-primary-600 hover:text-primary-700 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
+                className="text-sm md:text-base font-semibold text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
               >
-                <span className="relative inline-block">
-                  Começa Aqui
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-600 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
-                </span>
+                Começa Aqui
               </Link>
               
               {siteConfig.nav.map((item) => {
@@ -86,15 +83,12 @@ export default function Header() {
                     <div key={item.href} className="relative flex items-center" ref={dropdownRef}>
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="group relative inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
+                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
                         aria-expanded={artigosDropdownOpen}
                         aria-haspopup="true"
                         aria-label={`${item.label} menu`}
                       >
-                        <span className="relative inline-block">
-                          {item.label}
-                          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-500 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
-                        </span>
+                        {item.label}
                         <svg
                           className={`w-4 h-4 transition-transform duration-300 ease-in-out flex-shrink-0 ${
                             artigosDropdownOpen ? "rotate-180" : ""
@@ -150,12 +144,9 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group relative inline-flex items-center text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out whitespace-nowrap pb-1 hover:scale-105"
+                    className="text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
                   >
-                    <span className="relative inline-block">
-                      {item.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-500 group-hover:w-full transition-all duration-300 ease-in-out rounded-full"></span>
-                    </span>
+                    {item.label}
                   </Link>
                 );
               })}

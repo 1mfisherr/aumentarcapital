@@ -2,14 +2,21 @@ import { getSortedPostsData } from "@/lib/posts";
 import ArticleCard from "@/components/ArticleCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { siteConfig } from "@/lib/site.config";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const revalidate = 60; // ISR: rebuild this page every 60s if content changes
 
 export const metadata = {
-  title: "Artigos",
-  description: "Descobre os nossos artigos sobre finanças pessoais, investimentos e empreendedorismo.",
+  title: "Artigos - Finanças Pessoais, Investimentos e Empreendedorismo",
+  description: "Descobre artigos práticos sobre finanças pessoais, investimentos e empreendedorismo em Portugal. Aprende a gerir o teu dinheiro, poupar e investir com confiança. Guias completos e dicas práticas.",
   alternates: {
     canonical: `${siteConfig.url}/artigos`,
+  },
+  openGraph: {
+    title: "Artigos - Finanças Pessoais, Investimentos e Empreendedorismo",
+    description: "Descobre artigos práticos sobre finanças pessoais, investimentos e empreendedorismo em Portugal. Aprende a gerir o teu dinheiro, poupar e investir com confiança.",
+    type: "website",
+    url: `${siteConfig.url}/artigos`,
   },
 };
 
@@ -68,8 +75,14 @@ export default async function ArtigosPage({
 
   return (
     <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
-      <div className="mb-10 lg:mb-14">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900 tracking-tight">
+      <Breadcrumbs
+        items={[
+          { label: "Início", href: "/" },
+          { label: selectedCategory || "Artigos", href: selectedCategory ? `/artigos?categoria=${params.categoria}` : "/artigos" },
+        ]}
+      />
+      <div className="mb-12 lg:mb-16">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 text-neutral-900 tracking-tight">
           {selectedCategory ? selectedCategory : "Artigos"}
         </h1>
         <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-3xl">
@@ -84,15 +97,15 @@ export default async function ArtigosPage({
       </div>
 
       {posts.length === 0 ? (
-        <div className="text-center py-16 lg:py-20 bg-neutral-50 rounded-2xl border-2 border-neutral-200">
-          <div className="text-6xl mb-6">📝</div>
+        <div className="text-center py-16 lg:py-20 bg-gradient-to-br from-neutral-50 to-white rounded-2xl border border-neutral-200/60 shadow-sm" role="status" aria-live="polite">
+          <div className="text-6xl mb-6" aria-hidden="true">📝</div>
           <p className="text-neutral-700 text-lg sm:text-xl font-medium mb-2">Ainda não há artigos disponíveis.</p>
           <p className="text-neutral-500 text-base">
             Volta em breve para novos conteúdos!
           </p>
         </div>
       ) : (
-        <div className="grid gap-7 lg:gap-8">
+        <div className="grid gap-8 lg:gap-10">
           {posts.map((post, index) => (
             <div key={post.slug} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
               <ArticleCard post={post} />

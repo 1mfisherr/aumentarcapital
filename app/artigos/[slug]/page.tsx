@@ -5,6 +5,8 @@ import ArticleTracker from "@/components/ArticleTracker";
 import Image from "next/image";
 import { getNextArticles } from "@/lib/next-articles";
 import NextArticles from "@/components/NextArticles";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { formatDate } from "@/lib/date-utils";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -111,12 +113,42 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     isAccessibleForFree: true,
   };
 
+  // Breadcrumbs structured data for SEO
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: siteConfig.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Artigos",
+        item: `${siteConfig.url}/artigos`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${siteConfig.url}/artigos/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       {/* Add JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Track article views and engagement */}
@@ -131,6 +163,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       />
 
       <article className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16 overflow-x-hidden">
+        <Breadcrumbs
+          items={[
+            { label: "Início", href: "/" },
+            { label: "Artigos", href: "/artigos" },
+            { label: post.title, href: `/artigos/${slug}` },
+          ]}
+        />
         <header className="mb-10 lg:mb-14">
           {categoryDisplay && (
             <div className="mb-5">
@@ -149,11 +188,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           
           <div className="flex flex-wrap items-center gap-3 text-sm sm:text-base text-neutral-500 mb-8 lg:mb-10">
             <time dateTime={post.date} className="font-medium text-neutral-700">
-              {new Date(post.date).toLocaleDateString("pt-PT", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
+              {formatDate(post.date)}
             </time>
             <span className="text-neutral-300">•</span>
             <span className="font-medium">{post.readingTime} min de leitura</span>
@@ -162,7 +197,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {post.image && (
-            <div className="relative max-w-[70%] mx-auto rounded-2xl overflow-hidden shadow-strong">
+            <div className="relative max-w-[75%] mx-auto rounded-2xl overflow-hidden shadow-xl border border-neutral-200/60">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent z-10" />
               <Image
                 src={post.image}
                 alt={post.imageAlt || post.title}
@@ -170,7 +206,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 height={post.imageHeight || 628}
                 className="w-full h-auto object-cover"
                 priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 840px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 900px"
               />
             </div>
           )}
@@ -184,13 +220,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {nextArticles.length > 0 && <NextArticles articles={nextArticles} />}
 
         {post.tags && post.tags.length > 0 && (
-          <footer className="mt-14 lg:mt-16 pt-8 border-t-2 border-neutral-200">
-            <h3 className="text-lg font-bold text-neutral-900 mb-4">Tags Relacionadas</h3>
+          <footer className="mt-14 lg:mt-16 pt-8 border-t border-neutral-200/60">
+            <h3 className="text-lg font-bold text-neutral-900 mb-5">Tags Relacionadas</h3>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-neutral-100 text-neutral-700 hover:bg-primary hover:text-white rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer"
+                  className="px-4 py-2 bg-neutral-50 border border-neutral-200/60 text-neutral-700 hover:bg-primary hover:text-white hover:border-primary rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer hover:scale-105"
                 >
                   {tag}
                 </span>

@@ -11,8 +11,8 @@ export default function NextArticles({ articles }: NextArticlesProps) {
   }
 
   return (
-    <section className="mt-14 lg:mt-16 pt-8 border-t-2 border-neutral-200">
-      <h2 className="text-xl font-bold text-neutral-900 mb-6">
+    <section className="mt-14 lg:mt-16 pt-8 border-t border-neutral-200/60">
+      <h2 className="text-2xl font-bold text-neutral-900 mb-8">
         {articles.length === 1 ? "Próximo Artigo" : "Artigos Recomendados"}
       </h2>
       <div className="space-y-4">
@@ -22,16 +22,16 @@ export default function NextArticles({ articles }: NextArticlesProps) {
             href={`/artigos/${article.slug}`}
             className="block group"
           >
-            <article className="p-6 bg-neutral-50 hover:bg-primary-50 rounded-xl border border-neutral-200 hover:border-primary-300 transition-all duration-200">
-              <h3 className="text-lg font-semibold text-neutral-900 group-hover:text-primary-700 mb-2 transition-colors">
+            <article className="p-6 bg-white border border-neutral-200/60 hover:border-primary/40 hover:bg-primary-50/50 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+              <h3 className="text-lg font-bold text-neutral-900 group-hover:text-primary mb-2 transition-colors duration-200">
                 {article.title}
               </h3>
               {article.description && (
-                <p className="text-neutral-600 text-sm leading-relaxed">
+                <p className="text-neutral-600 text-sm leading-relaxed mb-4 line-clamp-2">
                   {article.description}
                 </p>
               )}
-              <div className="mt-4 flex items-center text-primary-600 font-medium text-sm">
+              <div className="flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
                 Continuar a ler
                 <svg
                   className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"

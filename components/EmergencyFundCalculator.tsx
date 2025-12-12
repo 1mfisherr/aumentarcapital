@@ -73,7 +73,7 @@ export default function EmergencyFundCalculator() {
     <>
       {/* Calculator Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-        <div className="bg-white border-2 border-neutral-200 rounded-2xl p-6 lg:p-8 shadow-soft">
+        <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 lg:p-8 shadow-lg">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Inputs Column */}
             <div className="space-y-6">
@@ -89,12 +89,13 @@ export default function EmergencyFundCalculator() {
                     value={monthlyExpenses}
                     onChange={(e) => setMonthlyExpenses(e.target.value)}
                     placeholder="Ex: 900"
-                    className="w-full pl-8 pr-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
                     aria-required="true"
                     aria-label="Despesas essenciais mensais em euros"
+                    aria-describedby="monthly-expenses-help"
                   />
                 </div>
-                <p className="mt-2 text-sm text-neutral-600">
+                <p id="monthly-expenses-help" className="mt-2 text-sm text-neutral-600">
                   Inclua renda, alimentação, transportes, saúde e contas básicas
                 </p>
               </div>
@@ -103,19 +104,20 @@ export default function EmergencyFundCalculator() {
                 <label htmlFor="months-to-cover" className="block text-base font-bold text-neutral-900 mb-2">
                   Meses a Cobrir
                 </label>
-                <select
-                  id="months-to-cover"
-                  value={monthsToCover}
-                  onChange={(e) => setMonthsToCover(Number(e.target.value))}
-                  className="w-full px-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base bg-white"
-                  aria-label="Número de meses a cobrir"
-                >
+                  <select
+                    id="months-to-cover"
+                    value={monthsToCover}
+                    onChange={(e) => setMonthsToCover(Number(e.target.value))}
+                    className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base bg-white shadow-sm"
+                    aria-label="Número de meses a cobrir"
+                    aria-describedby="months-to-cover-help"
+                  >
                   <option value={3}>3 meses</option>
                   <option value={4}>4 meses</option>
                   <option value={5}>5 meses</option>
                   <option value={6}>6 meses (recomendado)</option>
                 </select>
-                <p className="mt-2 text-sm text-neutral-600">
+                <p id="months-to-cover-help" className="mt-2 text-sm text-neutral-600">
                   A DECO PROTESTE recomenda 4 a 6 meses de despesas essenciais
                 </p>
               </div>
@@ -132,8 +134,8 @@ export default function EmergencyFundCalculator() {
                     value={currentSavings}
                     onChange={(e) => setCurrentSavings(e.target.value)}
                     placeholder="Ex: 500"
-                    className="w-full pl-8 pr-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
-                    aria-label="Poupanças atuais em euros"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    aria-label="Poupanças atuais em euros (opcional)"
                   />
                 </div>
               </div>
@@ -150,11 +152,12 @@ export default function EmergencyFundCalculator() {
                     value={monthlySavings}
                     onChange={(e) => setMonthlySavings(e.target.value)}
                     placeholder="Ex: 200"
-                    className="w-full pl-8 pr-5 py-3.5 border-2 border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base"
-                    aria-label="Poupança mensal em euros"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    aria-label="Poupança mensal em euros (opcional)"
+                    aria-describedby="monthly-savings-help"
                   />
                 </div>
-                <p className="mt-2 text-sm text-neutral-600">
+                <p id="monthly-savings-help" className="mt-2 text-sm text-neutral-600">
                   Quanto consegue poupar por mês para o fundo de emergência
                 </p>
               </div>
@@ -162,7 +165,8 @@ export default function EmergencyFundCalculator() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="w-full px-6 py-3 border-2 border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200"
+                className="w-full px-6 py-3 border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500"
+                aria-label="Limpar todos os campos do formulário"
               >
                 Limpar Campos
               </button>
@@ -170,7 +174,9 @@ export default function EmergencyFundCalculator() {
 
             {/* Results Column */}
             <div className="lg:pl-8 lg:border-l-2 lg:border-neutral-200">
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100/50 border-2 border-primary-200 rounded-2xl p-6 lg:p-8">
+              <div className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full blur-2xl" />
+                <div className="relative">
                 <h2 className="text-2xl font-bold text-neutral-900 mb-6">Resultados</h2>
                 
                 {calculations.hasValidInput ? (
@@ -240,13 +246,18 @@ export default function EmergencyFundCalculator() {
                     )}
                   </div>
                 ) : (
-                  <div className="text-center py-8">
-                    <p className="text-neutral-600">
+                  <div className="text-center py-8" role="status" aria-live="polite">
+                    <div className="text-4xl mb-4" aria-hidden="true">💡</div>
+                    <p className="text-neutral-600 font-medium mb-2">
                       Preencha as suas despesas mensais para ver os resultados
+                    </p>
+                    <p className="text-sm text-neutral-500">
+                      Comece por inserir o valor das suas despesas essenciais mensais
                     </p>
                   </div>
                 )}
               </div>
+                </div>
             </div>
           </div>
         </div>
@@ -254,7 +265,7 @@ export default function EmergencyFundCalculator() {
 
       {/* Information Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-        <div className="bg-white border-2 border-neutral-200 rounded-2xl p-6 lg:p-8">
+        <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 lg:p-8 shadow-sm">
           <h2 className="text-2xl font-bold text-neutral-900 mb-4">Sobre o Fundo de Emergência</h2>
           <div className="prose prose-neutral max-w-none">
             <p className="text-neutral-600 leading-relaxed mb-4">
