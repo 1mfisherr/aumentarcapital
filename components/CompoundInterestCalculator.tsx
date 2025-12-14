@@ -21,12 +21,31 @@ import {
   type CompoundFrequency,
 } from "@/lib/calculator-utils";
 
+// Info Tooltip Component
+function InfoTooltip({ text }: { text: string }) {
+  return (
+    <span className="relative group ml-1.5 inline-flex items-center">
+      <span 
+        className="w-4 h-4 rounded-full bg-neutral-200 hover:bg-primary-100 text-neutral-500 hover:text-primary-600 text-xs flex items-center justify-center cursor-help transition-colors duration-200 font-medium"
+        aria-label="Informação"
+      >
+        i
+      </span>
+      <span className="absolute left-6 top-1/2 -translate-y-1/2 z-20 hidden group-hover:block w-64 p-3 text-xs bg-neutral-800 text-white rounded-lg shadow-xl leading-relaxed">
+        <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-neutral-800" />
+        {text}
+      </span>
+    </span>
+  );
+}
+
 export default function CompoundInterestCalculator() {
   const [initialInvestment, setInitialInvestment] = useState<string>("");
   const [monthlyContribution, setMonthlyContribution] = useState<string>("");
   const [annualRate, setAnnualRate] = useState<string>("7");
   const [years, setYears] = useState<number>(20);
   const [frequency, setFrequency] = useState<CompoundFrequency>("monthly");
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   // Parse input values
   const principal = parseInput(initialInvestment);
@@ -46,12 +65,19 @@ export default function CompoundInterestCalculator() {
 
   const hasValidInput = principal > 0 || monthly > 0;
 
+  const handleCalculate = () => {
+    if (hasValidInput) {
+      setShowResults(true);
+    }
+  };
+
   const handleReset = () => {
     setInitialInvestment("");
     setMonthlyContribution("");
     setAnnualRate("7");
     setYears(20);
     setFrequency("monthly");
+    setShowResults(false);
   };
 
   const handlePresetClick = (presetRate: number) => {
@@ -102,8 +128,9 @@ export default function CompoundInterestCalculator() {
             <div className="space-y-6">
               {/* Initial Investment */}
               <div>
-                <label htmlFor="initial-investment" className="block text-base font-bold text-neutral-900 mb-2">
-                  Capital Inicial <span className="text-neutral-500 text-sm font-normal">(opcional)</span>
+                <label htmlFor="initial-investment" className="flex items-center text-base font-bold text-neutral-900 mb-2">
+                  Capital Inicial <span className="text-neutral-500 text-sm font-normal ml-1">(opcional)</span>
+                  <InfoTooltip text="O montante que tens disponível para começar a investir hoje. Pode ser zero se preferires apenas contribuições mensais." />
                 </label>
                 <div className="relative">
                   <span className="absolute left-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">€</span>
@@ -117,15 +144,13 @@ export default function CompoundInterestCalculator() {
                     aria-label="Capital inicial em euros"
                   />
                 </div>
-                <p className="mt-2 text-sm text-neutral-600">
-                  Montante que tens disponível para investir agora
-                </p>
               </div>
 
               {/* Monthly Contribution */}
               <div>
-                <label htmlFor="monthly-contribution" className="block text-base font-bold text-neutral-900 mb-2">
-                  Contribuição Mensal <span className="text-neutral-500 text-sm font-normal">(opcional)</span>
+                <label htmlFor="monthly-contribution" className="flex items-center text-base font-bold text-neutral-900 mb-2">
+                  Contribuição Mensal <span className="text-neutral-500 text-sm font-normal ml-1">(opcional)</span>
+                  <InfoTooltip text="Valor que vais adicionar ao investimento todos os meses. A consistência é mais importante que o valor — pequenas quantias regulares fazem grande diferença." />
                 </label>
                 <div className="relative">
                   <span className="absolute left-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">€</span>
@@ -139,15 +164,13 @@ export default function CompoundInterestCalculator() {
                     aria-label="Contribuição mensal em euros"
                   />
                 </div>
-                <p className="mt-2 text-sm text-neutral-600">
-                  Quanto podes investir todos os meses
-                </p>
               </div>
 
               {/* Annual Interest Rate */}
               <div>
-                <label htmlFor="annual-rate" className="block text-base font-bold text-neutral-900 mb-2">
+                <label htmlFor="annual-rate" className="flex items-center text-base font-bold text-neutral-900 mb-2">
                   Taxa de Juro Anual
+                  <InfoTooltip text="Retorno anual esperado do investimento. Valores históricos típicos: ETFs globais ~7%, PPR equilibrado ~5%, Certificados de Aforro ~2.5%." />
                 </label>
                 <div className="relative">
                   <input
@@ -185,8 +208,9 @@ export default function CompoundInterestCalculator() {
 
               {/* Investment Period */}
               <div>
-                <label htmlFor="years" className="block text-base font-bold text-neutral-900 mb-2">
+                <label htmlFor="years" className="flex items-center text-base font-bold text-neutral-900 mb-2">
                   Período de Investimento
+                  <InfoTooltip text="Número de anos que planeias manter o investimento. Quanto maior o período, mais beneficias do efeito dos juros compostos." />
                 </label>
                 <select
                   id="years"
@@ -201,15 +225,13 @@ export default function CompoundInterestCalculator() {
                     </option>
                   ))}
                 </select>
-                <p className="mt-2 text-sm text-neutral-600">
-                  Quanto mais tempo, maior o poder dos juros compostos
-                </p>
               </div>
 
               {/* Compound Frequency */}
               <div>
-                <label htmlFor="frequency" className="block text-base font-bold text-neutral-900 mb-2">
+                <label htmlFor="frequency" className="flex items-center text-base font-bold text-neutral-900 mb-2">
                   Frequência de Capitalização
+                  <InfoTooltip text="Com que frequência os juros são calculados e adicionados ao capital. Mensal é o mais comum em produtos financeiros." />
                 </label>
                 <select
                   id="frequency"
@@ -224,26 +246,42 @@ export default function CompoundInterestCalculator() {
                 </select>
               </div>
 
-              {/* Reset Button */}
-              <button
-                type="button"
-                onClick={handleReset}
-                className="w-full px-6 py-3 border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
-                aria-label="Limpar todos os campos"
-              >
-                Limpar Campos
-              </button>
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={handleCalculate}
+                  disabled={!hasValidInput}
+                  className="flex-1 px-6 py-3.5 font-bold rounded-xl focus:outline-none active:scale-[0.98]"
+                  style={
+                    hasValidInput
+                      ? { background: '#2563EB', color: '#FFFFFF' }
+                      : { background: '#E5E5E5', color: '#A3A3A3' }
+                  }
+                  aria-label="Calcular resultados"
+                >
+                  Calcular
+                </button>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="flex-1 sm:flex-none px-6 py-3.5 border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                  aria-label="Limpar todos os campos"
+                >
+                  Limpar
+                </button>
+              </div>
             </div>
 
             {/* Results Column */}
             <div className="lg:pl-8 lg:border-l-2 lg:border-neutral-200">
-              <div className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden">
+              <div className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[320px]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full blur-2xl" />
                 <div className="relative">
                   <h2 className="text-2xl font-bold text-neutral-900 mb-6">Resultados</h2>
 
-                  {hasValidInput ? (
-                    <div className="space-y-6">
+                  {showResults && hasValidInput ? (
+                    <div className="space-y-6 animate-fade-in">
                       {/* Final Amount */}
                       <div>
                         <p className="text-sm font-medium text-neutral-600 mb-2">Valor Final após {years} anos</p>
@@ -290,12 +328,12 @@ export default function CompoundInterestCalculator() {
                     </div>
                   ) : (
                     <div className="text-center py-8" role="status" aria-live="polite">
-                      <div className="text-4xl mb-4" aria-hidden="true">💡</div>
-                      <p className="text-neutral-600 font-medium mb-2">
-                        Preencha o capital inicial ou contribuição mensal
+                      <div className="text-5xl mb-4" aria-hidden="true">🧮</div>
+                      <p className="text-neutral-700 font-medium mb-2">
+                        Preenche os campos e clica em &quot;Calcular&quot;
                       </p>
                       <p className="text-sm text-neutral-500">
-                        Veja o poder dos juros compostos no crescimento do seu investimento
+                        Vê o poder dos juros compostos no crescimento do teu investimento
                       </p>
                     </div>
                   )}
@@ -305,66 +343,71 @@ export default function CompoundInterestCalculator() {
           </div>
 
           {/* Chart Section */}
-          {hasValidInput && chartData.length > 0 && (
-            <div className="mt-10 pt-10 border-t border-neutral-200">
+          {showResults && hasValidInput && chartData.length > 0 && (
+            <div className="mt-10 pt-10 border-t border-neutral-200 animate-fade-in">
               <h3 className="text-xl font-bold text-neutral-900 mb-6">Evolução do Investimento</h3>
-              <div className="h-[350px] sm:h-[400px]">
+              <div className="h-[350px] sm:h-[400px] bg-gradient-to-b from-white to-neutral-50/50 rounded-xl p-4 border border-neutral-100">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart
                     data={chartData}
-                    margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+                    margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
                   >
                     <defs>
                       <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#1E3A8A" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#1E3A8A" stopOpacity={0.05} />
+                        <stop offset="5%" stopColor="#1E3A8A" stopOpacity={0.4} />
+                        <stop offset="50%" stopColor="#3B82F6" stopOpacity={0.2} />
+                        <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.05} />
                       </linearGradient>
                       <linearGradient id="colorInvested" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#64748B" stopOpacity={0.2} />
+                        <stop offset="5%" stopColor="#64748B" stopOpacity={0.25} />
                         <stop offset="95%" stopColor="#64748B" stopOpacity={0.05} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
                     <XAxis
                       dataKey="label"
-                      tick={{ fontSize: 12, fill: "#6B7280" }}
+                      tick={{ fontSize: 11, fill: "#6B7280" }}
                       tickLine={false}
                       axisLine={{ stroke: "#E5E7EB" }}
+                      dy={10}
                     />
                     <YAxis
                       tickFormatter={formatYAxis}
-                      tick={{ fontSize: 12, fill: "#6B7280" }}
+                      tick={{ fontSize: 11, fill: "#6B7280" }}
                       tickLine={false}
-                      axisLine={{ stroke: "#E5E7EB" }}
-                      width={60}
+                      axisLine={false}
+                      width={55}
+                      dx={-5}
                     />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend
-                      wrapperStyle={{ paddingTop: "20px" }}
+                      wrapperStyle={{ paddingTop: "24px" }}
                       iconType="circle"
+                      iconSize={10}
+                      formatter={(value) => <span className="text-sm text-neutral-600">{value}</span>}
                     />
                     <Area
                       type="monotone"
                       dataKey="invested"
                       name="Total Investido"
-                      stroke="#64748B"
+                      stroke="#94A3B8"
                       strokeWidth={2}
                       fill="url(#colorInvested)"
-                      strokeDasharray="5 5"
+                      strokeDasharray="6 4"
                     />
                     <Area
                       type="monotone"
                       dataKey="totalValue"
                       name="Valor Total"
                       stroke="#1E3A8A"
-                      strokeWidth={2.5}
+                      strokeWidth={3}
                       fill="url(#colorTotal)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
               <p className="mt-4 text-sm text-neutral-500 text-center">
-                A diferença entre as linhas representa os <span className="font-medium text-accent">juros compostos</span> acumulados ao longo do tempo
+                A diferença entre as linhas representa os <span className="font-semibold text-accent">juros compostos</span> acumulados ao longo do tempo
               </p>
             </div>
           )}
@@ -377,12 +420,12 @@ export default function CompoundInterestCalculator() {
           <h2 className="text-2xl font-bold text-neutral-900 mb-4">O Que São Juros Compostos?</h2>
           <div className="prose prose-neutral max-w-none">
             <p className="text-neutral-600 leading-relaxed mb-4">
-              Os <strong>juros compostos</strong> são frequentemente chamados de "a oitava maravilha do mundo". 
+              Os <strong>juros compostos</strong> são frequentemente chamados de &quot;a oitava maravilha do mundo&quot;. 
               Ao contrário dos juros simples, onde ganhas apenas sobre o capital inicial, nos juros compostos 
               ganhas <strong>juros sobre os juros</strong> anteriores.
             </p>
             <p className="text-neutral-600 leading-relaxed mb-4">
-              Isto cria um efeito de "bola de neve" — quanto mais tempo o dinheiro está investido, 
+              Isto cria um efeito de &quot;bola de neve&quot; — quanto mais tempo o dinheiro está investido, 
               mais rápido cresce. É por isso que começar cedo é tão importante: mesmo pequenas 
               quantias podem transformar-se em valores significativos ao longo de décadas.
             </p>
