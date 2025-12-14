@@ -1,0 +1,21 @@
+{
+  "name": "Aumentar Capital",
+  "short_name": "AumentarCapital",
+  "description": "Finanças pessoais, investimentos e empreendedorismo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#1E3A8A",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
