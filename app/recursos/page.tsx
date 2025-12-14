@@ -1,16 +1,17 @@
 import { Metadata } from "next";
 import EmergencyFundCalculator from "@/components/EmergencyFundCalculator";
+import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Recursos - Calculadora de Fundo de Emergência",
-  description: "Calculadora gratuita de fundo de emergência. Descubra quanto deve poupar para emergências e quanto tempo levará a construir o seu fundo de segurança financeira. Ferramenta prática para planeamento financeiro em Portugal.",
+  title: "Recursos - Calculadoras Financeiras Gratuitas",
+  description: "Calculadoras financeiras gratuitas: simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
   },
   openGraph: {
-    title: "Recursos - Calculadora de Fundo de Emergência | Aumentar Capital",
-    description: "Calculadora gratuita de fundo de emergência. Descubra quanto deve poupar para emergências e quanto tempo levará a construir o seu fundo de segurança financeira.",
+    title: "Recursos - Calculadoras Financeiras | Aumentar Capital",
+    description: "Calculadoras financeiras gratuitas: simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
   },
@@ -65,21 +66,44 @@ export default function RecursosPage() {
               <span className="text-neutral-400 font-medium text-sm">Em breve</span>
             </div>
 
-            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 opacity-60">
-              <div className="text-5xl mb-4">📈</div>
-              <h2 className="text-xl font-bold text-neutral-900 mb-2">Simulador de Investimentos</h2>
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📈</div>
+              <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Simulador de Juros Compostos</h2>
               <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
-                Em breve: Simula diferentes cenários de investimento e vê o potencial crescimento do teu capital.
+                Simula o crescimento do teu investimento ao longo do tempo e vê o poder dos juros compostos em ação.
               </p>
-              <span className="text-neutral-400 font-medium text-sm">Em breve</span>
+              <a
+                href="#calculadora-juros-compostos"
+                className="text-primary font-semibold text-sm hover:text-primary-600 transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+              >
+                Usar calculadora
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Calculator Section */}
+      {/* Emergency Fund Calculator Section */}
       <section id="calculadora-fundo-emergencia" className="scroll-mt-20">
         <EmergencyFundCalculator />
+      </section>
+
+      {/* Compound Interest Calculator Section */}
+      <section id="calculadora-juros-compostos" className="scroll-mt-20 pt-8 lg:pt-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Simulador de Juros Compostos
+            </h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+              Descobre como o teu dinheiro pode crescer ao longo do tempo. Vê o poder dos juros compostos — "a oitava maravilha do mundo".
+            </p>
+          </div>
+        </div>
+        <CompoundInterestCalculator />
       </section>
 
       {/* Additional Resources Section */}
