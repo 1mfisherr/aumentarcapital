@@ -11,7 +11,7 @@ next: "entender-teu-dinheiro-onde-vai-salario"
 description: "Guia completo de literacia financeira para Portugal. Aprende a organizar as tuas finanças pessoais e a construir estabilidade financeira passo a passo."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["literacia financeira", "finanças pessoais portugal", "educação financeira", "gestão de dinheiro", "iniciantes"]
-image: "/images/guia-inicial-literacia.webp"
+image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a organizar finanças pessoais num caderno com calculadora"
 imageWidth: 1200
 imageHeight: 628

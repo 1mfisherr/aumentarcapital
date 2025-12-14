@@ -11,7 +11,7 @@ next: "como-escolher-etfs"
 description: "Aprende a criar a tua primeira estratégia de investimento: definir objectivos, escolher activos e montar um portefólio equilibrado para iniciantes."
 categories: ["Literacia Financeira", "Investimentos"]
 tags: ["estratégia de investimento", "criar portefólio", "alocação de ativos", "perfil de risco", "investimento longo prazo"]
-image: "/images/primeira-estrategia-investimento.webp"
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a analisar gráficos financeiros no computador enquanto toma notas"
 imageWidth: 1200
 imageHeight: 628

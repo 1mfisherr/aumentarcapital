@@ -11,7 +11,7 @@ next: "fundacao-priorizar-gastos"
 description: "Aprende a criar um orçamento realista que funciona na vida real. Estratégias para lidar com imprevistos, meses atípicos e ajustes práticos."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["orçamento realista", "orçamento familiar portugal", "planear finanças", "gestão financeira", "despesas imprevistas"]
-image: "/images/orcamento-realista.webp"
+image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=628&fit=crop"
 imageAlt: "Família portuguesa a planear orçamento mensal na mesa da cozinha"
 imageWidth: 1200
 imageHeight: 628

@@ -11,7 +11,7 @@ next: null
 description: "Guia prático para começares a investir em Portugal: escolher corretora, abrir conta, transferir dinheiro e fazer o teu primeiro investimento."
 categories: ["Literacia Financeira", "Investimentos"]
 tags: ["investir passo a passo portugal", "abrir conta corretora", "DEGIRO portugal", "primeiro investimento", "como comprar ETFs"]
-image: "/images/fundacao-investir-passo-a-passo.png"
+image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=1200&h=628&fit=crop"
 imageAlt: "Ilustração representando o processo de começar a investir passo a passo"
 imageWidth: 1200
 imageHeight: 628

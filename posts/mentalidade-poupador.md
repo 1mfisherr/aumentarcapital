@@ -11,7 +11,7 @@ next: "comecar-a-investir"
 description: "Descobre como aplicar a estratégia 'paga-te primeiro' para criar disciplina financeira e construir riqueza de forma automática."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["paga-te primeiro", "como poupar dinheiro", "hábitos de poupança", "mentalidade financeira", "automatizar poupança"]
-image: "/images/mentalidade-poupador.webp"
+image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a colocar moedas num cofrinho com expressão de satisfação"
 imageWidth: 1200
 imageHeight: 628

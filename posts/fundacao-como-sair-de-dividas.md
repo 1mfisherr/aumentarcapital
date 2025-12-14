@@ -11,7 +11,7 @@ next: "negociar-dividas-juros"
 description: "Aprende estratégias práticas para sair de dívidas, reduzir juros e recuperar controlo financeiro. Métodos Avalanche e Snowball explicados."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["como sair de dívidas", "pagar dívidas portugal", "método avalanche", "eliminar dívidas", "crédito pessoal"]
-image: "/images/como-sair-de-dividas.png"
+image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a analisar dívidas com calculadora e cadernos"
 imageWidth: 1200
 imageHeight: 628

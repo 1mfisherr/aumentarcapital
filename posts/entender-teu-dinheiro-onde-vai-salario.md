@@ -11,7 +11,7 @@ next: "como-criar-orcamento"
 description: "Aprende a seguir cada euro do teu salário e a identificar para onde o dinheiro realmente vai. O primeiro passo para o controlo financeiro."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["para onde vai o meu salário", "controlar gastos", "fluxo de caixa pessoal", "rastrear despesas", "finanças pessoais"]
-image: "/images/fluxo-de-caixa.webp"
+image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=628&fit=crop"
 imageAlt: "Ilustração de salário a ser dividido por categorias de despesas"
 imageWidth: 1200
 imageHeight: 628

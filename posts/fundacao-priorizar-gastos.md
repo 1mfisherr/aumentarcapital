@@ -11,7 +11,7 @@ next: "fundacao-fundo-emergencia"
 description: "Aprende a priorizar pagamentos: despesas essenciais, dívidas ou poupança. O fluxograma que te dá segurança e controlo financeiro."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["priorizar gastos", "o que pagar primeiro", "hierarquia financeira", "gestão de dinheiro", "fundo de emergência"]
-image: "/images/priorizar-gastos.png"
+image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a organizar finanças com gráficos e calculadora, simbolizando a priorização de gastos"
 imageWidth: 1200
 imageHeight: 628

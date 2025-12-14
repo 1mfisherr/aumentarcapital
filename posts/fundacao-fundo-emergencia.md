@@ -11,7 +11,7 @@ next: "fundacao-como-sair-de-dividas"
 description: "Descobre porque um fundo de emergência é essencial, quanto precisas de juntar e onde guardar o dinheiro em Portugal de forma segura."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["fundo de emergência portugal", "quanto poupar emergência", "certificados de aforro", "poupança", "segurança financeira"]
-image: "/images/fundo-emergencia.png"
+image: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a guardar dinheiro numa caixa de emergência"
 imageWidth: 1200
 imageHeight: 628

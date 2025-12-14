@@ -11,7 +11,7 @@ next: "criar-primeira-estrategia-investimento"
 description: "Guia claro e acessível para começar a investir em Portugal. Aprende os conceitos básicos, produtos simples e como dar os primeiros passos com segurança."
 categories: ["Literacia Financeira", "Investimentos"]
 tags: ["como começar a investir portugal", "investir para iniciantes", "primeiros investimentos", "ETFs", "literacia financeira"]
-image: "/images/comecar-a-investir.webp"
+image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a aprender a investir no computador com gráficos simples"
 imageWidth: 1200
 imageHeight: 628

@@ -11,7 +11,7 @@ next: "investir-passo-a-passo-portugal"
 description: "Entende o que são ETFs, como funcionam e como escolher os melhores para o teu portefólio. Guia prático de comparação para iniciantes em Portugal."
 categories: ["Literacia Financeira", "Investimentos"]
 tags: ["como escolher ETFs", "melhores ETFs portugal", "ETF para iniciantes", "MSCI World", "S&P 500"]
-image: "/images/fundacao-etfs.png"
+image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=628&fit=crop"
 imageAlt: "Gráfico simples a representar ETFs e diversificação"
 imageWidth: 1200
 imageHeight: 628

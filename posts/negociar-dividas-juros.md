@@ -11,7 +11,7 @@ next: "mentalidade-poupador"
 description: "Aprende como negociar dívidas e reduzir juros junto do banco. Estratégias práticas para renegociar créditos e aliviar a tua prestação mensal."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["negociar dívidas banco", "renegociar crédito", "reduzir juros empréstimo", "reestruturar dívida", "PERSI"]
-image: "/images/negociar-dividas.webp"
+image: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1200&h=628&fit=crop"
 imageAlt: "Pessoa a negociar com o banco, documentos financeiros à frente"
 imageWidth: 1200
 imageHeight: 628
