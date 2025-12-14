@@ -21,6 +21,46 @@ import {
   type CompoundFrequency,
 } from "@/lib/calculator-utils";
 
+// Custom tooltip component for the chart (must be outside main component)
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{ value: number; name: string; color: string }>;
+  label?: string;
+}
+
+function ChartTooltip({ active, payload, label }: CustomTooltipProps) {
+  if (active && payload && payload.length) {
+    const totalValue = payload.find(p => p.name === "Valor Total")?.value || 0;
+    const invested = payload.find(p => p.name === "Total Investido")?.value || 0;
+    const interest = totalValue - invested;
+    
+    return (
+      <div className="bg-white border border-neutral-200 rounded-xl p-4 shadow-lg">
+        <p className="font-bold text-neutral-900 mb-2">{label}</p>
+        <div className="space-y-1 text-sm">
+          <p className="text-primary-700">
+            <span className="font-medium">Valor Total:</span> {formatCurrency(totalValue)}
+          </p>
+          <p className="text-neutral-600">
+            <span className="font-medium">Investido:</span> {formatCurrency(invested)}
+          </p>
+          <p className="text-accent">
+            <span className="font-medium">Juros Ganhos:</span> {formatCurrency(interest)}
+          </p>
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
+// Format Y-axis values (must be outside main component)
+function formatYAxisValue(value: number): string {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+  if (value >= 1000) return `${(value / 1000).toFixed(0)}k`;
+  return value.toString();
+}
+
 // Info Tooltip Component
 function InfoTooltip({ text }: { text: string }) {
   return (
@@ -82,40 +122,6 @@ export default function CompoundInterestCalculator() {
 
   const handlePresetClick = (presetRate: number) => {
     setAnnualRate(presetRate.toString());
-  };
-
-  // Custom tooltip for chart
-  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; name: string; color: string }>; label?: string }) => {
-    if (active && payload && payload.length) {
-      const totalValue = payload.find(p => p.name === "Valor Total")?.value || 0;
-      const invested = payload.find(p => p.name === "Total Investido")?.value || 0;
-      const interest = totalValue - invested;
-      
-      return (
-        <div className="bg-white border border-neutral-200 rounded-xl p-4 shadow-lg">
-          <p className="font-bold text-neutral-900 mb-2">{label}</p>
-          <div className="space-y-1 text-sm">
-            <p className="text-primary-700">
-              <span className="font-medium">Valor Total:</span> {formatCurrency(totalValue)}
-            </p>
-            <p className="text-neutral-600">
-              <span className="font-medium">Investido:</span> {formatCurrency(invested)}
-            </p>
-            <p className="text-accent">
-              <span className="font-medium">Juros Ganhos:</span> {formatCurrency(interest)}
-            </p>
-          </div>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  // Format Y-axis values
-  const formatYAxis = (value: number) => {
-    if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
-    if (value >= 1000) return `${(value / 1000).toFixed(0)}k`;
-    return value.toString();
   };
 
   return (
@@ -372,14 +378,14 @@ export default function CompoundInterestCalculator() {
                       dy={10}
                     />
                     <YAxis
-                      tickFormatter={formatYAxis}
+                      tickFormatter={formatYAxisValue}
                       tick={{ fontSize: 11, fill: "#6B7280" }}
                       tickLine={false}
                       axisLine={false}
                       width={55}
                       dx={-5}
                     />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip content={<ChartTooltip />} />
                     <Legend
                       wrapperStyle={{ paddingTop: "24px" }}
                       iconType="circle"

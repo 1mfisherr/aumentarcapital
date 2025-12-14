@@ -231,7 +231,7 @@ export default function Header() {
         {/* Mobile Navigation - Full Screen Overlay */}
         {mobileMenuOpen && (
           <div 
-            className="md:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto"
+            className="md:hidden fixed inset-0 top-16 bg-white/95 backdrop-blur-sm z-40 overflow-y-auto mobile-menu-enter"
             onClick={(e) => {
               // Close menu when clicking outside the nav content
               if (e.target === e.currentTarget) {
@@ -241,7 +241,7 @@ export default function Header() {
           >
             <nav 
               id="mobile-navigation"
-              className="border-t border-neutral-200 py-6 px-4 space-y-2 animate-slide-up"
+              className="border-t border-neutral-200 py-6 px-4 space-y-2 mobile-menu-content"
               aria-label="Navegação principal"
             >
               {/* Começa Aqui - Standout Link in Mobile */}

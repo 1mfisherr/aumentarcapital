@@ -4,6 +4,9 @@ import { siteConfig } from "@/lib/site.config";
 import { useState } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+// Note: Metadata needs to be in a separate server component for client components
+// This component handles the form functionality
+
 export default function ContactoPage() {
   const [formData, setFormData] = useState({
     name: "",

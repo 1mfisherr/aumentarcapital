@@ -9,10 +9,6 @@ function NewsletterSignup() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  if (!siteConfig.newsletter.enabled) {
-    return null;
-  }
-
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -73,6 +69,11 @@ function NewsletterSignup() {
       }
     }
   }, [email]);
+
+  // Early return after hooks to follow Rules of Hooks
+  if (!siteConfig.newsletter.enabled) {
+    return null;
+  }
 
   return (
     <div className="w-full bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-8 sm:p-10 md:p-12 shadow-lg relative overflow-hidden">

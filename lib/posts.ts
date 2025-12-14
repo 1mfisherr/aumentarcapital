@@ -8,7 +8,17 @@ import { ArticleMeta, ArticleData } from "./types";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
+// Simple in-memory cache for posts data
+let postsCache: ArticleMeta[] | null = null;
+let postsCacheTime: number = 0;
+const CACHE_DURATION = 60 * 1000; // 1 minute cache
+
 export function getSortedPostsData(): ArticleMeta[] {
+  // Return cached data if valid
+  const now = Date.now();
+  if (postsCache && (now - postsCacheTime) < CACHE_DURATION) {
+    return postsCache;
+  }
   try {
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames
@@ -34,15 +44,27 @@ export function getSortedPostsData(): ArticleMeta[] {
       })
       .filter((post): post is ArticleMeta => post !== null);
 
-    return allPostsData.sort((a, b) => {
+    const sortedPosts = allPostsData.sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
       return dateB - dateA; // Sort descending (newest first)
     });
+
+    // Update cache
+    postsCache = sortedPosts;
+    postsCacheTime = Date.now();
+
+    return sortedPosts;
   } catch (error) {
     console.error("Error reading posts directory:", error);
-    return [];
+    return postsCache || []; // Return stale cache if available
   }
+}
+
+// Clear cache (useful for development or forced refresh)
+export function clearPostsCache(): void {
+  postsCache = null;
+  postsCacheTime = 0;
 }
 
 export async function getPostData(slug: string): Promise<ArticleData> {

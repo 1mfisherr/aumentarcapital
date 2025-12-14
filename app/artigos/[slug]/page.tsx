@@ -197,7 +197,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {post.image && (
-            <div className="relative max-w-[75%] mx-auto rounded-2xl overflow-hidden shadow-xl border border-neutral-200/60">
+            <div className="relative max-w-full sm:max-w-[85%] lg:max-w-[75%] mx-auto rounded-2xl overflow-hidden shadow-xl border border-neutral-200/60">
               <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent z-10" />
               <Image
                 src={post.image}
@@ -207,6 +207,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 className="w-full h-auto object-cover"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 900px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIBAAAgEDBAMAAAAAAAAAAAAAAQIDAAQRBRIhMRNBUf/EABQBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEA/AJOm6nDZ2kEDWtvKY0CeRlJLYGM8EYz+VKlAHVQMdWZ//9k="
               />
             </div>
           )}

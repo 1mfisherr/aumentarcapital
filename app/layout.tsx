@@ -31,6 +31,15 @@ export const metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: '/icon', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [
+      { url: '/apple-icon', type: 'image/png', sizes: '180x180' },
+    ],
+  },
+  manifest: '/manifest.json',
   verification: {
     google: siteConfig.seo?.googleSiteVerification || undefined,
     other: {
@@ -57,9 +66,9 @@ export const metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+        url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
-        height: 628,
+        height: 630,
         alt: siteConfig.name,
       },
     ],
@@ -68,7 +77,7 @@ export const metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/aumentarcapital_logo.svg`],
+    images: [`${siteConfig.url}/opengraph-image`],
     creator: siteConfig.social.twitter ? `@${siteConfig.social.twitter.split('/').pop()}` : undefined,
   },
   alternates: {
@@ -85,18 +94,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
+    logo: `${siteConfig.url}/opengraph-image`,
     description: siteConfig.description,
     sameAs: [
       siteConfig.social.twitter,
       siteConfig.social.facebook,
       siteConfig.social.instagram,
       siteConfig.social.linkedin,
-    ],
+    ].filter(Boolean),
     contactPoint: {
       "@type": "ContactPoint",
       email: siteConfig.author.email,
       contactType: "customer service",
+    },
+  };
+
+  // WebSite structured data for SEO (enables sitelinks search box)
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    inLanguage: "pt-PT",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.url}/artigos?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   };
 
@@ -112,6 +144,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-text overflow-x-hidden">
