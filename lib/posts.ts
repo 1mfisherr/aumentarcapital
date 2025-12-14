@@ -65,7 +65,7 @@ export async function getPostData(slug: string): Promise<ArticleData> {
       throw new Error(`Post ${slug} is missing required metadata`);
     }
 
-    const processedContent = await remark().use(html).process(content);
+    const processedContent = await remark().use(html, { sanitize: false }).process(content);
     const contentHtml = processedContent.toString();
     const stats = readingTime(content);
 

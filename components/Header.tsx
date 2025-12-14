@@ -79,7 +79,7 @@ export default function Header() {
             <nav className="flex items-center flex-nowrap gap-3 md:gap-4 lg:gap-6 xl:gap-8">
               {/* Começa Aqui - Standout Link */}
               <Link
-                href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
+                href="/artigos/guia-inicial-literacia-financeira"
                 className="text-sm md:text-base font-semibold text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
               >
                 Começa Aqui
@@ -246,7 +246,7 @@ export default function Header() {
             >
               {/* Começa Aqui - Standout Link in Mobile */}
               <Link
-                href="/artigos/comeca-aqui-guia-financas-pessoais-portugal"
+                href="/artigos/guia-inicial-literacia-financeira"
                 onClick={() => setMobileMenuOpen(false)}
                 className="group relative block px-4 py-3.5 text-base font-semibold text-primary-600 hover:text-primary-700 transition-all duration-300 ease-in-out mb-4 inline-block w-auto"
               >

@@ -118,17 +118,52 @@ Agora compara os totais com o teu rendimento líquido mensal. Faz as contas:
 
 A Inês ganha 1.200€ líquidos por mês como administrativa numa empresa do Porto. Quando fez este exercício pela primeira vez, encontrou o seguinte:
 
-| Categoria | Valor Mensal |
-|-----------|--------------|
-| Renda + Condomínio | 450€ |
-| Serviços básicos | 85€ |
-| Supermercado | 220€ |
-| Transportes | 80€ |
-| Lazer e restaurantes | 145€ |
-| Subscrições | 35€ |
-| Compras diversas | 95€ |
-| Outros | 60€ |
-| **Total** | **1.170€** |
+<table style="border-collapse: collapse; width: 100%; max-width: 400px; margin: 0 auto;">
+  <thead>
+    <tr>
+      <th style="text-align: left; padding: 12px 24px 12px 0; border-bottom: 2px solid #e5e7eb;">Categoria</th>
+      <th style="text-align: right; padding: 12px 0 12px 24px; border-bottom: 2px solid #e5e7eb;">Valor Mensal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Renda + Condomínio</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">450€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Serviços básicos</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">85€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Supermercado</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">220€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Transportes</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">80€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Lazer e restaurantes</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">145€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Subscrições</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">35€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Compras diversas</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">95€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0; border-bottom: 1px solid #f3f4f6;">Outros</td>
+      <td style="text-align: right; padding: 10px 0 10px 24px; border-bottom: 1px solid #f3f4f6;">60€</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 24px 10px 0;"><strong>Total</strong></td>
+      <td style="text-align: right; padding: 10px 0 10px 24px;"><strong>1.170€</strong></td>
+    </tr>
+  </tbody>
+</table>
 
 À primeira vista, parecia controlado — sobram 30€. Mas a Inês percebeu que:
 
