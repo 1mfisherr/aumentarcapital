@@ -45,30 +45,30 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="logo-link flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group">
             {/* Modern Logo Icon */}
-            <div className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300" style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #1E3A8A 100%)', backgroundColor: '#2563EB' }}>
-              <svg 
-                className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0" 
-                viewBox="0 0 24 24" 
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ background: 'transparent' }}
+            <div
+              className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300"
+              style={{ backgroundColor: "#4A6FA5" }}
+            >
+              <svg
+                className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                {/* Two arrows pointing up */}
-                <path d="M7 13l5-5 5 5" />
-                <path d="M7 18l5-5 5 5" />
+                {/* Three ascending bars to hint at financial growth */}
+                <rect x="5" y="12" width="3" height="7" rx="0.75" />
+                <rect x="10.5" y="8" width="3" height="11" rx="0.75" />
+                <rect x="16" y="4" width="3" height="15" rx="0.75" />
               </svg>
             </div>
             
             {/* Logo Text */}
-            <div className="flex flex-col">
-              <span className="logo-text text-base sm:text-lg md:text-xl font-bold tracking-tight leading-none" style={{ color: '#1E3A8A' }}>
-                aumentar<span className="logo-accent">capital</span>
+            <div className="flex flex-col font-[family-name:var(--font-poppins)]">
+              <span className="logo-text text-base sm:text-lg md:text-xl font-semibold tracking-wide leading-none" style={{ color: "#1E3A8A", letterSpacing: "0.02em" }}>
+                Aumentar
               </span>
-              <span className="logo-domain text-[10px] sm:text-xs md:text-sm font-medium tracking-wide leading-none mt-0.5 opacity-70" style={{ color: '#1E3A8A' }}>
-                .com
+              <span className="logo-domain text-[10px] sm:text-xs md:text-sm font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase" style={{ color: "#1E3A8A", letterSpacing: "0.08em" }}>
+                Capital.com
               </span>
             </div>
           </Link>
@@ -80,7 +80,7 @@ export default function Header() {
               {/* Começa Aqui - Standout Link */}
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
-                className="text-sm md:text-base font-semibold text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                className="text-sm md:text-base font-semibold text-secondary hover:text-[#4A6FA5] transition-colors duration-300 ease-in-out whitespace-nowrap"
               >
                 Começa Aqui
               </Link>
@@ -92,7 +92,7 @@ export default function Header() {
                     <div key={item.href} className="relative flex items-center" ref={dropdownRef}>
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-[#4A6FA5] transition-colors duration-300 ease-in-out whitespace-nowrap"
                         aria-expanded={mounted ? artigosDropdownOpen : false}
                         aria-haspopup="true"
                         aria-label={`${item.label} menu`}
@@ -125,7 +125,7 @@ export default function Header() {
                           <Link
                             href="/artigos"
                             onClick={() => setArtigosDropdownOpen(false)}
-                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
+                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-[#4A6FA5] hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
                             role="menuitem"
                           >
                             Todos os Artigos
@@ -136,7 +136,7 @@ export default function Header() {
                               key={categoria.href}
                               href={categoria.href}
                               onClick={() => setArtigosDropdownOpen(false)}
-                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
+                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-[#4A6FA5] hover:bg-primary-50 transition-all duration-300 ease-in-out rounded-lg"
                               role="menuitem"
                             >
                               {categoria.label}
@@ -153,7 +153,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm md:text-base font-medium text-secondary hover:text-primary-500 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                    className="text-sm md:text-base font-medium text-secondary hover:text-[#4A6FA5] transition-colors duration-300 ease-in-out whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
@@ -198,7 +198,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-primary-500 transition-all duration-300 ease-in-out flex-shrink-0"
+            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-[#4A6FA5] transition-all duration-300 ease-in-out flex-shrink-0"
             aria-label={mounted && mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mounted ? mobileMenuOpen : false}
             aria-controls="mobile-navigation"
@@ -248,11 +248,11 @@ export default function Header() {
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
                 onClick={() => setMobileMenuOpen(false)}
-                className="group relative block px-4 py-3.5 text-base font-semibold text-primary-600 hover:text-primary-700 transition-all duration-300 ease-in-out mb-4 inline-block w-auto"
+                className="group relative block px-4 py-3.5 text-base font-semibold text-secondary hover:text-[#4A6FA5] transition-all duration-300 ease-in-out mb-4 inline-block w-auto"
               >
                 <span className="relative">
                   Começa Aqui
-                  <span className="absolute bottom-2 left-4 right-4 h-0.5 bg-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></span>
+                  <span className="absolute bottom-2 left-4 right-4 h-0.5 bg-[#4A6FA5] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></span>
                 </span>
               </Link>
               
@@ -263,7 +263,7 @@ export default function Header() {
                     <div key={item.href} className="mb-2">
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
+                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-[#4A6FA5] hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                       >
                         <span>{item.label}</span>
                         <svg
@@ -290,7 +290,7 @@ export default function Header() {
                               setMobileMenuOpen(false);
                               setArtigosDropdownOpen(false);
                             }}
-                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
+                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-[#4A6FA5] hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                           >
                             Todos os Artigos
                           </Link>
@@ -302,7 +302,7 @@ export default function Header() {
                                 setMobileMenuOpen(false);
                                 setArtigosDropdownOpen(false);
                               }}
-                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
+                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-[#4A6FA5] hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                             >
                               {categoria.label}
                             </Link>
@@ -319,7 +319,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
+                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-[#4A6FA5] hover:bg-primary-50 rounded-xl transition-all duration-300 ease-in-out"
                   >
                     {item.label}
                   </Link>

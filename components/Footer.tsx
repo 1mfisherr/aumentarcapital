@@ -71,7 +71,7 @@ export default function Footer() {
 
         <div className="border-t border-neutral-200/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-neutral-600">
-            © {new Date().getFullYear()} <span className="font-semibold text-neutral-900">{siteConfig.name}</span>. Todos os direitos reservados.
+            © {new Date().getUTCFullYear()} <span className="font-semibold text-neutral-900">{siteConfig.name}</span>. Todos os direitos reservados.
           </p>
           <p className="text-sm text-neutral-500">
             Feito com ❤️ para ajudar pessoas

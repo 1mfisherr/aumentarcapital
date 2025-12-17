@@ -1,5 +1,8 @@
 import { siteConfig } from "@/lib/site.config";
 
+// Static to avoid hydration mismatches from dynamic dates
+const LAST_UPDATED = "17/12/2025";
+
 export const metadata = {
   title: "Política de Privacidade - Aumentar Capital",
   description: "Política de privacidade e proteção de dados do Aumentar Capital. Conhece como protegemos e utilizamos as tuas informações pessoais. Conformidade com RGPD.",
@@ -21,7 +24,7 @@ export default function PoliticaPrivacidadePage() {
 
       <div className="prose max-w-none text-gray-700">
         <p className="text-sm text-gray-600 mb-6">
-          Última atualização: {new Date().toLocaleDateString("pt-PT")}
+          Última atualização: {LAST_UPDATED}
         </p>
 
         <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
