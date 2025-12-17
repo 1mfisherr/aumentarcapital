@@ -69,7 +69,7 @@ export default async function HomePage() {
         {featuredPost && (
           <div className="group block">
             <Link href={`/artigos/${featuredPost.slug}`}>
-              <article className="rounded-3xl overflow-hidden h-full bg-gradient-to-br from-white to-neutral-50/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <article className="rounded-3xl overflow-hidden h-full bg-gradient-to-br from-white to-neutral-50/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
                 {/* Featured Image */}
                 <div className="relative w-full h-[280px] sm:h-[400px] lg:h-[450px] bg-gradient-to-br from-primary-50 via-primary-100/50 to-neutral-100 overflow-hidden">
                   {featuredPost.image ? (
@@ -91,7 +91,7 @@ export default async function HomePage() {
                   {/* Floating Badges */}
                   <div className="absolute top-6 left-6 flex flex-col gap-2">
                     {/* Featured Badge */}
-                    <span className="inline-block px-4 py-2 text-xs font-bold text-white bg-accent/90 backdrop-blur-sm rounded-full uppercase tracking-wider shadow-lg flex items-center gap-1.5">
+                    <span className="inline-block px-4 py-2 text-xs font-bold text-white bg-cyan-500/90 backdrop-blur-sm rounded-full uppercase tracking-wider shadow-lg flex items-center gap-1.5">
                       <span>✨</span>
                       <span>Em Destaque</span>
                     </span>
@@ -108,7 +108,7 @@ export default async function HomePage() {
                 {/* Featured Content */}
                 <div className="p-8 sm:p-10 lg:p-12 bg-white/80 backdrop-blur-sm">
                   {/* Title */}
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-5 leading-tight group-hover:text-primary-500 transition-colors duration-300">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-5 leading-tight group-hover:text-cyan-600 transition-colors duration-300">
                     {featuredPost.title}
                   </h1>
                 
@@ -128,7 +128,7 @@ export default async function HomePage() {
                         <div className="text-xs text-neutral-500">{formatTimeAgo(featuredPost.date)}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full text-primary-700 font-semibold text-sm">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-cyan-50 rounded-full text-cyan-700 font-semibold text-sm">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -160,7 +160,7 @@ export default async function HomePage() {
             {latestPosts.map((post, index) => (
               <div key={post.slug} className="group block animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
                 <Link href={`/artigos/${post.slug}`}>
-                  <article className="flex gap-4 p-4 rounded-xl bg-white hover:shadow-md transition-all duration-300 cursor-pointer group-hover:-translate-y-0.5">
+                  <article className="flex gap-4 p-4 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-100 hover:border-cyan-200 hover:shadow-lg transition-all duration-300 cursor-pointer group-hover:-translate-y-0.5">
                     {/* Thumbnail */}
                     {post.image && (
                       <div className="flex-shrink-0 w-20 h-20 lg:w-24 lg:h-24 relative rounded-lg overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100">
@@ -186,7 +186,7 @@ export default async function HomePage() {
                       )}
                       
                       {/* Title */}
-                      <h3 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200">
+                      <h3 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug mb-2 line-clamp-2 group-hover:text-cyan-600 transition-colors duration-200">
                         {post.title}
                       </h3>
                       
@@ -206,23 +206,23 @@ export default async function HomePage() {
       </div>
 
       {/* Categories Section */}
-      <section className="mb-16 border-t border-neutral-200/60 pt-12 lg:pt-16 w-full">
+      <section className="mb-16 border-t border-neutral-200/60 pt-12 lg:pt-16 w-full bg-gradient-to-b from-blue-50/30 to-transparent rounded-3xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-3">Explora por Categoria</h2>
           <p className="text-neutral-600 text-lg">Descobre conteúdo organizado por temas</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-          <Link href="/artigos" className="group relative p-8 border border-neutral-200/60 rounded-2xl hover:border-primary/40 transition-all duration-300 bg-white hover:shadow-lg hover:-translate-y-1 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all duration-300" />
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-blue-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-blue-400 transition-all duration-300 bg-gradient-to-br from-white to-blue-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
               <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">💰</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-5">
                 Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
               </p>
-              <div className="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+              <div className="text-blue-600 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
                 <span>Explorar</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -231,17 +231,17 @@ export default async function HomePage() {
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-8 border border-neutral-200/60 rounded-2xl hover:border-primary/40 transition-all duration-300 bg-white hover:shadow-lg hover:-translate-y-1 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all duration-300" />
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-cyan-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-cyan-400 transition-all duration-300 bg-gradient-to-br from-white to-cyan-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/0 to-cyan-50/0 group-hover:from-cyan-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
               <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">📈</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-cyan-600 transition-colors duration-200">
                 Investimentos
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-5">
                 Descobre como fazer o teu dinheiro crescer através de investimentos inteligentes
               </p>
-              <div className="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+              <div className="text-cyan-600 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
                 <span>Explorar</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -250,17 +250,17 @@ export default async function HomePage() {
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-8 border border-neutral-200/60 rounded-2xl hover:border-primary/40 transition-all duration-300 bg-white hover:shadow-lg hover:-translate-y-1 sm:col-span-2 lg:col-span-1 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all duration-300" />
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-purple-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-purple-400 transition-all duration-300 bg-gradient-to-br from-white to-purple-50/20 hover:shadow-lg hover:-translate-y-1 sm:col-span-2 lg:col-span-1 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-50/0 group-hover:from-purple-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
               <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">🚀</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
                 Empreendedorismo
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-5">
                 Transforma as tuas ideias em negócios lucrativos e sustentáveis
               </p>
-              <div className="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+              <div className="text-purple-600 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
                 <span>Explorar</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

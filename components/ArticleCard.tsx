@@ -10,18 +10,33 @@ export default function ArticleCard({ post }: ArticleCardProps) {
   // Handle category as either string or array
   const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
   
+  // Get category-specific colors
+  const getCategoryColors = (category: string | undefined) => {
+    const lowerCategory = category?.toLowerCase() || '';
+    if (lowerCategory.includes('finan') || lowerCategory.includes('poupan')) {
+      return { bg: 'bg-blue-100', text: 'text-blue-700', hover: 'hover:bg-blue-600', border: 'hover:border-blue-200' };
+    } else if (lowerCategory.includes('invest')) {
+      return { bg: 'bg-cyan-100', text: 'text-cyan-700', hover: 'hover:bg-cyan-600', border: 'hover:border-cyan-200' };
+    } else if (lowerCategory.includes('empreend')) {
+      return { bg: 'bg-purple-100', text: 'text-purple-700', hover: 'hover:bg-purple-600', border: 'hover:border-purple-200' };
+    }
+    return { bg: 'bg-cyan-100', text: 'text-cyan-700', hover: 'hover:bg-cyan-600', border: 'hover:border-cyan-200' };
+  };
+  
+  const colors = getCategoryColors(categoryDisplay);
+  
   return (
-    <article className="group relative border border-neutral-200/60 rounded-2xl p-6 lg:p-8 bg-white transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1">
+    <article className={`group relative border-2 border-gray-100 ${colors.border} rounded-2xl p-6 lg:p-8 bg-white/90 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}>
       <Link href={`/artigos/${post.slug}`}>
         {categoryDisplay && (
           <div className="mb-4">
-            <span className="inline-block px-3 py-1.5 bg-primary-50 text-primary-700 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-105">
+            <span className={`inline-block px-3 py-1.5 ${colors.bg} ${colors.text} rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${colors.hover} group-hover:text-white group-hover:scale-105`}>
               {categoryDisplay}
             </span>
           </div>
         )}
         
-        <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4 leading-tight transition-colors duration-300 group-hover:text-primary">
+        <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4 leading-tight transition-colors duration-300 group-hover:text-cyan-600">
           {post.title}
         </h2>
       </Link>
@@ -41,7 +56,7 @@ export default function ArticleCard({ post }: ArticleCardProps) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-3 py-1.5 bg-neutral-50 text-neutral-600 hover:bg-primary hover:text-white rounded-lg font-medium transition-all duration-200 cursor-pointer hover:scale-105"
+              className="text-xs px-3 py-1.5 bg-neutral-50 text-neutral-600 hover:bg-cyan-500 hover:text-white rounded-lg font-medium transition-all duration-200 cursor-pointer hover:scale-105"
             >
               {tag}
             </span>
@@ -52,7 +67,7 @@ export default function ArticleCard({ post }: ArticleCardProps) {
       <div className="mt-6 pt-5 border-t border-neutral-100">
         <Link 
           href={`/artigos/${post.slug}`}
-          className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all duration-200"
+          className="inline-flex items-center gap-2 text-cyan-600 font-semibold text-sm group-hover:gap-3 transition-all duration-200"
         >
           Ler artigo
           <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

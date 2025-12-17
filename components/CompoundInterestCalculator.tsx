@@ -38,13 +38,13 @@ function ChartTooltip({ active, payload, label }: CustomTooltipProps) {
       <div className="bg-white border border-neutral-200 rounded-xl p-4 shadow-lg">
         <p className="font-bold text-neutral-900 mb-2">{label}</p>
         <div className="space-y-1 text-sm">
-          <p className="text-primary-700">
+          <p className="text-cyan-700">
             <span className="font-medium">Valor Total:</span> {formatCurrency(totalValue)}
           </p>
           <p className="text-neutral-600">
             <span className="font-medium">Investido:</span> {formatCurrency(invested)}
           </p>
-          <p className="text-accent">
+          <p className="text-cyan-600">
             <span className="font-medium">Juros Ganhos:</span> {formatCurrency(interest)}
           </p>
         </div>
@@ -66,7 +66,7 @@ function InfoTooltip({ text }: { text: string }) {
   return (
     <span className="relative group ml-1.5 inline-flex items-center">
       <span 
-        className="w-4 h-4 rounded-full bg-neutral-200 hover:bg-primary-100 text-neutral-500 hover:text-primary-600 text-xs flex items-center justify-center cursor-help transition-colors duration-200 font-medium"
+        className="w-4 h-4 rounded-full bg-neutral-200 hover:bg-cyan-100 text-neutral-500 hover:text-cyan-600 text-xs flex items-center justify-center cursor-help transition-colors duration-200 font-medium"
         aria-label="Informação"
       >
         i
@@ -146,7 +146,7 @@ export default function CompoundInterestCalculator() {
                     value={initialInvestment}
                     onChange={(e) => setInitialInvestment(e.target.value)}
                     placeholder="Ex: 1000"
-                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-label="Capital inicial em euros"
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function CompoundInterestCalculator() {
                     value={monthlyContribution}
                     onChange={(e) => setMonthlyContribution(e.target.value)}
                     placeholder="Ex: 200"
-                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-label="Contribuição mensal em euros"
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function CompoundInterestCalculator() {
                     min="0"
                     max="30"
                     step="0.5"
-                    className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-label="Taxa de juro anual em percentagem"
                   />
                   <span className="absolute right-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">%</span>
@@ -201,7 +201,7 @@ export default function CompoundInterestCalculator() {
                       onClick={() => handlePresetClick(preset.rate)}
                       className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-all duration-200 ${
                         parseFloat(annualRate) === preset.rate
-                          ? "bg-primary-50 border-primary-300 text-primary-700"
+                          ? "bg-cyan-50 border-cyan-300 text-cyan-700"
                           : "bg-neutral-50 border-neutral-200 text-neutral-600 hover:bg-neutral-100 hover:border-neutral-300"
                       }`}
                       title={preset.description}
@@ -222,7 +222,7 @@ export default function CompoundInterestCalculator() {
                   id="years"
                   value={years}
                   onChange={(e) => setYears(Number(e.target.value))}
-                  className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base bg-white shadow-sm"
+                  className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base bg-white shadow-sm"
                   aria-label="Período de investimento em anos"
                 >
                   {[5, 10, 15, 20, 25, 30, 35, 40].map((y) => (
@@ -243,7 +243,7 @@ export default function CompoundInterestCalculator() {
                   id="frequency"
                   value={frequency}
                   onChange={(e) => setFrequency(e.target.value as CompoundFrequency)}
-                  className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base bg-white shadow-sm"
+                  className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base bg-white shadow-sm"
                   aria-label="Frequência de capitalização dos juros"
                 >
                   <option value="monthly">Mensal</option>
@@ -291,7 +291,7 @@ export default function CompoundInterestCalculator() {
                       {/* Final Amount */}
                       <div>
                         <p className="text-sm font-medium text-neutral-600 mb-2">Valor Final após {years} anos</p>
-                        <p className="text-3xl lg:text-4xl font-bold text-primary-700">
+                        <p className="text-3xl lg:text-4xl font-bold text-cyan-700">
                           {formatCurrency(result.finalAmount)}
                         </p>
                       </div>
@@ -413,7 +413,7 @@ export default function CompoundInterestCalculator() {
                 </ResponsiveContainer>
               </div>
               <p className="mt-4 text-sm text-neutral-500 text-center">
-                A diferença entre as linhas representa os <span className="font-semibold text-accent">juros compostos</span> acumulados ao longo do tempo
+                A diferença entre as linhas representa os <span className="font-semibold text-cyan-600">juros compostos</span> acumulados ao longo do tempo
               </p>
             </div>
           )}
@@ -437,7 +437,7 @@ export default function CompoundInterestCalculator() {
             </p>
             
             {/* Rule of 72 */}
-            <div className="bg-primary-50 border border-primary-200/60 rounded-xl p-5 my-6">
+            <div className="bg-cyan-50 border border-cyan-200/60 rounded-xl p-5 my-6">
               <h3 className="text-lg font-bold text-neutral-900 mb-2 flex items-center gap-2">
                 <span>🧮</span> Regra dos 72
               </h3>
@@ -457,7 +457,7 @@ export default function CompoundInterestCalculator() {
           <div className="mt-6 flex flex-wrap gap-4">
             <Link
               href="/artigos/comecar-a-investir"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200 group"
+              className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold transition-colors duration-200 group"
             >
               <span>Aprende a começar a investir</span>
               <svg
@@ -471,7 +471,7 @@ export default function CompoundInterestCalculator() {
             </Link>
             <Link
               href="/artigos/criar-primeira-estrategia-investimento"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200 group"
+              className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold transition-colors duration-200 group"
             >
               <span>Cria a tua estratégia de investimento</span>
               <svg

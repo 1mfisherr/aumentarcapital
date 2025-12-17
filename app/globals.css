@@ -5,10 +5,10 @@
    Primary (Brand Blue) - Deep Sapphire #1E3A8A: Use for headings, buttons, and accents
    Primary Light (Accent) - Sky Blue #3B82F6: Use for hover effects, links, highlights
    Secondary (Neutral Contrast) - Slate Gray #64748B: For subheadings, icons, or UI elements
-   Background (Light Mode) - Off White #F9FAFB: Softer than pure white, reduces eye strain
+   Background (Main) - Warm Gray #F5F5F7: Softer than pure white, reduces eye strain
    Text (Primary) - Charcoal #111827: Almost-black for perfect readability
    Muted Text - Cool Gray #6B7280: For meta info (dates, tags, category text)
-   Accent (Highlight) - Emerald #10B981: For positive numbers, success buttons, key callouts
+   Accent (Highlight) - Cyan #06B6D4: For positive numbers, success buttons, key callouts
    Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
 */
 :root {
@@ -16,12 +16,18 @@
   --color-primary-light: #3B82F6; /* Sky Blue - Primary Light/Accent */
   --color-primary-dark: #162E6B; /* Darker blue for hover states */
   --color-secondary: #64748B; /* Slate Gray - Neutral Contrast */
-  --color-accent: #10B981; /* Emerald - Highlight/Success */
-  --color-success: #10B981; /* Emerald - Success */
+  --color-accent: #06B6D4; /* Cyan - Highlight/Success */
+  --color-accent-light: #22D3EE; /* Cyan Light - Hover states */
+  --color-accent-dark: #0891B2; /* Cyan Dark - Pressed states */
+  --color-success: #06B6D4; /* Cyan - Success */
   --color-error: #EF4444; /* Soft Red - Error/Warning */
-  --color-background: #F9FAFB; /* Off White - Background */
+  --color-background: #F5F5F7; /* Warm Gray - Main Background */
+  --color-background-main: #F5F5F7; /* Warm Gray - Body Background */
+  --color-background-alternate: #F8FAFC; /* Cool Gray - Alternating Sections */
+  --color-background-blue-tint: #EFF6FF; /* Blue Tint - Hero, Newsletter */
+  --color-background-cyan-tint: #ECFEFF; /* Cyan Tint - Highlights */
   --color-surface: #FFFFFF; /* White - Surface/Cards */
-  --color-background-subtle: #F3F4F6; /* Subtle background */
+  --color-background-subtle: #FAFAFA; /* Soft White - Subtle background */
   --color-text: #111827; /* Charcoal - Primary Text */
   --color-text-muted: #6B7280; /* Cool Gray - Muted Text */
   --color-border: #E2E8F0; /* Border color */
@@ -98,7 +104,7 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--color-text);
-  background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
+  background: var(--color-background-main);
   background-attachment: fixed;
 }
 
@@ -342,19 +348,18 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));
   border-radius: 6px;
   border: 3px solid var(--color-background-subtle);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-accent-dark);
 }
 
 /* Selection styling */
 ::selection {
-  background: rgba(59, 130, 246, 0.25);
-  background: color-mix(in srgb, var(--color-primary-light) 25%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 25%, transparent);
   color: var(--color-text);
 }
 
@@ -383,14 +388,14 @@ button:disabled {
 
 /* Calculator button - explicit styling */
 .calc-btn-active {
-  background: #2563EB !important;
-  background-color: #2563EB !important;
+  background: #06B6D4 !important;
+  background-color: #06B6D4 !important;
   color: #FFFFFF !important;
 }
 
 .calc-btn-active:hover {
-  background: #1D4ED8 !important;
-  background-color: #1D4ED8 !important;
+  background: #0891B2 !important;
+  background-color: #0891B2 !important;
 }
 
 .calc-btn-disabled {

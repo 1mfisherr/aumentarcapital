@@ -89,7 +89,7 @@ export default function EmergencyFundCalculator() {
                     value={monthlyExpenses}
                     onChange={(e) => setMonthlyExpenses(e.target.value)}
                     placeholder="Ex: 900"
-                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-required="true"
                     aria-label="Despesas essenciais mensais em euros"
                     aria-describedby="monthly-expenses-help"
@@ -108,7 +108,7 @@ export default function EmergencyFundCalculator() {
                     id="months-to-cover"
                     value={monthsToCover}
                     onChange={(e) => setMonthsToCover(Number(e.target.value))}
-                    className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base bg-white shadow-sm"
+                    className="w-full px-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base bg-white shadow-sm"
                     aria-label="Número de meses a cobrir"
                     aria-describedby="months-to-cover-help"
                   >
@@ -134,7 +134,7 @@ export default function EmergencyFundCalculator() {
                     value={currentSavings}
                     onChange={(e) => setCurrentSavings(e.target.value)}
                     placeholder="Ex: 500"
-                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-label="Poupanças atuais em euros (opcional)"
                   />
                 </div>
@@ -152,7 +152,7 @@ export default function EmergencyFundCalculator() {
                     value={monthlySavings}
                     onChange={(e) => setMonthlySavings(e.target.value)}
                     placeholder="Ex: 200"
-                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200 text-base shadow-sm"
+                    className="w-full pl-8 pr-5 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base shadow-sm"
                     aria-label="Poupança mensal em euros (opcional)"
                     aria-describedby="monthly-savings-help"
                   />
@@ -174,8 +174,8 @@ export default function EmergencyFundCalculator() {
 
             {/* Results Column */}
             <div className="lg:pl-8 lg:border-l-2 lg:border-neutral-200">
-              <div className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full blur-2xl" />
+              <div className="bg-gradient-to-br from-cyan-50 via-cyan-50/80 to-white border-2 border-cyan-100 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-100/30 rounded-full blur-2xl" />
                 <div className="relative">
                 <h2 className="text-2xl font-bold text-neutral-900 mb-6">Resultados</h2>
                 
@@ -238,8 +238,8 @@ export default function EmergencyFundCalculator() {
                     )}
 
                     {parseInput(monthlySavings) > 0 && calculations.amountNeeded <= 0 && (
-                      <div className="bg-accent/10 border-2 border-accent/30 rounded-xl p-4">
-                        <p className="text-sm font-bold text-accent">
+                      <div className="bg-cyan-50/50 border-2 border-cyan-200/40 rounded-xl p-4">
+                        <p className="text-sm font-bold text-cyan-600">
                           🎉 Parabéns! Já tem o fundo de emergência completo!
                         </p>
                       </div>
@@ -284,7 +284,7 @@ export default function EmergencyFundCalculator() {
           <div className="mt-6">
             <Link
               href="/artigos/fundacao-fundo-emergencia"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200 group"
+              className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold transition-colors duration-200 group"
             >
               <span>Ler artigo completo sobre fundo de emergência</span>
               <svg

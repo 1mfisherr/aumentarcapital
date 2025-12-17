@@ -29,8 +29,7 @@ function HeroValueProp() {
             {/* Primary CTA */}
             <Link 
               href={siteConfig.hero.ctaPrimary.href}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border-2"
-              style={{ borderColor: '#4A6FA5' }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl shadow-md hover:shadow-lg hover:bg-cyan-50 transition-all duration-300 border-2 border-cyan-500"
             >
               <span>{siteConfig.hero.ctaPrimary.text}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,7 +40,7 @@ function HeroValueProp() {
             {/* Secondary CTA */}
             <Link 
               href={siteConfig.hero.ctaSecondary.href}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-neutral-900 font-semibold rounded-xl shadow-md hover:shadow-lg hover:bg-primary-700 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -53,20 +52,20 @@ function HeroValueProp() {
           {/* Trust Indicators */}
           <div className="flex flex-wrap items-center gap-6 lg:gap-8 text-neutral-600 text-sm">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
               </svg>
               <span className="font-medium">+{siteConfig.hero.trustIndicators.readers} leitores mensais</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
               </svg>
               <span className="font-medium">+{siteConfig.hero.trustIndicators.guides} guias práticos</span>
             </div>
             {siteConfig.hero.trustIndicators.free && (
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="font-medium">100% gratuito</span>

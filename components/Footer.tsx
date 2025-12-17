@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site.config";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-neutral-200/60 mt-20 lg:mt-24 overflow-x-hidden">
+    <footer className="w-full bg-gradient-to-b from-gray-50 to-gray-100 border-t border-neutral-200/60 mt-20 lg:mt-24 overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-12">
           {/* About */}
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/politica-privacidade"
-                  className="text-base text-neutral-600 hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
+                  className="text-base text-neutral-600 hover:text-cyan-600 transition-colors duration-200 inline-flex items-center gap-2 group"
                 >
                   <span>Política de Privacidade</span>
                   <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 bg-neutral-50 border border-neutral-200/60 text-neutral-700 hover:border-primary hover:text-primary hover:bg-primary-50 transition-all duration-200 rounded-xl font-medium text-sm capitalize hover:scale-105"
+                  className="px-4 py-2.5 bg-white border border-neutral-200/60 text-neutral-700 hover:border-cyan-500 hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-200 rounded-xl font-medium text-sm capitalize hover:scale-105"
                 >
                   {platform}
                 </a>

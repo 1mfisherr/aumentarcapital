@@ -27,10 +27,14 @@ module.exports = {
         secondary: {
           DEFAULT: '#64748B', // Slate Gray - Neutral Contrast
         },
-        // Background (Light Mode) - Off White #F9FAFB: Softer than pure white, reduces eye strain
+        // Background colors with warm tones
         background: {
-          DEFAULT: '#F9FAFB', // Off White - Background
-          subtle: '#F3F4F6',
+          DEFAULT: '#F5F5F7', // Warm Gray - Main Background
+          main: '#F5F5F7', // Warm Gray - Body Background
+          alternate: '#F8FAFC', // Cool Gray - Alternating Sections
+          'blue-tint': '#EFF6FF', // Blue Tint - Hero, Newsletter
+          'cyan-tint': '#ECFEFF', // Cyan Tint - Highlights
+          subtle: '#FAFAFA', // Soft White - Subtle background
         },
         surface: '#FFFFFF', // White - Surface/Cards
         // Text (Primary) - Charcoal #111827: Almost-black for perfect readability
@@ -40,12 +44,27 @@ module.exports = {
           muted: '#6B7280', // Cool Gray - Muted Text
         },
         muted: '#6B7280', // Cool Gray - Muted Text
-        // Accent (Highlight) - Emerald #10B981: For positive numbers, success buttons, key callouts
+        // Accent (Highlight) - Cyan #06B6D4: For positive numbers, success buttons, key callouts
         accent: {
-          DEFAULT: '#10B981', // Emerald - Highlight/Success
-          soft: '#D1FAE5',
+          DEFAULT: '#06B6D4', // Cyan - Highlight/Success
+          light: '#22D3EE', // Cyan Light - Hover states
+          dark: '#0891B2', // Cyan Dark - Pressed states
+          soft: '#CFFAFE', // Soft Cyan for backgrounds
         },
-        success: '#10B981', // Emerald - Success
+        // Cyan palette (full scale)
+        cyan: {
+          50: '#ECFEFF',
+          100: '#CFFAFE',
+          200: '#A5F3FC',
+          300: '#67E8F9',
+          400: '#22D3EE',
+          500: '#06B6D4',
+          600: '#0891B2',
+          700: '#0E7490',
+          800: '#155E75',
+          900: '#164E63',
+        },
+        success: '#06B6D4', // Cyan - Success
         // Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
         error: '#EF4444', // Soft Red - Error/Warning
         neutral: {
