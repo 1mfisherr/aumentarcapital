@@ -74,9 +74,9 @@ export default function Header() {
           </Link>
 
           {/* Desktop & Tablet Navigation */}
-          <div className="hidden md:flex items-center justify-end flex-1 gap-3 md:gap-4 lg:gap-6 min-w-0 ml-4">
+          <div className="hidden md:flex items-center justify-end flex-1 gap-4 md:gap-6 lg:gap-8 ml-4">
             {/* Navigation - fixed alignment */}
-            <nav className="flex items-center flex-nowrap gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+            <nav className="flex items-center flex-nowrap gap-4 md:gap-6 lg:gap-8">
               {/* Começa Aqui - Standout Link */}
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
@@ -165,7 +165,8 @@ export default function Header() {
             <div className="flex items-center flex-shrink-0">
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-primary text-white text-sm md:text-base font-semibold rounded-xl hover:bg-primary-700 hover:shadow-lg transition-all duration-300 whitespace-nowrap group"
+                className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-white text-sm md:text-base font-semibold rounded-xl border hover:shadow-md transition-all duration-300 whitespace-nowrap group"
+                style={{ borderColor: '#4A6FA5', color: '#4A6FA5' }}
               >
                 <svg
                   className="w-4 h-4 flex-shrink-0"
@@ -177,20 +178,6 @@ export default function Header() {
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
                 <span>Subscrever</span>
-                <svg
-                  className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
               </Link>
             </div>
           </div>
@@ -331,7 +318,8 @@ export default function Header() {
                 <Link
                   href="/contacto"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="group flex items-center justify-center gap-2 px-5 py-3.5 bg-primary text-white text-base font-semibold rounded-xl hover:bg-primary-700 hover:shadow-lg transition-all duration-300 w-full"
+                  className="group flex items-center justify-center gap-2 px-5 py-3.5 bg-white text-base font-semibold rounded-xl border hover:shadow-md transition-all duration-300 w-full"
+                  style={{ borderColor: '#4A6FA5', color: '#4A6FA5' }}
                 >
                   <svg
                     className="w-5 h-5 flex-shrink-0"
@@ -343,20 +331,6 @@ export default function Header() {
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                   <span>Subscrever Newsletter</span>
-                  <svg
-                    className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
                 </Link>
               </div>
             </nav>
