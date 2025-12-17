@@ -29,7 +29,8 @@ function HeroValueProp() {
             {/* Primary CTA */}
             <Link 
               href={siteConfig.hero.ctaPrimary.href}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-neutral-200"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border-2"
+              style={{ borderColor: '#4A6FA5' }}
             >
               <span>{siteConfig.hero.ctaPrimary.text}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +41,7 @@ function HeroValueProp() {
             {/* Secondary CTA */}
             <Link 
               href={siteConfig.hero.ctaSecondary.href}
-              className="inline-flex items-center gap-3 px-8 py-4 border-2 border-primary text-primary font-semibold rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-neutral-900 font-semibold rounded-xl shadow-md hover:shadow-lg hover:bg-primary-700 transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
