@@ -87,32 +87,7 @@
   color: #3B82F6;
 }
 
-/* Subscribe button hover effect */
-.subscribe-btn {
-  border-color: #3B82F6 !important; /* primary-500 - baby blue border */
-  transition: background-color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.subscribe-btn:hover {
-  background-color: #EFF6FF !important; /* primary-50 - light blue background */
-  border-color: #3B82F6 !important; /* primary-500 - baby blue border */
-}
-
-.subscribe-text {
-  transition: color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.subscribe-btn:hover .subscribe-text {
-  color: #3B82F6 !important; /* primary-500 - baby blue text */
-}
-
-.subscribe-arrow {
-  transition: color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.subscribe-btn:hover .subscribe-arrow {
-  color: #3B82F6 !important; /* primary-500 - baby blue arrow */
-}
+/* Header button animations - removed old subscribe-btn styles as they're now handled by Tailwind */
 
 /* Base styles */
 body {
@@ -487,6 +462,36 @@ button:disabled {
     width: 0%;
     margin-left: 100%;
   }
+}
+
+/* Hero section mobile optimizations */
+@media (max-width: 640px) {
+  /* Better spacing for hero value prop on mobile */
+  .hero-mobile-spacing {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Reduce featured article padding on mobile */
+  .featured-article-mobile {
+    padding: 1.5rem !important;
+  }
+}
+
+/* Fade-in animation for cards */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
 }
 
 /* Respect reduced motion preferences for accessibility */

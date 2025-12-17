@@ -165,20 +165,20 @@ export default function Header() {
             <div className="flex items-center flex-shrink-0">
               <Link
                 href="/contacto"
-                className="subscribe-btn inline-flex items-center gap-1.5 px-3 md:px-4 lg:px-5 py-2 bg-white border border-primary-500 text-sm md:text-base font-semibold rounded-sm transition-all duration-500 whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-primary text-white text-sm md:text-base font-semibold rounded-xl hover:bg-primary-700 hover:shadow-lg transition-all duration-300 whitespace-nowrap group"
               >
                 <svg
-                  className="w-4 h-4 text-primary-500 flex-shrink-0"
-                  fill="#3B82F6"
+                  className="w-4 h-4 flex-shrink-0"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
-                <span className="subscribe-text text-black transition-colors duration-500">Subscrever</span>
+                <span>Subscrever</span>
                 <svg
-                  className="subscribe-arrow w-4 h-4 text-black transition-colors duration-500 flex-shrink-0"
+                  className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -331,20 +331,20 @@ export default function Header() {
                 <Link
                   href="/contacto"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="subscribe-btn flex items-center justify-center gap-2 px-5 py-3.5 bg-white border-2 border-primary-500 text-base font-semibold rounded-xl transition-all duration-500 w-full shadow-sm hover:shadow-md"
+                  className="group flex items-center justify-center gap-2 px-5 py-3.5 bg-primary text-white text-base font-semibold rounded-xl hover:bg-primary-700 hover:shadow-lg transition-all duration-300 w-full"
                 >
                   <svg
-                    className="w-5 h-5 text-primary-500 flex-shrink-0"
-                    fill="#3B82F6"
+                    className="w-5 h-5 flex-shrink-0"
+                    fill="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                   >
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
-                  <span className="subscribe-text text-black transition-colors duration-500">Subscrever Newsletter</span>
+                  <span>Subscrever Newsletter</span>
                   <svg
-                    className="subscribe-arrow w-5 h-5 text-black transition-colors duration-500 flex-shrink-0"
+                    className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

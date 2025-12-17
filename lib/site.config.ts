@@ -77,5 +77,24 @@ export const siteConfig = {
     muted: "#6B7280", // Cool Gray - Muted Text
     error: "#EF4444", // Soft Red - Error/Warning
   },
+
+  // Hero section configuration
+  hero: {
+    headline: "Torna-te Financeiramente Independente",
+    subheadline: "Guias práticos e ferramentas gratuitas para gerir o teu dinheiro, investir com confiança e construir riqueza em Portugal.",
+    ctaPrimary: {
+      text: "Começar Agora",
+      href: "/artigos/guia-inicial-literacia-financeira"
+    },
+    ctaSecondary: {
+      text: "Ferramentas Grátis",
+      href: "/recursos"
+    },
+    trustIndicators: {
+      readers: "5.000",
+      guides: "50",
+      free: true
+    }
+  },
 } as const;
 
