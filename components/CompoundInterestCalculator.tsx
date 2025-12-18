@@ -259,10 +259,10 @@ export default function CompoundInterestCalculator() {
                   onClick={handleCalculate}
                   disabled={!hasValidInput}
                   className="flex-1 px-6 py-3.5 font-bold rounded-xl focus:outline-none active:scale-[0.98]"
-                  style={
+                  className={
                     hasValidInput
-                      ? { background: '#2563EB', color: '#FFFFFF' }
-                      : { background: '#E5E5E5', color: '#A3A3A3' }
+                      ? 'bg-brand-primary text-white hover:bg-brand-accent'
+                      : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
                   }
                   aria-label="Calcular resultados"
                 >
@@ -360,13 +360,13 @@ export default function CompoundInterestCalculator() {
                   >
                     <defs>
                       <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#1E3A8A" stopOpacity={0.4} />
-                        <stop offset="50%" stopColor="#3B82F6" stopOpacity={0.2} />
-                        <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.05} />
+                        <stop offset="5%" stopColor="var(--color-brand-primary)" stopOpacity={0.4} />
+                        <stop offset="50%" stopColor="var(--color-brand-secondary)" stopOpacity={0.2} />
+                        <stop offset="95%" stopColor="var(--color-brand-secondary)" stopOpacity={0.05} />
                       </linearGradient>
                       <linearGradient id="colorInvested" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#64748B" stopOpacity={0.25} />
-                        <stop offset="95%" stopColor="#64748B" stopOpacity={0.05} />
+                        <stop offset="5%" stopColor="var(--color-text-secondary)" stopOpacity={0.25} />
+                        <stop offset="95%" stopColor="var(--color-text-secondary)" stopOpacity={0.05} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
@@ -405,7 +405,7 @@ export default function CompoundInterestCalculator() {
                       type="monotone"
                       dataKey="totalValue"
                       name="Valor Total"
-                      stroke="#1E3A8A"
+                      stroke="var(--color-brand-primary)"
                       strokeWidth={3}
                       fill="url(#colorTotal)"
                     />

@@ -38,13 +38,13 @@ export default function OpenGraphImage() {
             style={{
               width: '80px',
               height: '80px',
-              background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #1E3A8A 100%)',
+              background: 'linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 50%, var(--color-brand-accent) 100%)',
               borderRadius: '16px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginRight: '24px',
-              boxShadow: '0 10px 40px rgba(30, 58, 138, 0.3)',
+              boxShadow: '0 10px 40px rgba(8, 145, 178, 0.3)',
             }}
           >
             <svg
@@ -68,7 +68,7 @@ export default function OpenGraphImage() {
               style={{
                 fontSize: '56px',
                 fontWeight: 700,
-                color: '#1E3A8A',
+                color: 'var(--color-brand-primary)',
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
               }}
@@ -76,7 +76,7 @@ export default function OpenGraphImage() {
               aumentar
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%)',
+                  background: 'linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 100%)',
                   backgroundClip: 'text',
                   color: 'transparent',
                   fontWeight: 800,
@@ -88,7 +88,7 @@ export default function OpenGraphImage() {
             <span
               style={{
                 fontSize: '24px',
-                color: '#1E3A8A',
+                color: 'var(--color-brand-primary)',
                 opacity: 0.7,
                 marginTop: '4px',
               }}

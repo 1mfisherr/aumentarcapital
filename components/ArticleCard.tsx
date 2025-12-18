@@ -14,7 +14,7 @@ export default function ArticleCard({ post }: ArticleCardProps) {
   const getCategoryColors = (category: string | undefined) => {
     const lowerCategory = category?.toLowerCase() || '';
     if (lowerCategory.includes('finan') || lowerCategory.includes('poupan')) {
-      return { bg: 'bg-blue-100', text: 'text-blue-700', hover: 'hover:bg-blue-600', border: 'hover:border-blue-200' };
+      return { bg: 'bg-primary-100', text: 'text-primary-700', hover: 'hover:bg-primary-600', border: 'hover:border-primary-200' };
     } else if (lowerCategory.includes('invest')) {
       return { bg: 'bg-cyan-100', text: 'text-cyan-700', hover: 'hover:bg-cyan-600', border: 'hover:border-cyan-200' };
     } else if (lowerCategory.includes('empreend')) {

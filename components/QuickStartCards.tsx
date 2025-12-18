@@ -9,8 +9,8 @@ const quickStartOptions = [
     title: "Começar do Zero",
     description: "Nunca geriste o teu dinheiro? Começa aqui.",
     href: "/artigos/guia-inicial-literacia-financeira",
-    color: "from-blue-500 to-blue-600",
-    hoverColor: "hover:from-blue-600 hover:to-blue-700"
+    color: "from-primary-500 to-primary-600",
+    hoverColor: "hover:from-primary-600 hover:to-primary-700"
   },
   {
     icon: "📊",

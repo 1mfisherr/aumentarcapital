@@ -6,80 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        // Brand palette
-        // Primary (Brand Blue) - Deep Sapphire #1E3A8A: Use for headings, buttons, and accents
-        // Primary Light (Accent) - Sky Blue #3B82F6: Use for hover effects, links, highlights
-        primary: {
-          DEFAULT: '#1E3A8A', // Deep Sapphire - Brand Blue
-          50: '#EFF6FF',
-          100: '#DBEAFE',
-          200: '#BFDBFE',
-          300: '#93C5FD',
-          400: '#60A5FA',
-          500: '#3B82F6', // Sky Blue - Primary Light/Accent
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E40AF',
-          900: '#1E3A8A', // Deep Sapphire - Brand Blue
-        },
-        // Secondary (Neutral Contrast) - Slate Gray #64748B: For subheadings, icons, or UI elements
-        secondary: {
-          DEFAULT: '#64748B', // Slate Gray - Neutral Contrast
-        },
-        // Background colors with warm tones
-        background: {
-          DEFAULT: '#F5F5F7', // Warm Gray - Main Background
-          main: '#F5F5F7', // Warm Gray - Body Background
-          alternate: '#F8FAFC', // Cool Gray - Alternating Sections
-          'blue-tint': '#EFF6FF', // Blue Tint - Hero, Newsletter
-          'cyan-tint': '#ECFEFF', // Cyan Tint - Highlights
-          subtle: '#FAFAFA', // Soft White - Subtle background
-        },
-        surface: '#FFFFFF', // White - Surface/Cards
-        // Text (Primary) - Charcoal #111827: Almost-black for perfect readability
-        // Muted Text - Cool Gray #6B7280: For meta info (dates, tags, category text)
-        foreground: {
-          DEFAULT: '#111827', // Charcoal - Primary Text
-          muted: '#6B7280', // Cool Gray - Muted Text
-        },
-        muted: '#6B7280', // Cool Gray - Muted Text
-        // Accent (Highlight) - Cyan #06B6D4: For positive numbers, success buttons, key callouts
-        accent: {
-          DEFAULT: '#06B6D4', // Cyan - Highlight/Success
-          light: '#22D3EE', // Cyan Light - Hover states
-          dark: '#0891B2', // Cyan Dark - Pressed states
-          soft: '#CFFAFE', // Soft Cyan for backgrounds
-        },
-        // Cyan palette (full scale)
-        cyan: {
-          50: '#ECFEFF',
-          100: '#CFFAFE',
-          200: '#A5F3FC',
-          300: '#67E8F9',
-          400: '#22D3EE',
-          500: '#06B6D4',
-          600: '#0891B2',
-          700: '#0E7490',
-          800: '#155E75',
-          900: '#164E63',
-        },
-        success: '#06B6D4', // Cyan - Success
-        // Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
-        error: '#EF4444', // Soft Red - Error/Warning
-        neutral: {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-        },
-      },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
         heading: ['var(--font-poppins)', 'system-ui', '-apple-system', 'sans-serif'],
@@ -108,12 +34,6 @@ module.exports = {
         'medium': '0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 30px -4px rgba(0, 0, 0, 0.06)',
         'strong': '0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10)',
         'lifted': '0 10px 40px rgba(0, 0, 0, 0.1)',
-      },
-      scale: {
-        '95': '0.95',
-        '97': '0.97',
-        '98': '0.98',
-        '99': '0.99',
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

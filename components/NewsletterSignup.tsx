@@ -76,7 +76,7 @@ function NewsletterSignup() {
   }
 
   return (
-    <div className="w-full bg-gradient-to-br from-cyan-50 via-blue-50 to-white border-2 border-cyan-100/50 rounded-2xl p-8 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
+    <div className="w-full bg-gradient-to-br from-cyan-50 via-primary-50 to-white border-2 border-cyan-100/50 rounded-2xl p-8 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="relative">
         <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">

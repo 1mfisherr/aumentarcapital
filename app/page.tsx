@@ -206,23 +206,23 @@ export default async function HomePage() {
       </div>
 
       {/* Categories Section */}
-      <section className="mb-16 border-t border-neutral-200/60 pt-12 lg:pt-16 w-full bg-gradient-to-b from-blue-50/30 to-transparent rounded-3xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+      <section className="mb-16 border-t border-neutral-200/60 pt-12 lg:pt-16 w-full bg-gradient-to-b from-primary-50/30 to-transparent rounded-3xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-3">Explora por Categoria</h2>
           <p className="text-neutral-600 text-lg">Descobre conteúdo organizado por temas</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-          <Link href="/artigos" className="group relative p-8 border-t-4 border-blue-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-blue-400 transition-all duration-300 bg-gradient-to-br from-white to-blue-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-transparent transition-all duration-300" />
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-primary-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-primary-400 transition-all duration-300 bg-gradient-to-br from-white to-primary-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
               <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">💰</div>
-              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
+              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
               <p className="text-neutral-600 text-sm lg:text-base leading-relaxed mb-5">
                 Aprende a gerir o teu dinheiro, criar orçamentos e controlar despesas
               </p>
-              <div className="text-blue-600 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+              <div className="text-primary-600 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
                 <span>Explorar</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

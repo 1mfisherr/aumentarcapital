@@ -1,101 +1,127 @@
 @import "tailwindcss";
 
-/* Custom CSS Variables for easy theme editing */
-/* Color Palette Documentation:
-   Primary (Brand Blue) - Deep Sapphire #1E3A8A: Use for headings, buttons, and accents
-   Primary Light (Accent) - Sky Blue #3B82F6: Use for hover effects, links, highlights
-   Secondary (Neutral Contrast) - Slate Gray #64748B: For subheadings, icons, or UI elements
-   Background (Main) - Warm Gray #F5F5F7: Softer than pure white, reduces eye strain
-   Text (Primary) - Charcoal #111827: Almost-black for perfect readability
-   Muted Text - Cool Gray #6B7280: For meta info (dates, tags, category text)
-   Accent (Highlight) - Cyan #06B6D4: For positive numbers, success buttons, key callouts
-   Error / Warning - Soft Red #EF4444: For alerts, warnings, or error messages
+/* =================================================================
+   THEME CONFIGURATION - SINGLE SOURCE OF TRUTH
+   ================================================================= 
+   
+   Change colors here and they update across the ENTIRE website.
+   No need to edit components, Tailwind config, or anything else!
+   
+   Usage in components:
+   - bg-brand-primary   → Primary brand color background
+   - text-brand-primary → Primary brand color text
+   - border-brand       → Primary brand color border
+   
+   All standard Tailwind utilities work: hover:, focus:, etc.
 */
+
+@theme {
+  /* ===== BRAND COLORS ===== */
+  --color-brand-primary: #0891B2;      /* Main brand color (cyan) */
+  --color-brand-secondary: #06B6D4;    /* Secondary brand color (lighter cyan) */
+  --color-brand-accent: #0E7490;       /* Accent color (darker cyan) */
+  
+  /* ===== TEXT COLORS ===== */
+  --color-text-primary: #111827;       /* Main text (almost black) */
+  --color-text-secondary: #64748B;     /* Secondary text (gray) */
+  --color-text-muted: #6B7280;         /* Muted text (lighter gray) */
+  
+  /* ===== BACKGROUND COLORS ===== */
+  --color-bg-primary: #FFFFFF;         /* Main background (white) */
+  --color-bg-secondary: #F5F5F7;       /* Secondary background (light gray) */
+  --color-bg-subtle: #FAFAFA;          /* Subtle background */
+  --color-bg-brand-light: #ECFEFF;     /* Light brand tint background */
+  
+  /* ===== UI COLORS ===== */
+  --color-border: #E2E8F0;             /* Border color */
+  --color-success: #10B981;            /* Success messages */
+  --color-error: #EF4444;              /* Error messages */
+  --color-warning: #F59E0B;            /* Warning messages */
+  
+  /* ===== CUSTOM SHADOWS ===== */
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 30px -4px rgba(0, 0, 0, 0.06);
+  --shadow-strong: 0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10);
+  --shadow-lifted: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
 :root {
-  --color-primary: #1E3A8A; /* Deep Sapphire - Brand Blue */
-  --color-primary-light: #3B82F6; /* Sky Blue - Primary Light/Accent */
-  --color-primary-dark: #162E6B; /* Darker blue for hover states */
-  --color-secondary: #64748B; /* Slate Gray - Neutral Contrast */
-  --color-accent: #06B6D4; /* Cyan - Highlight/Success */
-  --color-accent-light: #22D3EE; /* Cyan Light - Hover states */
-  --color-accent-dark: #0891B2; /* Cyan Dark - Pressed states */
-  --color-success: #06B6D4; /* Cyan - Success */
-  --color-error: #EF4444; /* Soft Red - Error/Warning */
-  --color-background: #F5F5F7; /* Warm Gray - Main Background */
-  --color-background-main: #F5F5F7; /* Warm Gray - Body Background */
-  --color-background-alternate: #F8FAFC; /* Cool Gray - Alternating Sections */
-  --color-background-blue-tint: #EFF6FF; /* Blue Tint - Hero, Newsletter */
-  --color-background-cyan-tint: #ECFEFF; /* Cyan Tint - Highlights */
-  --color-surface: #FFFFFF; /* White - Surface/Cards */
-  --color-background-subtle: #FAFAFA; /* Soft White - Subtle background */
-  --color-text: #111827; /* Charcoal - Primary Text */
-  --color-text-muted: #6B7280; /* Cool Gray - Muted Text */
-  --color-border: #E2E8F0; /* Border color */
+  /* Keep CSS variables for non-Tailwind usage (inline styles, etc.) */
+  --color-brand-primary: #0891B2;
+  --color-brand-secondary: #06B6D4;
+  --color-brand-accent: #0E7490;
+  --color-text-primary: #111827;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #6B7280;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F5F7;
+  --color-bg-subtle: #FAFAFA;
+  --color-bg-brand-light: #ECFEFF;
+  --color-border: #E2E8F0;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
 }
 
-/* Force title color change on hover (works even if Tailwind variants are purged) */
-.hover-title {
-  transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+/* =================================================================
+   COMPONENT UTILITY CLASSES
+   ================================================================= */
+
+/* Buttons */
+.btn-primary {
+  @apply bg-brand-primary text-white hover:bg-brand-accent 
+         px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 
+         shadow-md hover:shadow-lg;
 }
 
-.group:hover .hover-title,
-.hover-title:hover {
-  color: var(--color-primary) !important; /* primary brand blue */
+.btn-secondary {
+  @apply bg-white text-brand-primary border-2 border-brand-primary 
+         hover:bg-brand-secondary/10 px-5 py-2.5 rounded-xl font-semibold 
+         transition-all duration-300;
 }
 
-/* Logo Styles */
-.logo-link {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: transparent !important;
-  display: inline-flex;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
+/* Cards */
+.card {
+  @apply bg-white border border-neutral-200 rounded-2xl p-6 
+         transition-all duration-300;
+  box-shadow: var(--shadow-soft);
 }
 
-.logo-link::before,
-.logo-link::after {
-  display: none !important;
-  content: none !important;
+.card:hover {
+  box-shadow: var(--shadow-medium);
 }
 
-.logo-link:hover {
-  /* No transform - logo should not move or zoom on hover */
+/* Logo gradient (for text or backgrounds) */
+.logo-gradient {
+  background: linear-gradient(135deg, 
+    var(--color-brand-primary) 0%, 
+    var(--color-brand-secondary) 100%);
 }
 
-.logo-icon {
-  position: relative;
-  background-clip: padding-box;
-  border: none !important;
-}
-
-.logo-icon::before,
-.logo-icon::after {
-  display: none !important;
-  content: none !important;
-}
-
-
-.logo-accent {
-  background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+.logo-gradient-text {
+  background: linear-gradient(135deg, 
+    var(--color-brand-primary) 0%, 
+    var(--color-brand-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 800;
 }
 
-.logo-text {
-  transition: color 0.3s ease;
+/* =================================================================
+   BASE STYLES
+   ================================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
-.logo-link:hover .logo-text {
-  color: #3B82F6;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
-/* Header button animations - removed old subscribe-btn styles as they're now handled by Tailwind */
-
-/* Base styles */
 body {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -103,9 +129,12 @@ body {
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--color-text);
-  background: var(--color-background-main);
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
   background-attachment: fixed;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -113,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   margin-bottom: 0.75em;
 }
 
@@ -135,12 +164,21 @@ p {
   margin-bottom: 1.25em;
 }
 
-/* Prose (article content) styling improvements */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =================================================================
+   PROSE CONTENT (ARTICLE STYLES)
+   ================================================================= */
+
 .prose {
   max-width: 70ch;
   line-height: 1.8;
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 .prose p {
@@ -195,7 +233,7 @@ p {
   content: "→";
   position: absolute;
   left: 0;
-  color: var(--color-primary);
+  color: var(--color-brand-primary);
   font-weight: 700;
   font-size: 1.1em;
   line-height: 1.6;
@@ -219,7 +257,7 @@ p {
   content: counter(list-counter) ".";
   position: absolute;
   left: 0;
-  color: var(--color-primary);
+  color: var(--color-brand-primary);
   font-weight: 700;
   font-size: 1.1em;
   min-width: 2em;
@@ -229,8 +267,8 @@ p {
   margin-top: 2.5em;
   margin-bottom: 2.5em;
   padding: 1.5em 1.5em 1.5em 2em;
-  border-left: 4px solid var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+  border-left: 4px solid var(--color-brand-primary);
+  background: color-mix(in srgb, var(--color-brand-primary) 8%, var(--color-bg-primary));
   border-radius: 0.5rem;
   font-style: italic;
   color: var(--color-text-muted);
@@ -258,7 +296,6 @@ p {
   display: block;
 }
 
-/* Responsive image sizing for prose content */
 @media (min-width: 640px) {
   .prose img {
     max-width: 85%;
@@ -278,18 +315,10 @@ p {
   box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10);
 }
 
-/* Disable hover transform on touch devices to prevent janky behavior */
-@media (hover: none) {
-  .prose img:hover {
-    transform: none;
-  }
-}
-
 .prose a {
-  color: var(--color-primary);
+  color: var(--color-brand-primary);
   text-decoration: underline;
-  text-decoration-color: rgba(30, 58, 138, 0.3);
-  text-decoration-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--color-brand-primary) 30%, transparent);
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
   transition: all 0.2s ease;
@@ -297,88 +326,36 @@ p {
 }
 
 .prose a:hover {
-  text-decoration-color: var(--color-primary-light);
-  color: var(--color-primary-light);
+  text-decoration-color: var(--color-brand-secondary);
+  color: var(--color-brand-secondary);
 }
 
 .prose strong {
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 .prose code {
-  background: var(--color-background-subtle);
+  background: var(--color-bg-subtle);
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   font-size: 0.9em;
-  color: var(--color-secondary);
+  color: var(--color-text-secondary);
   font-weight: 500;
 }
 
-/* Performance optimizations */
-* {
-  box-sizing: border-box;
-}
+/* =================================================================
+   INTERACTIONS & ANIMATIONS
+   ================================================================= */
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Prevent horizontal overflow */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Modern scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-background-subtle);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));
-  border-radius: 6px;
-  border: 3px solid var(--color-background-subtle);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-dark);
-}
-
-/* Selection styling */
-::selection {
-  background: color-mix(in srgb, var(--color-accent) 25%, transparent);
-  color: var(--color-text);
-}
-
-/* Focus visible for accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-primary-light);
-  outline-offset: 2px;
-  border-radius: 0.25rem;
-}
-
-/* Smooth transitions for interactive elements */
 a, input, select, textarea {
   transition: all 0.2s ease;
 }
 
-/* Button reset with better defaults */
 button {
   cursor: pointer;
   font-family: inherit;
+  transition: all 0.2s ease;
 }
 
 button:disabled {
@@ -386,25 +363,49 @@ button:disabled {
   opacity: 0.6;
 }
 
-/* Calculator button - explicit styling */
-.calc-btn-active {
-  background: #06B6D4 !important;
-  background-color: #06B6D4 !important;
-  color: #FFFFFF !important;
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }
 
-.calc-btn-active:hover {
-  background: #0891B2 !important;
-  background-color: #0891B2 !important;
+::selection {
+  background: color-mix(in srgb, var(--color-brand-primary) 25%, transparent);
+  color: var(--color-text-primary);
 }
 
-.calc-btn-disabled {
-  background: #E5E5E5 !important;
-  background-color: #E5E5E5 !important;
-  color: #A3A3A3 !important;
+/* =================================================================
+   SCROLLBAR STYLING
+   ================================================================= */
+
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-/* Touch-friendly tap targets */
+::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-brand-primary), var(--color-brand-accent));
+  border-radius: 6px;
+  border: 3px solid var(--color-bg-subtle);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-accent);
+}
+
+/* =================================================================
+   ACCESSIBILITY
+   ================================================================= */
+
+@media (hover: none) {
+  .prose img:hover {
+    transform: none;
+  }
+}
+
 @media (hover: none) and (pointer: coarse) {
   a, button, [role="button"] {
     min-height: 44px;
@@ -412,25 +413,48 @@ button:disabled {
   }
 }
 
-/* Mobile menu animation */
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
+/* =================================================================
+   ANIMATIONS
+   ================================================================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 @keyframes fadeInBackdrop {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .mobile-menu-enter {
@@ -441,7 +465,21 @@ button:disabled {
   animation: slideInFromRight 0.3s ease-out forwards;
 }
 
-/* Cookie consent responsive improvements */
+/* =================================================================
+   RESPONSIVE UTILITIES
+   ================================================================= */
+
+@media (max-width: 640px) {
+  .hero-mobile-spacing {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .featured-article-mobile {
+    padding: 1.5rem !important;
+  }
+}
+
 @media (max-width: 400px) {
   .cookie-buttons {
     flex-direction: column;
@@ -450,63 +488,5 @@ button:disabled {
   
   .cookie-buttons button {
     width: 100%;
-  }
-}
-
-/* Loading bar animation */
-@keyframes loading-bar {
-  0% {
-    width: 0%;
-    margin-left: 0%;
-  }
-  50% {
-    width: 40%;
-    margin-left: 30%;
-  }
-  100% {
-    width: 0%;
-    margin-left: 100%;
-  }
-}
-
-/* Hero section mobile optimizations */
-@media (max-width: 640px) {
-  /* Better spacing for hero value prop on mobile */
-  .hero-mobile-spacing {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  
-  /* Reduce featured article padding on mobile */
-  .featured-article-mobile {
-    padding: 1.5rem !important;
-  }
-}
-
-/* Fade-in animation for cards */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-/* Respect reduced motion preferences for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

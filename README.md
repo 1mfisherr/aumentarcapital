@@ -2,11 +2,12 @@
 
 Um blog moderno sobre finanças pessoais, investimentos e empreendedorismo, construído com Next.js 16 e Tailwind CSS.
 
-## 📖 Documentação para Utilizadores
+## 📖 Documentação
 
-Se não és programador e queres **adicionar/editar artigos ou configurar o website**, consulta o guia completo:
-
-👉 **[COMO_USAR.md](./COMO_USAR.md)** - Guia completo para não-programadores
+### Para Utilizadores (Não-Programadores)
+- 📚 **[COMO_USAR.md](./COMO_USAR.md)** - Guia completo para gerir o website
+- 🎨 **[THEMING.md](./THEMING.md)** - Guia para mudar cores (super fácil!)
+- 📝 **[TEMPLATE_ARTIGO.md](./TEMPLATE_ARTIGO.md)** - Template para novos artigos
 
 ## 🚀 Quick Start (Para Programadores)
 

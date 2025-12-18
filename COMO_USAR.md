@@ -100,22 +100,27 @@ Continua a escrever...
 
 ## 🎨 Como Mudar as Cores do Website
 
-1. Abre o ficheiro: `lib/site.config.ts`
-2. Procura a secção `colors:`
-3. Altera os códigos de cores (formato: #RRGGBB)
+**Super Fácil!** Edita APENAS UM ficheiro:
 
-```typescript
-colors: {
-  primary: "#1E88E5",        // Cor principal (azul)
-  primaryDark: "#1565C0",    // Versão escura da cor principal
-  accent: "#34D399",         // Cor de destaque (verde)
-  background: "#FFFFFF",     // Cor de fundo (branco)
-  text: "#1A1A1A",          // Cor do texto principal
-  muted: "#6B7280",         // Cor do texto secundário (cinza)
+1. Abre o ficheiro: `app/globals.css`
+2. Procura a secção `:root {` (no topo do ficheiro)
+3. Altera os 3 códigos de cores principais:
+
+```css
+:root {
+  /* ===== BRAND COLORS ===== */
+  --color-brand-primary: #0891B2;      /* Cor principal (azul) */
+  --color-brand-secondary: #06B6D4;    /* Cor secundária (azul claro) */
+  --color-brand-accent: #0E7490;       /* Cor de destaque (azul escuro) */
+  ...
 }
 ```
 
-**Dica**: Usa um site como [HTML Color Picker](https://www.w3schools.com/colors/colors_picker.asp) para escolher cores.
+4. Guarda → Atualiza o browser → **Pronto!** Todas as cores mudam automaticamente.
+
+**Guia Completo**: Consulta `THEMING.md` para exemplos de esquemas de cores (roxo, verde, laranja, etc.)
+
+**Dica**: Usa [Coolors.co](https://coolors.co/) para gerar paletas de cores bonitas.
 
 ---
 

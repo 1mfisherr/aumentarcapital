@@ -84,12 +84,9 @@ export default function Header() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="logo-link flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group">
+          <Link href="/" className="flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group transition-transform duration-300">
             {/* Modern Logo Icon */}
-            <div
-              className="logo-icon flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300"
-              style={{ background: 'linear-gradient(135deg, #0891B2 0%, #06B6D4 100%)' }}
-            >
+            <div className="logo-gradient flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300">
               <svg
                 className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0"
                 viewBox="0 0 24 24"
@@ -105,10 +102,10 @@ export default function Header() {
             
             {/* Logo Text */}
             <div className="flex flex-col font-[family-name:var(--font-poppins)]">
-              <span className="logo-text text-base sm:text-lg md:text-xl font-semibold tracking-wide leading-none" style={{ color: "#1E3A8A", letterSpacing: "0.02em" }}>
+              <span className="text-base sm:text-lg md:text-xl font-semibold tracking-wide leading-none text-brand-primary group-hover:text-brand-secondary transition-colors duration-300">
                 Aumentar
               </span>
-              <span className="logo-domain text-[10px] sm:text-xs md:text-sm font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase" style={{ color: "#1E3A8A", letterSpacing: "0.08em" }}>
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase text-brand-primary">
                 Capital.com
               </span>
             </div>
@@ -206,7 +203,7 @@ export default function Header() {
             <div className="flex items-center flex-shrink-0">
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-white text-sm md:text-base font-semibold rounded-xl border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 hover:shadow-md transition-all duration-300 whitespace-nowrap group"
+                className="btn-secondary inline-flex items-center gap-2 whitespace-nowrap group"
               >
                 <svg
                   className="w-4 h-4 flex-shrink-0"
@@ -361,7 +358,7 @@ export default function Header() {
                 <Link
                   href="/contacto"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="group flex items-center justify-center gap-2 px-5 py-3.5 bg-white text-base font-semibold rounded-xl border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 hover:shadow-md transition-all duration-300 w-full"
+                  className="btn-secondary flex items-center justify-center gap-2 w-full group"
                 >
                   <svg
                     className="w-5 h-5 flex-shrink-0"
