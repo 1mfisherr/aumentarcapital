@@ -23,6 +23,46 @@ export default function Header() {
     setMounted(true);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      
+      // Prevent scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      // Add padding to prevent layout shift from scrollbar removal
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      // Get the scroll position before we remove fixed positioning
+      const scrollY = document.body.style.top;
+      
+      // Re-enable scrolling
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.paddingRight = '';
+      
+      // Restore scroll position
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.paddingRight = '';
+    };
+  }, [mobileMenuOpen]);
+
   // Close dropdown when clicking outside
   useEffect(() => {
     // Only run on client side after mount
@@ -39,6 +79,7 @@ export default function Header() {
   }, [mounted]);
 
   return (
+    <>
     <header className="w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50 shadow-sm">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -73,8 +114,8 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop & Tablet Navigation */}
-          <div className="hidden md:flex items-center justify-end flex-1 gap-4 md:gap-6 lg:gap-8 ml-4">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center justify-end flex-1 gap-4 md:gap-6 lg:gap-8 ml-4">
             {/* Navigation - fixed alignment */}
             <nav className="flex items-center flex-nowrap gap-4 md:gap-6 lg:gap-8">
               {/* Começa Aqui - Standout Link */}
@@ -184,52 +225,55 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-xl text-secondary hover:text-cyan-600 transition-all duration-300 ease-in-out flex-shrink-0"
-            aria-label={mounted && mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={mounted ? mobileMenuOpen : false}
+            className="lg:hidden p-2.5 rounded-xl text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out flex-shrink-0"
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
+            type="button"
           >
             <svg
               className="w-6 h-6 transition-transform duration-200"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              strokeWidth={2.5}
             >
               {mobileMenuOpen ? (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
               ) : (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               )}
             </svg>
           </button>
         </div>
+      </div>
+    </header>
 
-        {/* Mobile Navigation - Full Screen Overlay */}
-        {mobileMenuOpen && (
-          <div 
-            className="md:hidden fixed inset-0 top-16 bg-white/95 backdrop-blur-sm z-40 overflow-y-auto mobile-menu-enter"
-            onClick={(e) => {
-              // Close menu when clicking outside the nav content
-              if (e.target === e.currentTarget) {
-                setMobileMenuOpen(false);
-              }
-            }}
+      {/* Mobile Navigation - Full Screen Overlay */}
+      <div 
+        className={`lg:hidden fixed left-0 right-0 top-[64px] bottom-0 w-full bg-white/98 backdrop-blur-md overflow-y-auto transition-all duration-300 ${
+          mobileMenuOpen ? 'z-[100] opacity-100 visible' : 'z-[-1] opacity-0 invisible'
+        }`}
+          onClick={(e) => {
+            // Close menu when clicking outside the nav content
+            if (e.target === e.currentTarget) {
+              setMobileMenuOpen(false);
+            }
+          }}
+        >
+          <nav 
+            id="mobile-navigation"
+            className="border-t border-neutral-200 py-6 px-4 space-y-2 mobile-menu-content"
+            aria-label="Navegação principal"
           >
-            <nav 
-              id="mobile-navigation"
-              className="border-t border-neutral-200 py-6 px-4 space-y-2 mobile-menu-content"
-              aria-label="Navegação principal"
-            >
               {/* Começa Aqui - Standout Link in Mobile */}
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
@@ -332,9 +376,7 @@ export default function Header() {
                 </Link>
               </div>
             </nav>
-          </div>
-        )}
-      </div>
-    </header>
+        </div>
+    </>
   );
 }
