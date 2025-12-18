@@ -1,17 +1,18 @@
 import { Metadata } from "next";
+import CashFlowVisualizer from "@/components/CashFlowVisualizer";
 import EmergencyFundCalculator from "@/components/EmergencyFundCalculator";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Recursos - Calculadoras Financeiras Gratuitas",
-  description: "Calculadoras financeiras gratuitas: simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
+  description: "Calculadoras financeiras gratuitas: visualizador de fluxo de caixa, simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
   },
   openGraph: {
     title: "Recursos - Calculadoras Financeiras | Aumentar Capital",
-    description: "Calculadoras financeiras gratuitas: simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
+    description: "Calculadoras financeiras gratuitas: visualizador de fluxo de caixa, simulador de juros compostos e fundo de emergência. Ferramentas práticas para planear investimentos e finanças pessoais em Portugal.",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
   },
@@ -41,6 +42,23 @@ export default function RecursosPage() {
           {/* Tools Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💸</div>
+              <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Visualizador de Fluxo de Caixa</h2>
+              <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
+                Descobre para onde vai o teu dinheiro e se tens excedente ou défice. O primeiro passo para controlo financeiro.
+              </p>
+              <a
+                href="#visualizador-fluxo-caixa"
+                className="text-primary font-semibold text-sm hover:text-primary-600 transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+              >
+                Usar ferramenta
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
               <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💰</div>
               <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Fundo de Emergência</h2>
               <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
@@ -55,15 +73,6 @@ export default function RecursosPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
-            </div>
-
-            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 opacity-60">
-              <div className="text-5xl mb-4">📊</div>
-              <h2 className="text-xl font-bold text-neutral-900 mb-2">Calculadora de Orçamento</h2>
-              <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
-                Em breve: Cria e gere o teu orçamento mensal de forma simples e eficaz.
-              </p>
-              <span className="text-neutral-400 font-medium text-sm">Em breve</span>
             </div>
 
             <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
@@ -86,8 +95,33 @@ export default function RecursosPage() {
         </div>
       </section>
 
+      {/* Cash Flow Visualizer Section */}
+      <section id="visualizador-fluxo-caixa" className="scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Para Onde Vai o Teu Dinheiro?
+            </h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+              Em 2 minutos, descobre se tens controlo financeiro. Visualiza o teu fluxo de caixa e recebe orientações personalizadas.
+            </p>
+          </div>
+        </div>
+        <CashFlowVisualizer />
+      </section>
+
       {/* Emergency Fund Calculator Section */}
-      <section id="calculadora-fundo-emergencia" className="scroll-mt-20">
+      <section id="calculadora-fundo-emergencia" className="scroll-mt-20 pt-8 lg:pt-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Calculadora de Fundo de Emergência
+            </h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+              Descobre quanto precisas de poupar para estar protegido contra imprevistos financeiros.
+            </p>
+          </div>
+        </div>
         <EmergencyFundCalculator />
       </section>
 
