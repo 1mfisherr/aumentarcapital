@@ -258,12 +258,11 @@ export default function CompoundInterestCalculator() {
                   type="button"
                   onClick={handleCalculate}
                   disabled={!hasValidInput}
-                  className="flex-1 px-6 py-3.5 font-bold rounded-xl focus:outline-none active:scale-[0.98]"
-                  className={
+                  className={`flex-1 px-6 py-3.5 font-bold rounded-xl focus:outline-none active:scale-[0.98] ${
                     hasValidInput
-                      ? 'bg-brand-primary text-white hover:bg-brand-accent'
-                      : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
-                  }
+                      ? "bg-brand-primary text-white hover:bg-brand-accent"
+                      : "bg-neutral-200 text-neutral-400 cursor-not-allowed"
+                  }`}
                   aria-label="Calcular resultados"
                 >
                   Calcular
