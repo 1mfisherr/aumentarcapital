@@ -69,7 +69,7 @@ export default async function HomePage() {
         {featuredPost && (
           <div className="group block">
             <Link href={`/artigos/${featuredPost.slug}`}>
-              <article className="rounded-3xl overflow-hidden h-full bg-gradient-to-br from-white to-neutral-50/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+              <article className="rounded-3xl overflow-hidden h-full bg-gradient-to-br from-white to-neutral-50/50 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100">
                 {/* Featured Image */}
                 <div className="relative w-full h-[280px] sm:h-[400px] lg:h-[450px] bg-gradient-to-br from-primary-50 via-primary-100/50 to-neutral-100 overflow-hidden">
                   {featuredPost.image ? (
@@ -77,7 +77,7 @@ export default async function HomePage() {
                       src={featuredPost.image}
                       alt={featuredPost.imageAlt || featuredPost.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="object-cover transition-transform duration-700 ease-out"
                       priority
                       sizes="(max-width: 768px) 100vw, 50vw"
                       placeholder="blur"
@@ -160,7 +160,7 @@ export default async function HomePage() {
             {latestPosts.map((post, index) => (
               <div key={post.slug} className="group block animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
                 <Link href={`/artigos/${post.slug}`}>
-                  <article className="flex gap-4 p-4 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-100 hover:border-cyan-200 hover:shadow-lg transition-all duration-300 cursor-pointer group-hover:-translate-y-0.5">
+                  <article className="flex gap-4 p-4 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-100 hover:border-cyan-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
                     {/* Thumbnail */}
                     {post.image && (
                       <div className="flex-shrink-0 w-20 h-20 lg:w-24 lg:h-24 relative rounded-lg overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100">
@@ -168,7 +168,7 @@ export default async function HomePage() {
                           src={post.image}
                           alt={post.imageAlt || post.title}
                           fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="object-cover transition-transform duration-500"
                           sizes="96px"
                         />
                       </div>
@@ -212,10 +212,10 @@ export default async function HomePage() {
           <p className="text-neutral-600 text-lg">Descobre conteúdo organizado por temas</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-          <Link href="/artigos" className="group relative p-8 border-t-4 border-primary-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-primary-400 transition-all duration-300 bg-gradient-to-br from-white to-primary-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-primary-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-primary-400 transition-all duration-300 bg-gradient-to-br from-white to-primary-50/20 hover:shadow-lg overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
-              <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">💰</div>
+              <div className="text-5xl mb-5 transform transition-transform duration-300">💰</div>
               <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors duration-200">
                 Finanças Pessoais
               </h3>
@@ -231,10 +231,10 @@ export default async function HomePage() {
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-8 border-t-4 border-cyan-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-cyan-400 transition-all duration-300 bg-gradient-to-br from-white to-cyan-50/20 hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-cyan-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-cyan-400 transition-all duration-300 bg-gradient-to-br from-white to-cyan-50/20 hover:shadow-lg overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/0 to-cyan-50/0 group-hover:from-cyan-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
-              <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">📈</div>
+              <div className="text-5xl mb-5 transform transition-transform duration-300">📈</div>
               <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-cyan-600 transition-colors duration-200">
                 Investimentos
               </h3>
@@ -250,10 +250,10 @@ export default async function HomePage() {
             </div>
           </Link>
           
-          <Link href="/artigos" className="group relative p-8 border-t-4 border-purple-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-purple-400 transition-all duration-300 bg-gradient-to-br from-white to-purple-50/20 hover:shadow-lg hover:-translate-y-1 sm:col-span-2 lg:col-span-1 overflow-hidden">
+          <Link href="/artigos" className="group relative p-8 border-t-4 border-purple-500 border-x border-b border-neutral-200/60 rounded-2xl hover:border-purple-400 transition-all duration-300 bg-gradient-to-br from-white to-purple-50/20 hover:shadow-lg sm:col-span-2 lg:col-span-1 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-50/0 group-hover:from-purple-50/50 group-hover:to-transparent transition-all duration-300" />
             <div className="relative">
-              <div className="text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">🚀</div>
+              <div className="text-5xl mb-5 transform transition-transform duration-300">🚀</div>
               <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
                 Empreendedorismo
               </h3>

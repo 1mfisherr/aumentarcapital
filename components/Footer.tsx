@@ -60,7 +60,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 bg-white border border-neutral-200/60 text-neutral-700 hover:border-cyan-500 hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-200 rounded-xl font-medium text-sm capitalize hover:scale-105"
+                  className="px-4 py-2.5 bg-white border border-neutral-200/60 text-neutral-700 hover:border-cyan-500 hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-200 rounded-xl font-medium text-sm capitalize"
                 >
                   {platform}
                 </a>

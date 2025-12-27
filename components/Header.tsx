@@ -156,7 +156,7 @@ export default function Header() {
                       {/* Dropdown Menu */}
                       {artigosDropdownOpen && (
                         <div 
-                          className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-cyan-100/50 py-2 animate-slide-up z-50"
+                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-cyan-100/50 py-2 animate-slide-up z-50"
                           role="menu"
                           aria-label={`${item.label} submenu`}
                         >
