@@ -101,7 +101,7 @@ export default function SobrePage() {
             </p>
             <a
               href="/contacto"
-              className="inline-flex items-center px-8 py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-800 hover:shadow-lg hover:scale-105 active:scale-100 transition-all duration-200"
+              className="inline-flex items-center px-8 py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-800 hover:shadow-lg transition-all duration-200"
             >
               <span>Contacta-nos</span>
             </a>

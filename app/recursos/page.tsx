@@ -41,8 +41,8 @@ export default function RecursosPage() {
 
           {/* Tools Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💸</div>
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group">
+              <div className="text-5xl mb-4 transform transition-transform duration-300">💸</div>
               <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Visualizador de Fluxo de Caixa</h2>
               <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
                 Descobre para onde vai o teu dinheiro e se tens excedente ou défice. O primeiro passo para controlo financeiro.
@@ -58,8 +58,8 @@ export default function RecursosPage() {
               </a>
             </div>
 
-            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💰</div>
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group">
+              <div className="text-5xl mb-4 transform transition-transform duration-300">💰</div>
               <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Fundo de Emergência</h2>
               <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
                 Calcula quanto deves poupar para emergências e quanto tempo levará a construir o teu fundo de segurança.
@@ -75,8 +75,8 @@ export default function RecursosPage() {
               </a>
             </div>
 
-            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📈</div>
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group">
+              <div className="text-5xl mb-4 transform transition-transform duration-300">📈</div>
               <h2 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">Simulador de Juros Compostos</h2>
               <p className="text-neutral-600 mb-4 text-sm leading-relaxed">
                 Simula o crescimento do teu investimento ao longo do tempo e vê o poder dos juros compostos em ação.
@@ -152,7 +152,7 @@ export default function RecursosPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="/artigos"
-                className="inline-flex items-center px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-800 hover:shadow-lg hover:scale-105 active:scale-100 transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-800 hover:shadow-lg transition-all duration-200"
               >
                 Ver todos os artigos
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
