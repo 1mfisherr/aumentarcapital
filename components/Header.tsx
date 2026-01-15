@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { siteConfig } from "@/lib/site.config";
+import { SearchBar } from "@/components/search";
 
 const artigosCategorias = [
   { label: "Finanças Pessoais", href: "/artigos?categoria=financas-pessoais" },
@@ -113,6 +114,9 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-end flex-1 gap-4 md:gap-6 lg:gap-8 ml-4">
+            {/* Inline Search Bar */}
+            <SearchBar placeholder="Pesquisar..." />
+            
             {/* Navigation - fixed alignment */}
             <nav className="flex items-center flex-nowrap gap-4 md:gap-6 lg:gap-8">
               {/* Começa Aqui - Standout Link */}
@@ -219,15 +223,17 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out flex-shrink-0"
-            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-            type="button"
-          >
+          {/* Mobile Menu */}
+          <div className="lg:hidden flex items-center gap-2">
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2.5 rounded-xl text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out flex-shrink-0"
+              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              type="button"
+            >
             <svg
               className="w-6 h-6 transition-transform duration-200"
               fill="none"
@@ -249,7 +255,8 @@ export default function Header() {
                 />
               )}
             </svg>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </header>
