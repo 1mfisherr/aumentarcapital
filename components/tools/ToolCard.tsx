@@ -28,7 +28,8 @@ export default function ToolCard({
         bg-white border rounded-2xl p-5 sm:p-6
         transition-all duration-300 ease-out
         hover:scale-[1.02] hover:shadow-xl
-        focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2
+        active:scale-[0.98]
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2
         touch-manipulation
         ${isActive 
           ? "border-primary shadow-lg shadow-primary/10" 
@@ -36,6 +37,7 @@ export default function ToolCard({
         }
       `}
       aria-label={`Abrir ${title}`}
+      aria-pressed={isActive}
       data-tool-id={id}
     >
       {/* Glow effect on hover */}

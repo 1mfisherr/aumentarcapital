@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, lazy, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ToolCard, ToolModal } from "@/components/tools";
+import CalculatorErrorBoundary from "@/components/CalculatorErrorBoundary";
 
 // Lazy load calculator components for better initial page performance
 const CashFlowVisualizer = lazy(() => import("@/components/CashFlowVisualizer"));
@@ -200,9 +201,11 @@ export default function RecursosClient() {
         onReset={handleReset}
         title={activeToolData?.title || ""}
       >
-        <Suspense fallback={<CalculatorLoading />}>
-          {renderCalculator()}
-        </Suspense>
+        <CalculatorErrorBoundary onReset={handleReset}>
+          <Suspense fallback={<CalculatorLoading />}>
+            {renderCalculator()}
+          </Suspense>
+        </CalculatorErrorBoundary>
       </ToolModal>
     </main>
   );

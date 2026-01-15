@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site.config";
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema-utils";
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -88,49 +89,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Organization structured data for SEO
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/opengraph-image`,
-    description: siteConfig.description,
-    sameAs: [
-      siteConfig.social.twitter,
-      siteConfig.social.facebook,
-      siteConfig.social.instagram,
-      siteConfig.social.linkedin,
-    ].filter(Boolean),
-    contactPoint: {
-      "@type": "ContactPoint",
-      email: siteConfig.author.email,
-      contactType: "customer service",
-    },
-  };
-
-  // WebSite structured data for SEO (enables sitelinks search box)
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    description: siteConfig.description,
-    inLanguage: "pt-PT",
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteConfig.url}/artigos?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
-  };
+  // Generate structured data for SEO using schema utilities
+  const organizationSchema = generateOrganizationSchema(siteConfig);
+  const websiteSchema = generateWebSiteSchema(siteConfig);
 
   return (
     <html lang="pt" className={`${poppins.variable} ${inter.variable}`}>

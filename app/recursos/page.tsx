@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { siteConfig } from "@/lib/site.config";
 import RecursosClient from "./RecursosClient";
 
 export const metadata: Metadata = {
@@ -15,16 +16,16 @@ export const metadata: Metadata = {
     "Portugal",
   ],
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
+    canonical: `${siteConfig.url}/recursos`,
   },
   openGraph: {
     title: "Calculadoras Financeiras Gratuitas | Aumentar Capital",
     description: "Ferramentas práticas e calculadoras financeiras gratuitas para planear investimentos e gerir melhor as tuas finanças pessoais em Portugal.",
     type: "website",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
+    url: `${siteConfig.url}/recursos`,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/og-image.jpg`,
+        url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Calculadoras Financeiras - Aumentar Capital",
@@ -55,7 +56,7 @@ const structuredData = {
   "@type": "CollectionPage",
   "name": "Calculadoras Financeiras Gratuitas",
   "description": "Ferramentas práticas e calculadoras financeiras gratuitas para planear investimentos e gerir melhor as tuas finanças pessoais em Portugal.",
-  "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aumentarcapital.com'}/recursos`,
+  "url": `${siteConfig.url}/recursos`,
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": [

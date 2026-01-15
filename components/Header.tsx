@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { siteConfig } from "@/lib/site.config";
 import { SearchBar } from "@/components/search";
 
@@ -14,15 +15,40 @@ const artigosCategorias = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [artigosDropdownOpen, setArtigosDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Mark component as mounted to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Track scroll position to shrink header on mobile
+  useEffect(() => {
+    if (!mounted) return;
+
+    const handleScroll = () => {
+      // Shrink header after scrolling 50px
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    // Set initial state
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mounted]);
+
+  // Check if a nav item is active
+  const isActive = useCallback((href: string) => {
+    if (!mounted) return false;
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/") || pathname.startsWith(href + "?");
+  }, [pathname, mounted]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -81,15 +107,37 @@ export default function Header() {
 
   return (
     <>
-    <header className="w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50 shadow-sm">
+    <header 
+      className={`w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "shadow-md" 
+          : "shadow-sm"
+      }`}
+    >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div 
+          className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled 
+              ? "h-14 lg:h-16" 
+              : "h-16 lg:h-20"
+          }`}
+        >
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group transition-transform duration-300">
             {/* Modern Logo Icon */}
-            <div className="logo-gradient flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl shadow-md transition-all duration-300">
+            <div 
+              className={`logo-gradient flex items-center justify-center rounded-xl shadow-md transition-all duration-300 ${
+                isScrolled 
+                  ? "w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9" 
+                  : "w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
+              }`}
+            >
               <svg
-                className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 text-white flex-shrink-0"
+                className={`text-white flex-shrink-0 transition-all duration-300 ${
+                  isScrolled 
+                    ? "w-4 h-4 sm:w-5 sm:h-5" 
+                    : "w-5 h-5 sm:w-6 sm:h-6"
+                }`}
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -103,10 +151,22 @@ export default function Header() {
             
             {/* Logo Text */}
             <div className="flex flex-col font-[family-name:var(--font-poppins)]">
-              <span className="text-base sm:text-lg md:text-xl font-semibold tracking-wide leading-none text-brand-primary group-hover:text-brand-secondary transition-colors duration-300">
+              <span 
+                className={`font-semibold tracking-wide leading-none text-brand-primary group-hover:text-brand-secondary transition-all duration-300 ${
+                  isScrolled 
+                    ? "text-sm sm:text-base md:text-lg" 
+                    : "text-base sm:text-lg md:text-xl"
+                }`}
+              >
                 Aumentar
               </span>
-              <span className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase text-brand-primary">
+              <span 
+                className={`font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase text-brand-primary transition-all duration-300 ${
+                  isScrolled 
+                    ? "text-[8px] sm:text-[10px] md:text-xs" 
+                    : "text-[10px] sm:text-xs md:text-sm"
+                }`}
+              >
                 Capital.com
               </span>
             </div>
@@ -122,24 +182,38 @@ export default function Header() {
               {/* Começa Aqui - Standout Link */}
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
-                className="text-sm md:text-base font-semibold text-secondary hover:text-cyan-600 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                className={`text-sm md:text-base font-semibold transition-colors duration-300 ease-in-out whitespace-nowrap ${
+                  isActive("/artigos/guia-inicial-literacia-financeira")
+                    ? "text-brand-primary"
+                    : "text-secondary hover:text-cyan-600"
+                }`}
               >
                 Começa Aqui
               </Link>
               
               {siteConfig.nav.map((item) => {
+                const itemIsActive = isActive(item.href);
+                
                 // Special handling for Artigos with dropdown
                 if (item.href === "/artigos") {
                   return (
                     <div key={item.href} className="relative flex items-center" ref={dropdownRef}>
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="inline-flex items-center gap-1 text-sm md:text-base font-medium text-secondary hover:text-cyan-600 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                        className={`inline-flex items-center gap-1 text-sm md:text-base font-medium transition-colors duration-300 ease-in-out whitespace-nowrap ${
+                          itemIsActive
+                            ? "text-brand-primary font-semibold"
+                            : "text-secondary hover:text-cyan-600"
+                        }`}
                         aria-expanded={mounted ? artigosDropdownOpen : false}
                         aria-haspopup="true"
                         aria-label={`${item.label} menu`}
                       >
                         {item.label}
+                        {/* Active indicator dot */}
+                        {itemIsActive && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-primary ml-1" aria-hidden="true" />
+                        )}
                         <svg
                           className={`w-4 h-4 transition-transform duration-300 ease-in-out flex-shrink-0 ${
                             mounted && artigosDropdownOpen ? "rotate-180" : ""
@@ -167,7 +241,11 @@ export default function Header() {
                           <Link
                             href="/artigos"
                             onClick={() => setArtigosDropdownOpen(false)}
-                            className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out rounded-lg"
+                            className={`block px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-in-out rounded-lg mx-1 ${
+                              pathname === "/artigos"
+                                ? "text-brand-primary bg-cyan-50"
+                                : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                            }`}
                             role="menuitem"
                           >
                             Todos os Artigos
@@ -178,7 +256,11 @@ export default function Header() {
                               key={categoria.href}
                               href={categoria.href}
                               onClick={() => setArtigosDropdownOpen(false)}
-                              className="block px-4 py-2.5 text-sm font-medium text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out rounded-lg"
+                              className={`block px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-in-out rounded-lg mx-1 ${
+                                pathname?.includes(categoria.href.split("=")[1] || "")
+                                  ? "text-brand-primary bg-cyan-50"
+                                  : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                              }`}
                               role="menuitem"
                             >
                               {categoria.label}
@@ -195,9 +277,21 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm md:text-base font-medium text-secondary hover:text-cyan-600 transition-colors duration-300 ease-in-out whitespace-nowrap"
+                    className={`text-sm md:text-base font-medium transition-colors duration-300 ease-in-out whitespace-nowrap relative ${
+                      itemIsActive
+                        ? "text-brand-primary font-semibold"
+                        : "text-secondary hover:text-cyan-600"
+                    }`}
+                    aria-current={itemIsActive ? "page" : undefined}
                   >
                     {item.label}
+                    {/* Active indicator underline */}
+                    {itemIsActive && (
+                      <span 
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-primary rounded-full" 
+                        aria-hidden="true" 
+                      />
+                    )}
                   </Link>
                 );
               })}
@@ -263,9 +357,10 @@ export default function Header() {
 
       {/* Mobile Navigation - Full Screen Overlay */}
       <div 
-        className={`lg:hidden fixed left-0 right-0 top-[64px] bottom-0 w-full bg-white/98 backdrop-blur-md overflow-y-auto transition-all duration-300 ${
+        className={`lg:hidden fixed left-0 right-0 bottom-0 w-full bg-white/98 backdrop-blur-md overflow-y-auto transition-all duration-300 ${
           mobileMenuOpen ? 'z-[100] opacity-100 visible' : 'z-[-1] opacity-0 invisible'
         }`}
+        style={{ top: isScrolled ? '56px' : '64px' }}
           onClick={(e) => {
             // Close menu when clicking outside the nav content
             if (e.target === e.currentTarget) {
@@ -282,24 +377,41 @@ export default function Header() {
               <Link
                 href="/artigos/guia-inicial-literacia-financeira"
                 onClick={() => setMobileMenuOpen(false)}
-                className="group relative block px-4 py-3.5 text-base font-semibold text-secondary hover:text-cyan-600 transition-all duration-300 ease-in-out mb-4 inline-block w-auto"
+                className={`group relative block px-4 py-3.5 text-base font-semibold transition-all duration-300 ease-in-out mb-4 rounded-xl ${
+                  isActive("/artigos/guia-inicial-literacia-financeira")
+                    ? "text-brand-primary bg-cyan-50"
+                    : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                }`}
               >
-                <span className="relative">
+                <span className="flex items-center gap-2">
                   Começa Aqui
-                  <span className="absolute bottom-2 left-4 right-4 h-0.5 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></span>
+                  {isActive("/artigos/guia-inicial-literacia-financeira") && (
+                    <span className="w-2 h-2 rounded-full bg-brand-primary" aria-hidden="true" />
+                  )}
                 </span>
               </Link>
               
               {siteConfig.nav.map((item) => {
+                const itemIsActive = isActive(item.href);
+                
                 // Special handling for Artigos with dropdown in mobile
                 if (item.href === "/artigos") {
                   return (
                     <div key={item.href} className="mb-2">
                       <button
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
-                        className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-secondary hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300 ease-in-out"
+                        className={`w-full flex items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 ease-in-out ${
+                          itemIsActive
+                            ? "text-brand-primary bg-cyan-50 font-semibold"
+                            : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                        }`}
                       >
-                        <span>{item.label}</span>
+                        <span className="flex items-center gap-2">
+                          {item.label}
+                          {itemIsActive && (
+                            <span className="w-2 h-2 rounded-full bg-brand-primary" aria-hidden="true" />
+                          )}
+                        </span>
                         <svg
                           className={`w-5 h-5 transition-transform duration-300 ease-in-out ${
                             mounted && artigosDropdownOpen ? "rotate-180" : ""
@@ -324,7 +436,11 @@ export default function Header() {
                               setMobileMenuOpen(false);
                               setArtigosDropdownOpen(false);
                             }}
-                            className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300 ease-in-out"
+                            className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-in-out ${
+                              pathname === "/artigos"
+                                ? "text-brand-primary bg-cyan-50"
+                                : "text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50"
+                            }`}
                           >
                             Todos os Artigos
                           </Link>
@@ -336,7 +452,11 @@ export default function Header() {
                                 setMobileMenuOpen(false);
                                 setArtigosDropdownOpen(false);
                               }}
-                              className="block px-4 py-2.5 text-sm font-medium text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300 ease-in-out"
+                              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-in-out ${
+                                pathname?.includes(categoria.href.split("=")[1] || "")
+                                  ? "text-brand-primary bg-cyan-50"
+                                  : "text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50"
+                              }`}
                             >
                               {categoria.label}
                             </Link>
@@ -353,9 +473,19 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3.5 text-base font-medium text-secondary hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300 ease-in-out"
+                    className={`block px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 ease-in-out ${
+                      itemIsActive
+                        ? "text-brand-primary bg-cyan-50 font-semibold"
+                        : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                    }`}
+                    aria-current={itemIsActive ? "page" : undefined}
                   >
-                    {item.label}
+                    <span className="flex items-center gap-2">
+                      {item.label}
+                      {itemIsActive && (
+                        <span className="w-2 h-2 rounded-full bg-brand-primary" aria-hidden="true" />
+                      )}
+                    </span>
                   </Link>
                 );
               })}

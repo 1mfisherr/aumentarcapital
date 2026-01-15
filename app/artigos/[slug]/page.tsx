@@ -2,11 +2,13 @@ import { getPostData, getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site.config";
 import ArticleTracker from "@/components/ArticleTracker";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 import Image from "next/image";
 import { getNextArticles } from "@/lib/next-articles";
 import NextArticles from "@/components/NextArticles";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { formatDate } from "@/lib/date-utils";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema-utils";
 
 
 export const revalidate = 60; // ISR for individual articles
@@ -65,90 +67,38 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   // Handle category as either string or array
   const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
-  const categoryForSchema = categoryDisplay || (Array.isArray(post.category) && post.category.length > 0 ? post.category[0] : undefined);
 
   // Calculate word count from content
   const wordCount = post.contentHtml
     ? post.contentHtml.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length
     : 0;
 
-  // JSON-LD structured data for SEO (Enhanced Article Schema)
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.description,
-    image: {
-      "@type": "ImageObject",
-      url: post.image.startsWith('http') ? post.image : `${siteConfig.url}${post.image}`,
-      width: post.imageWidth || 1200,
-      height: post.imageHeight || 628,
-      ...(post.imageAlt && { caption: post.imageAlt }),
-    },
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      "@type": "Person",
-      name: post.author,
-      url: siteConfig.url,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/images/aumentarcapital_logo.svg`,
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteConfig.url}/artigos/${slug}`,
-    },
-    ...(categoryForSchema && { articleSection: categoryForSchema }),
-    ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
-    wordCount: wordCount,
-    timeRequired: `PT${post.readingTime}M`, // ISO 8601 duration format
-    inLanguage: "pt-PT",
-    isAccessibleForFree: true,
-  };
-
-  // Breadcrumbs structured data for SEO
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Início",
-        item: siteConfig.url,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Artigos",
-        item: `${siteConfig.url}/artigos`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: `${siteConfig.url}/artigos/${slug}`,
-      },
+  // Generate JSON-LD structured data using schema utilities
+  const articleSchema = generateArticleSchema(post, siteConfig, wordCount);
+  
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema(
+    [
+      { name: "Início", url: "/" },
+      { name: "Artigos", url: "/artigos" },
+      { name: post.title, url: `/artigos/${slug}` },
     ],
-  };
+    siteConfig
+  );
 
   return (
     <>
+      {/* Reading progress indicator */}
+      <ReadingProgressBar />
+
       {/* Add JSON-LD structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Track article views and engagement */}

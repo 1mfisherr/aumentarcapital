@@ -117,29 +117,29 @@ export default function ToolModal({
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-neutral-200 bg-white sticky top-0 z-10">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-neutral-200 bg-white sticky top-0 z-10">
           {/* Mobile drag indicator */}
           {isMobile && (
             <div 
-              className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 bg-neutral-300 rounded-full"
+              className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-neutral-300 rounded-full"
               aria-hidden="true"
             />
           )}
           
           <h2 
             id="modal-title" 
-            className="text-lg sm:text-xl font-bold text-neutral-900 pr-4"
+            className={`text-lg sm:text-xl font-bold text-neutral-900 pr-4 ${isMobile ? "mt-2" : ""}`}
           >
             {title}
           </h2>
           
-          <div className="flex items-center gap-2">
-            {/* Reset Button */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Reset Button - Larger touch target on mobile */}
             {onReset && (
               <button
                 type="button"
                 onClick={onReset}
-                className="px-3 py-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 px-3 sm:px-4 py-2 sm:py-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 active:bg-neutral-200 rounded-xl sm:rounded-lg transition-colors duration-200 flex items-center justify-center touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
                 aria-label="Limpar campos"
               >
                 <span className="hidden sm:inline">Limpar</span>
@@ -160,15 +160,15 @@ export default function ToolModal({
               </button>
             )}
             
-            {/* Close Button */}
+            {/* Close Button - Larger touch target on mobile (minimum 44x44px) */}
             <button
               type="button"
               onClick={onClose}
-              className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors duration-200"
+              className="min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 p-2.5 sm:p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 active:bg-neutral-200 rounded-xl sm:rounded-lg transition-colors duration-200 flex items-center justify-center touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
               aria-label="Fechar"
             >
               <svg 
-                className="w-5 h-5 sm:w-6 sm:h-6" 
+                className="w-6 h-6" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"

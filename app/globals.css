@@ -573,3 +573,85 @@ button:disabled {
     width: 100%;
   }
 }
+
+/* =================================================================
+   STANDARDIZED SPACING SYSTEM
+   ================================================================= 
+   
+   Following Tailwind's 4px base scale:
+   - xs: 4px (1)
+   - sm: 8px (2)
+   - md: 16px (4)
+   - lg: 24px (6)
+   - xl: 32px (8)
+   - 2xl: 48px (12)
+   - 3xl: 64px (16)
+*/
+
+/* Section spacing - consistent vertical rhythm */
+.section-spacing {
+  @apply py-12 lg:py-16;
+}
+
+.section-spacing-lg {
+  @apply py-16 lg:py-20;
+}
+
+.section-spacing-xl {
+  @apply py-20 lg:py-24;
+}
+
+/* Content container max-widths */
+.content-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.content-container-sm {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.content-container-md {
+  @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Consistent gap utilities */
+.gap-section {
+  @apply gap-8 lg:gap-10;
+}
+
+.gap-content {
+  @apply gap-4 lg:gap-6;
+}
+
+/* Margin utilities for sections */
+.mb-section {
+  @apply mb-12 lg:mb-16;
+}
+
+.mt-section {
+  @apply mt-12 lg:mt-16;
+}
+
+/* =================================================================
+   FOCUS RING UTILITIES
+   ================================================================= */
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+}
+
+.focus-ring-inset {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-inset;
+}
+
+/* =================================================================
+   INTERACTIVE STATES
+   ================================================================= */
+
+.interactive-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+.interactive-scale {
+  @apply transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
+}

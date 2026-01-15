@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import readingTime from "reading-time";
-import { ArticleMeta, ArticleData } from "./types";
+import { ArticleMeta, ArticleData, isValidISODate } from "./types";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -85,6 +85,16 @@ export async function getPostData(slug: string): Promise<ArticleData> {
     
     if (!data.title || !data.date || !data.author) {
       throw new Error(`Post ${slug} is missing required metadata`);
+    }
+
+    // Validate date format
+    if (!isValidISODate(data.date)) {
+      console.warn(`Post ${slug} has invalid date format: ${data.date}. Expected ISO 8601 (YYYY-MM-DD)`);
+    }
+
+    // Validate lastModified if present
+    if (data.lastModified && !isValidISODate(data.lastModified)) {
+      console.warn(`Post ${slug} has invalid lastModified format: ${data.lastModified}. Expected ISO 8601 (YYYY-MM-DD)`);
     }
 
     const processedContent = await remark().use(html, { sanitize: false }).process(content);
