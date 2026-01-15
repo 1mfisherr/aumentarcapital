@@ -52,6 +52,4 @@ A tua escolha deve, por isso, ser pragmática. Se estás a começar com valores 
 
 ---
 
-**Parabéns!** Chegaste ao fim do percurso de literacia financeira. Agora tens todas as ferramentas para organizar as tuas finanças, eliminar dívidas, construir o teu fundo de emergência e começar a investir de forma consciente. O próximo passo é teu: aplicar o que aprendeste e deixar o tempo e os juros compostos trabalharem a teu favor.
-
-**Voltar ao início:** [Guia Inicial: Por Onde Começar com as Tuas Finanças →](/artigos/guia-inicial-literacia-financeira)
+**Continua a tua jornada:** [IRS e Investimentos: O Guia Prático para Investidores em Portugal](/artigos/irs-investimentos-portugal)
