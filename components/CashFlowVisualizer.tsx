@@ -55,7 +55,7 @@ function InfoTooltip({ text }: { text: string }) {
 // ERROR MESSAGE COMPONENT
 // ========================================
 
-function ErrorMessage({ message }: { message: string }) {
+function ErrorMessage({ message }: { message: string | undefined }) {
   if (!message) return null;
   return (
     <div className="mt-2 flex items-start gap-2 text-sm text-red-600 animate-fade-in" role="alert">

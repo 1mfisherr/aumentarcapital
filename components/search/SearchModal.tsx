@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Fuse from "fuse.js";
+import Fuse, { IFuseOptions, FuseResult } from "fuse.js";
 import type { SearchIndexItem } from "@/lib/search";
 
 interface SearchModalProps {
@@ -11,7 +11,7 @@ interface SearchModalProps {
 }
 
 // Fuse.js configuration with weighted fields
-const fuseOptions: Fuse.IFuseOptions<SearchIndexItem> = {
+const fuseOptions: IFuseOptions<SearchIndexItem> = {
   keys: [
     { name: "title", weight: 0.5 },
     { name: "tags", weight: 0.3 },
@@ -60,9 +60,9 @@ function highlightMatch(text: string, indices: readonly [number, number][] | und
 
 // Group results by category
 function groupResultsByCategory(
-  results: Fuse.FuseResult<SearchIndexItem>[]
-): Map<string, Fuse.FuseResult<SearchIndexItem>[]> {
-  const grouped = new Map<string, Fuse.FuseResult<SearchIndexItem>[]>();
+  results: FuseResult<SearchIndexItem>[]
+): Map<string, FuseResult<SearchIndexItem>[]> {
+  const grouped = new Map<string, FuseResult<SearchIndexItem>[]>();
 
   results.forEach((result) => {
     const category = result.item.categories[0] || "Outros";
@@ -168,7 +168,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   // Navigate to selected result
   const navigateToResult = useCallback(
-    (result: Fuse.FuseResult<SearchIndexItem>) => {
+    (result: FuseResult<SearchIndexItem>) => {
       router.push(`/artigos/${result.item.slug}`);
       onClose();
     },

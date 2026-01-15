@@ -7,7 +7,7 @@ type: "foundation"
 trail: "foundation-literacia-financeira"
 position: 1
 previous: null
-next: "entender-teu-dinheiro-onde-vai-salario"
+next: "mentalidade-poupador"
 description: "Guia completo de literacia financeira para Portugal. Aprende a organizar as tuas finanças pessoais e a construir estabilidade financeira passo a passo."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["literacia financeira", "finanças pessoais portugal", "educação financeira", "gestão de dinheiro", "iniciantes"]
@@ -93,4 +93,4 @@ Não interessa de onde vens ou quanto ganhas atualmente. Toda a gente tem capaci
 
 A seguir, vamos enfrentar a questão fundamental que a maioria das pessoas evita: afinal, para onde vai o meu dinheiro? Sem clareza sobre o teu fluxo de caixa, qualquer plano será construído sobre areia movediça.
 
-**Continua a tua jornada:** [Entender o Teu Dinheiro: Para Onde Vai o Teu Salário](/artigos/entender-teu-dinheiro-onde-vai-salario)
+**Continua a tua jornada:** [Mentalidade de Poupador: Paga-te Primeiro](/artigos/mentalidade-poupador)

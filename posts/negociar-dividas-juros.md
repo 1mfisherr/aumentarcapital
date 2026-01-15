@@ -70,4 +70,4 @@ Depois de limpares o caminho e otimizares as tuas dívidas, o próximo passo é 
 
 No próximo artigo, vamos explorar a regra de ouro de todos os que constroem riqueza: o princípio de "Pagar-te a ti próprio primeiro". É aqui que a tua mentalidade muda de sobrevivente para construtor.
 
-**Continua a tua jornada:** [Mentalidade de Poupador: Paga-te Primeiro →](/artigos/mentalidade-poupador)
+**Continua a tua jornada:** [Construir o Teu Fundo de Emergência: Porquê e Quanto →](/artigos/fundacao-fundo-emergencia)

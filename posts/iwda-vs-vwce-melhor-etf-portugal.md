@@ -5,7 +5,9 @@ date: "2026-01-18"
 author: "Delfim Almeida"
 type: "investimentos"
 trail: "foundation-literacia-financeira"
-position: 14
+position: 12
+previous: "como-escolher-etfs"
+next: "comparacao-completa-brokers-portugal"
 description: "Duelo de titãs: IWDA ou VWCE? Comparamos custos, diversificação e a eficiência fiscal em Portugal para decidires qual o melhor ETF para o teu portefólio."
 categories: ["Investimentos", "Literacia Financeira"]
 tags: ["IWDA", "VWCE", "ETFs", "EIMI", "Estratégia de Investimento", "Portugal"]
@@ -96,5 +98,5 @@ O mais importante não é a diferença de 0.02% no custo, mas sim a tua **taxa d
 
 ---
 
-**Próximo Passo:** Já tens o teu ETF escolhido? Vê como abrir conta e fazer a tua primeira compra. 
-**Lê aqui:** [Investir Passo a Passo: Começar na Prática →](/artigos/investir-passo-a-passo-portugal)
+**Próximo Passo:** Já tens o teu ETF escolhido? Vê qual a melhor corretora para começares. 
+**Lê aqui:** [Comparação Completa de Brokers em Portugal →](/artigos/comparacao-completa-brokers-portugal)

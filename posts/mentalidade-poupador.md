@@ -5,9 +5,9 @@ date: "2025-12-13"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 9
-previous: "negociar-dividas-juros"
-next: "comecar-a-investir"
+position: 2
+previous: "guia-inicial-literacia-financeira"
+next: "entender-teu-dinheiro-onde-vai-salario"
 description: "Descobre como aplicar a estratégia 'paga-te primeiro' para criar disciplina financeira e construir riqueza de forma automática."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["paga-te primeiro", "como poupar dinheiro", "hábitos de poupança", "mentalidade financeira", "automatizar poupança"]
@@ -72,4 +72,4 @@ Ao automatizares a tua poupança, estás a retomar o controlo. Estás a garantir
 
 Agora que o teu sistema de poupança está em modo automático, chegámos ao momento mais aguardado: como fazer com que esse dinheiro acumulado comece a trabalhar sozinho. Vamos entrar no mundo dos investimentos, desmistificar os termos técnicos e aprender a dar os primeiros passos com segurança no mercado financeiro.
 
-**Continua a tua jornada:** [Começar a Investir: O Guia Para Iniciantes →](/artigos/comecar-a-investir)
+**Continua a tua jornada:** [Entender o Teu Dinheiro: Para Onde Vai o Teu Salário →](/artigos/entender-teu-dinheiro-onde-vai-salario)

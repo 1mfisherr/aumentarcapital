@@ -5,9 +5,9 @@ date: "2025-12-13"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 6
-previous: "fundacao-priorizar-gastos"
-next: "fundacao-como-sair-de-dividas"
+position: 8
+previous: "negociar-dividas-juros"
+next: "comecar-a-investir"
 description: "Descobre porque um fundo de emergência é essencial, quanto precisas de juntar e onde guardar o dinheiro em Portugal de forma segura."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["fundo de emergência portugal", "quanto poupar emergência", "certificados de aforro", "poupança", "segurança financeira"]
@@ -110,4 +110,4 @@ Uma vez que tenhas esta almofada, a tua confiança para os próximos passos ser�
 
 No próximo artigo, vamos ver como podes atacar o que te deve e acelerar a tua saída do sufoco financeiro.
 
-**Continua a tua jornada:** [Como Sair de Dívidas: Estratégias Práticas →](/artigos/fundacao-como-sair-de-dividas)
+**Continua a tua jornada:** [Começar a Investir: O Guia para Deixar de ser Poupador →](/artigos/comecar-a-investir)

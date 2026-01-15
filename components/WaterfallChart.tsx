@@ -57,7 +57,7 @@ interface CustomLabelProps {
 
 function CustomLabel({ x, y, width, value, payload }: CustomLabelProps) {
   // Only show label if value is not zero and we have valid coordinates
-  if (value === 0 || Math.abs(value) < 0.01 || !x || !y || !width || !payload) return null;
+  if (value === undefined || value === 0 || Math.abs(value) < 0.01 || !x || !y || !width || !payload) return null;
 
   const absValue = Math.abs(value);
   const isPositive = value > 0;

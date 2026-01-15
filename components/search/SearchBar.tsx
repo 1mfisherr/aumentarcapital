@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Fuse from "fuse.js";
+import Fuse, { IFuseOptions, FuseResult } from "fuse.js";
 import type { SearchIndexItem } from "@/lib/search";
 
 // Fuse.js configuration with weighted fields
-const fuseOptions: Fuse.IFuseOptions<SearchIndexItem> = {
+const fuseOptions: IFuseOptions<SearchIndexItem> = {
   keys: [
     { name: "title", weight: 0.5 },
     { name: "tags", weight: 0.3 },
@@ -148,7 +148,7 @@ export default function SearchBar({
 
   // Navigate to selected result
   const navigateToResult = useCallback(
-    (result: Fuse.FuseResult<SearchIndexItem>) => {
+    (result: FuseResult<SearchIndexItem>) => {
       router.push(`/artigos/${result.item.slug}`);
       setQuery("");
       setIsFocused(false);

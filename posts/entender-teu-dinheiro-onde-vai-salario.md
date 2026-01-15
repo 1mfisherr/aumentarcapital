@@ -5,8 +5,8 @@ date: "2025-12-13"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 2
-previous: "guia-inicial-literacia-financeira"
+position: 3
+previous: "mentalidade-poupador"
 next: "como-criar-orcamento"
 description: "Aprende a seguir cada euro do teu salário e a identificar para onde o dinheiro realmente vai. O primeiro passo para o controlo financeiro."
 categories: ["Literacia Financeira", "Finanças Pessoais"]

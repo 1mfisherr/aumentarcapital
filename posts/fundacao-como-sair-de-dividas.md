@@ -5,8 +5,8 @@ date: "2025-12-13"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 7
-previous: "fundacao-fundo-emergencia"
+position: 6
+previous: "fundacao-priorizar-gastos"
 next: "negociar-dividas-juros"
 description: "Aprende estratégias práticas para sair de dívidas, reduzir juros e recuperar controlo financeiro. Métodos Avalanche e Snowball explicados."
 categories: ["Literacia Financeira", "Finanças Pessoais"]

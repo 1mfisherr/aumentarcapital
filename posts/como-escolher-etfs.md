@@ -5,9 +5,9 @@ date: "2025-12-13"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 12
+position: 11
 previous: "criar-primeira-estrategia-investimento"
-next: "investir-passo-a-passo-portugal"
+next: "iwda-vs-vwce-melhor-etf-portugal"
 description: "Entende o que são ETFs, como funcionam e como escolher os melhores para o teu portefólio. Guia prático de comparação para iniciantes em Portugal."
 categories: ["Literacia Financeira", "Investimentos"]
 tags: ["como escolher ETFs", "melhores ETFs portugal", "ETF para iniciantes", "MSCI World", "S&P 500"]
@@ -50,4 +50,4 @@ Nesta ferramenta, podes ver as diferenças reais entre um MSCI World e um S&P 50
 
 ---
 
-**Continua a tua jornada:** [Investir Passo a Passo: Começar na Prática →](/artigos/investir-passo-a-passo-portugal)
+**Continua a tua jornada:** [IWDA vs VWCE: Qual o Melhor ETF para o Investidor Português? →](/artigos/iwda-vs-vwce-melhor-etf-portugal)

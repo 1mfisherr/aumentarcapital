@@ -6,8 +6,8 @@ author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
 position: 5
-previous: "como-criar-um-orcamento-realista"
-next: "fundacao-fundo-emergencia"
+previous: "como-criar-orcamento"
+next: "fundacao-como-sair-de-dividas"
 description: "Aprende a priorizar pagamentos: despesas essenciais, dívidas ou poupança. O fluxograma que te dá segurança e controlo financeiro."
 categories: ["Literacia Financeira", "Finanças Pessoais"]
 tags: ["priorizar gastos", "o que pagar primeiro", "hierarquia financeira", "gestão de dinheiro", "fundo de emergência"]
@@ -77,4 +77,4 @@ Compreender esta hierarquia é libertador. Deixas de sentir que estás a falhar 
 
 No próximo artigo, vamos aprofundar um dos pilares mais mal compreendidos deste sistema: o Fundo de Emergência. Vamos ver exatamente como calcular o teu valor, onde o colocar no mercado português para que ele não seja "comido" pela inflação e como o gerir sem cair na tentação de o gastar.
 
-**Continua a tua jornada:** [Fundo de Emergência: Onde Guardar e Como Calcular →](/artigos/fundacao-fundo-emergencia)
+**Continua a tua jornada:** [Como Sair de Dívidas: Estratégias Práticas →](/artigos/fundacao-como-sair-de-dividas)

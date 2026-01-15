@@ -136,8 +136,10 @@ function findRelevantArticles(
     }
 
     // Tag overlap (medium weight)
-    const commonTags = currentArticle.tags.filter((tag) =>
-      article.tags.includes(tag)
+    const currentTags = currentArticle.tags || [];
+    const articleTags = article.tags || [];
+    const commonTags = currentTags.filter((tag) =>
+      articleTags.includes(tag)
     );
     score += commonTags.length * 3;
 

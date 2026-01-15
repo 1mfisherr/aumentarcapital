@@ -5,9 +5,17 @@ date: "2026-01-15"
 author: "Delfim Almeida"
 type: "foundation"
 trail: "foundation-literacia-financeira"
-position: 11
+position: 10
+previous: "comecar-a-investir"
+next: "como-escolher-etfs"
 description: "Aprende a criar a tua primeira estratégia de investimento: definir objetivos, gerir o risco e montar um plano simples."
 categories: ["Literacia Financeira", "Investimentos"]
+tags: ["estratégia de investimento", "perfil de risco", "alocação de ativos", "portefólio", "investir a longo prazo"]
+image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=628&fit=crop"
+imageAlt: "Pessoa a desenhar um plano estratégico num quadro"
+imageWidth: 1200
+imageHeight: 628
+lang: "pt-PT"
 ---
 
 # Criar a Tua Primeira Estratégia de Investimento
