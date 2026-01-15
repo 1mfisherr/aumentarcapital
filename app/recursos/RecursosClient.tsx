@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, lazy, Suspense } from "react";
+import { useState, useCallback, useEffect, lazy, Suspense, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ToolCard, ToolModal } from "@/components/tools";
@@ -10,9 +10,11 @@ import CalculatorErrorBoundary from "@/components/CalculatorErrorBoundary";
 const CashFlowVisualizer = lazy(() => import("@/components/CashFlowVisualizer"));
 const EmergencyFundCalculator = lazy(() => import("@/components/EmergencyFundCalculator"));
 const CompoundInterestCalculator = lazy(() => import("@/components/CompoundInterestCalculator"));
+const MortgageAmortizationCalculator = lazy(() => import("@/components/MortgageAmortizationCalculator"));
 
 // Tool definitions
-type ToolId = "cash-flow" | "emergency-fund" | "compound-interest";
+type ToolId = "cash-flow" | "emergency-fund" | "compound-interest" | "mortgage-amortization";
+type ToolCategory = "daily" | "investments" | "credit";
 
 interface Tool {
   id: ToolId;
@@ -20,7 +22,15 @@ interface Tool {
   description: string;
   icon: string;
   ctaText: string;
+  category: ToolCategory;
 }
+
+// Category definitions with labels and order
+const TOOL_CATEGORIES: Record<ToolCategory, { label: string; icon: string; priority: number }> = {
+  daily: { label: "Gestão Diária", icon: "📊", priority: 1 },
+  investments: { label: "Investimentos", icon: "📈", priority: 2 },
+  credit: { label: "Crédito & Habitação", icon: "🏠", priority: 3 },
+};
 
 const TOOLS: Tool[] = [
   {
@@ -29,6 +39,7 @@ const TOOLS: Tool[] = [
     description: "Descobre para onde vai o teu dinheiro e se tens excedente ou défice. O primeiro passo para controlo financeiro.",
     icon: "💸",
     ctaText: "Usar ferramenta",
+    category: "daily",
   },
   {
     id: "emergency-fund",
@@ -36,6 +47,7 @@ const TOOLS: Tool[] = [
     description: "Calcula quanto deves poupar para emergências e quanto tempo levará a construir o teu fundo de segurança.",
     icon: "💰",
     ctaText: "Usar calculadora",
+    category: "daily",
   },
   {
     id: "compound-interest",
@@ -43,6 +55,15 @@ const TOOLS: Tool[] = [
     description: "Simula o crescimento do teu investimento ao longo do tempo e vê o poder dos juros compostos em ação.",
     icon: "📈",
     ctaText: "Usar calculadora",
+    category: "investments",
+  },
+  {
+    id: "mortgage-amortization",
+    title: "Simulador de Amortização de Crédito Habitação",
+    description: "Calcula quanto poupas em juros ao fazer amortizações extra no crédito habitação e vê o impacto na prestação.",
+    icon: "🏠",
+    ctaText: "Usar simulador",
+    category: "credit",
   },
 ];
 
@@ -56,6 +77,38 @@ function CalculatorLoading() {
   );
 }
 
+// Filter pill component
+function FilterPill({ 
+  label, 
+  isActive, 
+  onClick,
+  icon,
+}: { 
+  label: string; 
+  isActive: boolean; 
+  onClick: () => void;
+  icon?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`
+        inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-sm font-medium
+        transition-all duration-200 touch-manipulation
+        ${isActive
+          ? "bg-primary text-white shadow-md"
+          : "bg-white border border-neutral-200 text-neutral-600 hover:border-primary/40 hover:text-primary"
+        }
+      `}
+      aria-pressed={isActive}
+    >
+      {icon && <span className="text-sm">{icon}</span>}
+      {label}
+    </button>
+  );
+}
+
 export default function RecursosClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -63,6 +116,10 @@ export default function RecursosClient() {
   // Get active tool from URL
   const toolParam = searchParams.get("tool") as ToolId | null;
   const [activeTool, setActiveTool] = useState<ToolId | null>(null);
+  
+  // Filter state
+  const [activeCategory, setActiveCategory] = useState<ToolCategory | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   
   // Reset key to force calculator remount on reset
   const [resetKey, setResetKey] = useState(0);
@@ -75,6 +132,49 @@ export default function RecursosClient() {
       setActiveTool(null);
     }
   }, [toolParam]);
+
+  // Filter tools based on category and search
+  const filteredTools = useMemo(() => {
+    let result = TOOLS;
+    
+    // Filter by category
+    if (activeCategory) {
+      result = result.filter(t => t.category === activeCategory);
+    }
+    
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter(t => 
+        t.title.toLowerCase().includes(query) ||
+        t.description.toLowerCase().includes(query)
+      );
+    }
+    
+    return result;
+  }, [activeCategory, searchQuery]);
+
+  // Group tools by category for display
+  const toolsByCategory = useMemo(() => {
+    const grouped: Record<ToolCategory, Tool[]> = {
+      daily: [],
+      investments: [],
+      credit: [],
+    };
+    
+    filteredTools.forEach(tool => {
+      grouped[tool.category].push(tool);
+    });
+    
+    return grouped;
+  }, [filteredTools]);
+
+  // Get sorted categories (by priority)
+  const sortedCategories = useMemo(() => {
+    return Object.entries(TOOL_CATEGORIES)
+      .sort(([, a], [, b]) => a.priority - b.priority)
+      .map(([key]) => key as ToolCategory);
+  }, []);
 
   // Open a tool (update URL)
   const openTool = useCallback((toolId: ToolId) => {
@@ -117,10 +217,15 @@ export default function RecursosClient() {
         return <EmergencyFundCalculator key={`emergency-fund-${resetKey}`} />;
       case "compound-interest":
         return <CompoundInterestCalculator key={`compound-interest-${resetKey}`} />;
+      case "mortgage-amortization":
+        return <MortgageAmortizationCalculator key={`mortgage-amortization-${resetKey}`} />;
       default:
         return null;
     }
   };
+
+  // Check if any filters are active
+  const hasActiveFilters = activeCategory !== null || searchQuery.trim() !== "";
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-neutral-50">
@@ -145,19 +250,150 @@ export default function RecursosClient() {
             </p>
           </div>
 
-          {/* Tools Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4 sm:px-0">
-            {TOOLS.map((tool) => (
-              <ToolCard
-                key={tool.id}
-                id={tool.id}
-                title={tool.title}
-                description={tool.description}
-                icon={<span>{tool.icon}</span>}
-                onClick={() => openTool(tool.id)}
-                isActive={activeTool === tool.id}
-              />
-            ))}
+          {/* Search & Filter Bar */}
+          <div className="mb-8 sm:mb-10 px-4 sm:px-0">
+            <div className="bg-white border border-neutral-200/60 rounded-2xl p-4 sm:p-5 shadow-sm">
+              {/* Search Input */}
+              <div className="relative mb-4">
+                <svg
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Pesquisar ferramentas..."
+                  className="w-full pl-12 pr-4 py-3 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-base"
+                  aria-label="Pesquisar ferramentas"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-neutral-400 hover:text-neutral-600 transition-colors"
+                    aria-label="Limpar pesquisa"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+
+              {/* Category Filter Pills */}
+              <div className="flex flex-wrap gap-2">
+                <FilterPill
+                  label="Todas"
+                  isActive={activeCategory === null}
+                  onClick={() => setActiveCategory(null)}
+                />
+                {sortedCategories.map((categoryKey) => (
+                  <FilterPill
+                    key={categoryKey}
+                    label={TOOL_CATEGORIES[categoryKey].label}
+                    icon={TOOL_CATEGORIES[categoryKey].icon}
+                    isActive={activeCategory === categoryKey}
+                    onClick={() => setActiveCategory(activeCategory === categoryKey ? null : categoryKey)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Tools by Category */}
+          <div className="space-y-10 sm:space-y-12 mb-12 sm:mb-16 px-4 sm:px-0">
+            {filteredTools.length === 0 ? (
+              // No results state
+              <div className="text-center py-12 bg-white border border-neutral-200/60 rounded-2xl">
+                <div className="text-5xl mb-4">🔍</div>
+                <p className="text-neutral-700 font-medium mb-2">Nenhuma ferramenta encontrada</p>
+                <p className="text-sm text-neutral-500 mb-4">
+                  Tenta ajustar os filtros ou a pesquisa
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory(null);
+                    setSearchQuery("");
+                  }}
+                  className="px-4 py-2 text-sm font-medium text-primary hover:text-primary-800 transition-colors"
+                >
+                  Limpar filtros
+                </button>
+              </div>
+            ) : hasActiveFilters ? (
+              // Filtered view - flat grid
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-sm text-neutral-500">
+                    {filteredTools.length} {filteredTools.length === 1 ? "ferramenta encontrada" : "ferramentas encontradas"}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveCategory(null);
+                      setSearchQuery("");
+                    }}
+                    className="text-sm font-medium text-primary hover:text-primary-800 transition-colors"
+                  >
+                    Limpar filtros
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  {filteredTools.map((tool) => (
+                    <ToolCard
+                      key={tool.id}
+                      id={tool.id}
+                      title={tool.title}
+                      description={tool.description}
+                      icon={<span>{tool.icon}</span>}
+                      onClick={() => openTool(tool.id)}
+                      isActive={activeTool === tool.id}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              // Default view - grouped by category
+              sortedCategories.map((categoryKey) => {
+                const categoryTools = toolsByCategory[categoryKey];
+                if (categoryTools.length === 0) return null;
+                
+                const category = TOOL_CATEGORIES[categoryKey];
+                
+                return (
+                  <section key={categoryKey}>
+                    <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                      <span className="text-2xl">{category.icon}</span>
+                      <h2 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                        {category.label}
+                      </h2>
+                      <span className="ml-2 px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-500 rounded-full">
+                        {categoryTools.length}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                      {categoryTools.map((tool) => (
+                        <ToolCard
+                          key={tool.id}
+                          id={tool.id}
+                          title={tool.title}
+                          description={tool.description}
+                          icon={<span>{tool.icon}</span>}
+                          onClick={() => openTool(tool.id)}
+                          isActive={activeTool === tool.id}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })
+            )}
           </div>
 
           {/* Additional Resources Section */}

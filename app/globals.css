@@ -655,3 +655,77 @@ button:disabled {
 .interactive-scale {
   @apply transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
 }
+
+/* =================================================================
+   PRINT STYLES
+   ================================================================= */
+
+@media print {
+  /* Hide non-essential elements when printing */
+  .no-print,
+  header,
+  footer,
+  nav,
+  .cookie-consent,
+  .newsletter-signup {
+    display: none !important;
+  }
+  
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+  
+  /* Reset backgrounds for cleaner printing */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Ensure good contrast */
+  * {
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Remove shadows and transitions */
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: none !important;
+  }
+  
+  /* Optimize page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  table, figure, img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Clean up links for print */
+  a {
+    text-decoration: none !important;
+  }
+  
+  /* Calculator results area - clean print layout */
+  #results-section-mortgage,
+  #results-section-compound,
+  #results-section-emergency {
+    background: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Ensure gradients print as solid colors */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br,
+  .bg-gradient-to-b {
+    background: var(--color-brand-primary) !important;
+  }
+}

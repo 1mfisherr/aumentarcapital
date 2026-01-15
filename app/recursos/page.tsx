@@ -4,7 +4,7 @@ import RecursosClient from "./RecursosClient";
 
 export const metadata: Metadata = {
   title: "Calculadoras Financeiras Gratuitas | Recursos Financeiros",
-  description: "Calculadoras financeiras gratuitas e ferramentas práticas: visualizador de fluxo de caixa, simulador de juros compostos e calculadora de fundo de emergência. Planear investimentos e finanças pessoais em Portugal.",
+  description: "Calculadoras financeiras gratuitas e ferramentas práticas: visualizador de fluxo de caixa, simulador de juros compostos, calculadora de fundo de emergência e simulador de amortização de crédito habitação. Planear investimentos e finanças pessoais em Portugal.",
   keywords: [
     "calculadora financeira",
     "calculadora juros compostos",
@@ -14,13 +14,19 @@ export const metadata: Metadata = {
     "calculadora investimentos",
     "planeamento financeiro",
     "Portugal",
+    "simulador amortização crédito habitação portugal",
+    "poupar juros banco",
+    "amortizar crédito habitação",
+    "calculadora crédito habitação",
+    "amortização antecipada",
+    "reduzir prestação casa",
   ],
   alternates: {
     canonical: `${siteConfig.url}/recursos`,
   },
   openGraph: {
     title: "Calculadoras Financeiras Gratuitas | Aumentar Capital",
-    description: "Ferramentas práticas e calculadoras financeiras gratuitas para planear investimentos e gerir melhor as tuas finanças pessoais em Portugal.",
+    description: "Ferramentas práticas e calculadoras financeiras gratuitas para planear investimentos, simular amortização de crédito habitação e gerir melhor as tuas finanças pessoais em Portugal.",
     type: "website",
     url: `${siteConfig.url}/recursos`,
     images: [
@@ -35,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Calculadoras Financeiras Gratuitas | Aumentar Capital",
-    description: "Ferramentas práticas para planear investimentos e gerir melhor as tuas finanças pessoais.",
+    description: "Ferramentas práticas para planear investimentos, simular amortização de crédito e gerir melhor as tuas finanças pessoais.",
   },
   robots: {
     index: true,
@@ -62,6 +68,7 @@ const structuredData = {
     "itemListElement": [
       {
         "@type": "SoftwareApplication",
+        "position": 1,
         "name": "Visualizador de Fluxo de Caixa",
         "description": "Descobre para onde vai o teu dinheiro e se tens excedente ou défice. O primeiro passo para controlo financeiro.",
         "applicationCategory": "FinanceApplication",
@@ -74,6 +81,7 @@ const structuredData = {
       },
       {
         "@type": "SoftwareApplication",
+        "position": 2,
         "name": "Calculadora de Fundo de Emergência",
         "description": "Calcula quanto deves poupar para emergências e quanto tempo levará a construir o teu fundo de segurança.",
         "applicationCategory": "FinanceApplication",
@@ -86,10 +94,25 @@ const structuredData = {
       },
       {
         "@type": "SoftwareApplication",
+        "position": 3,
         "name": "Simulador de Juros Compostos",
         "description": "Simula o crescimento do teu investimento ao longo do tempo e vê o poder dos juros compostos em ação.",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "position": 4,
+        "name": "Simulador de Amortização de Crédito Habitação",
+        "description": "Calcula quanto poupas em juros ao fazer amortizações extra no crédito habitação e vê o impacto na prestação mensal.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "keywords": "amortização crédito habitação, poupar juros, crédito habitação portugal",
         "offers": {
           "@type": "Offer",
           "price": "0",
