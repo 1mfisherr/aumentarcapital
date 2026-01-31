@@ -44,7 +44,7 @@ export default function PoliticaPrivacidadePage() {
           protegemos as tuas informações.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           2. Informações que Recolhemos
         </h2>
         <p>Podemos recolher as seguintes informações:</p>
@@ -65,7 +65,7 @@ export default function PoliticaPrivacidadePage() {
           <li>Analisar o uso do website (analytics)</li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           4. Cookies
         </h2>
         <p>
@@ -83,7 +83,7 @@ export default function PoliticaPrivacidadePage() {
           os nossos serviços (por exemplo, fornecedores de email marketing).
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           6. Os Teus Direitos
         </h2>
         <p>Tens o direito de:</p>
