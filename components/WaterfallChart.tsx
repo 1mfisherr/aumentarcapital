@@ -33,11 +33,11 @@ function WaterfallTooltip({ active, payload }: CustomTooltipProps) {
   const displayValue = Math.abs(data.value);
 
   return (
-    <div className="bg-white border-2 border-neutral-300 rounded-xl p-4 shadow-xl">
-      <p className="font-bold text-neutral-900 mb-2 text-base">{data.name}</p>
-      <p className="text-sm text-neutral-700">
+    <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4 shadow-[var(--shadow-lg)]">
+      <p className="font-bold text-[var(--color-ink)] mb-2 text-base">{data.name}</p>
+      <p className="text-sm text-[var(--color-ink-secondary)]">
         <span className="font-semibold">Valor:</span>{" "}
-        <span className="font-bold text-lg">{formatCurrency(displayValue)}</span>
+        <span className="font-bold text-lg text-[var(--color-ink)]">{formatCurrency(displayValue)}</span>
       </p>
     </div>
   );
@@ -66,15 +66,11 @@ function CustomLabel({ x, y, width, value, payload }: CustomLabelProps) {
   const displayValue = formatCurrency(absValue);
 
   // Color based on type
-  let labelColor = "#059669"; // default green
+  let labelColor = "var(--color-success)";
   if (payload.type === "expense") {
-    if (payload.name === "Gastos Fixos") {
-      labelColor = "#475569"; // slate
-    } else {
-      labelColor = "#EA580C"; // orange
-    }
+    labelColor = payload.name === "Gastos Fixos" ? "var(--color-ink-muted)" : "var(--color-warning)";
   } else if (payload.type === "balance" && value < 0) {
-    labelColor = "#DC2626"; // red
+    labelColor = "var(--color-error)";
   }
 
   return (
@@ -201,25 +197,18 @@ export default function WaterfallChart({ data }: WaterfallChartProps) {
   const domainMin = minValue - padding;
   const domainMax = maxValue + padding;
 
-  // Color scheme: professional and meaningful
   const getBarColor = (entry: WaterfallDataPoint & { value: number }) => {
-    if (entry.type === "income") {
-      return "#22C55E"; // Green - income
-    } else if (entry.type === "expense") {
-      if (entry.name === "Gastos Fixos") {
-        return "#64748B"; // Slate grey - fixed expenses
-      } else {
-        return "#F97316"; // Orange - variable expenses
-      }
-    } else {
-      // Balance
-      return entry.value >= 0 ? "#22C55E" : "#EF4444"; // Green for surplus, red for deficit
+    if (entry.type === "income") return "var(--color-success)";
+    if (entry.type === "expense") {
+      if (entry.name === "Gastos Fixos") return "var(--color-ink-muted)";
+      return "var(--color-warning)";
     }
+    return entry.value >= 0 ? "var(--color-success)" : "var(--color-error)";
   };
 
   return (
-    <div className="bg-gradient-to-b from-white to-neutral-50/50 rounded-xl p-4 sm:p-6 border-2 border-neutral-200 shadow-sm">
-      <h3 className="text-base sm:text-lg font-bold text-neutral-900 mb-3 sm:mb-4 text-center">
+    <div className="bg-[var(--color-surface)] rounded-xl p-4 sm:p-6 border border-[var(--color-border)] shadow-[var(--shadow-sm)]">
+      <h3 className="text-base sm:text-lg font-bold text-[var(--color-ink)] mb-3 sm:mb-4 text-center tracking-tight">
         Fluxo de Dinheiro
       </h3>
       
@@ -232,29 +221,15 @@ export default function WaterfallChart({ data }: WaterfallChartProps) {
             barGap={8}
           >
             {/* Grid lines - both horizontal and vertical */}
-            <CartesianGrid 
-              strokeDasharray="3 3" 
-              stroke="#D1D5DB" 
-              vertical={false}
-              horizontal={true}
-              opacity={0.6}
-            />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} horizontal opacity={0.6} />
 
-            {/* Zero line (more prominent) */}
-            <ReferenceLine 
-              y={0} 
-              stroke="#374151" 
-              strokeWidth={2}
-              strokeDasharray="0"
-              opacity={0.8}
-              label={{ value: "Zero", position: "right", fill: "#374151", fontSize: 11, fontWeight: 600 }}
-            />
+            <ReferenceLine y={0} stroke="var(--color-ink)" strokeWidth={2} opacity={0.8} label={{ value: "Zero", position: "right", fill: "var(--color-ink)", fontSize: 11, fontWeight: 600 }} />
 
             <XAxis
               dataKey="name"
-              tick={{ fontSize: 10, fill: "#374151", fontWeight: 600 }}
+              tick={{ fontSize: 10, fill: "var(--color-ink)", fontWeight: 600 }}
               tickLine={false}
-              axisLine={{ stroke: "#9CA3AF", strokeWidth: 2 }}
+              axisLine={{ stroke: "var(--color-border)", strokeWidth: 2 }}
               dy={10}
               angle={0}
               textAnchor="middle"
@@ -273,10 +248,7 @@ export default function WaterfallChart({ data }: WaterfallChartProps) {
               tickCount={6}
             />
 
-            <Tooltip 
-              content={<WaterfallTooltip />}
-              cursor={{ fill: 'rgba(59, 130, 246, 0.1)', stroke: '#3B82F6', strokeWidth: 2 }}
-            />
+            <Tooltip content={<WaterfallTooltip />} cursor={{ fill: "var(--color-accent)", opacity: 0.1, stroke: "var(--color-accent)", strokeWidth: 2 }} />
 
             {/* Base bar (invisible, for positioning) */}
             <Bar 
@@ -322,28 +294,27 @@ export default function WaterfallChart({ data }: WaterfallChartProps) {
         </ResponsiveContainer>
       </div>
 
-      {/* Enhanced Legend */}
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t-2 border-neutral-200">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[var(--color-border)]">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm" style={{ backgroundColor: "#22C55E" }} />
-          <span className="text-xs sm:text-sm font-semibold text-neutral-700">Rendimento/Excedente</span>
+          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-[var(--color-success)]" />
+          <span className="text-xs sm:text-sm font-semibold text-[var(--color-ink)]">Rendimento/Excedente</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm" style={{ backgroundColor: "#64748B" }} />
-          <span className="text-xs sm:text-sm font-semibold text-neutral-700">Gastos Fixos</span>
+          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-[var(--color-ink-muted)]" />
+          <span className="text-xs sm:text-sm font-semibold text-[var(--color-ink)]">Gastos Fixos</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm" style={{ backgroundColor: "#F97316" }} />
-          <span className="text-xs sm:text-sm font-semibold text-neutral-700">Gastos Variáveis</span>
+          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-[var(--color-warning)]" />
+          <span className="text-xs sm:text-sm font-semibold text-[var(--color-ink)]">Gastos Variáveis</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm" style={{ backgroundColor: "#EF4444" }} />
-          <span className="text-xs sm:text-sm font-semibold text-neutral-700">Défice</span>
+          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-[var(--color-error)]" />
+          <span className="text-xs sm:text-sm font-semibold text-[var(--color-ink)]">Défice</span>
         </div>
       </div>
 
       {/* Help text */}
-      <p className="text-xs text-neutral-500 text-center mt-3 sm:mt-4 px-4">
+      <p className="text-xs text-[var(--color-ink-muted)] text-center mt-3 sm:mt-4 px-4">
         Os valores são exibidos em cada barra. A linha preta horizontal indica o ponto zero.
       </p>
     </div>

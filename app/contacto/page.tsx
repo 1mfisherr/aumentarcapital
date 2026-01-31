@@ -87,32 +87,32 @@ export default function ContactoPage() {
           { label: "Contacto", href: "/contacto" },
         ]}
       />
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-neutral-900 tracking-tight">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-[var(--color-ink)] tracking-tight">
         Contacta-nos
       </h1>
 
-      <p className="text-lg sm:text-xl text-neutral-600 mb-12 leading-relaxed max-w-3xl">
+      <p className="text-lg sm:text-xl text-[var(--color-ink-secondary)] mb-12 leading-relaxed max-w-3xl">
         Tens alguma pergunta, sugestão ou feedback? Adoraríamos ouvir-te!
         Preenche o formulário abaixo e entraremos em contacto contigo brevemente.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-        <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-          <h2 className="text-2xl font-bold mb-6 text-neutral-900">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 lg:p-8 shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-shadow duration-300">
+          <h2 className="text-2xl font-bold mb-6 text-[var(--color-ink)]">
             Informação de Contacto
           </h2>
-          <div className="space-y-5 text-neutral-700">
+          <div className="space-y-5 text-[var(--color-ink-secondary)]">
             <div>
-              <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-2">Email</p>
+              <p className="text-sm font-bold text-[var(--color-ink-muted)] uppercase tracking-wide mb-2">Email</p>
               <a
                 href={`mailto:${siteConfig.author.email}`}
-                className="text-lg font-medium text-primary-600 hover:text-primary-700 transition-colors duration-200"
+                className="text-lg font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] transition-colors duration-200"
               >
                 {siteConfig.author.email}
               </a>
             </div>
             <div>
-              <p className="text-sm font-bold text-neutral-500 uppercase tracking-wide mb-3">Redes Sociais</p>
+              <p className="text-sm font-bold text-[var(--color-ink-muted)] uppercase tracking-wide mb-3">Redes Sociais</p>
               <div className="flex flex-wrap gap-2">
                 {Object.entries(siteConfig.social).map(([platform, url]) => (
                   <a
@@ -120,7 +120,7 @@ export default function ContactoPage() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-neutral-100 border border-neutral-200 text-neutral-700 hover:bg-neutral-100 hover:border-primary hover:text-primary transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
+                    className="px-4 py-2 bg-[var(--color-background-subtle)] border border-[var(--color-border)] text-[var(--color-ink-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors duration-200 rounded-lg font-medium text-sm capitalize"
                   >
                     {platform}
                   </a>
@@ -130,14 +130,14 @@ export default function ContactoPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-6 lg:p-8 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full blur-2xl" />
+        <div className="bg-gradient-to-br from-[var(--color-primary)]/5 via-[var(--color-primary)]/5 to-[var(--color-surface)] border border-[var(--color-primary)]/20 rounded-2xl p-6 lg:p-8 shadow-[var(--shadow-sm)] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl" />
           <div className="relative">
             <div className="text-4xl mb-4">⏱️</div>
-            <h3 className="text-2xl font-bold mb-3 text-neutral-900">
+            <h3 className="text-2xl font-bold mb-3 text-[var(--color-ink)]">
               Tempo de Resposta
             </h3>
-            <p className="text-neutral-700 leading-relaxed">
+            <p className="text-[var(--color-ink-secondary)] leading-relaxed">
               Respondemos a todas as mensagens dentro de <strong>24-48 horas</strong> (dias úteis).
               Obrigado pela tua paciência!
             </p>
@@ -213,7 +213,7 @@ export default function ContactoPage() {
         >
           {status === "loading" ? (
             <>
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin h-5 w-5 text-[var(--color-ink-inverse)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -225,13 +225,13 @@ export default function ContactoPage() {
         </button>
 
         {status === "success" && (
-          <div className="p-5 bg-primary-50 border-2 border-primary-200 text-primary-800 rounded-xl font-medium">
+          <div className="p-5 bg-[var(--color-primary)]/10 border-2 border-[var(--color-primary)]/30 text-[var(--color-primary)] rounded-xl font-medium">
             ✅ Mensagem enviada com sucesso! Entraremos em contacto em breve.
           </div>
         )}
 
         {status === "error" && (
-          <div className="p-5 bg-error/10 border-2 border-error/30 text-error rounded-xl font-medium flex items-start gap-3">
+          <div className="p-5 bg-[var(--color-error)]/10 border-2 border-[var(--color-error)]/30 text-[var(--color-error)] rounded-xl font-medium flex items-start gap-3">
             <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>

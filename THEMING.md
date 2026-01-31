@@ -1,285 +1,171 @@
-# 🎨 Theming Guide - Aumentar Capital
+# Theming Guide - Aumentar Capital
 
 ## Quick Start: Changing Colors
 
-Want to change your website colors? **Edit ONE file** and you're done!
+All theme colors are defined in **one place**. Edit `app/globals.css` and the entire site updates.
 
-### Step 1: Open the Theme File
+### Step 1: Open the theme file
 
-Open: `app/globals.css`
+Open: **`app/globals.css`**
 
-### Step 2: Find the Theme Section
+### Step 2: Find the theme block
 
-Look for the `:root` section at the top:
+At the top you’ll see an **`@theme { ... }`** block (Tailwind v4) and a **`:root { ... }`** block. Both define the same variables so CSS and Tailwind stay in sync.
+
+### Step 3: Change the values
+
+Update the hex codes in **both** `@theme` and `:root`:
 
 ```css
+@theme {
+  --color-brand-primary: #0A261F;   /* Deep Forest Green */
+  --color-brand-secondary: #1A3D33;
+  --color-brand-accent: #B8975E;    /* Muted Gold */
+  /* ... */
+}
+
 :root {
-  /* ===== BRAND COLORS ===== */
-  --color-brand-primary: #0891B2;      /* Main brand color (cyan) */
-  --color-brand-secondary: #06B6D4;    /* Secondary brand color (lighter cyan) */
-  --color-brand-accent: #0E7490;       /* Accent color (darker cyan) */
-  ...
+  --color-brand-primary: #0A261F;
+  --color-brand-secondary: #1A3D33;
+  --color-brand-accent: #B8975E;
+  /* ... */
 }
 ```
 
-### Step 3: Change the Colors
+### Step 4: Save and refresh
 
-Replace the hex codes with your new colors:
-
-```css
-:root {
-  /* ===== BRAND COLORS ===== */
-  --color-brand-primary: #FF6B6B;      /* Your new primary color */
-  --color-brand-secondary: #FF8E8E;    /* Your new secondary color */
-  --color-brand-accent: #FF4444;       /* Your new accent color */
-  ...
-}
-```
-
-### Step 4: Save & Refresh
-
-Save the file → Refresh your browser → **Done!** ✨
-
-The entire website updates automatically - logo, buttons, links, everything.
+Save the file and refresh the browser. Buttons, links, cards, and text that use these tokens will update automatically.
 
 ---
 
-## Color Variables Reference
+## Current theme: High-Trust Executive Forest
 
-### Brand Colors
-- `--color-brand-primary` - Main brand color (buttons, links, logo)
-- `--color-brand-secondary` - Secondary brand color (hover states, gradients)
-- `--color-brand-accent` - Accent color (pressed states, highlights)
+The site uses a **forest green + sage + parchment + gold** palette for a fintech-style, high-trust look.
 
-### Text Colors
-- `--color-text-primary` - Main text color (headings, body text)
-- `--color-text-secondary` - Secondary text (subheadings, captions)
-- `--color-text-muted` - Muted text (metadata, less important info)
+### Brand colors
 
-### Background Colors
-- `--color-bg-primary` - Main background (white)
-- `--color-bg-secondary` - Secondary background (light gray)
-- `--color-bg-subtle` - Subtle background (very light gray)
-- `--color-bg-brand-light` - Light brand tint background
+| Variable | Hex | Usage |
+|----------|-----|--------|
+| `--color-brand-primary` | `#0A261F` | Primary buttons, links, badges |
+| `--color-brand-secondary` | `#1A3D33` | Hover states, gradients |
+| `--color-brand-accent` | `#B8975E` | Dividers, trust icons |
 
-### UI Colors
-- `--color-border` - Border color
-- `--color-success` - Success messages (green)
-- `--color-error` - Error messages (red)
-- `--color-warning` - Warning messages (orange)
+### Text colors
+
+| Variable | Hex | Usage |
+|----------|-----|--------|
+| `--color-text-primary` | `#051B11` | Headings, main text |
+| `--color-text-secondary` | `#0A261F` | Body, subheadings |
+| `--color-text-muted` | `#3D5A50` | Metadata, captions |
+
+### Background colors
+
+| Variable | Hex | Usage |
+|----------|-----|--------|
+| `--color-bg-primary` | `#FFFFFF` | Cards, modals |
+| `--color-bg-secondary` | `#FDFCF8` | Page background (warm parchment) |
+| `--color-bg-hero` | `#F0F4F2` | Hero / section backgrounds |
+| `--color-bg-brand-light` | `#E8EBE5` | Light sage tint |
+
+### UI colors
+
+| Variable | Hex | Usage |
+|----------|-----|--------|
+| `--color-border` | `#D8DCD3` | Borders, dividers |
+| `--color-success` | `#10B981` | Success messages |
+| `--color-error` | `#EF4444` | Errors |
+| `--color-warning` | `#F59E0B` | Warnings |
+
+### Semantic aliases (for Recursos, Artigos, calculators)
+
+The same palette is exposed as **`primary`** and **`neutral`** so existing `bg-primary`, `text-neutral-600`, etc. stay on-brand:
+
+- **`primary`** = brand primary (forest green)
+- **`primary-50` … `primary-800`** = tints/shades of brand
+- **`neutral-50` … `neutral-900`** = sage/green tints (replacing gray)
+
+So pages like Recursos and Artigos that use `text-neutral-900`, `bg-primary`, etc. automatically use the Executive Forest palette without extra changes.
 
 ---
 
-## Using Colors in Components
+## Using colors in components
 
-### With Tailwind Classes
+### Tailwind classes (preferred)
+
+Use theme-based utilities so one file controls all colors:
 
 ```tsx
-// Primary brand color
-<button className="bg-brand-primary text-white">Click Me</button>
+// Brand
+<button className="bg-brand-primary text-white">Guardar</button>
+<h1 className="text-text-primary">Título</h1>
+<p className="text-brand-primary">Corpo</p>
 
-// With hover state
-<button className="bg-brand-primary hover:bg-brand-accent">Click Me</button>
+// Semantic (same palette)
+<div className="bg-primary text-white">...</div>
+<span className="text-neutral-600">...</span>
 
-// Border
-<div className="border-2 border-brand-primary">Content</div>
-
-// Text
-<h1 className="text-brand-primary">Heading</h1>
+// Borders and backgrounds
+<div className="border border-border bg-bg-secondary">...</div>
 ```
 
-### Pre-made Utility Classes
+### Pre-made component classes
 
-The theme includes ready-to-use component classes:
+Defined in `globals.css`:
 
 ```tsx
-// Primary button
-<button className="btn-primary">Save</button>
-
-// Secondary button
-<button className="btn-secondary">Cancel</button>
-
-// Card
-<div className="card">Card content</div>
-
-// Logo gradient
-<div className="logo-gradient">Gradient background</div>
-
-// Logo gradient text
-<h1 className="logo-gradient-text">Gradient text</h1>
+<button className="btn-primary">Guardar</button>
+<button className="btn-secondary">Cancelar</button>
+<div className="card">Conteúdo</div>
+<div className="bento-card">Bento</div>
+<div className="premium-shadow-card">Card com sombra</div>
+<div className="logo-gradient">Fundo gradiente</div>
+<h1 className="logo-gradient-text">Texto gradiente</h1>
 ```
+
+### Do not use
+
+- Raw hex in components (e.g. `#0A261F`) – use tokens instead.
+- Tailwind’s default gray/blue if you want brand consistency – use `neutral-*` and `primary` from the theme.
 
 ---
 
-## Color Scheme Examples
+## Shadows
 
-### Blue (Default)
-```css
---color-brand-primary: #0891B2;
---color-brand-secondary: #06B6D4;
---color-brand-accent: #0E7490;
-```
+Shadows use a **tinted green** so they match the palette:
 
-### Purple
-```css
---color-brand-primary: #8B5CF6;
---color-brand-secondary: #A78BFA;
---color-brand-accent: #7C3AED;
-```
+- `--shadow-premium` – cards at rest  
+- `--shadow-premium-hover` – cards on hover  
+- `--shadow-soft`, `--shadow-medium`, `--shadow-strong` – other levels  
 
-### Green
-```css
---color-brand-primary: #10B981;
---color-brand-secondary: #34D399;
---color-brand-accent: #059669;
-```
-
-### Orange
-```css
---color-brand-primary: #F59E0B;
---color-brand-secondary: #FBBF24;
---color-brand-accent: #D97706;
-```
-
-### Red
-```css
---color-brand-primary: #EF4444;
---color-brand-secondary: #F87171;
---color-brand-accent: #DC2626;
-```
+All are defined in `@theme` and `:root` in `app/globals.css`.
 
 ---
 
-## Tips for Choosing Colors
+## Single source of truth
 
-### 1. Use a Color Picker
-
-- [Coolors.co](https://coolors.co/) - Generate color palettes
-- [Adobe Color](https://color.adobe.com/) - Professional color wheel
-- [HTML Color Picker](https://www.w3schools.com/colors/colors_picker.asp) - Simple picker
-
-### 2. Color Relationships
-
-- **Primary**: Your main brand color
-- **Secondary**: Lighter version of primary (add 20-30% brightness)
-- **Accent**: Darker version of primary (reduce 20-30% brightness)
-
-### 3. Accessibility
-
-Make sure your colors have good contrast:
-- Dark text on light backgrounds
-- Light text on dark backgrounds
-- Test with [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
-
-### 4. Test Your Colors
-
-After changing colors:
-1. Check the homepage
-2. Check an article page
-3. Check buttons and links
-4. Check forms
-5. Test in light/dark mode (if enabled)
-
----
-
-## Advanced: Creating Color Schemes
-
-### Monochromatic (Single Color)
-
-Use different shades of the same color:
-
-```css
---color-brand-primary: #3B82F6;    /* Base blue */
---color-brand-secondary: #60A5FA;  /* Lighter blue */
---color-brand-accent: #2563EB;     /* Darker blue */
-```
-
-### Complementary (Opposite Colors)
-
-Use colors opposite on the color wheel:
-
-```css
---color-brand-primary: #3B82F6;    /* Blue */
---color-brand-secondary: #F59E0B;  /* Orange (complementary) */
---color-brand-accent: #2563EB;     /* Dark blue */
-```
-
-### Analogous (Adjacent Colors)
-
-Use colors next to each other on the color wheel:
-
-```css
---color-brand-primary: #10B981;    /* Green */
---color-brand-secondary: #06B6D4;  /* Cyan (adjacent) */
---color-brand-accent: #059669;     /* Dark green */
-```
+1. **Edit only** `app/globals.css`: change `@theme` and `:root` together.
+2. **Use tokens in components**: `text-text-primary`, `bg-brand-primary`, `border-border`, `primary`, `neutral-*`, etc.
+3. **Avoid hardcoded hex** in TSX/CSS so the theme stays the single source of truth.
 
 ---
 
 ## Troubleshooting
 
-### Colors Not Updating?
+### Colors don’t update
 
-1. **Clear browser cache**: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac)
-2. **Restart dev server**: Stop and run `npm run dev` again
-3. **Check for typos**: Make sure hex codes start with `#`
-4. **Valid hex format**: 6 characters (e.g., `#FF6B6B`) not 3 (e.g., ~~`#F6B`~~)
+1. Hard refresh: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac).
+2. Restart dev server: `npm run dev`.
+3. Confirm you changed both `@theme` and `:root` in `app/globals.css`.
 
-### Some Elements Still Old Color?
+### Some elements ignore the theme
 
-The theming system covers all components, but if you find any:
-1. Search for the old hex code in your project
-2. Replace with the appropriate CSS variable
-3. Report it as a bug!
+Search the repo for the old hex or class (e.g. `#0A261F`, `cyan-500`) and replace with the right token (`brand-primary`, `primary`, etc.).
 
-### Colors Look Wrong?
+### Contrast / accessibility
 
-1. Check contrast ratios for accessibility
-2. Test on different screens
-3. View in incognito mode (no extensions interfering)
-4. Try the "Web Developer" browser extension to test color blindness
+- Prefer `text-text-primary` or `text-brand-primary` on light backgrounds.
+- Use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) for new colors.
 
 ---
 
-## Need Help?
-
-1. Check this guide again
-2. Search for hex codes in `app/globals.css`
-3. Test with one of the example color schemes above
-4. Make sure you saved the file!
-
----
-
-## What Changed vs. Old System?
-
-### Before (Complex, Fragile)
-```tsx
-// Colors scattered everywhere
-<div style={{ background: '#0891B2' }}>...</div>
-<div className="bg-blue-500">...</div>
-<div style={{ color: '#1E3A8A' }}>...</div>
-```
-
-**Problems:**
-- Had to edit 20+ files to change colors
-- Inline styles everywhere
-- Tailwind config conflicts
-- Impossible to maintain
-
-### After (Simple, Maintainable)
-```tsx
-// Single source of truth
-<div className="bg-brand-primary">...</div>
-<div className="text-brand-primary">...</div>
-<button className="btn-primary">...</button>
-```
-
-**Benefits:**
-- Edit ONE file (`app/globals.css`)
-- Consistent everywhere
-- Easy to maintain
-- Future-proof for dark mode
-
----
-
-**Happy theming! 🎨**
+**Happy theming.**

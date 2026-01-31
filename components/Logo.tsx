@@ -47,7 +47,7 @@ export function Logo({ variant = "full", className = "", iconClassName = "" }: L
   );
 
   return (
-    <Link href="/" className={`inline-flex items-center group text-brand-primary ${className}`}>
+    <Link href="/" className={`inline-flex items-center group text-[var(--color-ink)] ${className}`}>
       {logoContent}
     </Link>
   );

@@ -76,17 +76,17 @@ function NewsletterSignup() {
   }
 
   return (
-    <div 
-      className="w-full bg-white rounded-2xl p-10 sm:p-12 md:p-14 relative overflow-hidden premium-shadow-card"
+    <div
+      className="w-full bg-[var(--color-surface)] rounded-2xl p-10 sm:p-12 md:p-14 relative overflow-hidden border border-[var(--color-border)]"
+      style={{ boxShadow: "var(--shadow-sm)" }}
     >
-      {/* Subtle background decoration - sage and gold tints */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8EBE5]/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#0A261F]/08 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-primary)]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" aria-hidden />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--color-accent)]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" aria-hidden />
       <div className="relative">
-        <h3 className="text-2xl sm:text-3xl font-black mb-4 text-[#051B11]">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-[var(--color-ink)] tracking-tight">
           {siteConfig.newsletter.title}
         </h3>
-        <p className="text-base sm:text-lg text-[#0A261F] mb-10 leading-relaxed">
+        <p className="text-base sm:text-lg text-[var(--color-ink-secondary)] mb-10 leading-relaxed">
           {siteConfig.newsletter.description}
         </p>
 
@@ -98,12 +98,12 @@ function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 w-full px-6 py-4 border border-[#D8DCD3] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A261F]/20 focus:border-[#0A261F] disabled:opacity-50 bg-[#FDFCF8] text-base text-[#0A261F] transition-all duration-200 placeholder:text-[#5A7A6D]"
+          className="flex-1 w-full px-6 py-4 border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)] disabled:opacity-50 bg-[var(--color-background)] text-base text-[var(--color-ink)] transition-all duration-200 placeholder:text-[var(--color-ink-muted)]"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-4 bg-[#0A261F] text-white font-bold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-[#051B11]"
+          className="w-full sm:w-auto px-8 py-4 bg-[var(--color-primary)] text-[var(--color-ink-inverse)] font-bold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-[var(--color-primary-hover)]"
           style={{ boxShadow: '0 10px 30px rgba(5,27,17,0.12)' }}
         >
           {status === "loading" ? (
@@ -131,7 +131,7 @@ function NewsletterSignup() {
       </form>
 
       {status === "success" && (
-        <div className="mt-5 text-sm font-medium text-[#10B981] bg-[#10B981]/10 px-4 py-3 rounded-xl flex items-center gap-2">
+        <div className="mt-5 text-sm font-medium text-[var(--color-success)] bg-[var(--color-success)]/10 px-4 py-3 rounded-xl flex items-center gap-2">
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
@@ -147,7 +147,7 @@ function NewsletterSignup() {
         </div>
       )}
 
-      <p className="mt-5 text-sm text-[#5A7A6D]">
+      <p className="mt-5 text-sm text-[var(--color-ink-muted)]">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
       </div>

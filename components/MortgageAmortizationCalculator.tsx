@@ -32,7 +32,7 @@ interface CustomTooltipProps {
 function ChartTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white border border-neutral-200 rounded-xl p-4 shadow-lg">
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4 shadow-[var(--shadow-lg)]">
         <div className="space-y-2 text-sm">
           {payload.map((entry, index) => (
             <p key={index} style={{ color: entry.fill }}>
@@ -51,17 +51,16 @@ function InfoTooltip({ text }: { text: string }) {
   return (
     <span className="relative group ml-1.5 inline-flex items-center">
       <span
-        className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-neutral-200 hover:bg-cyan-100 text-neutral-500 hover:text-cyan-600 text-xs sm:text-sm flex items-center justify-center cursor-help transition-colors duration-200 font-medium touch-manipulation"
+        className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-primary)]/10 text-[var(--color-ink-muted)] hover:text-[var(--color-primary)] text-xs sm:text-sm flex items-center justify-center cursor-help transition-colors duration-200 font-medium touch-manipulation"
         aria-label="Informação"
       >
         i
       </span>
-      <span className="absolute left-6 sm:left-7 top-1/2 -translate-y-1/2 z-20 hidden sm:group-hover:block w-56 sm:w-64 p-3 text-xs bg-neutral-800 text-white rounded-lg shadow-xl leading-relaxed pointer-events-none">
-        <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-neutral-800" />
+      <span className="absolute left-6 sm:left-7 top-1/2 -translate-y-1/2 z-20 hidden sm:group-hover:block w-56 sm:w-64 p-3 text-xs bg-[var(--color-ink)] text-[var(--color-ink-inverse)] rounded-lg shadow-xl leading-relaxed pointer-events-none">
+        <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-[var(--color-ink)]" />
         {text}
       </span>
-      {/* Mobile tooltip - shows on tap */}
-      <span className="sm:hidden fixed bottom-4 left-4 right-4 z-30 bg-neutral-800 text-white p-4 rounded-lg shadow-2xl text-sm leading-relaxed opacity-0 pointer-events-none group-active:opacity-100 transition-opacity">
+      <span className="sm:hidden fixed bottom-4 left-4 right-4 z-30 bg-[var(--color-ink)] text-[var(--color-ink-inverse)] p-4 rounded-lg shadow-2xl text-sm leading-relaxed opacity-0 pointer-events-none group-active:opacity-100 transition-opacity">
         {text}
       </span>
     </span>
@@ -165,19 +164,19 @@ export default function MortgageAmortizationCalculator() {
     });
   }, [principalValidation, termValidation, interestRateValidation, extraPaymentValidation, remainingMonths]);
 
-  // Generate chart data
+  // Generate chart data (use CSS vars for theme consistency)
   const chartData = useMemo(() => {
     if (!result) return [];
     return [
       {
         name: "Sem Amortização",
         value: Math.round(result.totalInterestWithout),
-        fill: "#94A3B8",
+        fill: "var(--color-ink-muted)",
       },
       {
         name: "Com Amortização",
         value: Math.round(result.totalInterestWith),
-        fill: "#0891B2",
+        fill: "var(--color-primary)",
       },
     ];
   }, [result]);
@@ -281,30 +280,30 @@ export default function MortgageAmortizationCalculator() {
           z-index: 999999;
         }
         #mortgage-print-root * { box-sizing: border-box; }
-        .p-header { text-align: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #0891B2; }
-        .p-header h1 { font-size: 18px; color: #0891B2; margin: 0 0 4px; }
-        .p-header p { color: #666; font-size: 11px; margin: 0; }
-        .p-summary { background: #f5f5f5; padding: 10px; border-radius: 6px; margin-bottom: 16px; }
-        .p-summary h3 { font-size: 11px; font-weight: 600; margin: 0 0 6px; color: #333; }
-        .p-summary .row { display: flex; justify-content: space-between; font-size: 11px; padding: 4px 0; border-bottom: 1px solid #e5e5e5; }
+        .p-header { text-align: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #0d9488; }
+        .p-header h1 { font-size: 18px; color: #0d9488; margin: 0 0 4px; }
+        .p-header p { color: #57534e; font-size: 11px; margin: 0; }
+        .p-summary { background: #f5f3f0; padding: 10px; border-radius: 6px; margin-bottom: 16px; }
+        .p-summary h3 { font-size: 11px; font-weight: 600; margin: 0 0 6px; color: #1c1917; }
+        .p-summary .row { display: flex; justify-content: space-between; font-size: 11px; padding: 4px 0; border-bottom: 1px solid #e7e5e4; }
         .p-summary .row:last-child { border-bottom: none; }
-        .p-highlight { background: #0891B2; color: white; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 16px; }
+        .p-highlight { background: #0d9488; color: white; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 16px; }
         .p-highlight .label { font-size: 11px; margin-bottom: 3px; }
         .p-highlight .value { font-size: 22px; font-weight: 700; }
         .p-section { margin-bottom: 12px; }
-        .p-section-title { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+        .p-section-title { font-size: 12px; font-weight: 600; color: #1c1917; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #e7e5e4; }
         .p-grid { display: flex; gap: 8px; }
         .p-grid > div { flex: 1; }
-        .p-card { background: #f5f5f5; padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
-        .p-card .label { font-size: 10px; color: #666; margin-bottom: 3px; }
-        .p-card .value { font-size: 15px; font-weight: 600; color: #111; }
-        .p-card .sub { font-size: 10px; color: #0891B2; margin-top: 3px; }
-        .p-card.accent { border-color: #0891B2; background: #e6f7fa; }
-        .p-card.accent .value { color: #0891B2; }
-        .p-time { background: #fef3c7; border: 1px solid #f59e0b; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+        .p-card { background: #f5f3f0; padding: 10px; border-radius: 6px; border: 1px solid #e7e5e4; }
+        .p-card .label { font-size: 10px; color: #57534e; margin-bottom: 3px; }
+        .p-card .value { font-size: 15px; font-weight: 600; color: #1c1917; }
+        .p-card .sub { font-size: 10px; color: #0d9488; margin-top: 3px; }
+        .p-card.accent { border-color: #0d9488; background: #f0fdfa; }
+        .p-card.accent .value { color: #0d9488; }
+        .p-time { background: #fef3c7; border: 1px solid #d97706; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
         .p-time .label { font-size: 10px; color: #92400e; margin-bottom: 2px; }
         .p-time .value { font-size: 13px; font-weight: 600; color: #92400e; }
-        .p-footer { margin-top: 14px; padding-top: 10px; border-top: 1px solid #ddd; text-align: center; color: #999; font-size: 9px; }
+        .p-footer { margin-top: 14px; padding-top: 10px; border-top: 1px solid #e7e5e4; text-align: center; color: #78716c; font-size: 9px; }
       </style>
       <div class="p-header">
         <h1>Simulação de Amortização de Crédito Habitação</h1>
@@ -362,18 +361,18 @@ export default function MortgageAmortizationCalculator() {
     <>
       {/* Calculator Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-        <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 lg:p-8 shadow-lg print:shadow-none print:border-none">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 lg:p-8 shadow-[var(--shadow-lg)] print:shadow-none print:border-none">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Inputs Column */}
             <div className="space-y-6 no-print">
               {/* Principal */}
               <div>
-                <label htmlFor="principal" className="flex items-center text-base font-bold text-neutral-900 mb-2">
-                  Capital em Dívida <span className="text-red-500">*</span>
+                <label htmlFor="principal" className="flex items-center text-base font-bold text-[var(--color-ink)] mb-2">
+                  Capital em Dívida <span className="text-[var(--color-error)]">*</span>
                   <InfoTooltip text="O valor total que ainda deves ao banco pelo teu crédito habitação. Encontras este valor no extrato do empréstimo ou na app do banco." />
                 </label>
                 <div className="relative">
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">€</span>
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[var(--color-ink-secondary)] font-medium">€</span>
                   <input
                     type="text"
                     id="principal"
@@ -381,10 +380,10 @@ export default function MortgageAmortizationCalculator() {
                     onChange={(e) => handleInputChange("principal", e.target.value)}
                     onBlur={() => handleBlur("principal")}
                     placeholder="Ex: 150000"
-                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm ${
+                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm bg-[var(--color-surface)] ${
                       (touched.principal || principal.length > 0) && !principalValidation.isValid
-                        ? "border-red-300 focus:ring-red-500/50 focus:border-red-500"
-                        : "border-neutral-200/60 focus:ring-cyan-500/50 focus:border-cyan-500"
+                        ? "border-[var(--color-error)] focus:ring-[var(--color-error)]/50 focus:border-[var(--color-error)]"
+                        : "border-[var(--color-border)] focus:ring-[var(--color-primary)]/50 focus:border-[var(--color-primary)]"
                     }`}
                     aria-required="true"
                     aria-label="Capital em dívida em euros"
@@ -396,7 +395,7 @@ export default function MortgageAmortizationCalculator() {
 
               {/* Term */}
               <div>
-                <label htmlFor="term-value" className="flex items-center text-base font-bold text-neutral-900 mb-2">
+                <label htmlFor="term-value" className="flex items-center text-base font-bold text-[var(--color-ink)] mb-2">
                   Prazo Restante <span className="text-red-500">*</span>
                   <InfoTooltip text="Quantos anos ou meses faltam para terminar de pagar o empréstimo. Podes consultar no contrato ou extrato do banco." />
                 </label>
@@ -412,7 +411,7 @@ export default function MortgageAmortizationCalculator() {
                       className={`w-full px-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm ${
                         (touched.termValue || termValue.length > 0) && !termValidation.isValid
                           ? "border-red-300 focus:ring-red-500/50 focus:border-red-500"
-                          : "border-neutral-200/60 focus:ring-cyan-500/50 focus:border-cyan-500"
+                          : "border-[var(--color-border)] focus:ring-[var(--color-primary)]/50 focus:border-[var(--color-primary)]"
                       }`}
                       aria-required="true"
                       aria-label={`Prazo restante em ${termUnit === "years" ? "anos" : "meses"}`}
@@ -422,7 +421,7 @@ export default function MortgageAmortizationCalculator() {
                   <select
                     value={termUnit}
                     onChange={(e) => setTermUnit(e.target.value as "years" | "months")}
-                    className="px-4 py-3.5 border border-neutral-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-200 text-base bg-white shadow-sm"
+                    className="px-4 py-3.5 border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 focus:border-[var(--color-primary)] transition-all duration-200 text-base bg-[var(--color-surface)] shadow-sm"
                     aria-label="Unidade de tempo"
                   >
                     <option value="years">Anos</option>
@@ -449,13 +448,13 @@ export default function MortgageAmortizationCalculator() {
                     className={`w-full px-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm ${
                       (touched.interestRate || interestRate.length > 0) && !interestRateValidation.isValid
                         ? "border-red-300 focus:ring-red-500/50 focus:border-red-500"
-                        : "border-neutral-200/60 focus:ring-cyan-500/50 focus:border-cyan-500"
+                        : "border-[var(--color-border)] focus:ring-[var(--color-primary)]/50 focus:border-[var(--color-primary)]"
                     }`}
                     aria-required="true"
                     aria-label="Taxa de juro anual em percentagem"
                     aria-invalid={(touched.interestRate || interestRate.length > 0) && !interestRateValidation.isValid}
                   />
-                  <span className="absolute right-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">%</span>
+                  <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[var(--color-ink-secondary)] font-medium">%</span>
                 </div>
                 {(touched.interestRate || interestRate.length > 0) && <ErrorMessage message={interestRateValidation.error} />}
                 {/* Quick rate presets */}
@@ -470,8 +469,8 @@ export default function MortgageAmortizationCalculator() {
                       }}
                       className={`px-2.5 sm:px-3 py-1.5 text-xs font-medium rounded-lg border transition-all duration-200 touch-manipulation ${
                         parseFloat(interestRate) === rate
-                          ? "bg-cyan-50 border-cyan-300 text-cyan-700"
-                          : "bg-neutral-50 border-neutral-200 text-neutral-600 hover:bg-neutral-100 hover:border-neutral-300"
+                          ? "bg-[var(--color-primary)]/10 border-[var(--color-primary)]/50 text-[var(--color-primary)]"
+                          : "bg-[var(--color-background-subtle)] border-[var(--color-border)] text-[var(--color-ink-secondary)] hover:bg-[var(--color-border)] hover:border-[var(--color-ink-muted)]"
                       }`}
                     >
                       {rate}%
@@ -482,12 +481,12 @@ export default function MortgageAmortizationCalculator() {
 
               {/* Extra Payment */}
               <div>
-                <label htmlFor="extra-payment" className="flex items-center text-base font-bold text-neutral-900 mb-2">
-                  Amortização Extra <span className="text-red-500">*</span>
+                <label htmlFor="extra-payment" className="flex items-center text-base font-bold text-[var(--color-ink)] mb-2">
+                  Amortização Extra <span className="text-[var(--color-error)]">*</span>
                   <InfoTooltip text="Pagamento adicional que queres fazer para reduzir o capital em dívida. Ao amortizar, pagas menos juros no futuro." />
                 </label>
                 <div className="relative">
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">€</span>
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[var(--color-ink-secondary)] font-medium">€</span>
                   <input
                     type="text"
                     id="extra-payment"
@@ -495,10 +494,10 @@ export default function MortgageAmortizationCalculator() {
                     onChange={(e) => handleInputChange("extraPayment", e.target.value)}
                     onBlur={() => handleBlur("extraPayment")}
                     placeholder="Ex: 10000"
-                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm ${
+                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm bg-[var(--color-surface)] ${
                       (touched.extraPayment || extraPayment.length > 0) && !extraPaymentValidation.isValid
-                        ? "border-red-300 focus:ring-red-500/50 focus:border-red-500"
-                        : "border-neutral-200/60 focus:ring-cyan-500/50 focus:border-cyan-500"
+                        ? "border-[var(--color-error)] focus:ring-[var(--color-error)]/50 focus:border-[var(--color-error)]"
+                        : "border-[var(--color-border)] focus:ring-[var(--color-primary)]/50 focus:border-[var(--color-primary)]"
                     }`}
                     aria-required="true"
                     aria-label="Valor da amortização extra em euros"
@@ -517,7 +516,7 @@ export default function MortgageAmortizationCalculator() {
                   type="button"
                   onClick={handleCalculate}
                   disabled={!hasValidInput}
-                  className="flex-1 px-6 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white font-bold rounded-xl hover:from-cyan-700 hover:to-cyan-800 hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none text-base sm:text-lg touch-manipulation"
+                  className="flex-1 px-6 py-3.5 sm:py-4 bg-[var(--color-primary)] text-[var(--color-ink-inverse)] font-bold rounded-xl hover:bg-[var(--color-primary-hover)] hover:shadow-[var(--shadow-md)] hover:scale-[1.02] active:scale-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none text-base sm:text-lg touch-manipulation"
                   aria-label="Simular amortização"
                 >
                   Simular
@@ -528,7 +527,7 @@ export default function MortgageAmortizationCalculator() {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="flex-1 sm:flex-none px-6 py-3 border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/50 touch-manipulation"
+                  className="flex-1 sm:flex-none px-6 py-3 border border-[var(--color-border)] text-[var(--color-ink-secondary)] font-bold rounded-xl hover:bg-[var(--color-background-subtle)] hover:border-[var(--color-ink-muted)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50 touch-manipulation"
                   aria-label="Limpar todos os campos"
                 >
                   Limpar
@@ -537,20 +536,20 @@ export default function MortgageAmortizationCalculator() {
             </div>
 
             {/* Results Column */}
-            <div className="lg:pl-8 lg:border-l-2 lg:border-neutral-200 mt-8 lg:mt-0">
+            <div className="lg:pl-8 lg:border-l-2 lg:border-[var(--color-border)] mt-8 lg:mt-0">
               <div
                 id="results-section-mortgage"
-                className="bg-gradient-to-br from-primary-50 via-primary-50/80 to-white border border-primary-200/60 rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[320px] sm:min-h-[380px] print:min-h-0 print:bg-white print:border-neutral-200"
+                className="bg-gradient-to-br from-[var(--color-primary)]/5 via-[var(--color-primary)]/5 to-[var(--color-surface)] border border-[var(--color-primary)]/20 rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[320px] sm:min-h-[380px] print:min-h-0 print:bg-white print:border-[var(--color-border)]"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full blur-2xl print:hidden" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl print:hidden" />
                 <div className="relative">
                   <div className="flex flex-col gap-2 mb-6">
-                    <h2 className="text-2xl font-bold text-neutral-900">Resultados</h2>
+                    <h2 className="text-2xl font-bold text-[var(--color-ink)]">Resultados</h2>
                     {showResults && result && (
                       <button
                         type="button"
                         onClick={handleSavePDF}
-                        className="no-print inline-flex items-center gap-1 text-sm font-medium text-primary/80 hover:text-primary hover:underline underline-offset-4 transition-all duration-150 ease-out self-start"
+                        className="no-print inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)]/80 hover:text-[var(--color-primary)] hover:underline underline-offset-4 transition-all duration-150 ease-out self-start"
                         aria-label="Guardar como PDF"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -563,42 +562,39 @@ export default function MortgageAmortizationCalculator() {
 
                   {showResults && result ? (
                     <div className="space-y-6 animate-fade-in">
-                      {/* Interest Saved - Main highlight */}
-                      <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl p-4 text-white">
-                        <p className="text-sm font-medium text-cyan-100 mb-1">Poupança em Juros</p>
+                      <div className="bg-[var(--color-primary)] rounded-xl p-4 text-[var(--color-ink-inverse)]">
+                        <p className="text-sm font-medium opacity-90 mb-1">Poupança em Juros</p>
                         <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
                           {formatCurrency(result.interestSaved)}
                         </p>
                       </div>
 
-                      {/* Monthly Payment Comparison */}
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-white/60 rounded-xl p-4 border border-neutral-200/40">
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Prestação Atual</p>
-                          <p className="text-lg font-bold text-neutral-700">
+                        <div className="bg-[var(--color-surface)]/80 rounded-xl p-4 border border-[var(--color-border)]">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Prestação Atual</p>
+                          <p className="text-lg font-bold text-[var(--color-ink-secondary)]">
                             {formatCurrency(result.currentMonthlyPayment)}
                           </p>
-                          <p className="text-xs text-neutral-400">/mês</p>
+                          <p className="text-xs text-[var(--color-ink-muted)]">/mês</p>
                         </div>
-                        <div className="bg-white/60 rounded-xl p-4 border border-cyan-200/40">
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Nova Prestação</p>
-                          <p className="text-lg font-bold text-cyan-700">
+                        <div className="bg-[var(--color-surface)]/80 rounded-xl p-4 border border-[var(--color-primary)]/30">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Nova Prestação</p>
+                          <p className="text-lg font-bold text-[var(--color-primary)]">
                             {formatCurrency(result.newMonthlyPayment)}
                           </p>
-                          <p className="text-xs text-cyan-600">-{formatCurrency(result.monthlyPaymentReduction)}/mês</p>
+                          <p className="text-xs text-[var(--color-primary)]">-{formatCurrency(result.monthlyPaymentReduction)}/mês</p>
                         </div>
                       </div>
 
-                      {/* Time Saved */}
                       {result.monthsSaved > 0 && (
-                        <div className="bg-accent/10 border border-accent/20 rounded-xl p-4">
+                        <div className="bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 rounded-xl p-4">
                           <div className="flex items-center gap-2">
                             <span className="text-2xl">⏱️</span>
                             <div>
-                              <p className="text-sm font-medium text-neutral-700">
+                              <p className="text-sm font-medium text-[var(--color-ink-secondary)]">
                                 Tempo poupado (mantendo prestação atual)
                               </p>
-                              <p className="text-lg font-bold text-accent">
+                              <p className="text-lg font-bold text-[var(--color-accent)]">
                                 {formatMonthsToTime(result.monthsSaved)}
                               </p>
                             </div>
@@ -606,17 +602,16 @@ export default function MortgageAmortizationCalculator() {
                         </div>
                       )}
 
-                      {/* Total Interest Comparison */}
                       <div className="grid grid-cols-2 gap-3 text-center">
                         <div>
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Juros sem amortização</p>
-                          <p className="text-base font-bold text-neutral-600">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Juros sem amortização</p>
+                          <p className="text-base font-bold text-[var(--color-ink-secondary)]">
                             {formatCurrency(result.totalInterestWithout)}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Juros com amortização</p>
-                          <p className="text-base font-bold text-cyan-600">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Juros com amortização</p>
+                          <p className="text-base font-bold text-[var(--color-primary)]">
                             {formatCurrency(result.totalInterestWith)}
                           </p>
                         </div>
@@ -625,8 +620,8 @@ export default function MortgageAmortizationCalculator() {
                   ) : (
                     <div className="text-center py-12" role="status" aria-live="polite">
                       <div className="text-5xl mb-4" aria-hidden="true">🏠</div>
-                      <p className="text-neutral-700 font-medium mb-2">Preenche os dados para simular</p>
-                      <p className="text-sm text-neutral-500">
+                      <p className="text-[var(--color-ink-secondary)] font-medium mb-2">Preenche os dados para simular</p>
+                      <p className="text-sm text-[var(--color-ink-muted)]">
                         Descobre quanto podes poupar ao amortizar o teu crédito habitação
                       </p>
                     </div>
@@ -672,8 +667,8 @@ export default function MortgageAmortizationCalculator() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-              <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-neutral-500 text-center px-4">
-                A diferença representa os <span className="font-semibold text-cyan-600">juros que poupas</span> ao fazer a amortização extra
+              <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-[var(--color-ink-muted)] text-center px-4">
+                A diferença representa os <span className="font-semibold text-[var(--color-primary)]">juros que poupas</span> ao fazer a amortização extra
               </p>
             </div>
           )}
@@ -689,13 +684,13 @@ export default function MortgageAmortizationCalculator() {
               A <strong>amortização antecipada</strong> é um pagamento extra que fazes ao banco para reduzir o capital em dívida do teu crédito habitação. 
               Ao reduzires o capital, pagas menos juros ao longo do tempo.
             </p>
-            <p className="text-neutral-600 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
+            <p className="text-[var(--color-ink-secondary)] leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
               Em Portugal, os bancos são obrigados por lei a aceitar amortizações antecipadas. Para créditos com taxa variável, 
               a comissão máxima é de <strong>0,5%</strong> do valor amortizado. Para taxa fixa, pode chegar a <strong>2%</strong>.
             </p>
             
             {/* Tip box */}
-            <div className="bg-cyan-50 border border-cyan-200/60 rounded-xl p-4 sm:p-5 my-4 sm:my-6">
+            <div className="bg-primary-50 border border-primary-200/60 rounded-xl p-4 sm:p-5 my-4 sm:my-6">
               <h3 className="text-base sm:text-lg font-bold text-neutral-900 mb-2 flex items-center gap-2">
                 <span>💡</span> Dica
               </h3>
@@ -705,7 +700,7 @@ export default function MortgageAmortizationCalculator() {
               </p>
             </div>
 
-            <p className="text-neutral-600 leading-relaxed text-sm sm:text-base">
+            <p className="text-[var(--color-ink-secondary)] leading-relaxed text-sm sm:text-base">
               Antes de amortizar, certifica-te que tens o teu <strong>fundo de emergência</strong> completo. 
               A liquidez é importante — uma vez amortizado, não consegues recuperar esse dinheiro facilmente.
             </p>
@@ -713,7 +708,7 @@ export default function MortgageAmortizationCalculator() {
           <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
             <Link
               href="/artigos/fundacao-fundo-emergencia"
-              className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold transition-colors duration-200 group text-sm sm:text-base touch-manipulation"
+              className="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-semibold transition-colors duration-200 group text-sm sm:text-base touch-manipulation"
             >
               <span>Aprende sobre fundo de emergência</span>
               <svg
@@ -727,7 +722,7 @@ export default function MortgageAmortizationCalculator() {
             </Link>
             <Link
               href="/artigos/fundacao-como-sair-de-dividas"
-              className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold transition-colors duration-200 group text-sm sm:text-base touch-manipulation"
+              className="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-semibold transition-colors duration-200 group text-sm sm:text-base touch-manipulation"
             >
               <span>Estratégias para sair de dívidas</span>
               <svg

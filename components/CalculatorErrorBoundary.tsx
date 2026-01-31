@@ -79,37 +79,36 @@ export default class CalculatorErrorBoundary extends Component<Props, State> {
             </svg>
           </div>
           
-          <h3 className="text-lg font-bold text-neutral-900 mb-2">
+          <h3 className="text-lg font-bold text-[var(--color-ink)] mb-2">
             Erro na Calculadora
           </h3>
           
-          <p className="text-neutral-600 mb-6 max-w-sm">
+          <p className="text-[var(--color-ink-secondary)] mb-6 max-w-sm">
             Ocorreu um erro inesperado. Por favor, tenta novamente ou recarrega a página.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={this.handleReset}
-              className="px-6 py-2.5 bg-brand-primary text-white font-semibold rounded-xl hover:bg-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+              className="px-6 py-2.5 bg-[var(--color-primary)] text-[var(--color-ink-inverse)] font-semibold rounded-xl hover:bg-[var(--color-primary-hover)] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2"
             >
               Tentar novamente
             </button>
             
             <button
               onClick={() => window.location.reload()}
-              className="px-6 py-2.5 border border-neutral-300 text-neutral-700 font-semibold rounded-xl hover:bg-neutral-50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+              className="px-6 py-2.5 border border-[var(--color-border)] text-[var(--color-ink-secondary)] font-semibold rounded-xl hover:bg-[var(--color-background-subtle)] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
             >
               Recarregar página
             </button>
           </div>
 
-          {/* Show error details in development */}
           {process.env.NODE_ENV === "development" && this.state.error && (
             <details className="mt-6 text-left w-full max-w-lg">
-              <summary className="text-sm text-neutral-500 cursor-pointer hover:text-neutral-700">
+              <summary className="text-sm text-[var(--color-ink-muted)] cursor-pointer hover:text-[var(--color-ink-secondary)]">
                 Detalhes do erro (dev only)
               </summary>
-              <pre className="mt-2 p-4 bg-neutral-100 rounded-lg text-xs text-neutral-700 overflow-auto max-h-40">
+              <pre className="mt-2 p-4 bg-[var(--color-background-subtle)] rounded-lg text-xs text-[var(--color-ink-secondary)] overflow-auto max-h-40">
                 {this.state.error.message}
                 {"\n\n"}
                 {this.state.error.stack}

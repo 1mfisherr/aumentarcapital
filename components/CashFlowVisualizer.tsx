@@ -34,17 +34,16 @@ function InfoTooltip({ text }: { text: string }) {
   return (
     <span className="relative group ml-1.5 inline-flex items-center">
       <span
-        className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-neutral-200 hover:bg-cyan-100 text-neutral-500 hover:text-cyan-600 text-xs sm:text-sm flex items-center justify-center cursor-help transition-colors duration-200 font-medium touch-manipulation"
+        className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[var(--color-background-subtle)] hover:bg-[var(--color-primary)]/10 text-[var(--color-ink-muted)] hover:text-[var(--color-primary)] text-xs sm:text-sm flex items-center justify-center cursor-help transition-colors duration-200 font-medium touch-manipulation"
         aria-label="Informação"
       >
         i
       </span>
-      <span className="absolute left-6 sm:left-7 top-1/2 -translate-y-1/2 z-20 hidden sm:group-hover:block w-56 sm:w-64 p-3 text-xs bg-neutral-800 text-white rounded-lg shadow-xl leading-relaxed pointer-events-none">
-        <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-neutral-800" />
+      <span className="absolute left-6 sm:left-7 top-1/2 -translate-y-1/2 z-20 hidden sm:group-hover:block w-56 sm:w-64 p-3 text-xs bg-[var(--color-ink)] text-white rounded-xl shadow-[var(--shadow-lg)] leading-relaxed pointer-events-none">
+        <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-[var(--color-ink)]" />
         {text}
       </span>
-      {/* Mobile tooltip - shows on tap */}
-      <span className="sm:hidden fixed bottom-4 left-4 right-4 z-30 bg-neutral-800 text-white p-4 rounded-lg shadow-2xl text-sm leading-relaxed opacity-0 pointer-events-none group-active:opacity-100 transition-opacity">
+      <span className="sm:hidden fixed bottom-4 left-4 right-4 z-30 bg-[var(--color-ink)] text-white p-4 rounded-xl shadow-[var(--shadow-xl)] text-sm leading-relaxed opacity-0 pointer-events-none group-active:opacity-100 transition-opacity">
         {text}
       </span>
     </span>
@@ -58,7 +57,7 @@ function InfoTooltip({ text }: { text: string }) {
 function ErrorMessage({ message }: { message: string | undefined }) {
   if (!message) return null;
   return (
-    <div className="mt-2 flex items-start gap-2 text-sm text-red-600 animate-fade-in" role="alert">
+    <div className="mt-2 flex items-start gap-2 text-sm text-[var(--color-error)] animate-fade-in" role="alert">
       <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -183,38 +182,31 @@ export default function CashFlowVisualizer() {
 
   return (
     <>
-      {/* Calculator Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-        <div className="bg-white border border-neutral-200/60 rounded-2xl p-6 lg:p-8 shadow-lg">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            
-            {/* ===== INPUT COLUMN ===== */}
+      <section className="max-w-5xl mx-auto pb-8 sm:pb-10">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 lg:p-8 shadow-[var(--shadow-sm)]">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
             <div className="space-y-6">
-              
-              {/* Income Input */}
               <div>
-                <label htmlFor="income" className="flex items-center text-base font-bold text-neutral-900 mb-2">
-                  Rendimento Mensal Líquido <span className="text-red-500">*</span>
+                <label htmlFor="income" className="flex items-center text-base font-semibold text-[var(--color-ink)] mb-2">
+                  Rendimento Mensal Líquido <span className="text-[var(--color-error)]">*</span>
                   <InfoTooltip text="O teu salário líquido mensal após impostos e descontos. É o dinheiro que realmente recebes na conta." />
                 </label>
                 <div className="relative">
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-neutral-600 font-medium">€</span>
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[var(--color-ink-muted)] font-medium">€</span>
                   <input
                     type="text"
                     id="income"
                     value={income}
                     onChange={(e) => {
                       setIncome(e.target.value);
-                      if (!incomeTouched && e.target.value.length > 0) {
-                        setIncomeTouched(true);
-                      }
+                      if (!incomeTouched && e.target.value.length > 0) setIncomeTouched(true);
                     }}
                     onBlur={() => setIncomeTouched(true)}
                     placeholder="Ex: 1200"
-                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base shadow-sm ${
+                    className={`w-full pl-8 pr-5 py-3.5 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 text-base bg-[var(--color-background)] text-[var(--color-ink)] ${
                       (incomeTouched || income.length > 0) && !incomeValidation.isValid
-                        ? "border-red-300 focus:ring-red-500/50 focus:border-red-500"
-                        : "border-neutral-200/60 focus:ring-cyan-500/50 focus:border-cyan-500"
+                        ? "border-[var(--color-error)] focus:ring-[var(--color-error)]/30 focus:border-[var(--color-error)]"
+                        : "border-[var(--color-border)] focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)]"
                     }`}
                     aria-label="Rendimento mensal líquido em euros"
                     aria-required="true"
@@ -224,17 +216,16 @@ export default function CashFlowVisualizer() {
                 {(incomeTouched || income.length > 0) && <ErrorMessage message={incomeValidation.error} />}
               </div>
 
-              {/* Fixed Expenses Section */}
-              <div className="border-t border-neutral-200 pt-6">
+              <div className="border-t border-[var(--color-border)] pt-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-base font-bold text-neutral-900 flex items-center">
+                  <h3 className="text-base font-semibold text-[var(--color-ink)] flex items-center">
                     Gastos Fixos
                     <InfoTooltip text="Despesas que se repetem todos os meses com valores previsíveis: renda, contas, transportes, subscrições." />
                   </h3>
                   <button
                     type="button"
                     onClick={() => handleAddCategory('fixed')}
-                    className="text-xs font-semibold text-cyan-600 hover:text-cyan-700 transition-colors flex items-center gap-1"
+                    className="text-xs font-semibold text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] transition-colors flex items-center gap-1"
                     aria-label="Adicionar categoria de gasto fixo"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,25 +244,25 @@ export default function CashFlowVisualizer() {
                           value={category.name}
                           onChange={(e) => handleUpdateName(category.id, e.target.value)}
                           placeholder="Nome da despesa"
-                          className="w-full px-3 py-2.5 sm:py-2 text-sm border border-neutral-200/60 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+                          className="w-full px-3 py-2.5 sm:py-2 text-sm border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)] bg-[var(--color-background)] text-[var(--color-ink)] transition-all"
                           aria-label={`Nome da categoria: ${category.name}`}
                         />
                       </div>
                       <div className="relative w-full sm:w-28 flex-shrink-0">
-                        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-neutral-600 text-xs font-medium">€</span>
+                        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[var(--color-ink-muted)] text-xs font-medium">€</span>
                         <input
                           type="text"
                           value={category.amount}
                           onChange={(e) => handleUpdateAmount(category.id, e.target.value)}
                           placeholder="0"
-                          className="w-full pl-6 pr-2 py-2.5 sm:py-2 text-sm border border-neutral-200/60 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+                          className="w-full pl-6 pr-2 py-2.5 sm:py-2 text-sm border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)] bg-[var(--color-background)] text-[var(--color-ink)] transition-all"
                           aria-label={`Valor de ${category.name}`}
                         />
                       </div>
                       <button
                         type="button"
                         onClick={() => handleRemoveCategory(category.id)}
-                        className="p-2.5 sm:p-2 text-neutral-400 hover:text-red-500 transition-colors flex-shrink-0 self-start sm:self-auto"
+                        className="p-2.5 sm:p-2 text-[var(--color-ink-muted)] hover:text-[var(--color-error)] transition-colors flex-shrink-0 self-start sm:self-auto"
                         aria-label={`Remover ${category.name}`}
                       >
                         <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -283,26 +274,25 @@ export default function CashFlowVisualizer() {
                 </div>
 
                 {fixedCategories.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-neutral-100 flex justify-between items-center">
-                    <span className="text-sm font-medium text-neutral-600">Total Fixo:</span>
-                    <span className="text-base font-bold text-neutral-900">
+                  <div className="mt-3 pt-3 border-t border-[var(--color-border)] flex justify-between items-center">
+                    <span className="text-sm font-medium text-[var(--color-ink-secondary)]">Total Fixo:</span>
+                    <span className="text-base font-bold text-[var(--color-ink)]">
                       {formatCurrency(result.totalFixedExpenses)}
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Variable Expenses Section */}
-              <div className="border-t border-neutral-200 pt-6">
+              <div className="border-t border-[var(--color-border)] pt-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-base font-bold text-neutral-900 flex items-center">
+                  <h3 className="text-base font-semibold text-[var(--color-ink)] flex items-center">
                     Gastos Variáveis
                     <InfoTooltip text="Despesas que mudam de mês para mês: alimentação, lazer, compras não essenciais." />
                   </h3>
                   <button
                     type="button"
                     onClick={() => handleAddCategory('variable')}
-                    className="text-xs font-semibold text-cyan-600 hover:text-cyan-700 transition-colors flex items-center gap-1"
+                    className="text-xs font-semibold text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] transition-colors flex items-center gap-1"
                     aria-label="Adicionar categoria de gasto variável"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -321,25 +311,25 @@ export default function CashFlowVisualizer() {
                           value={category.name}
                           onChange={(e) => handleUpdateName(category.id, e.target.value)}
                           placeholder="Nome da despesa"
-                          className="w-full px-3 py-2.5 sm:py-2 text-sm border border-neutral-200/60 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+                          className="w-full px-3 py-2.5 sm:py-2 text-sm border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)] bg-[var(--color-background)] text-[var(--color-ink)] transition-all"
                           aria-label={`Nome da categoria: ${category.name}`}
                         />
                       </div>
                       <div className="relative w-full sm:w-28 flex-shrink-0">
-                        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-neutral-600 text-xs font-medium">€</span>
+                        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[var(--color-ink-muted)] text-xs font-medium">€</span>
                         <input
                           type="text"
                           value={category.amount}
                           onChange={(e) => handleUpdateAmount(category.id, e.target.value)}
                           placeholder="0"
-                          className="w-full pl-6 pr-2 py-2.5 sm:py-2 text-sm border border-neutral-200/60 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+                          className="w-full pl-6 pr-2 py-2.5 sm:py-2 text-sm border border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20 focus:border-[var(--color-primary)] bg-[var(--color-background)] text-[var(--color-ink)] transition-all"
                           aria-label={`Valor de ${category.name}`}
                         />
                       </div>
                       <button
                         type="button"
                         onClick={() => handleRemoveCategory(category.id)}
-                        className="p-2.5 sm:p-2 text-neutral-400 hover:text-red-500 transition-colors flex-shrink-0 self-start sm:self-auto"
+                        className="p-2.5 sm:p-2 text-[var(--color-ink-muted)] hover:text-[var(--color-error)] transition-colors flex-shrink-0 self-start sm:self-auto"
                         aria-label={`Remover ${category.name}`}
                       >
                         <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -351,22 +341,21 @@ export default function CashFlowVisualizer() {
                 </div>
 
                 {variableCategories.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-neutral-100 flex justify-between items-center">
-                    <span className="text-sm font-medium text-neutral-600">Total Variável:</span>
-                    <span className="text-base font-bold text-neutral-900">
+                  <div className="mt-3 pt-3 border-t border-[var(--color-border)] flex justify-between items-center">
+                    <span className="text-sm font-medium text-[var(--color-ink-secondary)]">Total Variável:</span>
+                    <span className="text-base font-bold text-[var(--color-ink)]">
                       {formatCurrency(result.totalVariableExpenses)}
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Calculate Button */}
               <div className="pt-4">
                 <button
                   type="button"
                   onClick={handleCalculate}
                   disabled={result.totalIncome <= 0 || !incomeValidation.isValid}
-                  className="w-full px-6 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white font-bold rounded-xl hover:from-cyan-700 hover:to-cyan-800 hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none text-base sm:text-lg touch-manipulation"
+                  className="w-full px-6 py-3.5 sm:py-4 bg-[var(--color-primary)] text-white font-bold rounded-xl hover:bg-[var(--color-primary-hover)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-base sm:text-lg touch-manipulation"
                   aria-label="Calcular resultados"
                 >
                   Ver Resultados
@@ -375,13 +364,11 @@ export default function CashFlowVisualizer() {
                   </svg>
                 </button>
               </div>
-
-              {/* Reset Button */}
               <div className="pt-3">
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="w-full px-6 py-3 border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                  className="w-full px-6 py-3 border border-[var(--color-border)] text-[var(--color-ink)] font-semibold rounded-xl hover:bg-[var(--color-background-subtle)] hover:border-[var(--color-ink-muted)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20"
                   aria-label="Limpar todos os campos"
                 >
                   Limpar Tudo
@@ -389,73 +376,45 @@ export default function CashFlowVisualizer() {
               </div>
             </div>
 
-            {/* ===== RESULTS COLUMN ===== */}
-            <div className="lg:pl-8 lg:border-l-2 lg:border-neutral-200 mt-8 lg:mt-0">
-              <div id="results-section" className="bg-gradient-to-br from-cyan-50 via-cyan-50/80 to-white border-2 border-cyan-100 rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[300px] sm:min-h-[400px]">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-100/30 rounded-full blur-2xl" />
+            <div className="lg:pl-8 lg:border-l-2 lg:border-[var(--color-border)] mt-8 lg:mt-0">
+              <div id="results-section" className="bg-[var(--color-background-subtle)] border border-[var(--color-border)] rounded-2xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[300px] sm:min-h-[400px]">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl" aria-hidden />
                 <div className="relative">
-                  <h2 className="text-2xl font-bold text-neutral-900 mb-6">Situação Financeira</h2>
+                  <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-6 tracking-tight">Situação Financeira</h2>
 
                   {showResults && result.totalIncome > 0 ? (
                     <div className="space-y-6 animate-fade-in" role="region" aria-label="Resultados da análise financeira">
-                      
-                      {/* Status Badge */}
-                      <div 
-                        className="flex items-start gap-3 p-4 bg-white/60 rounded-xl border border-neutral-200/40"
-                        role="status"
-                        aria-live="polite"
-                      >
-                        <span className="text-3xl" aria-hidden="true">{statusInfo.badge}</span>
+                      <div className="flex items-start gap-3 p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]" role="status" aria-live="polite">
+                        <span className="text-3xl" aria-hidden>{statusInfo.badge}</span>
                         <div>
-                          <p className="font-bold text-neutral-900 mb-1">{statusInfo.title}</p>
-                          <p className="text-sm text-neutral-600 leading-relaxed">
-                            {statusInfo.description}
-                          </p>
+                          <p className="font-bold text-[var(--color-ink)] mb-1">{statusInfo.title}</p>
+                          <p className="text-sm text-[var(--color-ink-secondary)] leading-relaxed">{statusInfo.description}</p>
                         </div>
                       </div>
-
-                      {/* Monthly Balance */}
                       <div>
-                        <p className="text-sm font-medium text-neutral-600 mb-2">Saldo Mensal</p>
-                        <p className={`text-2xl sm:text-3xl lg:text-4xl font-bold ${
-                          result.monthlyBalance >= 0 ? 'text-green-600' : 'text-red-600'
-                        }`}>
+                        <p className="text-sm font-medium text-[var(--color-ink-secondary)] mb-2">Saldo Mensal</p>
+                        <p className={`text-2xl sm:text-3xl lg:text-4xl font-bold ${result.monthlyBalance >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}`}>
                           {formatCurrencyWithSign(result.monthlyBalance)}
                         </p>
                       </div>
-
-                      {/* Stats Grid */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                        <div className="bg-white/60 rounded-xl p-4 border border-neutral-200/40">
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Total de Gastos</p>
-                          <p className="text-lg font-bold text-neutral-700">
-                            {formatCurrency(result.totalExpenses)}
-                          </p>
-                          <p className="text-xs text-neutral-500 mt-1">
-                            {formatPercentage(result.ratios.expenseToIncome)} do rendimento
-                          </p>
+                        <div className="bg-[var(--color-surface)] rounded-xl p-4 border border-[var(--color-border)]">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Total de Gastos</p>
+                          <p className="text-lg font-bold text-[var(--color-ink)]">{formatCurrency(result.totalExpenses)}</p>
+                          <p className="text-xs text-[var(--color-ink-muted)] mt-1">{formatPercentage(result.ratios.expenseToIncome)} do rendimento</p>
                         </div>
-                        <div className="bg-white/60 rounded-xl p-4 border border-neutral-200/40">
-                          <p className="text-xs font-medium text-neutral-500 mb-1">Gastos Fixos</p>
-                          <p className="text-lg font-bold text-neutral-700">
-                            {formatPercentage(result.ratios.fixedPercentage)}
-                          </p>
-                          <p className="text-xs text-neutral-500 mt-1">
-                            {formatCurrency(result.totalFixedExpenses)}
-                          </p>
+                        <div className="bg-[var(--color-surface)] rounded-xl p-4 border border-[var(--color-border)]">
+                          <p className="text-xs font-medium text-[var(--color-ink-muted)] mb-1">Gastos Fixos</p>
+                          <p className="text-lg font-bold text-[var(--color-ink)]">{formatPercentage(result.ratios.fixedPercentage)}</p>
+                          <p className="text-xs text-[var(--color-ink-muted)] mt-1">{formatCurrency(result.totalFixedExpenses)}</p>
                         </div>
                       </div>
-
                     </div>
                   ) : (
                     <div className="text-center py-12" role="status" aria-live="polite">
-                      <div className="text-5xl mb-4" aria-hidden="true">📊</div>
-                      <p className="text-neutral-700 font-medium mb-2">
-                        Preenche os dados acima
-                      </p>
-                      <p className="text-sm text-neutral-500">
-                        Clica em "Ver Resultados" para descobrires a tua situação financeira
-                      </p>
+                      <div className="text-5xl mb-4" aria-hidden>📊</div>
+                      <p className="text-[var(--color-ink)] font-medium mb-2">Preenche os dados acima</p>
+                      <p className="text-sm text-[var(--color-ink-muted)]">Clica em &quot;Ver Resultados&quot; para descobrires a tua situação financeira</p>
                     </div>
                   )}
                 </div>
@@ -463,37 +422,33 @@ export default function CashFlowVisualizer() {
             </div>
           </div>
 
-          {/* ===== CHART SECTION ===== */}
           {showResults && result.totalIncome > 0 && chartData.length > 0 && (
-            <div className="mt-8 sm:mt-10 pt-8 sm:pt-10 border-t border-neutral-200 animate-fade-in">
-              <h3 className="text-lg sm:text-xl font-bold text-neutral-900 mb-4 sm:mb-6">Fluxo de Dinheiro</h3>
+            <div className="mt-8 sm:mt-10 pt-8 sm:pt-10 border-t border-[var(--color-border)] animate-fade-in">
+              <h3 className="text-lg sm:text-xl font-bold text-[var(--color-ink)] mb-4 sm:mb-6 tracking-tight">Fluxo de Dinheiro</h3>
               <WaterfallChart data={chartData} />
-              <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-neutral-500 text-center px-4">
+              <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-[var(--color-ink-muted)] text-center px-4">
                 Visualiza como o teu rendimento é distribuído pelas diferentes categorias de despesas
               </p>
             </div>
           )}
 
-          {/* ===== INSIGHTS SECTION ===== */}
           {showResults && result.totalIncome > 0 && insights.length > 0 && (
-            <div className="mt-10 pt-10 border-t border-neutral-200 animate-fade-in" role="region" aria-label="Análise e recomendações">
-              <h3 className="text-xl font-bold text-neutral-900 mb-4">O Que Isto Significa</h3>
+            <div className="mt-10 pt-10 border-t border-[var(--color-border)] animate-fade-in" role="region" aria-label="Análise e recomendações">
+              <h3 className="text-xl font-bold text-[var(--color-ink)] mb-4 tracking-tight">O Que Isto Significa</h3>
               <div className="space-y-3" role="list">
                 {insights.map((insight) => (
                   <div
                     key={insight.id}
                     role="listitem"
                     className={`p-4 rounded-xl border ${
-                      insight.type === 'success'
-                        ? 'bg-green-50/50 border-green-200/60'
-                        : insight.type === 'warning'
-                        ? 'bg-amber-50/50 border-amber-200/60'
-                        : 'bg-blue-50/50 border-blue-200/60'
+                      insight.type === "success"
+                        ? "bg-[var(--color-success)]/10 border-[var(--color-success)]/30"
+                        : insight.type === "warning"
+                        ? "bg-[var(--color-warning)]/10 border-[var(--color-warning)]/30"
+                        : "bg-[var(--color-accent)]/10 border-[var(--color-accent)]/30"
                     }`}
                   >
-                    <p className="text-sm text-neutral-700 leading-relaxed">
-                      {insight.message}
-                    </p>
+                    <p className="text-sm text-[var(--color-ink-secondary)] leading-relaxed">{insight.message}</p>
                   </div>
                 ))}
               </div>
@@ -502,22 +457,15 @@ export default function CashFlowVisualizer() {
         </div>
       </section>
 
-      {/* ===== NEXT STEPS SECTION ===== */}
-      {showResults && result.totalIncome > 0 && result.status !== 'unknown' && (
-        <section 
-          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 animate-fade-in"
-          role="region"
-          aria-label="Próximos passos recomendados"
-        >
-          <div className="bg-white border border-neutral-200/60 rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm">
-            <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-3 sm:mb-4">Próximo Passo</h2>
-            <p className="text-sm sm:text-base text-neutral-700 leading-relaxed mb-5 sm:mb-6">
-              {statusInfo.ctaText}
-            </p>
+      {showResults && result.totalIncome > 0 && result.status !== "unknown" && (
+        <section className="max-w-5xl mx-auto pb-8 sm:pb-10 animate-fade-in" role="region" aria-label="Próximos passos recomendados">
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-5 sm:p-6 lg:p-8 shadow-[var(--shadow-sm)]">
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-3 sm:mb-4 tracking-tight">Próximo Passo</h2>
+            <p className="text-sm sm:text-base text-[var(--color-ink-secondary)] leading-relaxed mb-5 sm:mb-6">{statusInfo.ctaText}</p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href={statusInfo.ctaLink}
-                className="inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-3.5 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-accent hover:shadow-lg hover:scale-105 active:scale-100 transition-all duration-200 text-sm sm:text-base touch-manipulation"
+                className="inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-3.5 bg-[var(--color-primary)] text-white font-bold rounded-xl hover:bg-[var(--color-primary-hover)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] active:scale-[0.99] transition-all duration-200 text-sm sm:text-base touch-manipulation"
               >
                 {statusInfo.ctaTitle}
                 <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -526,8 +474,8 @@ export default function CashFlowVisualizer() {
               </Link>
               <button
                 type="button"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-3.5 bg-white border border-neutral-300 text-neutral-700 font-bold rounded-xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 text-sm sm:text-base touch-manipulation"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-3.5 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-ink)] font-semibold rounded-xl hover:bg-[var(--color-background-subtle)] hover:border-[var(--color-ink-muted)] transition-all duration-200 text-sm sm:text-base touch-manipulation"
               >
                 Voltar e Ajustar
               </button>

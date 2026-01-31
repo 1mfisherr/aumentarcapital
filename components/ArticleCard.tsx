@@ -1,68 +1,84 @@
+"use client";
+
 import Link from "next/link";
-import { ArticleMeta } from "@/lib/types";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import type { ArticleMeta } from "@/lib/types";
 import { formatDate } from "@/lib/date-utils";
+import { IconArrowRight, IconClock } from "@/components/icons/ShellIcons";
 
 interface ArticleCardProps {
   post: ArticleMeta;
+  index?: number;
 }
 
-export default function ArticleCard({ post }: ArticleCardProps) {
-  // Handle category as either string or array
+export default function ArticleCard({ post, index = 0 }: ArticleCardProps) {
   const categoryDisplay = Array.isArray(post.category) ? post.category[0] : post.category;
-  
+
   return (
-    <article 
-      className="group relative rounded-2xl p-8 lg:p-10 bg-white transition-all duration-300 hover:-translate-y-1 premium-shadow-card"
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.05, duration: 0.35 }}
+      className="group relative rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-8 lg:p-8 transition-all duration-300 hover:border-[var(--color-primary)]/40 hover:shadow-[var(--shadow-md)]"
+      style={{ boxShadow: "var(--shadow-sm)" }}
     >
-      <Link href={`/artigos/${post.slug}`}>
-        {categoryDisplay && (
-          <div className="mb-5">
-            <span className="inline-block px-3 py-1.5 bg-[#D8DCD3]/30 text-[#051B11] rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:bg-[#0A261F] group-hover:text-white">
-              {categoryDisplay}
-            </span>
+      <Link href={`/artigos/${post.slug}`} className="block">
+        {post.image && (
+          <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden mb-6 bg-[var(--color-background-subtle)]">
+            <Image
+              src={post.image}
+              alt={post.imageAlt || post.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              sizes="(max-width: 768px) 100vw, 600px"
+            />
           </div>
         )}
-        
-        <h2 className="text-2xl lg:text-3xl font-black text-[#051B11] mb-4 leading-tight transition-colors duration-300 group-hover:text-[#0A261F]">
+
+        {categoryDisplay && (
+          <span className="inline-block px-3 py-1.5 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-lg text-xs font-semibold uppercase tracking-wider mb-4">
+            {categoryDisplay}
+          </span>
+        )}
+
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--color-ink)] mb-3 leading-tight transition-colors duration-200 group-hover:text-[var(--color-primary)] tracking-tight">
           {post.title}
         </h2>
-      </Link>
 
-      <div className="flex flex-wrap items-center gap-2 text-sm text-[#0A261F] mb-6">
-        <time dateTime={post.date} className="font-medium">
-          {formatDate(post.date)}
-        </time>
-        <span className="text-[#D8DCD3]">•</span>
-        <span className="font-medium">{post.readingTime} min de leitura</span>
-      </div>
-
-      <p className="text-base text-[#0A261F] mb-7 leading-relaxed line-clamp-3">{post.description}</p>
-
-      {post.tags && post.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-6 border-t border-[#D8DCD3]/50">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-3 py-1.5 bg-[#FDFCF8] text-[#0A261F] hover:bg-[#0A261F] hover:text-white rounded-lg font-medium transition-all duration-200 cursor-pointer"
-            >
-              {tag}
-            </span>
-          ))}
+        <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-muted)] mb-4">
+          <time dateTime={post.date} className="font-medium">
+            {formatDate(post.date)}
+          </time>
+          <span aria-hidden>·</span>
+          <span className="inline-flex items-center gap-1">
+            <IconClock className="w-4 h-4" aria-hidden />
+            {post.readingTime} min
+          </span>
         </div>
-      )}
-      
-      <div className="mt-7 pt-6 border-t border-[#D8DCD3]/50">
-        <Link 
-          href={`/artigos/${post.slug}`}
-          className="inline-flex items-center gap-2 text-[#051B11] font-semibold text-sm group-hover:gap-3 transition-all duration-200"
-        >
+
+        <p className="text-[var(--color-ink-secondary)] text-base leading-relaxed line-clamp-3 mb-6">
+          {post.description}
+        </p>
+
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-5">
+            {post.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="text-xs px-2.5 py-1 bg-[var(--color-background-subtle)] text-[var(--color-ink-muted)] rounded-md font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <span className="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold text-sm group-hover:gap-3 transition-all">
           Ler artigo
-          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </Link>
-      </div>
-    </article>
+          <IconArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+        </span>
+      </Link>
+    </motion.article>
   );
 }
-

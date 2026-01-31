@@ -52,21 +52,20 @@ export default function ReadingProgressBar() {
   if (!isVisible) return null;
 
   return (
-    <div 
-      className="fixed top-0 left-0 w-full h-1 z-[60] bg-neutral-200/50 backdrop-blur-sm"
+    <div
+      className="fixed top-0 left-0 w-full h-1 z-[60] bg-[var(--color-border)]/80 backdrop-blur-sm"
       role="progressbar"
       aria-valuenow={Math.round(progress)}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label="Progresso de leitura"
     >
-      <div 
-        className="h-full bg-gradient-to-r from-brand-primary to-brand-secondary transition-all duration-150 ease-out"
+      <div
+        className="h-full bg-[var(--color-primary)] transition-all duration-150 ease-out"
         style={{ width: `${progress}%` }}
       />
-      {/* Subtle glow effect at the end */}
-      <div 
-        className="absolute top-0 h-full w-8 bg-gradient-to-r from-transparent to-brand-secondary/30 blur-sm transition-all duration-150"
+      <div
+        className="absolute top-0 h-full w-8 bg-gradient-to-r from-transparent to-[var(--color-primary)]/40 blur-sm transition-all duration-150"
         style={{ left: `calc(${progress}% - 2rem)` }}
         aria-hidden="true"
       />

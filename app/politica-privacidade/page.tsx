@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site.config";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // Static to avoid hydration mismatches from dynamic dates
 const LAST_UPDATED = "17/12/2025";
@@ -18,16 +19,22 @@ export const metadata = {
 export default function PoliticaPrivacidadePage() {
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-6 text-primary">
+      <Breadcrumbs
+        items={[
+          { label: "Início", href: "/" },
+          { label: "Política de Privacidade", href: "/politica-privacidade" },
+        ]}
+      />
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-[var(--color-ink)] tracking-tight">
         Política de Privacidade
       </h1>
 
-      <div className="prose max-w-none text-gray-700">
-        <p className="text-sm text-gray-600 mb-6">
+      <div className="prose max-w-none text-[var(--color-ink-secondary)] prose-headings:text-[var(--color-ink)] prose-a:text-[var(--color-primary)] prose-a:no-underline hover:prose-a:underline">
+        <p className="text-sm text-[var(--color-ink-muted)] mb-6">
           Última atualização: {LAST_UPDATED}
         </p>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           1. Introdução
         </h2>
         <p>
@@ -37,7 +44,7 @@ export default function PoliticaPrivacidadePage() {
           protegemos as tuas informações.
         </p>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
           2. Informações que Recolhemos
         </h2>
         <p>Podemos recolher as seguintes informações:</p>
@@ -47,7 +54,7 @@ export default function PoliticaPrivacidadePage() {
           <li>Feedback e mensagens que nos envias</li>
         </ul>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           3. Como Usamos as Tuas Informações
         </h2>
         <p>Usamos as tuas informações para:</p>
@@ -58,7 +65,7 @@ export default function PoliticaPrivacidadePage() {
           <li>Analisar o uso do website (analytics)</li>
         </ul>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
           4. Cookies
         </h2>
         <p>
@@ -67,7 +74,7 @@ export default function PoliticaPrivacidadePage() {
           algumas funcionalidades do site.
         </p>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           5. Partilha de Informações
         </h2>
         <p>
@@ -76,7 +83,7 @@ export default function PoliticaPrivacidadePage() {
           os nossos serviços (por exemplo, fornecedores de email marketing).
         </p>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]"
           6. Os Teus Direitos
         </h2>
         <p>Tens o direito de:</p>
@@ -87,7 +94,7 @@ export default function PoliticaPrivacidadePage() {
           <li>Cancelar a subscrição da newsletter a qualquer momento</li>
         </ul>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           7. Segurança
         </h2>
         <p>
@@ -96,7 +103,7 @@ export default function PoliticaPrivacidadePage() {
           destruição.
         </p>
 
-        <h2 className="text-2xl font-heading font-semibold mt-8 mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-[var(--color-ink)]">
           8. Contacto
         </h2>
         <p>
@@ -110,8 +117,8 @@ export default function PoliticaPrivacidadePage() {
           </a>
         </p>
 
-        <div className="bg-primary-50 border border-primary-200 rounded-lg p-5 sm:p-6 mt-8">
-          <p className="text-sm">
+        <div className="bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20 rounded-lg p-5 sm:p-6 mt-8">
+          <p className="text-sm text-[var(--color-ink-secondary)]">
             <strong>Nota:</strong> Esta é uma política de privacidade básica. Dependendo
             dos serviços que uses (analytics, ads, etc.), poderás precisar de adicionar
             mais informações. Consulta um advogado para garantir conformidade total com

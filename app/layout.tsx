@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Poppins, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
@@ -7,22 +7,13 @@ import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site.config";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema-utils";
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
-  display: 'swap',
-  preload: true,
-  fallback: ['system-ui', 'arial'],
-});
-
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
-  display: 'swap',
+  display: "swap",
   preload: true,
-  fallback: ['system-ui', 'arial'],
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata = {
@@ -94,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const websiteSchema = generateWebSiteSchema(siteConfig);
 
   return (
-    <html lang="pt" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="pt" className={inter.variable}>
       <head>
         {/* Performance optimization: Resource hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -111,7 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-background text-text overflow-x-hidden">
+      <body className="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-ink-secondary)] overflow-x-hidden">
         <Header />
         <main className="flex-1 w-full overflow-x-hidden">{children}</main>
         <Footer />

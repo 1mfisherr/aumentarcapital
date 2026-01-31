@@ -19,13 +19,13 @@ export default function SearchTrigger({ onClick }: SearchTriggerProps) {
       onClick={onClick}
       type="button"
       aria-label="Pesquisar artigos (Cmd+K ou Ctrl+K)"
-      className="group flex items-center gap-2 px-3 py-2 bg-white border border-neutral-200 
-                 rounded-xl text-text-secondary hover:border-brand-primary hover:text-brand-primary 
-                 transition-all duration-300 shadow-sm hover:shadow-md min-w-[160px] lg:min-w-[200px]"
+      className="group flex items-center gap-2 px-3 py-2 bg-[var(--color-surface)] border border-[var(--color-border)] 
+                 rounded-xl text-[var(--color-ink-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] 
+                 transition-all duration-300 shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] min-w-[160px] lg:min-w-[200px]"
     >
       {/* Search Icon */}
       <svg
-        className="w-4 h-4 text-text-muted group-hover:text-brand-primary transition-colors duration-300"
+        className="w-4 h-4 text-[var(--color-ink-muted)] group-hover:text-[var(--color-primary)] transition-colors duration-300"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -40,15 +40,15 @@ export default function SearchTrigger({ onClick }: SearchTriggerProps) {
       </svg>
 
       {/* Placeholder Text */}
-      <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors duration-300 hidden sm:inline">
+      <span className="text-sm text-[var(--color-ink-muted)] group-hover:text-[var(--color-ink-secondary)] transition-colors duration-300 hidden sm:inline">
         Pesquisar...
       </span>
 
       {/* Keyboard Shortcut Hint */}
       <kbd
         className="ml-auto hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 
-                   text-[10px] font-medium text-text-muted bg-bg-subtle border border-neutral-200 
-                   rounded-md group-hover:border-brand-primary/30 group-hover:text-brand-primary 
+                   text-[10px] font-medium text-[var(--color-ink-muted)] bg-[var(--color-background-subtle)] border border-[var(--color-border)] 
+                   rounded-md group-hover:border-[var(--color-primary)]/30 group-hover:text-[var(--color-primary)] 
                    transition-all duration-300"
       >
         {isMac ? "⌘" : "Ctrl"}

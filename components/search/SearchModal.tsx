@@ -42,7 +42,7 @@ function highlightMatch(text: string, indices: readonly [number, number][] | und
     result.push(
       <mark
         key={i}
-        className="bg-brand-secondary/20 text-brand-primary font-medium rounded-sm px-0.5"
+        className="bg-[var(--color-background)]/80 text-[var(--color-primary)] font-medium rounded-sm px-0.5"
       >
         {text.slice(start, end + 1)}
       </mark>
@@ -246,17 +246,17 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       {/* Modal Container */}
       <div
-        className="relative w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl 
-                   overflow-hidden animate-scale-in-modal border border-neutral-200"
+        className="relative w-full max-w-2xl mx-4 bg-[var(--color-surface)] rounded-2xl shadow-2xl 
+                   overflow-hidden animate-scale-in-modal border border-[var(--color-border)]"
         role="combobox"
         aria-expanded={results.length > 0}
         aria-haspopup="listbox"
       >
         {/* Search Input */}
-        <div className="flex items-center gap-3 px-4 py-4 border-b border-neutral-200">
+        <div className="flex items-center gap-3 px-4 py-4 border-b border-[var(--color-border)]">
           {/* Search Icon */}
           <svg
-            className="w-5 h-5 text-brand-primary flex-shrink-0"
+            className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -276,7 +276,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Pesquisar artigos, tópicos ou palavras-chave..."
-            className="flex-1 text-base text-text-primary placeholder:text-text-muted 
+            className="flex-1 text-base text-text-primary placeholder:text-[var(--color-ink-muted)] 
                        bg-transparent border-none outline-none focus:ring-0"
             aria-label="Campo de pesquisa"
             aria-autocomplete="list"
@@ -287,7 +287,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {isLoading && (
             <div className="flex-shrink-0">
               <svg
-                className="w-5 h-5 text-brand-primary animate-spin"
+                className="w-5 h-5 text-[var(--color-primary)] animate-spin"
                 fill="none"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -313,8 +313,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {query && !isLoading && (
             <button
               onClick={() => setQuery("")}
-              className="flex-shrink-0 p-1 text-text-muted hover:text-text-primary 
-                         rounded-lg hover:bg-bg-subtle transition-colors duration-200"
+              className="flex-shrink-0 p-1 text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] 
+                         rounded-lg hover:bg-[var(--color-background-subtle)] transition-colors duration-200"
               aria-label="Limpar pesquisa"
             >
               <svg
@@ -336,7 +336,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {/* Escape hint */}
           <kbd
             className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] 
-                       font-medium text-text-muted bg-bg-subtle border border-neutral-200 
+                       font-medium text-[var(--color-ink-muted)] bg-[var(--color-background-subtle)] border border-[var(--color-border)] 
                        rounded-md"
           >
             Esc
@@ -360,7 +360,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   setSearchIndex([]);
                   setError(null);
                 }}
-                className="mt-2 text-sm text-brand-primary hover:underline"
+                className="mt-2 text-sm text-[var(--color-primary)] hover:underline"
               >
                 Tentar novamente
               </button>
@@ -370,9 +370,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {/* Initial State - No query */}
           {!error && !query && !isLoading && (
             <div className="px-4 py-8 text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-bg-brand-light rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto mb-3 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-brand-primary"
+                  className="w-6 h-6 text-[var(--color-primary)]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -385,10 +385,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   />
                 </svg>
               </div>
-              <p className="text-text-secondary text-sm">
+              <p className="text-[var(--color-ink-secondary)] text-sm">
                 Escreve para começar a pesquisar
               </p>
-              <p className="text-text-muted text-xs mt-1">
+              <p className="text-[var(--color-ink-muted)] text-xs mt-1">
                 Usa ↑↓ para navegar, Enter para selecionar
               </p>
             </div>
@@ -397,9 +397,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {/* No Results */}
           {!error && query && !isLoading && results.length === 0 && (
             <div className="px-4 py-8 text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-bg-subtle rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto mb-3 bg-[var(--color-background-subtle)] rounded-xl flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-text-muted"
+                  className="w-6 h-6 text-[var(--color-ink-muted)]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -412,10 +412,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   />
                 </svg>
               </div>
-              <p className="text-text-secondary text-sm">
+              <p className="text-[var(--color-ink-secondary)] text-sm">
                 Nenhum resultado para &quot;{query}&quot;
               </p>
-              <p className="text-text-muted text-xs mt-1">
+              <p className="text-[var(--color-ink-muted)] text-xs mt-1">
                 Tenta outros termos ou verifica a ortografia
               </p>
             </div>
@@ -429,7 +429,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <div key={category} className="mb-2">
                     {/* Category Header */}
                     <div className="px-4 py-2">
-                      <span className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-[var(--color-ink-muted)] uppercase tracking-wider">
                         {category}
                       </span>
                     </div>
@@ -456,8 +456,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                      transition-colors duration-150 cursor-pointer
                                      ${
                                        isSelected
-                                         ? "bg-brand-primary/5 border-l-2 border-brand-primary"
-                                         : "hover:bg-bg-subtle border-l-2 border-transparent"
+                                         ? "bg-[var(--color-primary)]/5 border-l-2 border-[var(--color-primary)]"
+                                         : "hover:bg-[var(--color-background-subtle)] border-l-2 border-transparent"
                                      }`}
                           role="option"
                           aria-selected={isSelected}
@@ -467,8 +467,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center
                                        ${
                                          isSelected
-                                           ? "bg-brand-primary text-white"
-                                           : "bg-bg-subtle text-text-muted"
+                                           ? "bg-[var(--color-primary)] text-[var(--color-ink-inverse)]"
+                                           : "bg-[var(--color-background-subtle)] text-[var(--color-ink-muted)]"
                                        }`}
                           >
                             <svg
@@ -492,7 +492,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                               className={`text-sm font-medium truncate
                                          ${
                                            isSelected
-                                             ? "text-brand-primary"
+                                             ? "text-[var(--color-primary)]"
                                              : "text-text-primary"
                                          }`}
                             >
@@ -501,7 +501,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                 titleMatch?.indices
                               )}
                             </p>
-                            <p className="text-xs text-text-muted line-clamp-1 mt-0.5">
+                            <p className="text-xs text-[var(--color-ink-muted)] line-clamp-1 mt-0.5">
                               {result.item.description}
                             </p>
 
@@ -512,7 +512,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                   <span
                                     key={tag}
                                     className="inline-flex text-[10px] px-1.5 py-0.5 
-                                               bg-bg-subtle text-text-muted rounded-md"
+                                               bg-[var(--color-background-subtle)] text-[var(--color-ink-muted)] rounded-md"
                                   >
                                     {tag}
                                   </span>
@@ -523,7 +523,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
                           {/* Reading Time */}
                           {result.item.readingTime && (
-                            <span className="flex-shrink-0 text-[10px] text-text-muted">
+                            <span className="flex-shrink-0 text-[10px] text-[var(--color-ink-muted)]">
                               {result.item.readingTime} min
                             </span>
                           )}
@@ -540,21 +540,21 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         {/* Footer with navigation hints */}
         {results.length > 0 && (
           <div
-            className="flex items-center justify-between px-4 py-3 border-t border-neutral-200 
-                       bg-bg-subtle/50 text-[11px] text-text-muted"
+            className="flex items-center justify-between px-4 py-3 border-t border-[var(--color-border)] 
+                       bg-[var(--color-background-subtle)]/50 text-[11px] text-[var(--color-ink-muted)]"
           >
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
-                <kbd className="px-1 py-0.5 bg-white border border-neutral-200 rounded text-[10px]">
+                <kbd className="px-1 py-0.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded text-[10px]">
                   ↑
                 </kbd>
-                <kbd className="px-1 py-0.5 bg-white border border-neutral-200 rounded text-[10px]">
+                <kbd className="px-1 py-0.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded text-[10px]">
                   ↓
                 </kbd>
                 <span className="ml-1">navegar</span>
               </span>
               <span className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 bg-white border border-neutral-200 rounded text-[10px]">
+                <kbd className="px-1.5 py-0.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded text-[10px]">
                   Enter
                 </kbd>
                 <span className="ml-1">selecionar</span>
