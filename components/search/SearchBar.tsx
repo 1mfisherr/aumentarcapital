@@ -212,14 +212,14 @@ export default function SearchBar({
   }, [query]);
 
   return (
-    <div ref={containerRef} className={`relative ${className}`}>
+    <div ref={containerRef} className={`relative min-w-[200px] ${className}`}>
       {/* Search Input */}
       <div
         className={`flex items-center gap-2 px-3 py-2 bg-white border rounded-xl 
                    transition-all duration-200 shadow-sm
                    ${
                      isFocused
-                       ? "border-brand-primary ring-2 ring-[var(--color-primary)]/20 shadow-md"
+                       ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/20 shadow-md"
                        : "border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
                    }`}
       >

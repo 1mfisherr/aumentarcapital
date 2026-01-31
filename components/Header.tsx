@@ -121,7 +121,9 @@ export default function Header() {
 
             {/* Desktop */}
             <div className="hidden lg:flex items-center justify-end flex-1 gap-6 xl:gap-8 ml-6">
-              <SearchBar placeholder="Pesquisar..." />
+              <div className="min-w-[200px] w-[240px] flex-shrink-0">
+                <SearchBar placeholder="Pesquisar..." />
+              </div>
 
               <nav className="flex items-center gap-6 xl:gap-8" aria-label="Navegação principal">
                 <Link

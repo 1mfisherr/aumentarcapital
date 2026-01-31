@@ -33,7 +33,7 @@ export function Logo({ variant = "full", className = "", iconClassName = "" }: L
         <polygon points="50,10 54,16 50,22 46,16" />
       </g>
       {variant === "full" && (
-        <text x="78" y="38" fontFamily="system-ui, sans-serif" fontSize="26">
+        <text x="78" y="38" fontFamily="var(--font-logo), 'Plus Jakarta Sans', system-ui, sans-serif" fontSize="26">
           <tspan fontWeight="600" letterSpacing="-0.5">
             Aumentar
           </tspan>
