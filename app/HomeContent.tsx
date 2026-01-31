@@ -30,7 +30,7 @@ const featuredVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
+    transition: { duration: 0.45 },
   },
 };
 
@@ -39,7 +39,7 @@ const listItemVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.04 * i, duration: 0.35, ease: "easeOut" },
+    transition: { delay: 0.04 * i, duration: 0.35 },
   }),
 };
 
