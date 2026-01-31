@@ -16,79 +16,101 @@
 */
 
 @theme {
-  /* ===== BRAND COLORS ===== */
-  --color-brand-primary: #0891B2;      /* Main brand color (cyan) */
-  --color-brand-secondary: #06B6D4;    /* Secondary brand color (lighter cyan) */
-  --color-brand-accent: #0E7490;       /* Accent color (darker cyan) */
+  /* ===== BRAND COLORS - High-Contrast Executive Forest ===== */
+  --color-brand-primary: #0A261F;      /* Deep Forest Green - primary buttons */
+  --color-brand-secondary: #1A3D33;     /* Lighter Forest - hover states */
+  --color-brand-accent: #B8975E;       /* Muted Gold - premium dividers */
   
-  /* ===== TEXT COLORS ===== */
-  --color-text-primary: #111827;       /* Main text (almost black) */
-  --color-text-secondary: #64748B;     /* Secondary text (gray) */
-  --color-text-muted: #6B7280;         /* Muted text (lighter gray) */
+  /* ===== TEXT COLORS - Deep Contrast ===== */
+  --color-text-primary: #051B11;       /* Anchor - near-black green, headings & main text */
+  --color-text-secondary: #0A261F;     /* Forest - body text */
+  --color-text-muted: #3D5A50;         /* Muted Forest - secondary text */
   
   /* ===== BACKGROUND COLORS ===== */
-  --color-bg-primary: #FFFFFF;         /* Main background (white) */
-  --color-bg-secondary: #F5F5F7;       /* Secondary background (light gray) */
-  --color-bg-subtle: #FAFAFA;          /* Subtle background */
-  --color-bg-brand-light: #ECFEFF;     /* Light brand tint background */
+  --color-bg-primary: #FFFFFF;         /* Pure white - card backgrounds */
+  --color-bg-secondary: #FDFCF8;       /* Warm Parchment - main body background */
+  --color-bg-subtle: #FDFCF8;          /* Warm Parchment - subtle background */
+  --color-bg-hero: #F0F4F2;            /* Soft Sage - hero section */
+  --color-bg-brand-light: #E8EBE5;     /* Light sage tint background */
   
   /* ===== UI COLORS ===== */
-  --color-border: #E2E8F0;             /* Border color */
+  --color-border: #D8DCD3;             /* Sage border - dividers */
+  --color-card-hover: #E8EBE5;         /* Light sage - hover effect on cards */
   --color-success: #10B981;            /* Success messages */
   --color-error: #EF4444;              /* Error messages */
   --color-warning: #F59E0B;            /* Warning messages */
   
-  /* ===== CUSTOM SHADOWS ===== */
-  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 30px -4px rgba(0, 0, 0, 0.06);
-  --shadow-strong: 0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10);
-  --shadow-lifted: 0 10px 40px rgba(0, 0, 0, 0.1);
+  /* ===== CUSTOM SHADOWS - Tinted Deep Green (Wealth Management) ===== */
+  --shadow-soft: 0 10px 30px rgba(5, 27, 17, 0.07);
+  --shadow-medium: 0 12px 36px rgba(5, 27, 17, 0.08);
+  --shadow-strong: 0 16px 44px rgba(5, 27, 17, 0.10);
+  --shadow-lifted: 0 10px 40px rgba(5, 27, 17, 0.08);
+  --shadow-premium: 0 10px 30px rgba(5, 27, 17, 0.07);
+  --shadow-premium-hover: 0 14px 38px rgba(5, 27, 17, 0.10);
 }
 
 :root {
-  /* Keep CSS variables for non-Tailwind usage (inline styles, etc.) */
-  --color-brand-primary: #0891B2;
-  --color-brand-secondary: #06B6D4;
-  --color-brand-accent: #0E7490;
-  --color-text-primary: #111827;
-  --color-text-secondary: #64748B;
-  --color-text-muted: #6B7280;
+  /* High-Contrast Executive Forest */
+  --color-brand-primary: #0A261F;
+  --color-brand-secondary: #1A3D33;
+  --color-brand-accent: #B8975E;
+  --color-text-primary: #051B11;
+  --color-text-secondary: #0A261F;
+  --color-text-muted: #3D5A50;
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F5F5F7;
-  --color-bg-subtle: #FAFAFA;
-  --color-bg-brand-light: #ECFEFF;
-  --color-border: #E2E8F0;
+  --color-bg-secondary: #FDFCF8;
+  --color-bg-subtle: #FDFCF8;
+  --color-bg-hero: #F0F4F2;
+  --color-bg-brand-light: #E8EBE5;
+  --color-border: #D8DCD3;
+  --color-card-hover: #E8EBE5;
   --color-success: #10B981;
   --color-error: #EF4444;
   --color-warning: #F59E0B;
+  --shadow-premium: 0 10px 30px rgba(5, 27, 17, 0.07);
+  --shadow-premium-hover: 0 14px 38px rgba(5, 27, 17, 0.10);
 }
 
 /* =================================================================
    COMPONENT UTILITY CLASSES
    ================================================================= */
 
-/* Buttons */
+/* Buttons - High-Contrast Executive Forest */
 .btn-primary {
-  @apply bg-brand-primary text-white hover:bg-brand-accent 
-         px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 
-         shadow-md hover:shadow-lg;
+  @apply bg-[#0A261F] text-white hover:bg-[#051B11] 
+         px-6 py-3 rounded-xl font-bold transition-all duration-300;
+  box-shadow: 0 10px 30px rgba(5, 27, 17, 0.12);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 38px rgba(5, 27, 17, 0.16);
 }
 
 .btn-secondary {
-  @apply bg-white text-brand-primary border-2 border-brand-primary 
-         hover:bg-brand-secondary/10 px-5 py-2.5 rounded-xl font-semibold 
+  @apply bg-transparent text-[#051B11] border-2 border-[#051B11]
+         hover:bg-[#051B11]/10 px-6 py-3 rounded-xl font-bold 
          transition-all duration-300;
 }
 
-/* Cards */
+/* Cards - Pure white, soft tinted shadow (no borders) */
 .card {
-  @apply bg-white border border-neutral-200 rounded-2xl p-6 
-         transition-all duration-300;
-  box-shadow: var(--shadow-soft);
+  @apply bg-white rounded-2xl p-8 transition-all duration-300;
+  box-shadow: 0 10px 30px rgba(5, 27, 17, 0.07);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 14px 38px rgba(5, 27, 17, 0.10);
+}
+
+/* Premium shadow card - for Server Components (CSS-only hover) */
+.premium-shadow-card {
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(5, 27, 17, 0.07);
+  transition: all 0.3s ease;
+}
+
+.premium-shadow-card:hover {
+  box-shadow: 0 14px 38px rgba(5, 27, 17, 0.10);
 }
 
 /* Logo gradient (for text or backgrounds) */
@@ -128,8 +150,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-text-primary);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
   background: var(--color-bg-secondary);
   background-attachment: fixed;
   overflow-x: hidden;
@@ -139,9 +161,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
   color: var(--color-text-primary);
   margin-bottom: 0.75em;
 }
@@ -190,10 +212,10 @@ img {
 .prose h1, .prose h2, .prose h3, .prose h4 {
   margin-top: 2.5em;
   margin-bottom: 1em;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
   text-align: left;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .prose h1:first-child, .prose h2:first-child {
@@ -288,7 +310,7 @@ img {
   margin-bottom: 2.5rem;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 30px -4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px -2px rgba(10, 38, 31, 0.08), 0 12px 30px -4px rgba(10, 38, 31, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 100%;
   width: 100%;
@@ -312,7 +334,7 @@ img {
 
 .prose img:hover {
   transform: scale(1.01);
-  box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.12), 0 20px 50px -8px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 10px 40px -5px rgba(10, 38, 31, 0.12), 0 20px 50px -8px rgba(10, 38, 31, 0.10);
 }
 
 .prose a {
@@ -588,17 +610,17 @@ button:disabled {
    - 3xl: 64px (16)
 */
 
-/* Section spacing - consistent vertical rhythm */
+/* Section spacing - consistent vertical rhythm (increased 20% for premium feel) */
 .section-spacing {
-  @apply py-12 lg:py-16;
+  @apply py-14 lg:py-20;
 }
 
 .section-spacing-lg {
-  @apply py-16 lg:py-20;
+  @apply py-20 lg:py-24;
 }
 
 .section-spacing-xl {
-  @apply py-20 lg:py-24;
+  @apply py-24 lg:py-28;
 }
 
 /* Content container max-widths */

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback, useEffect, lazy, Suspense, useMemo } from "react";
+import { useState, useCallback, useEffect, lazy, Suspense, useMemo, ReactNode } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ToolCard, ToolModal } from "@/components/tools";
 import CalculatorErrorBoundary from "@/components/CalculatorErrorBoundary";
+import { IconCash, IconWallet, IconTrendingUp, IconHome, IconChart } from "@/components/icons/ExecutiveIcons";
 
 // Lazy load calculator components for better initial page performance
 const CashFlowVisualizer = lazy(() => import("@/components/CashFlowVisualizer"));
@@ -15,21 +16,42 @@ const MortgageAmortizationCalculator = lazy(() => import("@/components/MortgageA
 // Tool definitions
 type ToolId = "cash-flow" | "emergency-fund" | "compound-interest" | "mortgage-amortization";
 type ToolCategory = "daily" | "investments" | "credit";
+type ToolIconKey = "cash" | "wallet" | "trending" | "home";
+type CategoryIconKey = "chart" | "trending" | "home";
 
 interface Tool {
   id: ToolId;
   title: string;
   description: string;
-  icon: string;
+  iconKey: ToolIconKey;
   ctaText: string;
   category: ToolCategory;
 }
 
+function getToolIcon(key: ToolIconKey): ReactNode {
+  const className = "w-full h-full text-[#0A261F]";
+  switch (key) {
+    case "cash": return <IconCash className={className} />;
+    case "wallet": return <IconWallet className={className} />;
+    case "trending": return <IconTrendingUp className={className} />;
+    case "home": return <IconHome className={className} />;
+  }
+}
+
+function getCategoryIcon(key: CategoryIconKey): ReactNode {
+  const className = "w-5 h-5 text-[#0A261F] flex-shrink-0";
+  switch (key) {
+    case "chart": return <IconChart className={className} />;
+    case "trending": return <IconTrendingUp className={className} />;
+    case "home": return <IconHome className={className} />;
+  }
+}
+
 // Category definitions with labels and order
-const TOOL_CATEGORIES: Record<ToolCategory, { label: string; icon: string; priority: number }> = {
-  daily: { label: "Gestão Diária", icon: "📊", priority: 1 },
-  investments: { label: "Investimentos", icon: "📈", priority: 2 },
-  credit: { label: "Crédito & Habitação", icon: "🏠", priority: 3 },
+const TOOL_CATEGORIES: Record<ToolCategory, { label: string; iconKey: CategoryIconKey; priority: number }> = {
+  daily: { label: "Gestão Diária", iconKey: "chart", priority: 1 },
+  investments: { label: "Investimentos", iconKey: "trending", priority: 2 },
+  credit: { label: "Crédito & Habitação", iconKey: "home", priority: 3 },
 };
 
 const TOOLS: Tool[] = [
@@ -37,7 +59,7 @@ const TOOLS: Tool[] = [
     id: "cash-flow",
     title: "Visualizador de Fluxo de Caixa",
     description: "Descobre para onde vai o teu dinheiro e se tens excedente ou défice. O primeiro passo para controlo financeiro.",
-    icon: "💸",
+    iconKey: "cash",
     ctaText: "Usar ferramenta",
     category: "daily",
   },
@@ -45,7 +67,7 @@ const TOOLS: Tool[] = [
     id: "emergency-fund",
     title: "Calculadora de Fundo de Emergência",
     description: "Calcula quanto deves poupar para emergências e quanto tempo levará a construir o teu fundo de segurança.",
-    icon: "💰",
+    iconKey: "wallet",
     ctaText: "Usar calculadora",
     category: "daily",
   },
@@ -53,7 +75,7 @@ const TOOLS: Tool[] = [
     id: "compound-interest",
     title: "Simulador de Juros Compostos",
     description: "Simula o crescimento do teu investimento ao longo do tempo e vê o poder dos juros compostos em ação.",
-    icon: "📈",
+    iconKey: "trending",
     ctaText: "Usar calculadora",
     category: "investments",
   },
@@ -61,7 +83,7 @@ const TOOLS: Tool[] = [
     id: "mortgage-amortization",
     title: "Simulador de Amortização de Crédito Habitação",
     description: "Calcula quanto poupas em juros ao fazer amortizações extra no crédito habitação e vê o impacto na prestação.",
-    icon: "🏠",
+    iconKey: "home",
     ctaText: "Usar simulador",
     category: "credit",
   },
@@ -87,7 +109,7 @@ function FilterPill({
   label: string; 
   isActive: boolean; 
   onClick: () => void;
-  icon?: string;
+  icon?: ReactNode;
 }) {
   return (
     <button
@@ -97,13 +119,13 @@ function FilterPill({
         inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-sm font-medium
         transition-all duration-200 touch-manipulation
         ${isActive
-          ? "bg-primary text-white shadow-md"
-          : "bg-white border border-neutral-200 text-neutral-600 hover:border-primary/40 hover:text-primary"
+          ? "bg-[#0A261F] text-white shadow-md"
+          : "bg-white border border-[#D8DCD3] text-[#051B11] hover:border-[#0A261F]/40 hover:text-[#0A261F]"
         }
       `}
       aria-pressed={isActive}
     >
-      {icon && <span className="text-sm">{icon}</span>}
+      {icon}
       {label}
     </button>
   );
@@ -296,7 +318,7 @@ export default function RecursosClient() {
                   <FilterPill
                     key={categoryKey}
                     label={TOOL_CATEGORIES[categoryKey].label}
-                    icon={TOOL_CATEGORIES[categoryKey].icon}
+                    icon={getCategoryIcon(TOOL_CATEGORIES[categoryKey].iconKey)}
                     isActive={activeCategory === categoryKey}
                     onClick={() => setActiveCategory(activeCategory === categoryKey ? null : categoryKey)}
                   />
@@ -351,7 +373,7 @@ export default function RecursosClient() {
                       id={tool.id}
                       title={tool.title}
                       description={tool.description}
-                      icon={<span>{tool.icon}</span>}
+                      icon={getToolIcon(tool.iconKey)}
                       onClick={() => openTool(tool.id)}
                       isActive={activeTool === tool.id}
                     />
@@ -369,8 +391,8 @@ export default function RecursosClient() {
                 return (
                   <section key={categoryKey}>
                     <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                      <span className="text-2xl">{category.icon}</span>
-                      <h2 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                      {getCategoryIcon(category.iconKey)}
+                      <h2 className="text-xl sm:text-2xl font-black text-[#051B11]">
                         {category.label}
                       </h2>
                       <span className="ml-2 px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-500 rounded-full">
@@ -384,7 +406,7 @@ export default function RecursosClient() {
                           id={tool.id}
                           title={tool.title}
                           description={tool.description}
-                          icon={<span>{tool.icon}</span>}
+                          icon={getToolIcon(tool.iconKey)}
                           onClick={() => openTool(tool.id)}
                           isActive={activeTool === tool.id}
                         />

@@ -76,17 +76,21 @@ function NewsletterSignup() {
   }
 
   return (
-    <div className="w-full bg-gradient-to-br from-cyan-50 via-primary-50 to-white border-2 border-cyan-100/50 rounded-2xl p-8 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+    <div 
+      className="w-full bg-white rounded-2xl p-10 sm:p-12 md:p-14 relative overflow-hidden premium-shadow-card"
+    >
+      {/* Subtle background decoration - sage and gold tints */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8EBE5]/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#0A261F]/08 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       <div className="relative">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-neutral-900">
+        <h3 className="text-2xl sm:text-3xl font-black mb-4 text-[#051B11]">
           {siteConfig.newsletter.title}
         </h3>
-        <p className="text-base sm:text-lg text-neutral-700 mb-8 leading-relaxed">
+        <p className="text-base sm:text-lg text-[#0A261F] mb-10 leading-relaxed">
           {siteConfig.newsletter.description}
         </p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
         <input
           type="email"
           value={email}
@@ -94,12 +98,13 @@ function NewsletterSignup() {
           placeholder="O teu email"
           required
           disabled={status === "loading"}
-          className="flex-1 w-full px-5 py-4 border-2 border-cyan-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 disabled:opacity-50 bg-white/80 backdrop-blur-sm text-base transition-all duration-200 shadow-sm"
+          className="flex-1 w-full px-6 py-4 border border-[#D8DCD3] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A261F]/20 focus:border-[#0A261F] disabled:opacity-50 bg-[#FDFCF8] text-base text-[#0A261F] transition-all duration-200 placeholder:text-[#5A7A6D]"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-bold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg"
+          className="w-full sm:w-auto px-8 py-4 bg-[#0A261F] text-white font-bold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex items-center justify-center gap-2 hover:bg-[#051B11]"
+          style={{ boxShadow: '0 10px 30px rgba(5,27,17,0.12)' }}
         >
           {status === "loading" ? (
             <>
@@ -126,15 +131,15 @@ function NewsletterSignup() {
       </form>
 
       {status === "success" && (
-        <div className="mt-4 text-sm font-medium text-cyan-700 bg-cyan-50 border border-cyan-200 px-4 py-3 rounded-xl flex items-center gap-2">
-          <svg className="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+        <div className="mt-5 text-sm font-medium text-[#10B981] bg-[#10B981]/10 px-4 py-3 rounded-xl flex items-center gap-2">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
           <span>{message}</span>
         </div>
       )}
       {status === "error" && (
-        <div className="mt-4 text-sm font-medium text-error bg-white px-4 py-2 rounded-lg border-2 border-error/30 flex items-start gap-2">
+        <div className="mt-5 text-sm font-medium text-error bg-error/10 px-4 py-3 rounded-xl flex items-start gap-2">
           <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
           </svg>
@@ -142,7 +147,7 @@ function NewsletterSignup() {
         </div>
       )}
 
-      <p className="mt-4 text-sm text-cyan-700">
+      <p className="mt-5 text-sm text-[#5A7A6D]">
         Ao subscreveres, concordas em receber emails da nossa parte. Podes cancelar a qualquer momento.
       </p>
       </div>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { siteConfig } from "@/lib/site.config";
 import { SearchBar } from "@/components/search";
+import { Logo } from "@/components/Logo";
 
 const artigosCategorias = [
   { label: "Finanças Pessoais", href: "/artigos?categoria=financas-pessoais" },
@@ -108,11 +109,8 @@ export default function Header() {
   return (
     <>
     <header 
-      className={`w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "shadow-md" 
-          : "shadow-sm"
-      }`}
+      className={`w-full bg-white/70 backdrop-blur-xl backdrop-saturate-150 sticky top-0 z-50 transition-all duration-300`}
+      style={{ boxShadow: isScrolled ? '0 4px 20px rgba(10,38,31,0.08)' : '0 2px 10px rgba(10,38,31,0.04)' }}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
@@ -123,54 +121,15 @@ export default function Header() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 inline-flex items-center gap-2 sm:gap-2.5 group transition-transform duration-300">
-            {/* Modern Logo Icon */}
-            <div 
-              className={`logo-gradient flex items-center justify-center rounded-xl shadow-md transition-all duration-300 ${
-                isScrolled 
-                  ? "w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9" 
-                  : "w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
-              }`}
-            >
-              <svg
-                className={`text-white flex-shrink-0 transition-all duration-300 ${
-                  isScrolled 
-                    ? "w-4 h-4 sm:w-5 sm:h-5" 
-                    : "w-5 h-5 sm:w-6 sm:h-6"
-                }`}
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                {/* Three ascending bars to hint at financial growth */}
-                <rect x="5" y="12" width="3" height="7" rx="0.75" />
-                <rect x="10.5" y="8" width="3" height="11" rx="0.75" />
-                <rect x="16" y="4" width="3" height="15" rx="0.75" />
-              </svg>
-            </div>
-            
-            {/* Logo Text */}
-            <div className="flex flex-col font-[family-name:var(--font-poppins)]">
-              <span 
-                className={`font-semibold tracking-wide leading-none text-brand-primary group-hover:text-brand-secondary transition-all duration-300 ${
-                  isScrolled 
-                    ? "text-sm sm:text-base md:text-lg" 
-                    : "text-base sm:text-lg md:text-xl"
-                }`}
-              >
-                Aumentar
-              </span>
-              <span 
-                className={`font-medium tracking-wider leading-none mt-0.5 opacity-75 uppercase text-brand-primary transition-all duration-300 ${
-                  isScrolled 
-                    ? "text-[8px] sm:text-[10px] md:text-xs" 
-                    : "text-[10px] sm:text-xs md:text-sm"
-                }`}
-              >
-                Capital.com
-              </span>
-            </div>
-          </Link>
+          <Logo
+            variant="full"
+            className="flex-shrink-0 transition-all duration-300"
+            iconClassName={
+              isScrolled
+                ? "h-6 w-full max-w-[140px] sm:h-7 sm:max-w-[180px] md:h-8 md:max-w-[200px]"
+                : "h-7 w-full max-w-[160px] sm:h-8 sm:max-w-[200px] md:h-9 md:max-w-[240px]"
+            }
+          />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-end flex-1 gap-4 md:gap-6 lg:gap-8 ml-4">
@@ -184,8 +143,8 @@ export default function Header() {
                 href="/artigos/guia-inicial-literacia-financeira"
                 className={`text-sm md:text-base font-semibold transition-colors duration-300 ease-in-out whitespace-nowrap ${
                   isActive("/artigos/guia-inicial-literacia-financeira")
-                    ? "text-brand-primary"
-                    : "text-secondary hover:text-cyan-600"
+                    ? "text-[#051B11]"
+                    : "text-[#051B11] hover:text-[#051B11]"
                 }`}
               >
                 Começa Aqui
@@ -203,7 +162,7 @@ export default function Header() {
                         className={`inline-flex items-center gap-1 text-sm md:text-base font-medium transition-colors duration-300 ease-in-out whitespace-nowrap ${
                           itemIsActive
                             ? "text-brand-primary font-semibold"
-                            : "text-secondary hover:text-cyan-600"
+                            : "text-[#051B11] hover:text-[#051B11]"
                         }`}
                         aria-expanded={mounted ? artigosDropdownOpen : false}
                         aria-haspopup="true"
@@ -234,7 +193,8 @@ export default function Header() {
                       {/* Dropdown Menu */}
                       {artigosDropdownOpen && (
                         <div 
-                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-cyan-100/50 py-2 animate-slide-up z-50"
+                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl py-2 animate-slide-up z-50"
+                          style={{ boxShadow: '0 8px 30px rgba(10,38,31,0.10)' }}
                           role="menu"
                           aria-label={`${item.label} submenu`}
                         >
@@ -243,14 +203,14 @@ export default function Header() {
                             onClick={() => setArtigosDropdownOpen(false)}
                             className={`block px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-in-out rounded-lg mx-1 ${
                               pathname === "/artigos"
-                                ? "text-brand-primary bg-cyan-50"
-                                : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                                ? "text-brand-primary bg-[#D8DCD3]/20"
+                                : "text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                             }`}
                             role="menuitem"
                           >
                             Todos os Artigos
                           </Link>
-                          <div className="border-t border-slate-200 my-2"></div>
+                          <div className="border-t border-[#D8DCD3]/50 my-2"></div>
                           {artigosCategorias.map((categoria) => (
                             <Link
                               key={categoria.href}
@@ -258,8 +218,8 @@ export default function Header() {
                               onClick={() => setArtigosDropdownOpen(false)}
                               className={`block px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-in-out rounded-lg mx-1 ${
                                 pathname?.includes(categoria.href.split("=")[1] || "")
-                                  ? "text-brand-primary bg-cyan-50"
-                                  : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                                  ? "text-brand-primary bg-[#D8DCD3]/20"
+                                  : "text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                               }`}
                               role="menuitem"
                             >
@@ -280,7 +240,7 @@ export default function Header() {
                     className={`text-sm md:text-base font-medium transition-colors duration-300 ease-in-out whitespace-nowrap relative ${
                       itemIsActive
                         ? "text-brand-primary font-semibold"
-                        : "text-secondary hover:text-cyan-600"
+                        : "text-[#051B11] hover:text-[#051B11]"
                     }`}
                     aria-current={itemIsActive ? "page" : undefined}
                   >
@@ -322,7 +282,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-secondary hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-300 ease-in-out flex-shrink-0"
+              className="p-2.5 rounded-xl text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20 transition-all duration-300 ease-in-out flex-shrink-0"
               aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -357,7 +317,7 @@ export default function Header() {
 
       {/* Mobile Navigation - Full Screen Overlay */}
       <div 
-        className={`lg:hidden fixed left-0 right-0 bottom-0 w-full bg-white/98 backdrop-blur-md overflow-y-auto transition-all duration-300 ${
+        className={`lg:hidden fixed left-0 right-0 bottom-0 w-full bg-white/70 backdrop-blur-xl backdrop-saturate-150 overflow-y-auto transition-all duration-300 ${
           mobileMenuOpen ? 'z-[100] opacity-100 visible' : 'z-[-1] opacity-0 invisible'
         }`}
         style={{ top: isScrolled ? '56px' : '64px' }}
@@ -370,7 +330,7 @@ export default function Header() {
         >
           <nav 
             id="mobile-navigation"
-            className="border-t border-neutral-200 py-6 px-4 space-y-2 mobile-menu-content"
+            className="py-6 px-4 space-y-2 mobile-menu-content"
             aria-label="Navegação principal"
           >
               {/* Começa Aqui - Standout Link in Mobile */}
@@ -379,8 +339,8 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`group relative block px-4 py-3.5 text-base font-semibold transition-all duration-300 ease-in-out mb-4 rounded-xl ${
                   isActive("/artigos/guia-inicial-literacia-financeira")
-                    ? "text-brand-primary bg-cyan-50"
-                    : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                    ? "text-brand-primary bg-[#D8DCD3]/20"
+                    : "text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                 }`}
               >
                 <span className="flex items-center gap-2">
@@ -402,8 +362,8 @@ export default function Header() {
                         onClick={() => setArtigosDropdownOpen(!artigosDropdownOpen)}
                         className={`w-full flex items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 ease-in-out ${
                           itemIsActive
-                            ? "text-brand-primary bg-cyan-50 font-semibold"
-                            : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                            ? "text-brand-primary bg-[#D8DCD3]/20 font-semibold"
+                            : "text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                         }`}
                       >
                         <span className="flex items-center gap-2">
@@ -438,8 +398,8 @@ export default function Header() {
                             }}
                             className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-in-out ${
                               pathname === "/artigos"
-                                ? "text-brand-primary bg-cyan-50"
-                                : "text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50"
+                                ? "text-brand-primary bg-[#D8DCD3]/20"
+                                : "text-[#3D5A50] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                             }`}
                           >
                             Todos os Artigos
@@ -454,8 +414,8 @@ export default function Header() {
                               }}
                               className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-in-out ${
                                 pathname?.includes(categoria.href.split("=")[1] || "")
-                                  ? "text-brand-primary bg-cyan-50"
-                                  : "text-foreground-muted hover:text-cyan-600 hover:bg-cyan-50"
+                                  ? "text-brand-primary bg-[#D8DCD3]/20"
+                                  : "text-[#3D5A50] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                               }`}
                             >
                               {categoria.label}
@@ -475,8 +435,8 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`block px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 ease-in-out ${
                       itemIsActive
-                        ? "text-brand-primary bg-cyan-50 font-semibold"
-                        : "text-secondary hover:text-cyan-600 hover:bg-cyan-50"
+                        ? "text-brand-primary bg-[#D8DCD3]/20 font-semibold"
+                        : "text-[#051B11] hover:text-[#051B11] hover:bg-[#D8DCD3]/20"
                     }`}
                     aria-current={itemIsActive ? "page" : undefined}
                   >
@@ -491,7 +451,7 @@ export default function Header() {
               })}
               
               {/* Subscribe Button - Prominent in Mobile Menu */}
-              <div className="pt-4 mt-4 border-t border-neutral-200">
+              <div className="pt-4 mt-4 border-t border-[#D8DCD3]/50">
                 <Link
                   href="/contacto"
                   onClick={() => setMobileMenuOpen(false)}

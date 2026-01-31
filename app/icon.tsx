@@ -7,14 +7,13 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-// Image generation
+// Image generation - Aumentar Capital logo (soft arches + diamond)
 export default function Icon() {
   return new ImageResponse(
     (
       <div
         style={{
-          fontSize: 24,
-          background: 'linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 50%, var(--color-brand-accent) 100%)',
+          background: 'linear-gradient(135deg, #06B6D4 0%, #0891B2 50%, #0E7490 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -24,17 +23,15 @@ export default function Icon() {
         }}
       >
         <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          width="22"
+          height="22"
+          viewBox="0 0 68 52"
+          fill="white"
         >
-          <path d="M7 13l5-5 5 5" />
-          <path d="M7 18l5-5 5 5" />
+          <path d="M6 46 Q14 30 22 46 Z" />
+          <path d="M20 46 Q30 24 40 46 Z" />
+          <path d="M38 46 Q50 16 62 46 Z" />
+          <polygon points="50,10 54,16 50,22 46,16" />
         </svg>
       </div>
     ),

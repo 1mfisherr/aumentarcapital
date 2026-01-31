@@ -25,64 +25,57 @@ export default function ToolCard({
       onClick={onClick}
       className={`
         group relative w-full text-left
-        bg-white border rounded-2xl p-5 sm:p-6
+        bg-white rounded-2xl p-6 sm:p-8
         transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:shadow-xl
+        hover:scale-[1.02]
         active:scale-[0.98]
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A261F] focus-visible:ring-offset-2
         touch-manipulation
-        ${isActive 
-          ? "border-primary shadow-lg shadow-primary/10" 
-          : "border-neutral-200/60 hover:border-primary/40"
-        }
+        ${isActive ? "ring-2 ring-[#0A261F]" : ""}
       `}
+      style={{ 
+        boxShadow: isActive 
+          ? '0 14px 38px rgba(5, 27, 17, 0.10)' 
+          : '0 10px 30px rgba(5, 27, 17, 0.07)' 
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 14px 38px rgba(5, 27, 17, 0.10)'}
+      onMouseLeave={(e) => e.currentTarget.style.boxShadow = isActive ? '0 14px 38px rgba(5, 27, 17, 0.10)' : '0 10px 30px rgba(5, 27, 17, 0.07)'}
       aria-label={`Abrir ${title}`}
       aria-pressed={isActive}
       data-tool-id={id}
     >
-      {/* Glow effect on hover */}
+      {/* Subtle hover effect */}
       <div 
         className={`
           absolute inset-0 rounded-2xl opacity-0 
           group-hover:opacity-100 transition-opacity duration-300
-          bg-gradient-to-br from-primary/5 via-transparent to-cyan-500/5
+          bg-[#E8EBE5]/30
           pointer-events-none
-        `}
-        aria-hidden="true"
-      />
-      
-      {/* Border glow effect */}
-      <div 
-        className={`
-          absolute -inset-[1px] rounded-2xl opacity-0 
-          group-hover:opacity-100 transition-opacity duration-300
-          bg-gradient-to-br from-primary/20 via-transparent to-cyan-500/20
-          -z-10 blur-sm
         `}
         aria-hidden="true"
       />
 
       <div className="relative">
-        {/* Icon */}
+        {/* Icon - Prepared for minimalist SVG replacement */}
         <div 
-          className="text-4xl sm:text-5xl mb-3 sm:mb-4 transform transition-transform duration-300 group-hover:scale-110"
+          className="text-4xl sm:text-5xl mb-4 sm:mb-5 transform transition-transform duration-300 group-hover:scale-105"
           aria-hidden="true"
         >
           {icon}
         </div>
 
-        {/* Title */}
-        <h2 className="text-lg sm:text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors duration-200">
+        {/* Title - Anchor, heavy */}
+        <h2 className="text-lg sm:text-xl font-black text-[#051B11] mb-3 group-hover:text-[#0A261F] transition-colors duration-200">
           {title}
         </h2>
 
         {/* Description */}
-        <p className="text-neutral-600 mb-4 text-xs sm:text-sm leading-relaxed line-clamp-3">
+        <p className="text-[#0A261F] mb-5 text-xs sm:text-sm leading-relaxed line-clamp-3">
           {description}
         </p>
 
-        {/* CTA */}
-        <div className="text-primary font-semibold text-xs sm:text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
+        {/* CTA - deep green */}
+        <div className="text-[#0A261F] font-semibold text-xs sm:text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
           Usar ferramenta
           <svg 
             className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-200" 
